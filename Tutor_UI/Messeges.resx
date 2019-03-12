@@ -117,7 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="errorProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
+  <data name="Email_Regex" xml:space="preserve">
+    <value>\A(?:[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z</value>
+  </data>
+  <data name="Error_Empty" xml:space="preserve">
+    <value>Polje ne smije biti prazno!</value>
+  </data>
+  <data name="Error_Format" xml:space="preserve">
+    <value>Format koji ste upisali u polje nije dozvoljen!</value>
+  </data>
+  <data name="Error_Phone" xml:space="preserve">
+    <value>\+387\([3|6][0-9]\)[0-9]{3}\-[0-9]{3}</value>
+  </data>
+  <data name="OnlyLetters_Regex" xml:space="preserve">
+    <value>[a-zA-Z]+</value>
+  </data>
 </root>

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.ImeInput = new System.Windows.Forms.TextBox();
             this.PrezimeInput = new System.Windows.Forms.TextBox();
@@ -41,6 +42,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.TelefonInput = new System.Windows.Forms.MaskedTextBox();
             this.SacuvajBtn = new System.Windows.Forms.Button();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -58,6 +61,7 @@
             this.ImeInput.Name = "ImeInput";
             this.ImeInput.Size = new System.Drawing.Size(189, 20);
             this.ImeInput.TabIndex = 1;
+            this.ImeInput.Validating += new System.ComponentModel.CancelEventHandler(this.ImeInput_Validating);
             // 
             // PrezimeInput
             // 
@@ -65,6 +69,7 @@
             this.PrezimeInput.Name = "PrezimeInput";
             this.PrezimeInput.Size = new System.Drawing.Size(189, 20);
             this.PrezimeInput.TabIndex = 2;
+            this.PrezimeInput.Validating += new System.ComponentModel.CancelEventHandler(this.PrezimeInput_Validating);
             // 
             // label2
             // 
@@ -90,6 +95,7 @@
             this.EmailInput.Name = "EmailInput";
             this.EmailInput.Size = new System.Drawing.Size(189, 20);
             this.EmailInput.TabIndex = 3;
+            this.EmailInput.Validating += new System.ComponentModel.CancelEventHandler(this.EmailInput_Validating);
             // 
             // label4
             // 
@@ -106,6 +112,7 @@
             this.KorisnickoImeInput.Name = "KorisnickoImeInput";
             this.KorisnickoImeInput.Size = new System.Drawing.Size(189, 20);
             this.KorisnickoImeInput.TabIndex = 5;
+            this.KorisnickoImeInput.Validating += new System.ComponentModel.CancelEventHandler(this.KorisnickoImeInput_Validating);
             // 
             // label5
             // 
@@ -123,6 +130,7 @@
             this.LozinkaInput.PasswordChar = '*';
             this.LozinkaInput.Size = new System.Drawing.Size(189, 20);
             this.LozinkaInput.TabIndex = 6;
+            this.LozinkaInput.Validating += new System.ComponentModel.CancelEventHandler(this.LozinkaInput_Validating);
             // 
             // label6
             // 
@@ -140,6 +148,7 @@
             this.TelefonInput.Name = "TelefonInput";
             this.TelefonInput.Size = new System.Drawing.Size(189, 20);
             this.TelefonInput.TabIndex = 4;
+            this.TelefonInput.Validating += new System.ComponentModel.CancelEventHandler(this.TelefonInput_Validating);
             // 
             // SacuvajBtn
             // 
@@ -150,6 +159,11 @@
             this.SacuvajBtn.Text = "Sacuvaj";
             this.SacuvajBtn.UseVisualStyleBackColor = true;
             this.SacuvajBtn.Click += new System.EventHandler(this.SacuvajBtn_Click);
+            // 
+            // errorProvider
+            // 
+            this.errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProvider.ContainerControl = this;
             // 
             // AdministratorAdd
             // 
@@ -174,6 +188,7 @@
             this.Name = "AdministratorAdd";
             this.ShowIcon = false;
             this.Text = "AdministratorAdd";
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -194,5 +209,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.MaskedTextBox TelefonInput;
         private System.Windows.Forms.Button SacuvajBtn;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }
