@@ -16,7 +16,7 @@ namespace Tutor_UI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new AdministratorDodaj());
+            Application.Run(new Users.AdministratorAdd());
         }
     }
 }

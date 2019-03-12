@@ -64,7 +64,7 @@
             this.PrezimeInput.Location = new System.Drawing.Point(49, 100);
             this.PrezimeInput.Name = "PrezimeInput";
             this.PrezimeInput.Size = new System.Drawing.Size(189, 20);
-            this.PrezimeInput.TabIndex = 3;
+            this.PrezimeInput.TabIndex = 2;
             // 
             // label2
             // 
@@ -89,7 +89,7 @@
             this.EmailInput.Location = new System.Drawing.Point(49, 156);
             this.EmailInput.Name = "EmailInput";
             this.EmailInput.Size = new System.Drawing.Size(189, 20);
-            this.EmailInput.TabIndex = 7;
+            this.EmailInput.TabIndex = 3;
             // 
             // label4
             // 
@@ -105,7 +105,7 @@
             this.KorisnickoImeInput.Location = new System.Drawing.Point(49, 254);
             this.KorisnickoImeInput.Name = "KorisnickoImeInput";
             this.KorisnickoImeInput.Size = new System.Drawing.Size(189, 20);
-            this.KorisnickoImeInput.TabIndex = 9;
+            this.KorisnickoImeInput.TabIndex = 5;
             // 
             // label5
             // 
@@ -120,8 +120,9 @@
             // 
             this.LozinkaInput.Location = new System.Drawing.Point(49, 293);
             this.LozinkaInput.Name = "LozinkaInput";
+            this.LozinkaInput.PasswordChar = '*';
             this.LozinkaInput.Size = new System.Drawing.Size(189, 20);
-            this.LozinkaInput.TabIndex = 11;
+            this.LozinkaInput.TabIndex = 6;
             // 
             // label6
             // 
@@ -138,16 +139,17 @@
             this.TelefonInput.Mask = "+387(00)000-000";
             this.TelefonInput.Name = "TelefonInput";
             this.TelefonInput.Size = new System.Drawing.Size(189, 20);
-            this.TelefonInput.TabIndex = 12;
+            this.TelefonInput.TabIndex = 4;
             // 
             // SacuvajBtn
             // 
             this.SacuvajBtn.Location = new System.Drawing.Point(84, 334);
             this.SacuvajBtn.Name = "SacuvajBtn";
             this.SacuvajBtn.Size = new System.Drawing.Size(110, 28);
-            this.SacuvajBtn.TabIndex = 13;
+            this.SacuvajBtn.TabIndex = 7;
             this.SacuvajBtn.Text = "Sacuvaj";
             this.SacuvajBtn.UseVisualStyleBackColor = true;
+            this.SacuvajBtn.Click += new System.EventHandler(this.SacuvajBtn_Click);
             // 
             // AdministratorAdd
             // 
