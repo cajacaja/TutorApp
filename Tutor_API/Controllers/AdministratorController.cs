@@ -51,5 +51,20 @@ namespace Tutor_API.Controllers
 
             return CreatedAtRoute("DefaultApi", new { id = a.AdministratorId }, a);
         }
+
+        [ResponseType(typeof(void))]
+        public IHttpActionResult PutKorisnici(int id, Administrator a)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            if (id != a.AdministratorId)
+                return BadRequest();
+
+            db.tsp_Administrator_Update(a.AdministratorId, a.Ime, a.Prezime, a.Email, a.Telefon, a.KoriniskoIme, a.LozinkaHash, a.LozinkaSalt);
+            
+
+            return StatusCode(HttpStatusCode.NoContent);
+        }
     }
 }
