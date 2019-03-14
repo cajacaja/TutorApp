@@ -1,18 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Configuration;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Tutor_API.Models;
 using Tutor_UI.Util;
 using System.Text.RegularExpressions;
-using System.Net.Mail;
+
 
 namespace Tutor_UI.Users
 {

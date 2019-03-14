@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="TutorModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="TutorModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Administrator">
           <Key>
             <PropertyRef Name="AdministratorId" />
@@ -672,6 +672,7 @@
           <Parameter Name="LozinkaHash" Type="nvarchar" Mode="In" />
           <Parameter Name="LozinkaSalt" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="tsp_Grad_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="TutorModelStoreContainer">
           <EntitySet Name="Administrator" EntityType="Self.Administrator" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Dan" EntityType="Self.Dan" Schema="dbo" store:Type="Tables" />
@@ -830,8 +831,7 @@
             <End Role="Zahtjev" EntitySet="Zahtjev" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TutorModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1710,10 +1710,10 @@
           </FunctionImport>
           <FunctionImport Name="tsp_Administrator_SelectAll" ReturnType="Collection(TutorModel.Administrator_SelectAll)" />
           <FunctionImport Name="tsp_Administrator_SelectByImePrezime" ReturnType="Collection(TutorModel.Administrator_NameSelect)">
-            <Parameter Name="ImePrezime" Mode="In" Type="String" />
+          <Parameter Name="ImePrezime" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="tsp_Administrator_SelectOne" ReturnType="Collection(TutorModel.Administrator_SelectOne)">
-            <Parameter Name="AdministratorId" Mode="In" Type="Int32" />
+          <Parameter Name="AdministratorId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="tsp_Administrator_Update">
             <Parameter Name="AdministratorId" Mode="In" Type="Int32" />
@@ -1725,6 +1725,7 @@
             <Parameter Name="LozinkaHash" Mode="In" Type="String" />
             <Parameter Name="LozinkaSalt" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="tsp_Grad_SelectAll" ReturnType="Collection(TutorModel.Grad_Result)" />
         </EntityContainer>
         <ComplexType Name="Administrator_NameSelect">
           <Property Type="Int32" Name="AdministratorId" Nullable="false" />
@@ -1754,6 +1755,10 @@
           <Property Type="DateTime" Name="DatumDodavanja" Nullable="false" />
           <Property Type="String" Name="Email" Nullable="false" MaxLength="150" />
           <Property Type="String" Name="Telefon" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Grad_Result">
+          <Property Type="Int32" Name="GradId" Nullable="false" />
+          <Property Type="String" Name="Naziv" Nullable="false" MaxLength="100" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -2072,6 +2077,14 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="tsp_Administrator_Update" FunctionName="TutorModel.Store.tsp_Administrator_Update" />
+          <FunctionImportMapping FunctionImportName="tsp_Grad_SelectAll" FunctionName="TutorModel.Store.tsp_Grad_SelectAll">
+          <ResultMapping>
+              <ComplexTypeMapping TypeName="TutorModel.Grad_Result">
+                <ScalarProperty Name="GradId" ColumnName="GradId" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

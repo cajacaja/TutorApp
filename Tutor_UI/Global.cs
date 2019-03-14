@@ -12,6 +12,9 @@ namespace Tutor_UI
         public const string URI = "http://localhost:61494/";
 
         public const string AdministratorRoute = "api/Administrator";
+        public const string SpolRoute = "api/Spol";
+        public const string GradRoute = "api/Grad";
+
 
 
         public static Tuple<bool, string> TextInputProvjera(string inputText,string regex="")

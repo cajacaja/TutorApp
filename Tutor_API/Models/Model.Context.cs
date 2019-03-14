@@ -148,5 +148,10 @@ namespace Tutor_API.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("tsp_Administrator_Update", administratorIdParameter, imeParameter, prezimeParameter, emailParameter, telefonParameter, korisnickoImeParameter, lozinkaHashParameter, lozinkaSaltParameter);
         }
+    
+        public virtual ObjectResult<Grad_Result> tsp_Grad_SelectAll()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Grad_Result>("tsp_Grad_SelectAll");
+        }
     }
 }

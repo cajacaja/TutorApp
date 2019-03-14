@@ -60,6 +60,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Users\AddTutor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\AddTutor.Designer.cs">
+      <DependentUpon>AddTutor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Users\AdministratorAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,6 +87,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Users\AddTutor.resx">
+      <DependentUpon>AddTutor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Users\AdministratorAdd.resx">
       <DependentUpon>AdministratorAdd.cs</DependentUpon>
     </EmbeddedResource>
