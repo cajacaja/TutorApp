@@ -130,7 +130,7 @@
             this.label3.Size = new System.Drawing.Size(30, 13);
             this.label3.TabIndex = 7;
             this.label3.Text = "Grad";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
+            
             // 
             // GradCmb
             // 

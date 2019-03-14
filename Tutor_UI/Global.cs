@@ -14,7 +14,10 @@ namespace Tutor_UI
         public const string AdministratorRoute = "api/Administrator";
         public const string SpolRoute = "api/Spol";
         public const string GradRoute = "api/Grad";
-
+        public const string TipStudentaRoute = "api/TipStudenta";
+        public const string PredmetiRoute = " api/Podkategorija";
+        public const string TutorTitulaRoute = "api/TutorTitula";
+        public const string RadnoStanjeRoute = "api/RadnoStanje";
 
 
         public static Tuple<bool, string> TextInputProvjera(string inputText,string regex="")

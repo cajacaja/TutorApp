@@ -104,7 +104,11 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AdministratorController.cs" />
     <Compile Include="Controllers\GradController.cs" />
+    <Compile Include="Controllers\PodkategorijaController.cs" />
+    <Compile Include="Controllers\RadnoStanjeController.cs" />
     <Compile Include="Controllers\SpolController.cs" />
+    <Compile Include="Controllers\TipStudentaController.cs" />
+    <Compile Include="Controllers\TutorTitulaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
