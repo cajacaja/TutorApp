@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -22,6 +25,8 @@ namespace Tutor_UI.Users
         private WebAPIHelper tipStudentaService = new WebAPIHelper(Global.URI, Global.TipStudentaRoute);
         private WebAPIHelper titulaService = new WebAPIHelper(Global.URI, Global.TutorTitulaRoute);
 
+        private byte[] Slika1;
+        private byte[] Slika2;
 
         public AddTutor()
         {
@@ -61,7 +66,7 @@ namespace Tutor_UI.Users
             BindObim();
             BindTitula();
 
-            await  BindGrad();
+            await BindGrad();
             
         }
 
@@ -83,9 +88,9 @@ namespace Tutor_UI.Users
             if (response.IsSuccessStatusCode)
             {
                 //Promjeni ime u PredmetCmb
-                PredmetInput.DataSource = response.Content.ReadAsAsync<List<Podkategorija>>().Result;
-                PredmetInput.DisplayMember = "Naziv";
-                PredmetInput.ValueMember = "PodkategorijaId";
+                PredmetCmb.DataSource = response.Content.ReadAsAsync<List<Podkategorija>>().Result;
+                PredmetCmb.DisplayMember = "Naziv";
+                PredmetCmb.ValueMember = "PodkategorijaId";
             }
         }
 
@@ -95,9 +100,9 @@ namespace Tutor_UI.Users
             if (response.IsSuccessStatusCode)
             {
                 //Promjeni ime u PredmetCmb
-                TitulaInput.DataSource = response.Content.ReadAsAsync<List<TutorTitula>>().Result;
-                TitulaInput.DisplayMember = "Naziv";
-                TitulaInput.ValueMember = "TutorTitulaId";
+                TitulaCmb.DataSource = response.Content.ReadAsAsync<List<TutorTitula>>().Result;
+                TitulaCmb.DisplayMember = "Naziv";
+                TitulaCmb.ValueMember = "TutorTitulaId";
             }
         }
 
@@ -107,9 +112,74 @@ namespace Tutor_UI.Users
             if (response.IsSuccessStatusCode)
             {
                 //Promjeni ime u PredmetCmb
-                ZaposlenostiInput.DataSource = response.Content.ReadAsAsync<List<RadnoStanje>>().Result;
-                ZaposlenostiInput.DisplayMember = "Naziv";
-                ZaposlenostiInput.ValueMember = "RadnoStanjeId";
+                ZaposlenostiCmb.DataSource = response.Content.ReadAsAsync<List<RadnoStanje>>().Result;
+                ZaposlenostiCmb.DisplayMember = "Naziv";
+                ZaposlenostiCmb.ValueMember = "RadnoStanjeId";
+            }
+        }
+
+        private void SnimiBtn_Click(object sender, EventArgs e)
+        {
+            Tutor noviTutor = new Tutor() {
+                Ime = ImeInput.Text,
+                Prezime = PrezimeInput.Text,
+                Telefon = TelefonInput.Text,
+                NazivUstanove=NazivObjektaInput.Text,
+                SpolId = (int)SpolCmb.SelectedValue,
+                Adresa = AdresaInput.Text,
+                Email = EmailInput.Text,
+                GradId = (int)GradCmb.SelectedValue,
+                RadnoStanjeId = (int)ZaposlenostiCmb.SelectedValue,
+                TutorTitulaId = (int)TitulaCmb.SelectedValue,
+                PodKategorijaId = (int)PredmetCmb.SelectedValue,
+                TipStudenta = ObimListBox.CheckedItems.Cast<TipStudenta>().ToList(),
+                KorisnickoIme=KorisnickoImeInput.Text,
+                CijenaCasa=(double)CijenaInput.Value,
+                DatumRodjenja=DatumRodjenjaDP.Value,
+                LozinkaSalt=UIHelper.GenerateSalt()
+            };
+            noviTutor.LozinkaHash = UIHelper.GenerateHash(noviTutor.LozinkaSalt, LozinkaInput.Text);
+        }
+
+        private void SlikaBtn_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog()==DialogResult.OK)
+            {
+                SlikaTutorInput.Text = openFileDialog1.FileName;
+
+                Image orignalImage = Image.FromFile(openFileDialog1.FileName);
+                MemoryStream ms = new MemoryStream();
+                orignalImage.Save(ms, ImageFormat.Jpeg);
+
+                int resizedImageWidth =Convert.ToInt32(ConfigurationManager.AppSettings["resizedImageWidth"]);
+                int resizedImageHeight = Convert.ToInt32(ConfigurationManager.AppSettings["resizedImageHeight"]);
+                int cropedImageWidth = Convert.ToInt32(ConfigurationManager.AppSettings["cropedImageWidth"]);
+                int cropedImageHeight = Convert.ToInt32(ConfigurationManager.AppSettings["cropedImageHeight"]);
+
+                if (orignalImage.Width > resizedImageWidth)
+                {
+                    Image resizedImage = UIHelper.ResizeImage(orignalImage, new Size(resizedImageWidth, resizedImageHeight));
+                    Image cropedImage = resizedImage;
+                    resizedImage.Save(ms, ImageFormat.Jpeg);
+                    Slika1 = ms.ToArray();
+
+                    if (resizedImageWidth>=cropedImageWidth && resizedImageHeight>=cropedImageHeight)
+                    {
+                        int croppedXPosition = (resizedImageWidth - cropedImageWidth) / 2;
+                        int croppedYPosition = 20;
+
+                        cropedImage = UIHelper.CropImage(resizedImage, new Rectangle(croppedXPosition, croppedYPosition, 
+                                                        cropedImageWidth - croppedXPosition, 
+                                                        cropedImageHeight - croppedYPosition));
+
+                        ms = new MemoryStream();
+                        cropedImage.Save(ms, ImageFormat.Jpeg);
+                        Slika2 = ms.ToArray();
+
+                        pictureBox.Image = cropedImage;
+                    }
+
+                }
             }
         }
     }

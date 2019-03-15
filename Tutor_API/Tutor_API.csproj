@@ -203,6 +203,7 @@
     <Compile Include="Models\Tutor.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\TutorExstension.cs" />
     <Compile Include="Models\TutorTitula.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.ImeInput = new System.Windows.Forms.TextBox();
             this.Ime = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -45,13 +46,13 @@
             this.DatumRodjenjaDP = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.ZaposlenostiInput = new System.Windows.Forms.ComboBox();
+            this.ZaposlenostiCmb = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.TitulaInput = new System.Windows.Forms.ComboBox();
+            this.TitulaCmb = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.NazivObjektaInput = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.PredmetInput = new System.Windows.Forms.ComboBox();
+            this.PredmetCmb = new System.Windows.Forms.ComboBox();
             this.ObimListBox = new System.Windows.Forms.CheckedListBox();
             this.label12 = new System.Windows.Forms.Label();
             this.CijenaInput = new System.Windows.Forms.NumericUpDown();
@@ -64,12 +65,16 @@
             this.SlikaTutorInput = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.SlikaDokazInput = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.SlikaBtn = new System.Windows.Forms.Button();
+            this.DokazBtn = new System.Windows.Forms.Button();
+            this.SnimiBtn = new System.Windows.Forms.Button();
             this.pictureBox = new System.Windows.Forms.PictureBox();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.CijenaInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // ImeInput
@@ -130,7 +135,6 @@
             this.label3.Size = new System.Drawing.Size(30, 13);
             this.label3.TabIndex = 7;
             this.label3.Text = "Grad";
-            
             // 
             // GradCmb
             // 
@@ -215,14 +219,14 @@
             this.label8.TabIndex = 18;
             this.label8.Text = "Stanje zaposlenosti";
             // 
-            // ZaposlenostiInput
+            // ZaposlenostiCmb
             // 
-            this.ZaposlenostiInput.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ZaposlenostiInput.FormattingEnabled = true;
-            this.ZaposlenostiInput.Location = new System.Drawing.Point(35, 282);
-            this.ZaposlenostiInput.Name = "ZaposlenostiInput";
-            this.ZaposlenostiInput.Size = new System.Drawing.Size(144, 21);
-            this.ZaposlenostiInput.TabIndex = 17;
+            this.ZaposlenostiCmb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ZaposlenostiCmb.FormattingEnabled = true;
+            this.ZaposlenostiCmb.Location = new System.Drawing.Point(35, 282);
+            this.ZaposlenostiCmb.Name = "ZaposlenostiCmb";
+            this.ZaposlenostiCmb.Size = new System.Drawing.Size(144, 21);
+            this.ZaposlenostiCmb.TabIndex = 17;
             // 
             // label9
             // 
@@ -233,14 +237,14 @@
             this.label9.TabIndex = 20;
             this.label9.Text = "Titula tutora";
             // 
-            // TitulaInput
+            // TitulaCmb
             // 
-            this.TitulaInput.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.TitulaInput.FormattingEnabled = true;
-            this.TitulaInput.Location = new System.Drawing.Point(244, 282);
-            this.TitulaInput.Name = "TitulaInput";
-            this.TitulaInput.Size = new System.Drawing.Size(144, 21);
-            this.TitulaInput.TabIndex = 19;
+            this.TitulaCmb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.TitulaCmb.FormattingEnabled = true;
+            this.TitulaCmb.Location = new System.Drawing.Point(244, 282);
+            this.TitulaCmb.Name = "TitulaCmb";
+            this.TitulaCmb.Size = new System.Drawing.Size(144, 21);
+            this.TitulaCmb.TabIndex = 19;
             // 
             // label10
             // 
@@ -267,14 +271,14 @@
             this.label11.TabIndex = 24;
             this.label11.Text = "Predmet";
             // 
-            // PredmetInput
+            // PredmetCmb
             // 
-            this.PredmetInput.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.PredmetInput.FormattingEnabled = true;
-            this.PredmetInput.Location = new System.Drawing.Point(244, 337);
-            this.PredmetInput.Name = "PredmetInput";
-            this.PredmetInput.Size = new System.Drawing.Size(144, 21);
-            this.PredmetInput.TabIndex = 23;
+            this.PredmetCmb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.PredmetCmb.FormattingEnabled = true;
+            this.PredmetCmb.Location = new System.Drawing.Point(244, 337);
+            this.PredmetCmb.Name = "PredmetCmb";
+            this.PredmetCmb.Size = new System.Drawing.Size(144, 21);
+            this.PredmetCmb.TabIndex = 23;
             // 
             // ObimListBox
             // 
@@ -377,32 +381,34 @@
             this.SlikaDokazInput.Size = new System.Drawing.Size(144, 20);
             this.SlikaDokazInput.TabIndex = 35;
             // 
-            // button1
+            // SlikaBtn
             // 
-            this.button1.Location = new System.Drawing.Point(35, 568);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 37;
-            this.button1.Text = "Dodaj ";
-            this.button1.UseVisualStyleBackColor = true;
+            this.SlikaBtn.Location = new System.Drawing.Point(35, 568);
+            this.SlikaBtn.Name = "SlikaBtn";
+            this.SlikaBtn.Size = new System.Drawing.Size(75, 23);
+            this.SlikaBtn.TabIndex = 37;
+            this.SlikaBtn.Text = "Dodaj ";
+            this.SlikaBtn.UseVisualStyleBackColor = true;
+            this.SlikaBtn.Click += new System.EventHandler(this.SlikaBtn_Click);
             // 
-            // button2
+            // DokazBtn
             // 
-            this.button2.Location = new System.Drawing.Point(244, 568);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 38;
-            this.button2.Text = "Dodaj";
-            this.button2.UseVisualStyleBackColor = true;
+            this.DokazBtn.Location = new System.Drawing.Point(244, 568);
+            this.DokazBtn.Name = "DokazBtn";
+            this.DokazBtn.Size = new System.Drawing.Size(75, 23);
+            this.DokazBtn.TabIndex = 38;
+            this.DokazBtn.Text = "Dodaj";
+            this.DokazBtn.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // SnimiBtn
             // 
-            this.button3.Location = new System.Drawing.Point(460, 617);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(118, 36);
-            this.button3.TabIndex = 39;
-            this.button3.Text = "Snimi";
-            this.button3.UseVisualStyleBackColor = true;
+            this.SnimiBtn.Location = new System.Drawing.Point(460, 617);
+            this.SnimiBtn.Name = "SnimiBtn";
+            this.SnimiBtn.Size = new System.Drawing.Size(118, 36);
+            this.SnimiBtn.TabIndex = 39;
+            this.SnimiBtn.Text = "Snimi";
+            this.SnimiBtn.UseVisualStyleBackColor = true;
+            this.SnimiBtn.Click += new System.EventHandler(this.SnimiBtn_Click);
             // 
             // pictureBox
             // 
@@ -412,15 +418,27 @@
             this.pictureBox.TabIndex = 40;
             this.pictureBox.TabStop = false;
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog";
+            // 
+            // openFileDialog2
+            // 
+            this.openFileDialog2.FileName = "openFileDialog1";
+            // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
+            // 
             // AddTutor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(598, 665);
             this.Controls.Add(this.pictureBox);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.SnimiBtn);
+            this.Controls.Add(this.DokazBtn);
+            this.Controls.Add(this.SlikaBtn);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.SlikaDokazInput);
             this.Controls.Add(this.label16);
@@ -434,13 +452,13 @@
             this.Controls.Add(this.label12);
             this.Controls.Add(this.ObimListBox);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.PredmetInput);
+            this.Controls.Add(this.PredmetCmb);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.NazivObjektaInput);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.TitulaInput);
+            this.Controls.Add(this.TitulaCmb);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.ZaposlenostiInput);
+            this.Controls.Add(this.ZaposlenostiCmb);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.DatumRodjenjaDP);
             this.Controls.Add(this.label6);
@@ -462,6 +480,7 @@
             this.Load += new System.EventHandler(this.AddTutor_Load);
             ((System.ComponentModel.ISupportInitialize)(this.CijenaInput)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -486,13 +505,13 @@
         private System.Windows.Forms.DateTimePicker DatumRodjenjaDP;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ComboBox ZaposlenostiInput;
+        private System.Windows.Forms.ComboBox ZaposlenostiCmb;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.ComboBox TitulaInput;
+        private System.Windows.Forms.ComboBox TitulaCmb;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox NazivObjektaInput;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.ComboBox PredmetInput;
+        private System.Windows.Forms.ComboBox PredmetCmb;
         private System.Windows.Forms.CheckedListBox ObimListBox;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.NumericUpDown CijenaInput;
@@ -505,9 +524,12 @@
         private System.Windows.Forms.TextBox SlikaTutorInput;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox SlikaDokazInput;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button SlikaBtn;
+        private System.Windows.Forms.Button DokazBtn;
+        private System.Windows.Forms.Button SnimiBtn;
         private System.Windows.Forms.PictureBox pictureBox;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.OpenFileDialog openFileDialog2;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }
