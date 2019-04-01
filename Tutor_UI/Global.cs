@@ -18,6 +18,7 @@ namespace Tutor_UI
         public const string PredmetiRoute = " api/Podkategorija";
         public const string TutorTitulaRoute = "api/TutorTitula";
         public const string RadnoStanjeRoute = "api/RadnoStanje";
+        public const string TutorRoute = "api/Tutor";
 
 
         public static Tuple<bool, string> TextInputProvjera(string inputText,string regex="")

@@ -83,6 +83,7 @@
             this.ImeInput.Name = "ImeInput";
             this.ImeInput.Size = new System.Drawing.Size(144, 20);
             this.ImeInput.TabIndex = 0;
+            this.ImeInput.Validating += new System.ComponentModel.CancelEventHandler(this.ImeInput_Validating);
             // 
             // Ime
             // 
@@ -108,6 +109,7 @@
             this.PrezimeInput.Name = "PrezimeInput";
             this.PrezimeInput.Size = new System.Drawing.Size(144, 20);
             this.PrezimeInput.TabIndex = 3;
+            this.PrezimeInput.Validating += new System.ComponentModel.CancelEventHandler(this.PrezimeInput_Validating);
             // 
             // SpolCmb
             // 
@@ -160,6 +162,7 @@
             this.EmailInput.Name = "EmailInput";
             this.EmailInput.Size = new System.Drawing.Size(144, 20);
             this.EmailInput.TabIndex = 8;
+            this.EmailInput.Validating += new System.ComponentModel.CancelEventHandler(this.EmailInput_Validating);
             // 
             // label5
             // 
@@ -177,6 +180,7 @@
             this.TelefonInput.Name = "TelefonInput";
             this.TelefonInput.Size = new System.Drawing.Size(144, 20);
             this.TelefonInput.TabIndex = 12;
+            this.TelefonInput.Validating += new System.ComponentModel.CancelEventHandler(this.TelefonInput_Validating);
             // 
             // label6
             // 
@@ -193,6 +197,7 @@
             this.AdresaInput.Name = "AdresaInput";
             this.AdresaInput.Size = new System.Drawing.Size(144, 20);
             this.AdresaInput.TabIndex = 13;
+            this.AdresaInput.Validating += new System.ComponentModel.CancelEventHandler(this.AdresaInput_Validating);
             // 
             // DatumRodjenjaDP
             // 
@@ -200,6 +205,7 @@
             this.DatumRodjenjaDP.Name = "DatumRodjenjaDP";
             this.DatumRodjenjaDP.Size = new System.Drawing.Size(200, 20);
             this.DatumRodjenjaDP.TabIndex = 15;
+            this.DatumRodjenjaDP.Validating += new System.ComponentModel.CancelEventHandler(this.DatumRodjenjaDP_Validating);
             // 
             // label7
             // 
@@ -287,6 +293,7 @@
             this.ObimListBox.Name = "ObimListBox";
             this.ObimListBox.Size = new System.Drawing.Size(143, 64);
             this.ObimListBox.TabIndex = 25;
+            this.ObimListBox.Validating += new System.ComponentModel.CancelEventHandler(this.ObimListBox_Validating);
             // 
             // label12
             // 
@@ -304,6 +311,7 @@
             this.CijenaInput.Name = "CijenaInput";
             this.CijenaInput.Size = new System.Drawing.Size(144, 20);
             this.CijenaInput.TabIndex = 27;
+            this.CijenaInput.Validating += new System.ComponentModel.CancelEventHandler(this.CijenaInput_Validating);
             // 
             // label13
             // 
@@ -329,6 +337,7 @@
             this.KorisnickoImeInput.Name = "KorisnickoImeInput";
             this.KorisnickoImeInput.Size = new System.Drawing.Size(144, 20);
             this.KorisnickoImeInput.TabIndex = 29;
+            this.KorisnickoImeInput.Validating += new System.ComponentModel.CancelEventHandler(this.KorisnickoImeInput_Validating);
             // 
             // label15
             // 
@@ -346,6 +355,7 @@
             this.LozinkaInput.PasswordChar = '*';
             this.LozinkaInput.Size = new System.Drawing.Size(144, 20);
             this.LozinkaInput.TabIndex = 31;
+            this.LozinkaInput.Validating += new System.ComponentModel.CancelEventHandler(this.LozinkaInput_Validating);
             // 
             // label16
             // 
@@ -363,6 +373,7 @@
             this.SlikaTutorInput.ReadOnly = true;
             this.SlikaTutorInput.Size = new System.Drawing.Size(144, 20);
             this.SlikaTutorInput.TabIndex = 33;
+            this.SlikaTutorInput.Validating += new System.ComponentModel.CancelEventHandler(this.SlikaTutorInput_Validating);
             // 
             // label17
             // 
@@ -380,6 +391,7 @@
             this.SlikaDokazInput.ReadOnly = true;
             this.SlikaDokazInput.Size = new System.Drawing.Size(144, 20);
             this.SlikaDokazInput.TabIndex = 35;
+            this.SlikaDokazInput.Validating += new System.ComponentModel.CancelEventHandler(this.SlikaDokazInput_Validating);
             // 
             // SlikaBtn
             // 
@@ -399,6 +411,7 @@
             this.DokazBtn.TabIndex = 38;
             this.DokazBtn.Text = "Dodaj";
             this.DokazBtn.UseVisualStyleBackColor = true;
+            this.DokazBtn.Click += new System.EventHandler(this.DokazBtn_Click);
             // 
             // SnimiBtn
             // 

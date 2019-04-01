@@ -104,5 +104,32 @@ namespace Tutor_UI {
                 return ResourceManager.GetString("OnlyLetters_Regex", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Taj e-mail je vec zauzet!.
+        /// </summary>
+        internal static string UniqueEmail_Error {
+            get {
+                return ResourceManager.GetString("UniqueEmail_Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Taj broj telefona je vec zauzet!.
+        /// </summary>
+        internal static string UniquePhone_Error {
+            get {
+                return ResourceManager.GetString("UniquePhone_Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To korisnicko ime je vec zauzeto!.
+        /// </summary>
+        internal static string UniqueUsername_Error {
+            get {
+                return ResourceManager.GetString("UniqueUsername_Error", resourceCulture);
+            }
+        }
     }
 }

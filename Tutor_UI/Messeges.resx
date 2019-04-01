@@ -132,4 +132,13 @@
   <data name="OnlyLetters_Regex" xml:space="preserve">
     <value>[a-zA-Z]+</value>
   </data>
+  <data name="UniqueEmail_Error" xml:space="preserve">
+    <value>Taj e-mail je vec zauzet!</value>
+  </data>
+  <data name="UniquePhone_Error" xml:space="preserve">
+    <value>Taj broj telefona je vec zauzet!</value>
+  </data>
+  <data name="UniqueUsername_Error" xml:space="preserve">
+    <value>To korisnicko ime je vec zauzeto!</value>
+  </data>
 </root>
