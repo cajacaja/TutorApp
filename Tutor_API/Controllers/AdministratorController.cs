@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -46,14 +48,28 @@ namespace Tutor_API.Controllers
             {
                 return BadRequest(ModelState);
             }
-            
-           a.AdministratorId =db.tsp_Administrator_Insert(a.Ime, a.Prezime, a.DatumDodavanja, a.Email, a.Telefon, a.KoriniskoIme, a.LozinkaHash, a.LozinkaSalt);
+
+            try
+            {
+                a.AdministratorId = db.tsp_Administrator_Insert(a.Ime, a.Prezime, a.DatumDodavanja, a.Email, a.Telefon, a.KoriniskoIme, a.LozinkaHash, a.LozinkaSalt);
+            }
+            catch (EntityException ex)
+            {
+                SqlException greska = ex.InnerException.InnerException as SqlException;
+                if (greska != null)
+                {
+                    return BadRequest(Util.ExceptionHandler.DbUpdateExceptionHandler(greska));
+                }
+
+                throw;
+            }
+           
 
             return CreatedAtRoute("DefaultApi", new { id = a.AdministratorId }, a);
         }
 
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutKorisnici(int id, Administrator a)
+        public IHttpActionResult PutKorisnici(int id, Administrator_SelectOne a)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -61,7 +77,7 @@ namespace Tutor_API.Controllers
             if (id != a.AdministratorId)
                 return BadRequest();
 
-            db.tsp_Administrator_Update(a.AdministratorId, a.Ime, a.Prezime, a.Email, a.Telefon, a.KoriniskoIme, a.LozinkaHash, a.LozinkaSalt);
+            db.tsp_Administrator_Update(a.AdministratorId, a.Ime, a.Prezime, a.Email, a.Telefon, a.KorisnickoIme, a.LozinkaHash, a.LozinkaSalt);
             
 
             return StatusCode(HttpStatusCode.NoContent);

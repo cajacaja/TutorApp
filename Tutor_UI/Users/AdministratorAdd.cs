@@ -37,11 +37,18 @@ namespace Tutor_UI.Users
                 if (response.IsSuccessStatusCode)
                 {
                     MessageBox.Show("Administrator dodan!");
+                    this.Close();
                 }
                 else
                 {
-                    MessageBox.Show("Error:" + response.StatusCode + " Message:" + response.ReasonPhrase);
+                    var errorMessage = Global.ErrorFinder(response.Content.ReadAsStringAsync().Result);
+
+                    if (!String.IsNullOrEmpty(Messeges.ResourceManager.GetString(errorMessage)))
+                        errorMessage = Messeges.ResourceManager.GetString(errorMessage);
+
+                    MessageBox.Show(errorMessage);
                 }
+              
             }
 
 

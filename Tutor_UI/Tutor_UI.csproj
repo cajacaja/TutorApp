@@ -72,6 +72,18 @@
     <Compile Include="Users\AdministratorAdd.Designer.cs">
       <DependentUpon>AdministratorAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="Users\AdministratorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\AdministratorForm.Designer.cs">
+      <DependentUpon>AdministratorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Users\EditAdministrator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\EditAdministrator.Designer.cs">
+      <DependentUpon>EditAdministrator.cs</DependentUpon>
+    </Compile>
     <Compile Include="Util\UIHelper.cs" />
     <Compile Include="Util\WebAPIHelper.cs" />
     <EmbeddedResource Include="Messeges.resx">
@@ -92,6 +104,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Users\AdministratorAdd.resx">
       <DependentUpon>AdministratorAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\AdministratorForm.resx">
+      <DependentUpon>AdministratorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\EditAdministrator.resx">
+      <DependentUpon>EditAdministrator.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

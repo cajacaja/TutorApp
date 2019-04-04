@@ -165,16 +165,7 @@ namespace Tutor_UI.Users
 
 
 
-                    var errorMessage = response.Content.ReadAsStringAsync().Result;
-
-                    int startIndex = errorMessage.IndexOf(":")+1;
-                    int endIndex = errorMessage.IndexOf("\"}", startIndex + 1);
-
-                    if (startIndex > 0 && endIndex > 0) {
-
-                        string errorResult =errorMessage.Substring(startIndex + 1, endIndex - startIndex - 1);
-                        errorMessage = errorResult;
-                    }
+                    var errorMessage = Global.ErrorFinder(response.Content.ReadAsStringAsync().Result);
 
                     if (!String.IsNullOrEmpty(Messeges.ResourceManager.GetString(errorMessage)))
                         errorMessage = Messeges.ResourceManager.GetString(errorMessage);

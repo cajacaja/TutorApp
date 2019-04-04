@@ -50,6 +50,23 @@ namespace Tutor_UI
             return new Tuple<bool, string>(true, "");
         }
 
+        public static string ErrorFinder(string errorName)
+        {
+            var errorMessage = errorName;
+
+            int startIndex = errorMessage.IndexOf(":") + 1;
+            int endIndex = errorMessage.IndexOf("\"}", startIndex + 1);
+
+            if (startIndex > 0 && endIndex > 0)
+            {
+
+                string errorResult = errorMessage.Substring(startIndex + 1, endIndex - startIndex - 1);
+                errorMessage = errorResult;
+            }
+
+            return errorMessage;
+        }
+
        
     }
 }
