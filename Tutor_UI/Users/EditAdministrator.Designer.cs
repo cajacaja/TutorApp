@@ -63,6 +63,7 @@
             this.TelefonInput.Name = "TelefonInput";
             this.TelefonInput.Size = new System.Drawing.Size(189, 20);
             this.TelefonInput.TabIndex = 16;
+            this.TelefonInput.Validating += new System.ComponentModel.CancelEventHandler(this.TelefonInput_Validating);
             // 
             // LozinkaInput
             // 
@@ -87,6 +88,7 @@
             this.KorisnickoImeInput.Name = "KorisnickoImeInput";
             this.KorisnickoImeInput.Size = new System.Drawing.Size(189, 20);
             this.KorisnickoImeInput.TabIndex = 18;
+            this.KorisnickoImeInput.Validating += new System.ComponentModel.CancelEventHandler(this.KorisnickoImeInput_Validating);
             // 
             // label5
             // 
@@ -103,6 +105,7 @@
             this.EmailInput.Name = "EmailInput";
             this.EmailInput.Size = new System.Drawing.Size(189, 20);
             this.EmailInput.TabIndex = 15;
+            this.EmailInput.Validating += new System.ComponentModel.CancelEventHandler(this.EmailInput_Validating);
             // 
             // label4
             // 
@@ -128,6 +131,7 @@
             this.PrezimeInput.Name = "PrezimeInput";
             this.PrezimeInput.Size = new System.Drawing.Size(189, 20);
             this.PrezimeInput.TabIndex = 13;
+            this.PrezimeInput.Validating += new System.ComponentModel.CancelEventHandler(this.PrezimeInput_Validating);
             // 
             // label2
             // 
@@ -144,6 +148,7 @@
             this.ImeInput.Name = "ImeInput";
             this.ImeInput.Size = new System.Drawing.Size(189, 20);
             this.ImeInput.TabIndex = 12;
+            this.ImeInput.Validating += new System.ComponentModel.CancelEventHandler(this.ImeInput_Validating);
             // 
             // label1
             // 

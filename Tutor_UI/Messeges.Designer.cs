@@ -61,6 +61,15 @@ namespace Tutor_UI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Uspjesno editovan administrator..
+        /// </summary>
+        internal static string AdministratorEdit {
+            get {
+                return ResourceManager.GetString("AdministratorEdit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to \A(?:[a-z0-9!#$%&amp;&apos;*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&amp;&apos;*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z.
         /// </summary>
         internal static string Email_Regex {

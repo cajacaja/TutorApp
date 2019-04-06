@@ -17,7 +17,8 @@ namespace Tutor_API.Controllers
 
         [HttpGet]
         [ResponseType(typeof(List<Administrator_SelectAll>))]
-        public List<Administrator_SelectAll> GetAdministrator() {
+        public List<Administrator_SelectAll> GetAdministrator()
+        {
 
             return db.tsp_Administrator_SelectAll().ToList();
         }
@@ -26,7 +27,7 @@ namespace Tutor_API.Controllers
         public IHttpActionResult GetAdministrator(int id)
         {
             Administrator_SelectOne admin = db.tsp_Administrator_SelectOne(id).FirstOrDefault();
-            if (admin==null)
+            if (admin == null)
             {
                 return NotFound();
             }
@@ -42,7 +43,8 @@ namespace Tutor_API.Controllers
         }
 
         [HttpPost]
-        public IHttpActionResult PostAdministrator(Administrator a) {
+        public IHttpActionResult PostAdministrator(Administrator a)
+        {
 
             if (!ModelState.IsValid)
             {
@@ -61,9 +63,9 @@ namespace Tutor_API.Controllers
                     return BadRequest(Util.ExceptionHandler.DbUpdateExceptionHandler(greska));
                 }
 
-                throw;
+
             }
-           
+
 
             return CreatedAtRoute("DefaultApi", new { id = a.AdministratorId }, a);
         }
@@ -77,8 +79,21 @@ namespace Tutor_API.Controllers
             if (id != a.AdministratorId)
                 return BadRequest();
 
-            db.tsp_Administrator_Update(a.AdministratorId, a.Ime, a.Prezime, a.Email, a.Telefon, a.KorisnickoIme, a.LozinkaHash, a.LozinkaSalt);
-            
+            try
+            {
+                db.tsp_Administrator_Update(a.AdministratorId, a.Ime, a.Prezime, a.Email, a.Telefon, a.KorisnickoIme, a.LozinkaHash, a.LozinkaSalt);
+            }
+            catch (EntityCommandExecutionException ex)
+            {
+                var nesto = ex.GetType().ToString();
+                SqlException greska = ex.InnerException as SqlException;
+                if (greska != null)
+                {
+                    return BadRequest(Util.ExceptionHandler.DbUpdateExceptionHandler(greska));
+                }
+            }
+           
+
 
             return StatusCode(HttpStatusCode.NoContent);
         }

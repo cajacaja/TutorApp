@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Tutor_API.Models;
@@ -21,6 +22,7 @@ namespace Tutor_UI.Users
         public EditAdministrator(int administratorId)
         {
             InitializeComponent();
+            this.AutoValidate = AutoValidate.Disable;
 
             HttpResponseMessage response = administratorService.GetResponse(administratorId.ToString());
             if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
@@ -43,7 +45,7 @@ namespace Tutor_UI.Users
 
         private void SacuvajBtn_Click(object sender, EventArgs e)
         {
-            if (admin != null)
+            if (admin != null && this.ValidateChildren())
             {
                 admin.Ime = ImeInput.Text;
                 admin.Prezime = PrezimeInput.Text;
@@ -59,15 +61,78 @@ namespace Tutor_UI.Users
 
                 var response = administratorService.PutResponse(admin.AdministratorId, admin);
 
-                if (response.IsSuccessStatusCode) {
-                    MessageBox.Show("Uspjesno editovan je ovaj lik!");
+                if (response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show(Messeges.AdministratorEdit);
                     this.Close();
                 }
                 else
                 {
-                    MessageBox.Show("Uuuu brate nesto ste ustali pravo!");
+                    var errorMessage = Global.ErrorFinder(response.Content.ReadAsStringAsync().Result);
+
+                    if (!String.IsNullOrEmpty(Messeges.ResourceManager.GetString(errorMessage)))
+                        errorMessage = Messeges.ResourceManager.GetString(errorMessage);
+
+                    MessageBox.Show(errorMessage);
                 }
 
+            }
+
+
+        }
+
+        private void ImeInput_Validating(object sender, CancelEventArgs e)
+        {
+            e.Cancel = Provjera(ImeInput, Messeges.OnlyLetters_Regex);
+        }
+
+        private void PrezimeInput_Validating(object sender, CancelEventArgs e)
+        {
+            e.Cancel = Provjera(PrezimeInput, Messeges.OnlyLetters_Regex);
+        }
+
+        private bool Provjera(TextBox text, string regex = "")
+        {
+
+
+
+            var provjera = Global.TextInputProvjera(text.Text, regex);
+            if (!provjera.Item1)
+            {
+                errorProvider.SetError(text, provjera.Item2);
+                return true;
+            }
+            else
+            {
+                errorProvider.SetError(text, "");
+            }
+
+            return false;
+        }
+
+        private void EmailInput_Validating(object sender, CancelEventArgs e)
+        {
+            e.Cancel = Provjera(EmailInput, Messeges.Email_Regex);
+
+        }
+
+        private void KorisnickoImeInput_Validating(object sender, CancelEventArgs e)
+        {
+            e.Cancel = Provjera(KorisnickoImeInput);
+        }
+
+
+
+        private void TelefonInput_Validating(object sender, CancelEventArgs e)
+        {
+            if (!Regex.Match(TelefonInput.Text, Messeges.Error_Phone).Success)
+            {
+                e.Cancel = true;
+                errorProvider.SetError(TelefonInput, Messeges.Error_Format);
+            }
+            else
+            {
+                errorProvider.SetError(TelefonInput, "");
             }
         }
     }
