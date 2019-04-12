@@ -12,39 +12,44 @@ using Tutor_API.Models;
 
 namespace Tutor_API.Controllers
 {
-    public class TipStudentaController : ApiController
+    public class ZahtjevController : ApiController
     {
         private TutorEntities db = new TutorEntities();
 
-        // GET: api/TipStudenta
-        public List<TipStudenta> GetTipStudentas()
+        // GET: api/Zahtjev
+        public IQueryable<Zahtjev> GetZahtjevs()
         {
-            db.Configuration.LazyLoadingEnabled = false;
-            return db.TipStudentas.ToList();
+            return db.Zahtjevs;
         }
 
-        // GET: api/TipStudenta/5
-        [ResponseType(typeof(Oblast_select_Result))]
-        public List<Oblast_select_Result> GetTipStudenta(int id)
+        // GET: api/Zahtjev/5
+        [ResponseType(typeof(List<Zahtjev_SelectByTutorId_Result>))]
+        public IHttpActionResult GetZahtjev(int id)
         {
-            return db.tps_Oblast_select(id).ToList();
+            var zahtjev = db.tps_Zahtjev_SelectByTutorId(id).ToList();
+            if (zahtjev == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(zahtjev);
         }
 
-        // PUT: api/TipStudenta/5
+        // PUT: api/Zahtjev/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutTipStudenta(int id, TipStudenta tipStudenta)
+        public IHttpActionResult PutZahtjev(int id, Zahtjev zahtjev)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != tipStudenta.TipoviStudentaId)
+            if (id != zahtjev.ZahtjevId)
             {
                 return BadRequest();
             }
 
-            db.Entry(tipStudenta).State = EntityState.Modified;
+            db.Entry(zahtjev).State = EntityState.Modified;
 
             try
             {
@@ -52,7 +57,7 @@ namespace Tutor_API.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!TipStudentaExists(id))
+                if (!ZahtjevExists(id))
                 {
                     return NotFound();
                 }
@@ -65,35 +70,35 @@ namespace Tutor_API.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/TipStudenta
-        [ResponseType(typeof(TipStudenta))]
-        public IHttpActionResult PostTipStudenta(TipStudenta tipStudenta)
+        // POST: api/Zahtjev
+        [ResponseType(typeof(Zahtjev))]
+        public IHttpActionResult PostZahtjev(Zahtjev zahtjev)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.TipStudentas.Add(tipStudenta);
+            db.Zahtjevs.Add(zahtjev);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = tipStudenta.TipoviStudentaId }, tipStudenta);
+            return CreatedAtRoute("DefaultApi", new { id = zahtjev.ZahtjevId }, zahtjev);
         }
 
-        // DELETE: api/TipStudenta/5
-        [ResponseType(typeof(TipStudenta))]
-        public IHttpActionResult DeleteTipStudenta(int id)
+        // DELETE: api/Zahtjev/5
+        [ResponseType(typeof(Zahtjev))]
+        public IHttpActionResult DeleteZahtjev(int id)
         {
-            TipStudenta tipStudenta = db.TipStudentas.Find(id);
-            if (tipStudenta == null)
+            Zahtjev zahtjev = db.Zahtjevs.Find(id);
+            if (zahtjev == null)
             {
                 return NotFound();
             }
 
-            db.TipStudentas.Remove(tipStudenta);
+            db.Zahtjevs.Remove(zahtjev);
             db.SaveChanges();
 
-            return Ok(tipStudenta);
+            return Ok(zahtjev);
         }
 
         protected override void Dispose(bool disposing)
@@ -105,9 +110,9 @@ namespace Tutor_API.Controllers
             base.Dispose(disposing);
         }
 
-        private bool TipStudentaExists(int id)
+        private bool ZahtjevExists(int id)
         {
-            return db.TipStudentas.Count(e => e.TipoviStudentaId == id) > 0;
+            return db.Zahtjevs.Count(e => e.ZahtjevId == id) > 0;
         }
     }
 }

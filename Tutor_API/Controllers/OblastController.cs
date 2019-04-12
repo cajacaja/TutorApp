@@ -12,39 +12,45 @@ using Tutor_API.Models;
 
 namespace Tutor_API.Controllers
 {
-    public class TipStudentaController : ApiController
+    public class OblastController : ApiController
     {
         private TutorEntities db = new TutorEntities();
 
-        // GET: api/TipStudenta
-        public List<TipStudenta> GetTipStudentas()
+        // GET: api/Oblast
+        public List<Oblast> GetOblasts()
         {
             db.Configuration.LazyLoadingEnabled = false;
-            return db.TipStudentas.ToList();
+            return db.Oblasts.ToList();
         }
 
-        // GET: api/TipStudenta/5
-        [ResponseType(typeof(Oblast_select_Result))]
-        public List<Oblast_select_Result> GetTipStudenta(int id)
+        // GET: api/Oblast/5
+        [ResponseType(typeof(Oblast))]
+        public IHttpActionResult GetOblast(int id)
         {
-            return db.tps_Oblast_select(id).ToList();
+            Oblast oblast = db.Oblasts.Find(id);
+            if (oblast == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(oblast);
         }
 
-        // PUT: api/TipStudenta/5
+        // PUT: api/Oblast/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutTipStudenta(int id, TipStudenta tipStudenta)
+        public IHttpActionResult PutOblast(int id, Oblast oblast)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != tipStudenta.TipoviStudentaId)
+            if (id != oblast.OblastId)
             {
                 return BadRequest();
             }
 
-            db.Entry(tipStudenta).State = EntityState.Modified;
+            db.Entry(oblast).State = EntityState.Modified;
 
             try
             {
@@ -52,7 +58,7 @@ namespace Tutor_API.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!TipStudentaExists(id))
+                if (!OblastExists(id))
                 {
                     return NotFound();
                 }
@@ -65,35 +71,35 @@ namespace Tutor_API.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/TipStudenta
-        [ResponseType(typeof(TipStudenta))]
-        public IHttpActionResult PostTipStudenta(TipStudenta tipStudenta)
+        // POST: api/Oblast
+        [ResponseType(typeof(Oblast))]
+        public IHttpActionResult PostOblast(Oblast oblast)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.TipStudentas.Add(tipStudenta);
+            db.Oblasts.Add(oblast);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = tipStudenta.TipoviStudentaId }, tipStudenta);
+            return CreatedAtRoute("DefaultApi", new { id = oblast.OblastId }, oblast);
         }
 
-        // DELETE: api/TipStudenta/5
-        [ResponseType(typeof(TipStudenta))]
-        public IHttpActionResult DeleteTipStudenta(int id)
+        // DELETE: api/Oblast/5
+        [ResponseType(typeof(Oblast))]
+        public IHttpActionResult DeleteOblast(int id)
         {
-            TipStudenta tipStudenta = db.TipStudentas.Find(id);
-            if (tipStudenta == null)
+            Oblast oblast = db.Oblasts.Find(id);
+            if (oblast == null)
             {
                 return NotFound();
             }
 
-            db.TipStudentas.Remove(tipStudenta);
+            db.Oblasts.Remove(oblast);
             db.SaveChanges();
 
-            return Ok(tipStudenta);
+            return Ok(oblast);
         }
 
         protected override void Dispose(bool disposing)
@@ -105,9 +111,9 @@ namespace Tutor_API.Controllers
             base.Dispose(disposing);
         }
 
-        private bool TipStudentaExists(int id)
+        private bool OblastExists(int id)
         {
-            return db.TipStudentas.Count(e => e.TipoviStudentaId == id) > 0;
+            return db.Oblasts.Count(e => e.OblastId == id) > 0;
         }
     }
 }

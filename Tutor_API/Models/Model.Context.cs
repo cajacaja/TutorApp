@@ -153,5 +153,58 @@ namespace Tutor_API.Models
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Grad_Result>("tsp_Grad_SelectAll");
         }
+    
+        public virtual ObjectResult<Tutor_SearchSelect_Result> tps_Tutor_SearchSelect(string imePrezime, Nullable<int> gradId, Nullable<int> oblastId)
+        {
+            var imePrezimeParameter = imePrezime != null ?
+                new ObjectParameter("ImePrezime", imePrezime) :
+                new ObjectParameter("ImePrezime", typeof(string));
+    
+            var gradIdParameter = gradId.HasValue ?
+                new ObjectParameter("GradId", gradId) :
+                new ObjectParameter("GradId", typeof(int));
+    
+            var oblastIdParameter = oblastId.HasValue ?
+                new ObjectParameter("OblastId", oblastId) :
+                new ObjectParameter("OblastId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Tutor_SearchSelect_Result>("tps_Tutor_SearchSelect", imePrezimeParameter, gradIdParameter, oblastIdParameter);
+        }
+    
+        public virtual ObjectResult<Tutor_Details_Result> tsp_Tutor_Details(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Tutor_Details_Result>("tsp_Tutor_Details", idParameter);
+        }
+    
+        public virtual ObjectResult<Oblast_select_Result> tps_Oblast_select(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Oblast_select_Result>("tps_Oblast_select", idParameter);
+        }
+    
+        public virtual ObjectResult<Zahtjev_SelectByTutorId_Result> tps_Zahtjev_SelectByTutorId(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Zahtjev_SelectByTutorId_Result>("tps_Zahtjev_SelectByTutorId", idParameter);
+        }
+    
+        public virtual ObjectResult<Ucionica_SelectTutorUcionica_Result> tsp_Ucionica_SelectTutorUcionica(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Ucionica_SelectTutorUcionica_Result>("tsp_Ucionica_SelectTutorUcionica", idParameter);
+        }
     }
 }

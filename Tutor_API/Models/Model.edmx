@@ -222,7 +222,7 @@
           <Property Name="UcionicaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TutorId" Type="int" Nullable="false" />
           <Property Name="Naslov" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Slika" Type="varbinary(max)" Nullable="false" />
+          <Property Name="Slika" Type="varbinary(max)" />
           <Property Name="Opis" Type="text" Nullable="false" />
           <Property Name="DatumPocetka" Type="date" Nullable="false" />
           <Property Name="DatumZavrsetka" Type="date" Nullable="false" />
@@ -645,6 +645,17 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="tps_Oblast_select" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="tps_Tutor_SearchSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ImePrezime" Type="nvarchar" Mode="In" />
+          <Parameter Name="GradId" Type="int" Mode="In" />
+          <Parameter Name="OblastId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="tps_Zahtjev_SelectByTutorId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
         <Function Name="tsp_Administrator_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Ime" Type="nvarchar" Mode="In" />
           <Parameter Name="Prezime" Type="nvarchar" Mode="In" />
@@ -673,6 +684,12 @@
           <Parameter Name="LozinkaSalt" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="tsp_Grad_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="tsp_Tutor_Details" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="tsp_Ucionica_SelectTutorUcionica" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
         <EntityContainer Name="TutorModelStoreContainer">
           <EntitySet Name="Administrator" EntityType="Self.Administrator" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Dan" EntityType="Self.Dan" Schema="dbo" store:Type="Tables" />
@@ -1111,7 +1128,7 @@
           <Property Name="UcionicaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TutorId" Type="Int32" Nullable="false" />
           <Property Name="Naslov" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Slika" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="Slika" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="Opis" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="DatumPocetka" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="DatumZavrsetka" Type="DateTime" Nullable="false" Precision="0" />
@@ -1726,6 +1743,23 @@
             <Parameter Name="LozinkaSalt" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="tsp_Grad_SelectAll" ReturnType="Collection(TutorModel.Grad_Result)" />
+          <FunctionImport Name="tps_Tutor_SearchSelect" ReturnType="Collection(TutorModel.Tutor_SearchSelect_Result)" >
+            <Parameter Name="ImePrezime" Mode="In" Type="String" />
+            <Parameter Name="GradId" Mode="In" Type="Int32" />
+            <Parameter Name="OblastId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="tsp_Tutor_Details" ReturnType="Collection(TutorModel.Tutor_Details_Result)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="tps_Oblast_select" ReturnType="Collection(TutorModel.Oblast_select_Result)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="tps_Zahtjev_SelectByTutorId" ReturnType="Collection(TutorModel.Zahtjev_SelectByTutorId_Result)">
+          <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="tsp_Ucionica_SelectTutorUcionica" ReturnType="Collection(TutorModel.Ucionica_SelectTutorUcionica_Result)">
+          <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="Administrator_NameSelect">
           <Property Type="Int32" Name="AdministratorId" Nullable="false" />
@@ -1759,6 +1793,51 @@
         <ComplexType Name="Grad_Result">
           <Property Type="Int32" Name="GradId" Nullable="false" />
           <Property Type="String" Name="Naziv" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="Tutor_SearchSelect_Result">
+          <Property Type="Int32" Name="TutorId" Nullable="false" />
+          <Property Type="Binary" Name="TutorTumbnail" Nullable="false" />
+          <Property Type="String" Name="Ime" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Prezime" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Spol" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="DatumRodjenja" Nullable="false" />
+          <Property Type="DateTime" Name="DatumDodavanja" Nullable="false" />
+          <Property Type="String" Name="Grad" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Predmet" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="Tutor_Details_Result">
+          <Property Type="Int32" Name="TutorId" Nullable="false" />
+          <Property Type="String" Name="Ime" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Prezime" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="150" />
+          <Property Type="String" Name="Telefon" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Adresa" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="KorisnickoIme" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Predmet" Nullable="false" MaxLength="100" />
+          <Property Type="Double" Name="CijenaCasa" Nullable="false" />
+          <Property Type="String" Name="RadnoStanje" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="NazivUstanove" Nullable="true" MaxLength="150" />
+          <Property Type="Binary" Name="TutorTumbnail" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="Oblast_select_Result">
+          <Property Type="Int32" Name="TipoviStudentaId" Nullable="false" />
+          <Property Type="String" Name="Naziv" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Zahtjev_SelectByTutorId_Result">
+          <Property Type="String" Name="Ime" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Prezime" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="DatumOd" Nullable="false" />
+          <Property Type="Int32" Name="BrojCasova" Nullable="false" />
+          <Property Type="String" Name="Spol" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="TipStudenta" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Ucionica_SelectTutorUcionica_Result">
+          <Property Type="String" Name="Naslov" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="DatumPocetka" Nullable="false" />
+          <Property Type="DateTime" Name="DatumZavrsetka" Nullable="false" />
+          <Property Type="Int32" Name="BrojCasova" Nullable="false" />
+          <Property Type="Int32" Name="MaxBrojPolaznika" Nullable="false" />
+          <Property Type="Double" Name="Cijena" Nullable="false" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -2082,6 +2161,71 @@
               <ComplexTypeMapping TypeName="TutorModel.Grad_Result">
                 <ScalarProperty Name="GradId" ColumnName="GradId" />
                 <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="tps_Tutor_SearchSelect" FunctionName="TutorModel.Store.tps_Tutor_SearchSelect">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TutorModel.Tutor_SearchSelect_Result">
+                <ScalarProperty Name="TutorId" ColumnName="TutorId" />
+                <ScalarProperty Name="TutorTumbnail" ColumnName="TutorTumbnail" />
+                <ScalarProperty Name="Ime" ColumnName="Ime" />
+                <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+                <ScalarProperty Name="Spol" ColumnName="Spol" />
+                <ScalarProperty Name="DatumRodjenja" ColumnName="DatumRodjenja" />
+                <ScalarProperty Name="DatumDodavanja" ColumnName="DatumDodavanja" />
+                <ScalarProperty Name="Grad" ColumnName="Grad" />
+                <ScalarProperty Name="Predmet" ColumnName="Predmet" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="tsp_Tutor_Details" FunctionName="TutorModel.Store.tsp_Tutor_Details">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TutorModel.Tutor_Details_Result">
+                <ScalarProperty Name="TutorId" ColumnName="TutorId" />
+                <ScalarProperty Name="Ime" ColumnName="Ime" />
+                <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="Adresa" ColumnName="Adresa" />
+                <ScalarProperty Name="KorisnickoIme" ColumnName="KorisnickoIme" />
+                <ScalarProperty Name="Predmet" ColumnName="Predmet" />
+                <ScalarProperty Name="CijenaCasa" ColumnName="CijenaCasa" />
+                <ScalarProperty Name="RadnoStanje" ColumnName="RadnoStanje" />
+                <ScalarProperty Name="NazivUstanove" ColumnName="NazivUstanove" />
+                <ScalarProperty Name="TutorTumbnail" ColumnName="TutorTumbnail" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="tps_Oblast_select" FunctionName="TutorModel.Store.tps_Oblast_select">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TutorModel.Oblast_select_Result">
+                <ScalarProperty Name="TipoviStudentaId" ColumnName="TipoviStudentaId" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="tps_Zahtjev_SelectByTutorId" FunctionName="TutorModel.Store.tps_Zahtjev_SelectByTutorId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TutorModel.Zahtjev_SelectByTutorId_Result">
+                <ScalarProperty Name="Ime" ColumnName="Ime" />
+                <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+                <ScalarProperty Name="DatumOd" ColumnName="DatumOd" />
+                <ScalarProperty Name="BrojCasova" ColumnName="BrojCasova" />
+                <ScalarProperty Name="Spol" ColumnName="Spol" />
+                <ScalarProperty Name="TipStudenta" ColumnName="TipStudenta" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="tsp_Ucionica_SelectTutorUcionica" FunctionName="TutorModel.Store.tsp_Ucionica_SelectTutorUcionica">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TutorModel.Ucionica_SelectTutorUcionica_Result">
+                <ScalarProperty Name="Naslov" ColumnName="Naslov" />
+                <ScalarProperty Name="DatumPocetka" ColumnName="DatumPocetka" />
+                <ScalarProperty Name="DatumZavrsetka" ColumnName="DatumZavrsetka" />
+                <ScalarProperty Name="BrojCasova" ColumnName="BrojCasova" />
+                <ScalarProperty Name="MaxBrojPolaznika" ColumnName="MaxBrojPolaznika" />
+                <ScalarProperty Name="Cijena" ColumnName="Cijena" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
