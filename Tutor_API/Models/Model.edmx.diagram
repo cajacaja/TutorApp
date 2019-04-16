@@ -62,6 +62,12 @@
         <AssociationConnector Association="TutorModel.FK_Tutor_TutorTitula" ManuallyRouted="false" />
         <AssociationConnector Association="TutorModel.FK_Ucionica_Tutor" ManuallyRouted="false" />
         <AssociationConnector Association="TutorModel.FK_Zahtjev_Tutor" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="TutorModel.BanPrijavaStudent" Width="1.5" PointX="8.25" PointY="16.25" />
+        <AssociationConnector Association="TutorModel.FK_BanPrijavaStudent_BanPrijavaStudent" />
+        <AssociationConnector Association="TutorModel.FK_BanPrijavaStudent_Student" />
+        <EntityTypeShape EntityType="TutorModel.BanPrijavaTutor" Width="1.5" PointX="13.25" PointY="15.125" />
+        <AssociationConnector Association="TutorModel.FK_BanPrijavaTutor_Student" />
+        <AssociationConnector Association="TutorModel.FK_BanPrijavaTutor_Tutor" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

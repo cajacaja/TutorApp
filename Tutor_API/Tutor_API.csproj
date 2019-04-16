@@ -103,8 +103,11 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AdministratorController.cs" />
+    <Compile Include="Controllers\BanPrijavaStudentController.cs" />
+    <Compile Include="Controllers\BanPrijavaTutorsController.cs" />
     <Compile Include="Controllers\GradController.cs" />
     <Compile Include="Controllers\OblastController.cs" />
+    <Compile Include="Controllers\OcjenaTutorController.cs" />
     <Compile Include="Controllers\PodkategorijaController.cs" />
     <Compile Include="Controllers\RadnoStanjeController.cs" />
     <Compile Include="Controllers\SpolController.cs" />
@@ -127,6 +130,24 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Administrator_SelectOne.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BanPrijavaStudent.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BanPrijavaStudente_SelectOne_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BanPrijavaTutor.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BanPrijavaTutor_SelectOne_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BanStudente_Select_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BanTutor_Select_Result.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Dan.cs">
@@ -222,7 +243,13 @@
     <Compile Include="Models\Tutor_Details_Result.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Tutor_ReviewsSelect_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Tutor_SearchSelect_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tutor_SelectAll_Result.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Ucionica.cs">

@@ -19,7 +19,8 @@ namespace Tutor_UI.Users
     {
         private WebAPIHelper tutorService = new WebAPIHelper(Global.URI, Global.TutorRoute);
         private WebAPIHelper tipService = new WebAPIHelper(Global.URI, Global.TipStudentaRoute);
-        private WebAPIHelper zahtjevService = new WebAPIHelper(Global.URI, Global.ZahtjevRoute);
+        //private WebAPIHelper zahtjevService = new WebAPIHelper(Global.URI, Global.ZahtjevRoute);
+        private WebAPIHelper ocjenaTutorService = new WebAPIHelper(Global.URI, Global.OcjenaTutorRoute);
         private WebAPIHelper ucionicaService = new WebAPIHelper(Global.URI, Global.UcionicaRoute);
 
         private Tutor_Details_Result Tutor;
@@ -49,12 +50,23 @@ namespace Tutor_UI.Users
                 FillList(id);
                 BindGridOne(id);
                 BindGridTwo(id);
+                UpisiOcjenu(id);
                 
 
             }
             else
             {
                 MessageBox.Show("Pogresan tutor");
+            }
+        }
+
+        private void UpisiOcjenu(int id)
+        {
+            var response = ocjenaTutorService.GetActionResponse("OcjenaAvg",id.ToString());
+            if (response.IsSuccessStatusCode)
+            {
+               var ocjenaAvg = response.Content.ReadAsAsync<double>().Result;
+                ocjenaInput.Text = ocjenaAvg.ToString();
             }
         }
 
@@ -72,11 +84,11 @@ namespace Tutor_UI.Users
 
         private void BindGridOne(int id)
         {
-            var response = zahtjevService.GetResponse(id.ToString());
+            var response = ocjenaTutorService.GetActionResponse("TutorReview", id.ToString());
             if (response.IsSuccessStatusCode)
             {   
-                var listaUcenika= response.Content.ReadAsAsync<List<Zahtjev_SelectByTutorId_Result>>().Result;
-                CasoviDataGrid.DataSource = listaUcenika;
+                var listaReviews= response.Content.ReadAsAsync<List<Tutor_ReviewsSelect_Result>>().Result;
+                CasoviDataGrid.DataSource = listaReviews;
                 CasoviDataGrid.ClearSelection();
 
             }
@@ -115,5 +127,7 @@ namespace Tutor_UI.Users
         {
 
         }
+
+       
     }
 }

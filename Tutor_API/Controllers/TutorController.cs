@@ -17,6 +17,13 @@ namespace Tutor_API.Controllers
 
 
         [HttpGet]
+        [Route("api/Tutor")]
+        public List<Tutor_SelectAll_Result> GetTutor() {
+
+            return db.tsp_Tutor_SelectAll().ToList();
+        }
+
+        [HttpGet]
         [Route("api/Tutor/TutorFilter/{searchName?}/{GradId?}/{OblastId?}")]
         public List<Tutor_SearchSelect_Result> TutorFilter(string searchName="",int GradId=0,int OblastId=0)
         {

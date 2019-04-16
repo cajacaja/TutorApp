@@ -84,6 +84,24 @@
     <Compile Include="Users\EditAdministrator.Designer.cs">
       <DependentUpon>EditAdministrator.cs</DependentUpon>
     </Compile>
+    <Compile Include="Users\PrijaveStudentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\PrijaveStudentForm.Designer.cs">
+      <DependentUpon>PrijaveStudentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Users\PrijaveTutorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\PrijaveTutorForm.Designer.cs">
+      <DependentUpon>PrijaveTutorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Users\StudentPrijaveDetailsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\StudentPrijaveDetailsForm.Designer.cs">
+      <DependentUpon>StudentPrijaveDetailsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Users\TutorDetalj.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +113,12 @@
     </Compile>
     <Compile Include="Users\TutorForm.Designer.cs">
       <DependentUpon>TutorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Users\TutorPrijaveDetailsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\TutorPrijaveDetailsForm.Designer.cs">
+      <DependentUpon>TutorPrijaveDetailsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Users\TutotrDokaz.cs">
       <SubType>Form</SubType>
@@ -135,11 +159,23 @@
     <EmbeddedResource Include="Users\EditAdministrator.resx">
       <DependentUpon>EditAdministrator.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Users\PrijaveStudentForm.resx">
+      <DependentUpon>PrijaveStudentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\PrijaveTutorForm.resx">
+      <DependentUpon>PrijaveTutorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\StudentPrijaveDetailsForm.resx">
+      <DependentUpon>StudentPrijaveDetailsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Users\TutorDetalj.resx">
       <DependentUpon>TutorDetalj.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Users\TutorForm.resx">
       <DependentUpon>TutorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\TutorPrijaveDetailsForm.resx">
+      <DependentUpon>TutorPrijaveDetailsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Users\TutotrDokaz.resx">
       <DependentUpon>TutotrDokaz.cs</DependentUpon>

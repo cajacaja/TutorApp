@@ -53,6 +53,8 @@
             this.obimListBox = new System.Windows.Forms.CheckedListBox();
             this.label11 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.ocjenaInput = new System.Windows.Forms.TextBox();
             this.PrikazBtn = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -332,6 +334,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label12);
+            this.groupBox2.Controls.Add(this.ocjenaInput);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.label11);
@@ -347,6 +351,27 @@
             this.groupBox2.TabIndex = 25;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Podaci o korisnickom racunu";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft PhagsPa", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(6, 102);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(93, 16);
+            this.label12.TabIndex = 25;
+            this.label12.Text = "Ukupna ocjena:";
+            // 
+            // ocjenaInput
+            // 
+            this.ocjenaInput.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ocjenaInput.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ocjenaInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.ocjenaInput.Location = new System.Drawing.Point(99, 105);
+            this.ocjenaInput.Name = "ocjenaInput";
+            this.ocjenaInput.ReadOnly = true;
+            this.ocjenaInput.Size = new System.Drawing.Size(38, 13);
+            this.ocjenaInput.TabIndex = 26;
             // 
             // PrikazBtn
             // 
@@ -393,7 +418,7 @@
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(496, 120);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Casovi";
+            this.tabPage1.Text = "Ocjene";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // CasoviDataGrid
@@ -427,12 +452,13 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(20, 117);
+            this.button2.Location = new System.Drawing.Point(20, 126);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 29;
             this.button2.Text = "Ban";
             this.button2.UseVisualStyleBackColor = true;
+
             // 
             // TutorDetalj
             // 
@@ -499,5 +525,7 @@
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.DataGridView UcioniceDataGrid;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox ocjenaInput;
     }
 }

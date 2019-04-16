@@ -16,6 +16,28 @@
           <Property Name="KorisnickiNalogId" Type="int" Nullable="false" />
           <Property Name="KontaktInfoId" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="BanPrijavaStudent">
+          <Key>
+            <PropertyRef Name="PrijavaStudentId" />
+          </Key>
+          <Property Name="PrijavaStudentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentId" Type="int" Nullable="false" />
+          <Property Name="TutorId" Type="int" Nullable="false" />
+          <Property Name="RazlogPrijave" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="DatumPrijave" Type="date" Nullable="false" />
+          <Property Name="IsRead" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BanPrijavaTutor">
+          <Key>
+            <PropertyRef Name="PrijavaTutorId" />
+          </Key>
+          <Property Name="PrijavaTutorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TutorId" Type="int" Nullable="false" />
+          <Property Name="StudentId" Type="int" Nullable="false" />
+          <Property Name="Razlog" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="DatumPrijave" Type="date" Nullable="false" />
+          <Property Name="IsRead" Type="bit" Nullable="false" />
+        </EntityType>
         <EntityType Name="Dan">
           <Key>
             <PropertyRef Name="DanId" />
@@ -270,6 +292,54 @@
             </Principal>
             <Dependent Role="Administrator">
               <PropertyRef Name="KorisnickiNalogId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BanPrijavaStudent_BanPrijavaStudent">
+          <End Role="BanPrijavaStudent" Type="Self.BanPrijavaStudent" Multiplicity="1" />
+          <End Role="BanPrijavaStudent1" Type="Self.BanPrijavaStudent" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="BanPrijavaStudent">
+              <PropertyRef Name="PrijavaStudentId" />
+            </Principal>
+            <Dependent Role="BanPrijavaStudent1">
+              <PropertyRef Name="PrijavaStudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BanPrijavaStudent_Student">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="BanPrijavaStudent" Type="Self.BanPrijavaStudent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="BanPrijavaStudent">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BanPrijavaTutor_Student">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="BanPrijavaTutor" Type="Self.BanPrijavaTutor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="BanPrijavaTutor">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BanPrijavaTutor_Tutor">
+          <End Role="Tutor" Type="Self.Tutor" Multiplicity="1" />
+          <End Role="BanPrijavaTutor" Type="Self.BanPrijavaTutor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tutor">
+              <PropertyRef Name="TutorId" />
+            </Principal>
+            <Dependent Role="BanPrijavaTutor">
+              <PropertyRef Name="TutorId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -683,15 +753,29 @@
           <Parameter Name="LozinkaHash" Type="nvarchar" Mode="In" />
           <Parameter Name="LozinkaSalt" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="tsp_BanPrijavaStudente_Select" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="tsp_BanPrijavaStudente_SelectOne" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="tsp_BanPrijavaTutor_Select" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="tsp_BanPrijavaTutor_SelectOne" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
         <Function Name="tsp_Grad_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="tsp_Tutor_Details" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
         </Function>
+        <Function Name="tsp_Tutor_ReviewsSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="tsp_Tutor_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="tsp_Ucionica_SelectTutorUcionica" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Id" Type="int" Mode="In" />
         </Function>
         <EntityContainer Name="TutorModelStoreContainer">
           <EntitySet Name="Administrator" EntityType="Self.Administrator" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BanPrijavaStudent" EntityType="Self.BanPrijavaStudent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BanPrijavaTutor" EntityType="Self.BanPrijavaTutor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Dan" EntityType="Self.Dan" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Grad" EntityType="Self.Grad" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="KontaktInfo" EntityType="Self.KontaktInfo" Schema="dbo" store:Type="Tables" />
@@ -722,6 +806,22 @@
           <AssociationSet Name="FK_Administrator_KorisnickiNalog" Association="Self.FK_Administrator_KorisnickiNalog">
             <End Role="KorisnickiNalog" EntitySet="KorisnickiNalog" />
             <End Role="Administrator" EntitySet="Administrator" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BanPrijavaStudent_BanPrijavaStudent" Association="Self.FK_BanPrijavaStudent_BanPrijavaStudent">
+            <End Role="BanPrijavaStudent" EntitySet="BanPrijavaStudent" />
+            <End Role="BanPrijavaStudent1" EntitySet="BanPrijavaStudent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BanPrijavaStudent_Student" Association="Self.FK_BanPrijavaStudent_Student">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="BanPrijavaStudent" EntitySet="BanPrijavaStudent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BanPrijavaTutor_Student" Association="Self.FK_BanPrijavaTutor_Student">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="BanPrijavaTutor" EntitySet="BanPrijavaTutor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BanPrijavaTutor_Tutor" Association="Self.FK_BanPrijavaTutor_Tutor">
+            <End Role="Tutor" EntitySet="Tutor" />
+            <End Role="BanPrijavaTutor" EntitySet="BanPrijavaTutor" />
           </AssociationSet>
           <AssociationSet Name="FK_Materijal_Ucionica" Association="Self.FK_Materijal_Ucionica">
             <End Role="Ucionica" EntitySet="Ucionica" />
@@ -1046,6 +1146,8 @@
           <NavigationProperty Name="StatusKorisnickogRacuna" Relationship="Self.FK_Student_StatusKorisnickogRacuna" FromRole="Student" ToRole="StatusKorisnickogRacuna" />
           <NavigationProperty Name="TipStudenta" Relationship="Self.FK_Student_TipStudenta" FromRole="Student" ToRole="TipStudenta" />
           <NavigationProperty Name="Zahtjevs" Relationship="Self.FK_Zahtjev_Student" FromRole="Student" ToRole="Zahtjev" />
+          <NavigationProperty Name="BanPrijavaStudents" Relationship="TutorModel.FK_BanPrijavaStudent_Student" FromRole="Student" ToRole="BanPrijavaStudent" />
+          <NavigationProperty Name="BanPrijavaTutors" Relationship="TutorModel.FK_BanPrijavaTutor_Student" FromRole="Student" ToRole="BanPrijavaTutor" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -1112,6 +1214,7 @@
           <NavigationProperty Name="TutorTitula" Relationship="Self.FK_Tutor_TutorTitula" FromRole="Tutor" ToRole="TutorTitula" />
           <NavigationProperty Name="Ucionicas" Relationship="Self.FK_Ucionica_Tutor" FromRole="Tutor" ToRole="Ucionica" />
           <NavigationProperty Name="Zahtjevs" Relationship="Self.FK_Zahtjev_Tutor" FromRole="Tutor" ToRole="Zahtjev" />
+          <NavigationProperty Name="BanPrijavaTutors" Relationship="TutorModel.FK_BanPrijavaTutor_Tutor" FromRole="Tutor" ToRole="BanPrijavaTutor" />
         </EntityType>
         <EntityType Name="TutorTitula">
           <Key>
@@ -1760,6 +1863,36 @@
           <FunctionImport Name="tsp_Ucionica_SelectTutorUcionica" ReturnType="Collection(TutorModel.Ucionica_SelectTutorUcionica_Result)">
           <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="tsp_Tutor_ReviewsSelect" ReturnType="Collection(TutorModel.Tutor_ReviewsSelect_Result)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="tsp_Tutor_SelectAll" ReturnType="Collection(TutorModel.Tutor_SelectAll_Result)" />
+          <EntitySet Name="BanPrijavaStudents" EntityType="TutorModel.BanPrijavaStudent" />
+          <AssociationSet Name="FK_BanPrijavaStudent_BanPrijavaStudent" Association="TutorModel.FK_BanPrijavaStudent_BanPrijavaStudent">
+            <End Role="BanPrijavaStudent" EntitySet="BanPrijavaStudents" />
+            <End Role="BanPrijavaStudent1" EntitySet="BanPrijavaStudents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BanPrijavaStudent_Student" Association="TutorModel.FK_BanPrijavaStudent_Student">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="BanPrijavaStudent" EntitySet="BanPrijavaStudents" />
+          </AssociationSet>
+          <FunctionImport Name="tsp_BanPrijavaStudente_Select" ReturnType="Collection(TutorModel.BanStudente_Select_Result)" />
+          <FunctionImport Name="tsp_BanPrijavaStudente_SelectOne" ReturnType="Collection(TutorModel.BanPrijavaStudente_SelectOne_Result)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="BanPrijavaTutors" EntityType="TutorModel.BanPrijavaTutor" />
+          <AssociationSet Name="FK_BanPrijavaTutor_Student" Association="TutorModel.FK_BanPrijavaTutor_Student">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="BanPrijavaTutor" EntitySet="BanPrijavaTutors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BanPrijavaTutor_Tutor" Association="TutorModel.FK_BanPrijavaTutor_Tutor">
+            <End Role="Tutor" EntitySet="Tutors" />
+            <End Role="BanPrijavaTutor" EntitySet="BanPrijavaTutors" />
+          </AssociationSet>
+          <FunctionImport Name="tsp_BanPrijavaTutor_Select" ReturnType="Collection(TutorModel.BanTutor_Select_Result)" />
+          <FunctionImport Name="tsp_BanPrijavaTutor_SelectOne" ReturnType="Collection(TutorModel.BanPrijavaTutor_SelectOne_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="Administrator_NameSelect">
           <Property Type="Int32" Name="AdministratorId" Nullable="false" />
@@ -1838,6 +1971,129 @@
           <Property Type="Int32" Name="BrojCasova" Nullable="false" />
           <Property Type="Int32" Name="MaxBrojPolaznika" Nullable="false" />
           <Property Type="Double" Name="Cijena" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="Tutor_ReviewsSelect_Result">
+          <Property Type="String" Name="Ime" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Prezime" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Ocjena" Nullable="false" />
+          <Property Type="String" Name="Komentar" Nullable="false" MaxLength="Max" />
+          <Property Type="DateTime" Name="Datum" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="Tutor_SelectAll_Result">
+          <Property Type="Int32" Name="TutorId" Nullable="false" />
+          <Property Type="Binary" Name="TutorTumbnail" Nullable="false" />
+          <Property Type="String" Name="Ime" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Prezime" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Spol" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="DatumRodjenja" Nullable="false" />
+          <Property Type="DateTime" Name="DatumDodavanja" Nullable="false" />
+          <Property Type="String" Name="Grad" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Predmet" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <EntityType Name="BanPrijavaStudent">
+          <Key>
+            <PropertyRef Name="PrijavaStudentId" />
+          </Key>
+          <Property Name="PrijavaStudentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentId" Type="Int32" Nullable="false" />
+          <Property Name="TutorId" Type="Int32" Nullable="false" />
+          <Property Name="RazlogPrijave" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="DatumPrijave" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IsRead" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="BanPrijavaStudent1" Relationship="TutorModel.FK_BanPrijavaStudent_BanPrijavaStudent" FromRole="BanPrijavaStudent" ToRole="BanPrijavaStudent1" />
+          <NavigationProperty Name="BanPrijavaStudent2" Relationship="TutorModel.FK_BanPrijavaStudent_BanPrijavaStudent" FromRole="BanPrijavaStudent1" ToRole="BanPrijavaStudent" />
+          <NavigationProperty Name="Student" Relationship="TutorModel.FK_BanPrijavaStudent_Student" FromRole="BanPrijavaStudent" ToRole="Student" />
+        </EntityType>
+        <Association Name="FK_BanPrijavaStudent_BanPrijavaStudent">
+          <End Type="TutorModel.BanPrijavaStudent" Role="BanPrijavaStudent" Multiplicity="1" />
+          <End Type="TutorModel.BanPrijavaStudent" Role="BanPrijavaStudent1" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="BanPrijavaStudent">
+              <PropertyRef Name="PrijavaStudentId" />
+            </Principal>
+            <Dependent Role="BanPrijavaStudent1">
+              <PropertyRef Name="PrijavaStudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BanPrijavaStudent_Student">
+          <End Type="TutorModel.Student" Role="Student" Multiplicity="1" />
+          <End Type="TutorModel.BanPrijavaStudent" Role="BanPrijavaStudent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="BanPrijavaStudent">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="BanStudente_Select_Result">
+          <Property Type="Int32" Name="PrijavaStudentId" Nullable="false" />
+          <Property Type="String" Name="Student" Nullable="false" MaxLength="101" />
+          <Property Type="DateTime" Name="DatumPrijave" Nullable="false" />
+          <Property Type="Boolean" Name="IsRead" Nullable="false" />
+          <Property Type="String" Name="Tutor" Nullable="false" MaxLength="101" />
+        </ComplexType>
+        <ComplexType Name="BanPrijavaStudente_SelectOne_Result">
+          <Property Type="Int32" Name="StudentId" Nullable="false" />
+          <Property Type="Int32" Name="TutorId" Nullable="false" />
+          <Property Type="String" Name="Student" Nullable="false" MaxLength="101" />
+          <Property Type="String" Name="Tutor" Nullable="false" MaxLength="101" />
+          <Property Type="DateTime" Name="DatumPrijave" Nullable="false" />
+          <Property Type="String" Name="RazlogPrijave" Nullable="false" MaxLength="250" />
+        </ComplexType>
+        <EntityType Name="BanPrijavaTutor">
+          <Key>
+            <PropertyRef Name="PrijavaTutorId" />
+          </Key>
+          <Property Name="PrijavaTutorId" Type="Int32" Nullable="false" />
+          <Property Name="TutorId" Type="Int32" Nullable="false" />
+          <Property Name="StudentId" Type="Int32" Nullable="false" />
+          <Property Name="IsRead" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Student" Relationship="TutorModel.FK_BanPrijavaTutor_Student" FromRole="BanPrijavaTutor" ToRole="Student" />
+          <NavigationProperty Name="Tutor" Relationship="TutorModel.FK_BanPrijavaTutor_Tutor" FromRole="BanPrijavaTutor" ToRole="Tutor" />
+          <Property Name="DatumPrijave" Type="DateTime" Precision="0" Nullable="false" />
+          <Property Name="Razlog" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_BanPrijavaTutor_Student">
+          <End Type="TutorModel.Student" Role="Student" Multiplicity="1" />
+          <End Type="TutorModel.BanPrijavaTutor" Role="BanPrijavaTutor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="BanPrijavaTutor">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BanPrijavaTutor_Tutor">
+          <End Type="TutorModel.Tutor" Role="Tutor" Multiplicity="1" />
+          <End Type="TutorModel.BanPrijavaTutor" Role="BanPrijavaTutor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tutor">
+              <PropertyRef Name="TutorId" />
+            </Principal>
+            <Dependent Role="BanPrijavaTutor">
+              <PropertyRef Name="TutorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="BanTutor_Select_Result">
+          <Property Type="Int32" Name="PrijavaTutorId" Nullable="false" />
+          <Property Type="String" Name="Student" Nullable="false" MaxLength="101" />
+          <Property Type="String" Name="Tutor" Nullable="false" MaxLength="101" />
+          <Property Type="DateTime" Name="DatumPrijave" Nullable="true" />
+          <Property Type="Boolean" Name="IsRead" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="BanPrijavaTutor_SelectOne_Result">
+          <Property Type="Int32" Name="StudentId" Nullable="false" />
+          <Property Type="Int32" Name="TutorId" Nullable="false" />
+          <Property Type="String" Name="Student" Nullable="false" MaxLength="101" />
+          <Property Type="String" Name="Tutor" Nullable="false" MaxLength="101" />
+          <Property Type="DateTime" Name="DatumPrijave" Nullable="false" />
+          <Property Type="String" Name="Razlog" Nullable="false" MaxLength="255" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -2226,6 +2482,102 @@
                 <ScalarProperty Name="BrojCasova" ColumnName="BrojCasova" />
                 <ScalarProperty Name="MaxBrojPolaznika" ColumnName="MaxBrojPolaznika" />
                 <ScalarProperty Name="Cijena" ColumnName="Cijena" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="tsp_Tutor_ReviewsSelect" FunctionName="TutorModel.Store.tsp_Tutor_ReviewsSelect">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TutorModel.Tutor_ReviewsSelect_Result">
+                <ScalarProperty Name="Ime" ColumnName="Ime" />
+                <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+                <ScalarProperty Name="Ocjena" ColumnName="Ocjena" />
+                <ScalarProperty Name="Komentar" ColumnName="Komentar" />
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="tsp_Tutor_SelectAll" FunctionName="TutorModel.Store.tsp_Tutor_SelectAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TutorModel.Tutor_SelectAll_Result">
+                <ScalarProperty Name="TutorId" ColumnName="TutorId" />
+                <ScalarProperty Name="TutorTumbnail" ColumnName="TutorTumbnail" />
+                <ScalarProperty Name="Ime" ColumnName="Ime" />
+                <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+                <ScalarProperty Name="Spol" ColumnName="Spol" />
+                <ScalarProperty Name="DatumRodjenja" ColumnName="DatumRodjenja" />
+                <ScalarProperty Name="DatumDodavanja" ColumnName="DatumDodavanja" />
+                <ScalarProperty Name="Grad" ColumnName="Grad" />
+                <ScalarProperty Name="Predmet" ColumnName="Predmet" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="BanPrijavaStudents">
+            <EntityTypeMapping TypeName="TutorModel.BanPrijavaStudent">
+              <MappingFragment StoreEntitySet="BanPrijavaStudent">
+                <ScalarProperty Name="IsRead" ColumnName="IsRead" />
+                <ScalarProperty Name="DatumPrijave" ColumnName="DatumPrijave" />
+                <ScalarProperty Name="RazlogPrijave" ColumnName="RazlogPrijave" />
+                <ScalarProperty Name="TutorId" ColumnName="TutorId" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="PrijavaStudentId" ColumnName="PrijavaStudentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="tsp_BanPrijavaStudente_Select" FunctionName="TutorModel.Store.tsp_BanPrijavaStudente_Select">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TutorModel.BanStudente_Select_Result">
+                <ScalarProperty Name="PrijavaStudentId" ColumnName="PrijavaStudentId" />
+                <ScalarProperty Name="Student" ColumnName="Student" />
+                <ScalarProperty Name="DatumPrijave" ColumnName="DatumPrijave" />
+                <ScalarProperty Name="IsRead" ColumnName="IsRead" />
+                <ScalarProperty Name="Tutor" ColumnName="Tutor" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="tsp_BanPrijavaStudente_SelectOne" FunctionName="TutorModel.Store.tsp_BanPrijavaStudente_SelectOne">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TutorModel.BanPrijavaStudente_SelectOne_Result">
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="TutorId" ColumnName="TutorId" />
+                <ScalarProperty Name="Student" ColumnName="Student" />
+                <ScalarProperty Name="Tutor" ColumnName="Tutor" />
+                <ScalarProperty Name="DatumPrijave" ColumnName="DatumPrijave" />
+                <ScalarProperty Name="RazlogPrijave" ColumnName="RazlogPrijave" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="BanPrijavaTutors">
+            <EntityTypeMapping TypeName="TutorModel.BanPrijavaTutor">
+              <MappingFragment StoreEntitySet="BanPrijavaTutor">
+                <ScalarProperty Name="Razlog" ColumnName="Razlog" />
+                <ScalarProperty Name="DatumPrijave" ColumnName="DatumPrijave" />
+                <ScalarProperty Name="IsRead" ColumnName="IsRead" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="TutorId" ColumnName="TutorId" />
+                <ScalarProperty Name="PrijavaTutorId" ColumnName="PrijavaTutorId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="tsp_BanPrijavaTutor_Select" FunctionName="TutorModel.Store.tsp_BanPrijavaTutor_Select">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TutorModel.BanTutor_Select_Result">
+                <ScalarProperty Name="PrijavaTutorId" ColumnName="PrijavaTutorId" />
+                <ScalarProperty Name="Student" ColumnName="Student" />
+                <ScalarProperty Name="Tutor" ColumnName="Tutor" />
+                <ScalarProperty Name="DatumPrijave" ColumnName="DatumPrijave" />
+                <ScalarProperty Name="IsRead" ColumnName="IsRead" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="tsp_BanPrijavaTutor_SelectOne" FunctionName="TutorModel.Store.tsp_BanPrijavaTutor_SelectOne">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TutorModel.BanPrijavaTutor_SelectOne_Result">
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="TutorId" ColumnName="TutorId" />
+                <ScalarProperty Name="Student" ColumnName="Student" />
+                <ScalarProperty Name="Tutor" ColumnName="Tutor" />
+                <ScalarProperty Name="DatumPrijave" ColumnName="DatumPrijave" />
+                <ScalarProperty Name="Razlog" ColumnName="Razlog" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

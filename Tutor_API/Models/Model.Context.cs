@@ -51,6 +51,8 @@ namespace Tutor_API.Models
         public virtual DbSet<TutorTitula> TutorTitulas { get; set; }
         public virtual DbSet<Ucionica> Ucionicas { get; set; }
         public virtual DbSet<Zahtjev> Zahtjevs { get; set; }
+        public virtual DbSet<BanPrijavaStudent> BanPrijavaStudents { get; set; }
+        public virtual DbSet<BanPrijavaTutor> BanPrijavaTutors { get; set; }
     
         public virtual int tsp_Administrator_Insert(string ime, string prezime, Nullable<System.DateTime> datumDodavanja, string email, string telefon, string korisnickoIme, string lozinkaHash, string lozinkaSalt)
         {
@@ -205,6 +207,48 @@ namespace Tutor_API.Models
                 new ObjectParameter("Id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Ucionica_SelectTutorUcionica_Result>("tsp_Ucionica_SelectTutorUcionica", idParameter);
+        }
+    
+        public virtual ObjectResult<Tutor_ReviewsSelect_Result> tsp_Tutor_ReviewsSelect(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Tutor_ReviewsSelect_Result>("tsp_Tutor_ReviewsSelect", idParameter);
+        }
+    
+        public virtual ObjectResult<Tutor_SelectAll_Result> tsp_Tutor_SelectAll()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Tutor_SelectAll_Result>("tsp_Tutor_SelectAll");
+        }
+    
+        public virtual ObjectResult<BanStudente_Select_Result> tsp_BanPrijavaStudente_Select()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BanStudente_Select_Result>("tsp_BanPrijavaStudente_Select");
+        }
+    
+        public virtual ObjectResult<BanPrijavaStudente_SelectOne_Result> tsp_BanPrijavaStudente_SelectOne(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BanPrijavaStudente_SelectOne_Result>("tsp_BanPrijavaStudente_SelectOne", idParameter);
+        }
+    
+        public virtual ObjectResult<BanTutor_Select_Result> tsp_BanPrijavaTutor_Select()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BanTutor_Select_Result>("tsp_BanPrijavaTutor_Select");
+        }
+    
+        public virtual ObjectResult<BanPrijavaTutor_SelectOne_Result> tsp_BanPrijavaTutor_SelectOne(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BanPrijavaTutor_SelectOne_Result>("tsp_BanPrijavaTutor_SelectOne", idParameter);
         }
     }
 }

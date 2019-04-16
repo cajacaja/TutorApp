@@ -22,6 +22,9 @@ namespace Tutor_UI
         public const string OblastRoute = "api/Oblast";
         public const string ZahtjevRoute = "api/Zahtjev";
         public const string UcionicaRoute = "api/Ucionica";
+        public const string OcjenaTutorRoute = "api/OcjenaTutor";
+        public const string BanStudentRoute = "api/BanPrijavaStudent"; 
+        public const string BanTutorRoute = "api/BanPrijavaTutors";
 
 
         public static Tuple<bool, string> TextInputProvjera(string inputText,string regex="")

@@ -16,7 +16,7 @@ namespace Tutor_UI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Users.TutorForm());
+            Application.Run(new Users.PrijaveStudentForm());
         }
     }
 }

@@ -36,7 +36,13 @@ namespace Tutor_UI.Util
 
         public HttpResponseMessage PutResponse(int id, Object existingObject)
         {
+                        
             return client.PutAsJsonAsync(route + "/" + id, existingObject).Result;
+        }
+
+        public HttpResponseMessage DeleteResponse(string parameter = "")
+        {
+            return client.DeleteAsync(route + "/" + parameter).Result;
         }
     }
 }
