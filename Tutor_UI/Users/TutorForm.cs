@@ -28,7 +28,7 @@ namespace Tutor_UI.Users
             BindKategorije();
         }
 
-       
+
 
         private void BindForm()
         {
@@ -38,7 +38,7 @@ namespace Tutor_UI.Users
                 var tutori = response.Content.ReadAsAsync<List<Tutor_SearchSelect_Result>>().Result;
                 TutorGridView.DataSource = tutori;
                 TutorGridView.ClearSelection();
-            }            
+            }
         }
 
         private void BindGrad()
@@ -57,12 +57,12 @@ namespace Tutor_UI.Users
 
         private void BindKategorije()
         {
-            HttpResponseMessage response =predmetService.GetResponse();
+            HttpResponseMessage response = predmetService.GetResponse();
             if (response.IsSuccessStatusCode)
             {
                 //Promjeni ime u PredmetCmb
                 var lstOblasti = response.Content.ReadAsAsync<List<Podkategorija>>().Result;
-                lstOblasti.Insert(0, new Podkategorija() { Naziv = "Odaberite oblast"});
+                lstOblasti.Insert(0, new Podkategorija() { Naziv = "Odaberite oblast" });
                 PredmetCmb.DataSource = lstOblasti;
                 PredmetCmb.DisplayMember = "Naziv";
                 PredmetCmb.ValueMember = "OblastId";
@@ -71,29 +71,21 @@ namespace Tutor_UI.Users
 
         private void TraziBtn_Click(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(searchNameInput.Text) && GradoviCmb.SelectedIndex == 0 && PredmetCmb.SelectedIndex == 0) {
 
-                var tutori = administratorService.GetResponse();
-                TutorGridView.DataSource = tutori.Content.ReadAsAsync<List<Tutor_SelectAll_Result>>().Result;
+            string parametar = searchNameInput.Text.Trim() + '/' + GradoviCmb.SelectedValue.ToString() + '/' + PredmetCmb.SelectedValue.ToString();
+            if (String.IsNullOrEmpty(searchNameInput.Text))
+            {
+                parametar = "Empty" + '/' + GradoviCmb.SelectedValue.ToString() + '/' + PredmetCmb.SelectedValue.ToString();
+            }
+            var response = administratorService.GetActionResponse("TutorFilter", parametar);
+            if (response.IsSuccessStatusCode)
+            {
+                var tutori = response.Content.ReadAsAsync<List<Tutor_SearchSelect_Result>>().Result;
+                TutorGridView.DataSource = tutori;
                 TutorGridView.ClearSelection();
             }
 
-            else
-            {
-                string parametar = searchNameInput.Text + '/' + GradoviCmb.SelectedValue.ToString() + '/' + PredmetCmb.SelectedValue.ToString();
-                if (String.IsNullOrEmpty(searchNameInput.Text))
-                {
-                    parametar = "Empty" + '/' + GradoviCmb.SelectedValue.ToString() + '/' + PredmetCmb.SelectedValue.ToString();
-                }
-                var response = administratorService.GetActionResponse("TutorFilter", parametar);
-                if (response.IsSuccessStatusCode)
-                {
-                    var tutori = response.Content.ReadAsAsync<List<Tutor_SearchSelect_Result>>().Result;
-                    TutorGridView.DataSource = tutori;
-                    TutorGridView.ClearSelection();
-                }
-            }
-            
+
         }
 
         private void DodajBtn_Click(object sender, EventArgs e)
@@ -103,13 +95,17 @@ namespace Tutor_UI.Users
             {
                 addTutor.Show();
             }
-            
+
         }
 
         private void DetaljBtn_Click(object sender, EventArgs e)
         {
-            TutorDetalj tutorDetalj = new TutorDetalj(Convert.ToInt32(TutorGridView.SelectedRows[0].Cells[0].Value));
-            tutorDetalj.Show();
+            if (TutorGridView.SelectedRows.Count != 0)
+            {
+                TutorDetalj tutorDetalj = new TutorDetalj(Convert.ToInt32(TutorGridView.SelectedRows[0].Cells[0].Value));
+                tutorDetalj.Show();
+            }
+
         }
     }
 }

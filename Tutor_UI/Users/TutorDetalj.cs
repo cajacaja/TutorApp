@@ -31,7 +31,7 @@ namespace Tutor_UI.Users
 
            
 
-            var response = tutorService.GetResponse(id.ToString());
+            var response = tutorService.GetActionResponse("TutorDetails", id.ToString());
             if (response.IsSuccessStatusCode)
             {
                 Tutor = response.Content.ReadAsAsync<Tutor_Details_Result>().Result;
@@ -51,12 +51,32 @@ namespace Tutor_UI.Users
                 BindGridOne(id);
                 BindGridTwo(id);
                 UpisiOcjenu(id);
+
+                ProvjeriStatsuKorisnika(id);
+
                 
 
             }
             else
             {
                 MessageBox.Show("Pogresan tutor");
+            }
+        }
+
+        private void ProvjeriStatsuKorisnika(int id)
+        {
+            var response = tutorService.GetResponse(id.ToString());
+            var Tutor = response.Content.ReadAsAsync<Tutor>().Result;
+
+            if (Tutor.StatusKorisnickoRacunaId == 3)
+            {
+                BanBtn.Visible = false;
+                UnbanBtn.Visible = true;
+            }
+            else
+            {
+                BanBtn.Visible = true;
+                UnbanBtn.Visible = false;
             }
         }
 
@@ -128,6 +148,49 @@ namespace Tutor_UI.Users
 
         }
 
-       
+        private void BanBtn_Click(object sender, EventArgs e)
+        {
+            PromjeniStatus();
+            ProvjeriStatsuKorisnika(Tutor.TutorId);
+        }
+
+        private void UnbanBtn_Click(object sender, EventArgs e)
+        {
+            PromjeniStatus();
+            ProvjeriStatsuKorisnika(Tutor.TutorId);
+        }
+
+
+        private void PromjeniStatus()
+        {
+            var response = tutorService.GetResponse(Tutor.TutorId.ToString());
+            if (response.IsSuccessStatusCode)
+            {
+                var tutor = response.Content.ReadAsAsync<Tutor>().Result;
+                if (tutor.StatusKorisnickoRacunaId != 3)
+                {
+                    tutor.StatusKorisnickoRacunaId = 3;
+                    var response2 = tutorService.PutResponse(Tutor.TutorId, tutor);
+                    if (response2.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show("Tutor banovan!");
+                        ProvjeriStatsuKorisnika(tutor.TutorId);
+                    }
+                }
+                else
+                {
+                    tutor.StatusKorisnickoRacunaId = 1;
+                    var response2 = tutorService.PutResponse(Tutor.TutorId, tutor);
+                    if (response2.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show("Tutor unbanovan!");
+                        ProvjeriStatsuKorisnika(tutor.TutorId);//Nesto ne radi kako treba ovde si stao!!!
+                    }
+                }
+
+
+            }          
+
+        }
     }
 }

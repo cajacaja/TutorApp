@@ -63,12 +63,12 @@ namespace Tutor_UI.Users
         private void PregledBtn_Click(object sender, EventArgs e)
         {
             int TutorId = 0;
-            if (tabControl1.SelectedTab == tabControl1.TabPages["tabPage1"])
+            if (tabControl1.SelectedTab == tabControl1.TabPages["tabPage1"] && NovePrijaveGridView.SelectedRows.Count != 0)
             {
                 TutorId = Convert.ToInt32(NovePrijaveGridView.SelectedRows[0].Cells[0].Value);
             }
 
-            if (tabControl1.SelectedTab == tabControl1.TabPages["tabPage2"])
+            if (tabControl1.SelectedTab == tabControl1.TabPages["tabPage2"] && ProcitanePrijaveGridView.SelectedRows.Count != 0)
             {
                 TutorId = Convert.ToInt32(ProcitanePrijaveGridView.SelectedRows[0].Cells[0].Value);
             }
@@ -93,14 +93,18 @@ namespace Tutor_UI.Users
 
         private void IzbrisiBtn_Click(object sender, EventArgs e)
         {
-            int procitanaPrijava = Convert.ToInt32(ProcitanePrijaveGridView.SelectedRows[0].Cells[0].Value);
-            var response = banTutorService.DeleteResponse(procitanaPrijava.ToString());
-
-            if (response.IsSuccessStatusCode)
+            if (ProcitanePrijaveGridView.SelectedRows.Count != 0)
             {
+                int procitanaPrijava = Convert.ToInt32(ProcitanePrijaveGridView.SelectedRows[0].Cells[0].Value);
+                var response = banTutorService.DeleteResponse(procitanaPrijava.ToString());
 
-                MessageBox.Show("Uspjenos obrisana prijava");
-                BindProcitano();
+                if (response.IsSuccessStatusCode)
+                {
+
+                    MessageBox.Show("Uspjenos obrisana prijava");
+                    BindProcitano();
+                }
+
             }
         }
     }

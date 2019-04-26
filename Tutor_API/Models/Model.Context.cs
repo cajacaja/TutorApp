@@ -250,5 +250,15 @@ namespace Tutor_API.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BanPrijavaTutor_SelectOne_Result>("tsp_BanPrijavaTutor_SelectOne", idParameter);
         }
+    
+        public virtual ObjectResult<Tutori_SelectBanTutor_Result> tsp_Tutori_SelectBanTutor()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Tutori_SelectBanTutor_Result>("tsp_Tutori_SelectBanTutor");
+        }
+    
+        public virtual ObjectResult<Student_BanStudents_Result> tsp_Student_SelectBanStudents()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Student_BanStudents_Result>("tsp_Student_SelectBanStudents");
+        }
     }
 }

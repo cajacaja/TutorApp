@@ -62,7 +62,8 @@
             this.CasoviDataGrid = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.UcioniceDataGrid = new System.Windows.Forms.DataGridView();
-            this.button2 = new System.Windows.Forms.Button();
+            this.BanBtn = new System.Windows.Forms.Button();
+            this.UnbanBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.tutorPictureBox)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -450,22 +451,33 @@
             this.UcioniceDataGrid.Size = new System.Drawing.Size(490, 114);
             this.UcioniceDataGrid.TabIndex = 0;
             // 
-            // button2
+            // BanBtn
             // 
-            this.button2.Location = new System.Drawing.Point(20, 126);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 29;
-            this.button2.Text = "Ban";
-            this.button2.UseVisualStyleBackColor = true;
-
+            this.BanBtn.Location = new System.Drawing.Point(20, 126);
+            this.BanBtn.Name = "BanBtn";
+            this.BanBtn.Size = new System.Drawing.Size(75, 23);
+            this.BanBtn.TabIndex = 29;
+            this.BanBtn.Text = "Ban";
+            this.BanBtn.UseVisualStyleBackColor = true;
+            this.BanBtn.Click += new System.EventHandler(this.BanBtn_Click);
+            // 
+            // UnbanBtn
+            // 
+            this.UnbanBtn.Location = new System.Drawing.Point(20, 126);
+            this.UnbanBtn.Name = "UnbanBtn";
+            this.UnbanBtn.Size = new System.Drawing.Size(75, 23);
+            this.UnbanBtn.TabIndex = 30;
+            this.UnbanBtn.Text = "Unban";
+            this.UnbanBtn.UseVisualStyleBackColor = true;
+            this.UnbanBtn.Click += new System.EventHandler(this.UnbanBtn_Click);
             // 
             // TutorDetalj
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(504, 593);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.UnbanBtn);
+            this.Controls.Add(this.BanBtn);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -524,8 +536,9 @@
         private System.Windows.Forms.DataGridView CasoviDataGrid;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.DataGridView UcioniceDataGrid;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button BanBtn;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox ocjenaInput;
+        private System.Windows.Forms.Button UnbanBtn;
     }
 }

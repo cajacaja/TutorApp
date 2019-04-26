@@ -35,6 +35,8 @@ namespace Tutor_UI.Users
         {
             InitializeComponent();
             this.AutoValidate = AutoValidate.Disable;
+            openFileDialog1.Filter = "Image Files (JPG,PNG,SVG)|*.JPG;*.PNG;*.SVG";
+            openFileDialog2.Filter = "Image Files (JPG,PNG,SVG)|*.JPG;*.PNG;*.SVG";
         }
 
 
@@ -177,9 +179,12 @@ namespace Tutor_UI.Users
 
         private void SlikaBtn_Click(object sender, EventArgs e)
         {
+           
+
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 SlikaTutorInput.Text = openFileDialog1.FileName;
+                string ext = Path.GetExtension(openFileDialog1.FileName);
 
                 Image orignalImage = Image.FromFile(openFileDialog1.FileName);
                 MemoryStream ms = new MemoryStream();
@@ -331,6 +336,7 @@ namespace Tutor_UI.Users
         private void SlikaTutorInput_Validating(object sender, CancelEventArgs e)
         {
             e.Cancel = Provjera(SlikaTutorInput);
+          
         }
 
         private void SlikaDokazInput_Validating(object sender, CancelEventArgs e)

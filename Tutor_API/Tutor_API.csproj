@@ -111,6 +111,7 @@
     <Compile Include="Controllers\PodkategorijaController.cs" />
     <Compile Include="Controllers\RadnoStanjeController.cs" />
     <Compile Include="Controllers\SpolController.cs" />
+    <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\TipStudentaController.cs" />
     <Compile Include="Controllers\TutorController.cs" />
     <Compile Include="Controllers\TutorTitulaController.cs" />
@@ -224,6 +225,9 @@
     <Compile Include="Models\Student.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Student_BanStudents_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\sysdiagram.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -237,6 +241,9 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TutorExstension.cs" />
+    <Compile Include="Models\Tutori_SelectBanTutor_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\TutorTitula.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -276,6 +283,8 @@
       <DependentUpon>Model.edmx</DependentUpon>
     </Content>
     <None Include="packages.config" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile1.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -16,7 +16,7 @@ namespace Tutor_API.Models
         public int PrijavaTutorId { get; set; }
         public string Student { get; set; }
         public string Tutor { get; set; }
-        public Nullable<System.DateTime> DatumPrijave { get; set; }
+        public System.DateTime DatumPrijave { get; set; }
         public bool IsRead { get; set; }
     }
 }

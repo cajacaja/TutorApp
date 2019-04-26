@@ -38,13 +38,13 @@
             this.IsRead = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.ProcitanePrijaveGridView = new System.Windows.Forms.DataGridView();
+            this.PregledBtn = new System.Windows.Forms.Button();
+            this.IzbrisiBtn = new System.Windows.Forms.Button();
             this.StaraPrijavaId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StudentProcitano = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TutorProcitano = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DatumPrijaveProcitano = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.JelProcitano = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.PregledBtn = new System.Windows.Forms.Button();
-            this.IzbrisiBtn = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NovePrijaveGridView)).BeginInit();
@@ -153,42 +153,6 @@
             this.ProcitanePrijaveGridView.Size = new System.Drawing.Size(443, 418);
             this.ProcitanePrijaveGridView.TabIndex = 0;
             // 
-            // StaraPrijavaId
-            // 
-            this.StaraPrijavaId.DataPropertyName = "PrijavaStudentId";
-            this.StaraPrijavaId.HeaderText = "StaraPrijavaId";
-            this.StaraPrijavaId.Name = "StaraPrijavaId";
-            this.StaraPrijavaId.ReadOnly = true;
-            this.StaraPrijavaId.Visible = false;
-            // 
-            // StudentProcitano
-            // 
-            this.StudentProcitano.DataPropertyName = "Student";
-            this.StudentProcitano.HeaderText = "Student(Prijavio)";
-            this.StudentProcitano.Name = "StudentProcitano";
-            this.StudentProcitano.ReadOnly = true;
-            // 
-            // TutorProcitano
-            // 
-            this.TutorProcitano.DataPropertyName = "Tutor";
-            this.TutorProcitano.HeaderText = "Tutor(Prijavio)";
-            this.TutorProcitano.Name = "TutorProcitano";
-            this.TutorProcitano.ReadOnly = true;
-            // 
-            // DatumPrijaveProcitano
-            // 
-            this.DatumPrijaveProcitano.DataPropertyName = "DatumPrijave";
-            this.DatumPrijaveProcitano.HeaderText = "Datum prijave";
-            this.DatumPrijaveProcitano.Name = "DatumPrijaveProcitano";
-            this.DatumPrijaveProcitano.ReadOnly = true;
-            // 
-            // JelProcitano
-            // 
-            this.JelProcitano.DataPropertyName = "IsRead";
-            this.JelProcitano.HeaderText = "Procitana prijava";
-            this.JelProcitano.Name = "JelProcitano";
-            this.JelProcitano.ReadOnly = true;
-            // 
             // PregledBtn
             // 
             this.PregledBtn.Location = new System.Drawing.Point(12, 37);
@@ -208,6 +172,42 @@
             this.IzbrisiBtn.Text = "Izbrisi";
             this.IzbrisiBtn.UseVisualStyleBackColor = true;
             this.IzbrisiBtn.Click += new System.EventHandler(this.IzbrisiBtn_Click);
+            // 
+            // StaraPrijavaId
+            // 
+            this.StaraPrijavaId.DataPropertyName = "PrijavaStudentId";
+            this.StaraPrijavaId.HeaderText = "StaraPrijavaId";
+            this.StaraPrijavaId.Name = "StaraPrijavaId";
+            this.StaraPrijavaId.ReadOnly = true;
+            this.StaraPrijavaId.Visible = false;
+            // 
+            // StudentProcitano
+            // 
+            this.StudentProcitano.DataPropertyName = "Student";
+            this.StudentProcitano.HeaderText = "Student(Prijavio)";
+            this.StudentProcitano.Name = "StudentProcitano";
+            this.StudentProcitano.ReadOnly = true;
+            // 
+            // TutorProcitano
+            // 
+            this.TutorProcitano.DataPropertyName = "Tutor";
+            this.TutorProcitano.HeaderText = "Tutor(Prijavljen)";
+            this.TutorProcitano.Name = "TutorProcitano";
+            this.TutorProcitano.ReadOnly = true;
+            // 
+            // DatumPrijaveProcitano
+            // 
+            this.DatumPrijaveProcitano.DataPropertyName = "DatumPrijave";
+            this.DatumPrijaveProcitano.HeaderText = "Datum prijave";
+            this.DatumPrijaveProcitano.Name = "DatumPrijaveProcitano";
+            this.DatumPrijaveProcitano.ReadOnly = true;
+            // 
+            // JelProcitano
+            // 
+            this.JelProcitano.DataPropertyName = "IsRead";
+            this.JelProcitano.HeaderText = "Procitana prijava";
+            this.JelProcitano.Name = "JelProcitano";
+            this.JelProcitano.ReadOnly = true;
             // 
             // PrijaveTutorForm
             // 

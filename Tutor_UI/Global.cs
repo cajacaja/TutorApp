@@ -25,6 +25,7 @@ namespace Tutor_UI
         public const string OcjenaTutorRoute = "api/OcjenaTutor";
         public const string BanStudentRoute = "api/BanPrijavaStudent"; 
         public const string BanTutorRoute = "api/BanPrijavaTutors";
+        public const string StudentRoute = " api/Student";
 
 
         public static Tuple<bool, string> TextInputProvjera(string inputText,string regex="")

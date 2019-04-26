@@ -32,7 +32,6 @@
             this.TraziBtn = new System.Windows.Forms.Button();
             this.DodajBtn = new System.Windows.Forms.Button();
             this.administratorGrid = new System.Windows.Forms.DataGridView();
-            this.EditBtn = new System.Windows.Forms.Button();
             this.AdministratorId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Prezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -40,6 +39,7 @@
             this.DatumDodavanja = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Telefon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EditBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.administratorGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -85,18 +85,9 @@
             this.Telefon});
             this.administratorGrid.Location = new System.Drawing.Point(12, 90);
             this.administratorGrid.Name = "administratorGrid";
+            this.administratorGrid.ReadOnly = true;
             this.administratorGrid.Size = new System.Drawing.Size(688, 176);
             this.administratorGrid.TabIndex = 3;
-            // 
-            // EditBtn
-            // 
-            this.EditBtn.Location = new System.Drawing.Point(625, 42);
-            this.EditBtn.Name = "EditBtn";
-            this.EditBtn.Size = new System.Drawing.Size(75, 27);
-            this.EditBtn.TabIndex = 4;
-            this.EditBtn.Text = "Edit";
-            this.EditBtn.UseVisualStyleBackColor = true;
-            this.EditBtn.Click += new System.EventHandler(this.EditBtn_Click);
             // 
             // AdministratorId
             // 
@@ -106,7 +97,6 @@
             this.AdministratorId.Name = "AdministratorId";
             this.AdministratorId.ReadOnly = true;
             this.AdministratorId.Visible = false;
-            this.AdministratorId.Width = 101;
             // 
             // Ime
             // 
@@ -149,6 +139,16 @@
             this.Telefon.HeaderText = "Telefon";
             this.Telefon.Name = "Telefon";
             this.Telefon.ReadOnly = true;
+            // 
+            // EditBtn
+            // 
+            this.EditBtn.Location = new System.Drawing.Point(625, 42);
+            this.EditBtn.Name = "EditBtn";
+            this.EditBtn.Size = new System.Drawing.Size(75, 27);
+            this.EditBtn.TabIndex = 4;
+            this.EditBtn.Text = "Edit";
+            this.EditBtn.UseVisualStyleBackColor = true;
+            this.EditBtn.Click += new System.EventHandler(this.EditBtn_Click);
             // 
             // AdministratorForm
             // 

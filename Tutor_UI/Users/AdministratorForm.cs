@@ -25,17 +25,17 @@ namespace Tutor_UI.Users
         private void DodajBtn_Click(object sender, EventArgs e)
         {
             var administratorDodajForm = new AdministratorAdd();
-            if (administratorDodajForm.ShowDialog()==DialogResult.OK)
+            if (administratorDodajForm.ShowDialog() == DialogResult.OK)
             {
                 administratorDodajForm.Show();
                 BindGrid();
             }
-           
+
         }
 
         private void BindGrid()
         {
-            HttpResponseMessage response = administratorService.GetActionResponse("SearchByName",searchInput.Text.Trim());
+            HttpResponseMessage response = administratorService.GetActionResponse("SearchByName", searchInput.Text.Trim());
             if (response.IsSuccessStatusCode)
             {
                 var administratori = response.Content.ReadAsAsync<List<Administrator_NameSelect>>().Result;
@@ -55,10 +55,16 @@ namespace Tutor_UI.Users
 
         private void EditBtn_Click(object sender, EventArgs e)
         {
-            var editForm = new EditAdministrator(Convert.ToInt32(administratorGrid.SelectedRows[0].Cells[0].Value));
-            editForm.Show();
-            BindGrid();
-           
+          
+                
+                if (administratorGrid.SelectedRows.Count!=0)
+                {
+                    var editForm = new EditAdministrator(Convert.ToInt32(administratorGrid.SelectedRows[0].Cells[0].Value));
+                    editForm.Show();
+                    BindGrid();
+                }
+            
+
         }
     }
 }

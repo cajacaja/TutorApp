@@ -15,7 +15,7 @@ namespace Tutor_UI.Users
 {
     public partial class TutorPrijaveDetailsForm : Form
     {
-        private WebAPIHelper banStudentService = new WebAPIHelper(Global.URI, Global.BanTutorRoute);
+        private WebAPIHelper banStudentService = new WebAPIHelper(Global.URI, Global.BanStudentRoute);
         private BanPrijavaStudente_SelectOne_Result prijava;
 
         public TutorPrijaveDetailsForm(int id)

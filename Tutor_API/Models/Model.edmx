@@ -762,6 +762,7 @@
           <Parameter Name="id" Type="int" Mode="In" />
         </Function>
         <Function Name="tsp_Grad_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="tsp_Student_SelectBanStudents" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="tsp_Tutor_Details" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
         </Function>
@@ -769,6 +770,7 @@
           <Parameter Name="id" Type="int" Mode="In" />
         </Function>
         <Function Name="tsp_Tutor_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="tsp_Tutori_SelectBanTutor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="tsp_Ucionica_SelectTutorUcionica" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Id" Type="int" Mode="In" />
         </Function>
@@ -1891,8 +1893,10 @@
           </AssociationSet>
           <FunctionImport Name="tsp_BanPrijavaTutor_Select" ReturnType="Collection(TutorModel.BanTutor_Select_Result)" />
           <FunctionImport Name="tsp_BanPrijavaTutor_SelectOne" ReturnType="Collection(TutorModel.BanPrijavaTutor_SelectOne_Result)">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="tsp_Tutori_SelectBanTutor" ReturnType="Collection(TutorModel.Tutori_SelectBanTutor_Result)" />
+          <FunctionImport Name="tsp_Student_SelectBanStudents" ReturnType="Collection(TutorModel.Student_BanStudents_Result)" />
         </EntityContainer>
         <ComplexType Name="Administrator_NameSelect">
           <Property Type="Int32" Name="AdministratorId" Nullable="false" />
@@ -2084,7 +2088,7 @@
           <Property Type="Int32" Name="PrijavaTutorId" Nullable="false" />
           <Property Type="String" Name="Student" Nullable="false" MaxLength="101" />
           <Property Type="String" Name="Tutor" Nullable="false" MaxLength="101" />
-          <Property Type="DateTime" Name="DatumPrijave" Nullable="true" />
+          <Property Type="DateTime" Name="DatumPrijave" Nullable="false" />
           <Property Type="Boolean" Name="IsRead" Nullable="false" />
         </ComplexType>
         <ComplexType Name="BanPrijavaTutor_SelectOne_Result">
@@ -2094,6 +2098,21 @@
           <Property Type="String" Name="Tutor" Nullable="false" MaxLength="101" />
           <Property Type="DateTime" Name="DatumPrijave" Nullable="false" />
           <Property Type="String" Name="Razlog" Nullable="false" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="Tutori_SelectBanTutor_Result">
+          <Property Type="Int32" Name="TutorId" Nullable="false" />
+          <Property Type="String" Name="Ime" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Prezime" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="DatumDodavanja" Nullable="false" />
+          <Property Type="String" Name="Grad" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Predmet" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="Student_BanStudents_Result">
+          <Property Type="Int32" Name="StudentId" Nullable="false" />
+          <Property Type="String" Name="Ime" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Prezime" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="DatumDodavanja" Nullable="false" />
+          <Property Type="String" Name="Grad" Nullable="false" MaxLength="100" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -2578,6 +2597,29 @@
                 <ScalarProperty Name="Tutor" ColumnName="Tutor" />
                 <ScalarProperty Name="DatumPrijave" ColumnName="DatumPrijave" />
                 <ScalarProperty Name="Razlog" ColumnName="Razlog" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="tsp_Tutori_SelectBanTutor" FunctionName="TutorModel.Store.tsp_Tutori_SelectBanTutor">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TutorModel.Tutori_SelectBanTutor_Result">
+                <ScalarProperty Name="TutorId" ColumnName="TutorId" />
+                <ScalarProperty Name="Ime" ColumnName="Ime" />
+                <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+                <ScalarProperty Name="DatumDodavanja" ColumnName="DatumDodavanja" />
+                <ScalarProperty Name="Grad" ColumnName="Grad" />
+                <ScalarProperty Name="Predmet" ColumnName="Predmet" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="tsp_Student_SelectBanStudents" FunctionName="TutorModel.Store.tsp_Student_SelectBanStudents">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TutorModel.Student_BanStudents_Result">
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="Ime" ColumnName="Ime" />
+                <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+                <ScalarProperty Name="DatumDodavanja" ColumnName="DatumDodavanja" />
+                <ScalarProperty Name="Grad" ColumnName="Grad" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

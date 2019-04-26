@@ -78,11 +78,23 @@
     <Compile Include="Users\AdministratorForm.Designer.cs">
       <DependentUpon>AdministratorForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Users\BanovaniKorisniciForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\BanovaniKorisniciForm.Designer.cs">
+      <DependentUpon>BanovaniKorisniciForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Users\EditAdministrator.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Users\EditAdministrator.Designer.cs">
       <DependentUpon>EditAdministrator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Users\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Users\PrijaveStudentForm.cs">
       <SubType>Form</SubType>
@@ -156,8 +168,14 @@
     <EmbeddedResource Include="Users\AdministratorForm.resx">
       <DependentUpon>AdministratorForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Users\BanovaniKorisniciForm.resx">
+      <DependentUpon>BanovaniKorisniciForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Users\EditAdministrator.resx">
       <DependentUpon>EditAdministrator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Users\PrijaveStudentForm.resx">
       <DependentUpon>PrijaveStudentForm.cs</DependentUpon>
