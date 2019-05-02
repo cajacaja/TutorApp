@@ -29,22 +29,24 @@ namespace Tutor_API.Util
 
             if (startIndex > 0 && endIndex > 0)
             {
-                string constraintName = newMessage.Substring(startIndex + 1, endIndex- startIndex -1);
+                string constraintName = newMessage.Substring(startIndex + 1, endIndex - startIndex - 1);
 
-                if (constraintName == "CS_Email")
-                {
-                    newMessage = "UniqueEmail_Error";
-                }
-                else if (constraintName == "CS_Telefon")
-                {
-                    newMessage = "UniquePhone_Error";
-                }
-                else if(constraintName== "CS_KorisnickoIme")
+
+
+                if (constraintName == "CS_KorisnickoIme")
                 {
                     newMessage = "UniqueUsername_Error";
                 }
 
-               
+                else if (constraintName == "CS_Telefon")
+                {
+                    newMessage = "UniquePhone_Error";
+                }
+
+                else if (constraintName == "CS_Email")
+                {
+                    newMessage = "UniqueEmail_Error";
+                }
             }
 
             return newMessage;

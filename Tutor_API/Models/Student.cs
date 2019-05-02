@@ -29,7 +29,6 @@ namespace Tutor_API.Models
         public string Prezime { get; set; }
         public System.DateTime DatumDodavanja { get; set; }
         public System.DateTime DatumRodjenja { get; set; }
-        public string Spol { get; set; }
         public byte[] StudentskaSlika { get; set; }
         public string NazivUstanove { get; set; }
         public int KorisnickiNalogId { get; set; }
@@ -37,6 +36,7 @@ namespace Tutor_API.Models
         public int GradId { get; set; }
         public int TipoviStudentaId { get; set; }
         public int StatusKorisnickoRacunaId { get; set; }
+        public Nullable<int> SpolId { get; set; }
     
         public virtual Grad Grad { get; set; }
         public virtual KontaktInfo KontaktInfo { get; set; }
@@ -54,5 +54,6 @@ namespace Tutor_API.Models
         public virtual ICollection<BanPrijavaStudent> BanPrijavaStudents { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BanPrijavaTutor> BanPrijavaTutors { get; set; }
+        public virtual Spol Spol1 { get; set; }
     }
 }

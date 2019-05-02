@@ -26,6 +26,7 @@ namespace Tutor_UI.Users
         private WebAPIHelper tipStudentaService = new WebAPIHelper(Global.URI, Global.TipStudentaRoute);
         private WebAPIHelper titulaService = new WebAPIHelper(Global.URI, Global.TutorTitulaRoute);
         private WebAPIHelper tutorService = new WebAPIHelper(Global.URI, Global.TutorRoute);
+        private WebAPIHelper studentService = new WebAPIHelper(Global.URI, Global.StudentRoute);
 
         private byte[] Slika1;
         private byte[] Slika2;
@@ -33,6 +34,8 @@ namespace Tutor_UI.Users
 
         public AddTutor()
         {
+
+            
             InitializeComponent();
             this.AutoValidate = AutoValidate.Disable;
             openFileDialog1.Filter = "Image Files (JPG,PNG,SVG)|*.JPG;*.PNG;*.SVG";
@@ -127,10 +130,14 @@ namespace Tutor_UI.Users
 
         private void SnimiBtn_Click(object sender, EventArgs e)
         {
-            
+
 
             if (this.ValidateChildren())
             {
+                
+              
+
+
                 Tutor noviTutor = new Tutor()
                 {
                     Ime = ImeInput.Text,
@@ -149,16 +156,17 @@ namespace Tutor_UI.Users
                     CijenaCasa = (double)CijenaInput.Value,
                     DatumRodjenja = DatumRodjenjaDP.Value,
                     LozinkaSalt = UIHelper.GenerateSalt(),
-                    TutorSlika=Slika1,
-                    TutorTumbnail=Slika2,
-                    SlikaOdobrenja=Slika3,
-                    StatusKorisnickoRacunaId=1
-                    
+                    TutorSlika = Slika1,
+                    TutorTumbnail = Slika2,
+                    SlikaOdobrenja = Slika3,
+                    StatusKorisnickoRacunaId = 1
+
                 };
                 noviTutor.LozinkaHash = UIHelper.GenerateHash(noviTutor.LozinkaSalt, LozinkaInput.Text);
 
                 HttpResponseMessage response = tutorService.PostResponse(noviTutor);
-                if (response.IsSuccessStatusCode) {
+                if (response.IsSuccessStatusCode)
+                {
 
                     MessageBox.Show("Uspjenso dodan tutor!");
                 }
@@ -174,6 +182,7 @@ namespace Tutor_UI.Users
 
                     MessageBox.Show(errorMessage);
                 }
+
             }
         }
 

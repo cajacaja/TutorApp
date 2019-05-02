@@ -172,7 +172,6 @@
           <Property Name="Prezime" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="DatumDodavanja" Type="date" Nullable="false" />
           <Property Name="DatumRodjenja" Type="date" Nullable="false" />
-          <Property Name="Spol" Type="nvarchar" MaxLength="1" Nullable="false" />
           <Property Name="StudentskaSlika" Type="varbinary(max)" />
           <Property Name="NazivUstanove" Type="nvarchar" MaxLength="150" />
           <Property Name="KorisnickiNalogId" Type="int" Nullable="false" />
@@ -180,6 +179,7 @@
           <Property Name="GradId" Type="int" Nullable="false" />
           <Property Name="TipoviStudentaId" Type="int" Nullable="false" />
           <Property Name="StatusKorisnickoRacunaId" Type="int" Nullable="false" />
+          <Property Name="SpolId" Type="int" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -295,18 +295,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_BanPrijavaStudent_BanPrijavaStudent">
-          <End Role="BanPrijavaStudent" Type="Self.BanPrijavaStudent" Multiplicity="1" />
-          <End Role="BanPrijavaStudent1" Type="Self.BanPrijavaStudent" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="BanPrijavaStudent">
-              <PropertyRef Name="PrijavaStudentId" />
-            </Principal>
-            <Dependent Role="BanPrijavaStudent1">
-              <PropertyRef Name="PrijavaStudentId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_BanPrijavaStudent_Student">
           <End Role="Student" Type="Self.Student" Multiplicity="1" />
           <End Role="BanPrijavaStudent" Type="Self.BanPrijavaStudent" Multiplicity="*" />
@@ -316,6 +304,18 @@
             </Principal>
             <Dependent Role="BanPrijavaStudent">
               <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BanPrijavaStudent_Tutor">
+          <End Role="Tutor" Type="Self.Tutor" Multiplicity="1" />
+          <End Role="BanPrijavaStudent" Type="Self.BanPrijavaStudent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tutor">
+              <PropertyRef Name="TutorId" />
+            </Principal>
+            <Dependent Role="BanPrijavaStudent">
+              <PropertyRef Name="TutorId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -355,18 +355,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ObimStudent_ObimStudent">
-          <End Role="ObimStudent" Type="Self.ObimStudent" Multiplicity="1" />
-          <End Role="ObimStudent1" Type="Self.ObimStudent" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="ObimStudent">
-              <PropertyRef Name="ObimStudentId" />
-            </Principal>
-            <Dependent Role="ObimStudent1">
-              <PropertyRef Name="ObimStudentId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_ObimStudent_ObimStudent1">
           <End Role="TipStudenta" Type="Self.TipStudenta" Multiplicity="1" />
           <End Role="ObimStudent" Type="Self.ObimStudent" Multiplicity="*" />
@@ -388,18 +376,6 @@
             </Principal>
             <Dependent Role="ObimStudent">
               <PropertyRef Name="TutorId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Oblast_Oblast">
-          <End Role="Oblast" Type="Self.Oblast" Multiplicity="1" />
-          <End Role="Oblast1" Type="Self.Oblast" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Oblast">
-              <PropertyRef Name="OblastId" />
-            </Principal>
-            <Dependent Role="Oblast1">
-              <PropertyRef Name="OblastId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -520,6 +496,18 @@
             </Principal>
             <Dependent Role="Student">
               <PropertyRef Name="KorisnickiNalogId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_Spol">
+          <End Role="Spol" Type="Self.Spol" Multiplicity="0..1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Spol">
+              <PropertyRef Name="SpolId" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="SpolId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -762,6 +750,21 @@
           <Parameter Name="id" Type="int" Mode="In" />
         </Function>
         <Function Name="tsp_Grad_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="tsp_Student_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Ime" Type="nvarchar" Mode="In" />
+          <Parameter Name="Prezime" Type="nvarchar" Mode="In" />
+          <Parameter Name="DatumRodjenja" Type="date" Mode="In" />
+          <Parameter Name="DatumDodavanja" Type="date" Mode="In" />
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+          <Parameter Name="Telefon" Type="nvarchar" Mode="In" />
+          <Parameter Name="Adresa" Type="nvarchar" Mode="In" />
+          <Parameter Name="KorisnickoIme" Type="nvarchar" Mode="In" />
+          <Parameter Name="LozinkaHash" Type="nvarchar" Mode="In" />
+          <Parameter Name="LozinkaSalt" Type="nvarchar" Mode="In" />
+          <Parameter Name="SpolId" Type="int" Mode="In" />
+          <Parameter Name="GradId" Type="int" Mode="In" />
+          <Parameter Name="TipStudentaId" Type="int" Mode="In" />
+        </Function>
         <Function Name="tsp_Student_SelectBanStudents" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="tsp_Tutor_Details" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
@@ -809,12 +812,12 @@
             <End Role="KorisnickiNalog" EntitySet="KorisnickiNalog" />
             <End Role="Administrator" EntitySet="Administrator" />
           </AssociationSet>
-          <AssociationSet Name="FK_BanPrijavaStudent_BanPrijavaStudent" Association="Self.FK_BanPrijavaStudent_BanPrijavaStudent">
-            <End Role="BanPrijavaStudent" EntitySet="BanPrijavaStudent" />
-            <End Role="BanPrijavaStudent1" EntitySet="BanPrijavaStudent" />
-          </AssociationSet>
           <AssociationSet Name="FK_BanPrijavaStudent_Student" Association="Self.FK_BanPrijavaStudent_Student">
             <End Role="Student" EntitySet="Student" />
+            <End Role="BanPrijavaStudent" EntitySet="BanPrijavaStudent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BanPrijavaStudent_Tutor" Association="Self.FK_BanPrijavaStudent_Tutor">
+            <End Role="Tutor" EntitySet="Tutor" />
             <End Role="BanPrijavaStudent" EntitySet="BanPrijavaStudent" />
           </AssociationSet>
           <AssociationSet Name="FK_BanPrijavaTutor_Student" Association="Self.FK_BanPrijavaTutor_Student">
@@ -829,10 +832,6 @@
             <End Role="Ucionica" EntitySet="Ucionica" />
             <End Role="Materijal" EntitySet="Materijal" />
           </AssociationSet>
-          <AssociationSet Name="FK_ObimStudent_ObimStudent" Association="Self.FK_ObimStudent_ObimStudent">
-            <End Role="ObimStudent" EntitySet="ObimStudent" />
-            <End Role="ObimStudent1" EntitySet="ObimStudent" />
-          </AssociationSet>
           <AssociationSet Name="FK_ObimStudent_ObimStudent1" Association="Self.FK_ObimStudent_ObimStudent1">
             <End Role="TipStudenta" EntitySet="TipStudenta" />
             <End Role="ObimStudent" EntitySet="ObimStudent" />
@@ -840,10 +839,6 @@
           <AssociationSet Name="FK_ObimStudent_Tutor" Association="Self.FK_ObimStudent_Tutor">
             <End Role="Tutor" EntitySet="Tutor" />
             <End Role="ObimStudent" EntitySet="ObimStudent" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Oblast_Oblast" Association="Self.FK_Oblast_Oblast">
-            <End Role="Oblast" EntitySet="Oblast" />
-            <End Role="Oblast1" EntitySet="Oblast" />
           </AssociationSet>
           <AssociationSet Name="FK_OcjenaStudent_Student" Association="Self.FK_OcjenaStudent_Student">
             <End Role="Student" EntitySet="Student" />
@@ -883,6 +878,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_Student_KorisnickiNalog" Association="Self.FK_Student_KorisnickiNalog">
             <End Role="KorisnickiNalog" EntitySet="KorisnickiNalog" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_Spol" Association="Self.FK_Student_Spol">
+            <End Role="Spol" EntitySet="Spol" />
             <End Role="Student" EntitySet="Student" />
           </AssociationSet>
           <AssociationSet Name="FK_Student_StatusKorisnickogRacuna" Association="Self.FK_Student_StatusKorisnickogRacuna">
@@ -1112,6 +1111,7 @@
           <Property Name="SpolId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Naziv" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Tutors" Relationship="Self.FK_Tutor_Spol" FromRole="Spol" ToRole="Tutor" />
+          <NavigationProperty Name="Students" Relationship="TutorModel.FK_Student_Spol" FromRole="Spol" ToRole="Student" />
         </EntityType>
         <EntityType Name="StatusKorisnickogRacuna">
           <Key>
@@ -1131,7 +1131,6 @@
           <Property Name="Prezime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="DatumDodavanja" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="DatumRodjenja" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Spol" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="StudentskaSlika" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="NazivUstanove" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="KorisnickiNalogId" Type="Int32" Nullable="false" />
@@ -1150,6 +1149,8 @@
           <NavigationProperty Name="Zahtjevs" Relationship="Self.FK_Zahtjev_Student" FromRole="Student" ToRole="Zahtjev" />
           <NavigationProperty Name="BanPrijavaStudents" Relationship="TutorModel.FK_BanPrijavaStudent_Student" FromRole="Student" ToRole="BanPrijavaStudent" />
           <NavigationProperty Name="BanPrijavaTutors" Relationship="TutorModel.FK_BanPrijavaTutor_Student" FromRole="Student" ToRole="BanPrijavaTutor" />
+          <Property Name="SpolId" Type="Int32" />
+          <NavigationProperty Name="Spol1" Relationship="TutorModel.FK_Student_Spol" FromRole="Student" ToRole="Spol" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -1217,6 +1218,7 @@
           <NavigationProperty Name="Ucionicas" Relationship="Self.FK_Ucionica_Tutor" FromRole="Tutor" ToRole="Ucionica" />
           <NavigationProperty Name="Zahtjevs" Relationship="Self.FK_Zahtjev_Tutor" FromRole="Tutor" ToRole="Zahtjev" />
           <NavigationProperty Name="BanPrijavaTutors" Relationship="TutorModel.FK_BanPrijavaTutor_Tutor" FromRole="Tutor" ToRole="BanPrijavaTutor" />
+          <NavigationProperty Name="BanPrijavaStudents" Relationship="TutorModel.FK_BanPrijavaStudent_Tutor" FromRole="Tutor" ToRole="BanPrijavaStudent" />
         </EntityType>
         <EntityType Name="TutorTitula">
           <Key>
@@ -1897,6 +1899,29 @@
           </FunctionImport>
           <FunctionImport Name="tsp_Tutori_SelectBanTutor" ReturnType="Collection(TutorModel.Tutori_SelectBanTutor_Result)" />
           <FunctionImport Name="tsp_Student_SelectBanStudents" ReturnType="Collection(TutorModel.Student_BanStudents_Result)" />
+          <AssociationSet Name="FK_BanPrijavaStudent_Tutor" Association="TutorModel.FK_BanPrijavaStudent_Tutor">
+            <End Role="Tutor" EntitySet="Tutors" />
+            <End Role="BanPrijavaStudent" EntitySet="BanPrijavaStudents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_Spol" Association="TutorModel.FK_Student_Spol">
+            <End Role="Spol" EntitySet="Spols" />
+            <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
+          <FunctionImport Name="tsp_Student_Insert">
+            <Parameter Name="Ime" Mode="In" Type="String" />
+            <Parameter Name="Prezime" Mode="In" Type="String" />
+            <Parameter Name="DatumRodjenja" Mode="In" Type="DateTime" />
+            <Parameter Name="DatumDodavanja" Mode="In" Type="DateTime" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Telefon" Mode="In" Type="String" />
+            <Parameter Name="Adresa" Mode="In" Type="String" />
+            <Parameter Name="KorisnickoIme" Mode="In" Type="String" />
+            <Parameter Name="LozinkaHash" Mode="In" Type="String" />
+            <Parameter Name="LozinkaSalt" Mode="In" Type="String" />
+            <Parameter Name="SpolId" Mode="In" Type="Int32" />
+            <Parameter Name="GradId" Mode="In" Type="Int32" />
+            <Parameter Name="TipStudentaId" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="Administrator_NameSelect">
           <Property Type="Int32" Name="AdministratorId" Nullable="false" />
@@ -2007,6 +2032,7 @@
           <NavigationProperty Name="BanPrijavaStudent1" Relationship="TutorModel.FK_BanPrijavaStudent_BanPrijavaStudent" FromRole="BanPrijavaStudent" ToRole="BanPrijavaStudent1" />
           <NavigationProperty Name="BanPrijavaStudent2" Relationship="TutorModel.FK_BanPrijavaStudent_BanPrijavaStudent" FromRole="BanPrijavaStudent1" ToRole="BanPrijavaStudent" />
           <NavigationProperty Name="Student" Relationship="TutorModel.FK_BanPrijavaStudent_Student" FromRole="BanPrijavaStudent" ToRole="Student" />
+          <NavigationProperty Name="Tutor" Relationship="TutorModel.FK_BanPrijavaStudent_Tutor" FromRole="BanPrijavaStudent" ToRole="Tutor" />
         </EntityType>
         <Association Name="FK_BanPrijavaStudent_BanPrijavaStudent">
           <End Type="TutorModel.BanPrijavaStudent" Role="BanPrijavaStudent" Multiplicity="1" />
@@ -2114,6 +2140,30 @@
           <Property Type="DateTime" Name="DatumDodavanja" Nullable="false" />
           <Property Type="String" Name="Grad" Nullable="false" MaxLength="100" />
         </ComplexType>
+        <Association Name="FK_BanPrijavaStudent_Tutor">
+          <End Type="TutorModel.Tutor" Role="Tutor" Multiplicity="1" />
+          <End Type="TutorModel.BanPrijavaStudent" Role="BanPrijavaStudent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tutor">
+              <PropertyRef Name="TutorId" />
+            </Principal>
+            <Dependent Role="BanPrijavaStudent">
+              <PropertyRef Name="TutorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_Spol">
+          <End Type="TutorModel.Spol" Role="Spol" Multiplicity="0..1" />
+          <End Type="TutorModel.Student" Role="Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Spol">
+              <PropertyRef Name="SpolId" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="SpolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2275,12 +2325,12 @@
           <EntitySetMapping Name="Students">
             <EntityTypeMapping TypeName="TutorModel.Student">
               <MappingFragment StoreEntitySet="Student">
+                <ScalarProperty Name="SpolId" ColumnName="SpolId" />
                 <ScalarProperty Name="StudentId" ColumnName="StudentId" />
                 <ScalarProperty Name="Ime" ColumnName="Ime" />
                 <ScalarProperty Name="Prezime" ColumnName="Prezime" />
                 <ScalarProperty Name="DatumDodavanja" ColumnName="DatumDodavanja" />
                 <ScalarProperty Name="DatumRodjenja" ColumnName="DatumRodjenja" />
-                <ScalarProperty Name="Spol" ColumnName="Spol" />
                 <ScalarProperty Name="StudentskaSlika" ColumnName="StudentskaSlika" />
                 <ScalarProperty Name="NazivUstanove" ColumnName="NazivUstanove" />
                 <ScalarProperty Name="KorisnickiNalogId" ColumnName="KorisnickiNalogId" />
@@ -2623,6 +2673,7 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="tsp_Student_Insert" FunctionName="TutorModel.Store.tsp_Student_Insert" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

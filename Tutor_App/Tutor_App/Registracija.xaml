@@ -1,38 +1,121 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Tutor_App.Registracija">
+             x:Class="Tutor_App.Registracija" BackgroundColor="#212e53">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="lableStyle" TargetType="Label">
+                <Setter Property="VerticalTextAlignment"
+                        Value="Center" />
+                <Setter Property="HorizontalTextAlignment"
+                        Value="Start" />
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="TextColor" Value="#bed3c3" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontFamily" Value="Georgia" />
+            </Style>
+
+            <Style x:Key="entryStyle" TargetType="Entry">
+                <Setter Property="BackgroundColor" Value="WhiteSmoke"/>
+                <Setter Property="TextColor" Value="Black"/>
+            </Style>
+
+            <Style x:Key="mainHeader" TargetType="Label">
+                <Setter Property="TextColor" Value="#4a919e"/>
+                <Setter Property="FontSize" Value="25"></Setter>
+                <Setter Property="FontFamily" Value="Magneto"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            </Style>
+
+            <Style x:Key="buttonStyle" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#4a919e" />
+                <Setter Property="TextColor" Value="WhiteSmoke"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="BorderColor" Value="#212e53"/>
+                <Setter Property="CornerRadius" Value="5"/>
+            </Style>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout VerticalOptions="CenterAndExpand" Margin="10">
+
+
+        <StackLayout VerticalOptions="CenterAndExpand" Margin="10" >
+
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>                    
+                    <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
 
-                <Label Text="Registracija studenta" FontSize="25" HorizontalTextAlignment="Center" Grid.ColumnSpan="2"></Label>
-                <Label Text="Ime:" VerticalTextAlignment="Center" FontSize="18" HorizontalTextAlignment="Start" Grid.Row="1"></Label>
-                <Entry x:Name="imeInput" Grid.Row="1" Grid.Column="1"></Entry>
-                <Label Text="Prezime:" VerticalTextAlignment="Center" FontSize="18" HorizontalTextAlignment="Start" Grid.Row="2"></Label>
-                <Entry x:Name="prezimeInput" Grid.Row="2" Grid.Column="1"></Entry>
 
-                <Label Text="Email:" VerticalTextAlignment="Center" FontSize="18" HorizontalTextAlignment="Start" Grid.Row="3"></Label>
-                <Entry x:Name="emailInput" Grid.Row="3" Grid.Column="1"></Entry>
 
-                <Label Text="Telefon:" VerticalTextAlignment="Center" FontSize="18" HorizontalTextAlignment="Start" Grid.Row="4"></Label>
-                <Entry x:Name="telefonInput" Grid.Row="4" Grid.Column="1"></Entry>
+                <Label Text="Registracija"  Style="{StaticResource mainHeader}"  Grid.ColumnSpan="2" Margin="15" ></Label>
 
-                <Button x:Name="registracijaButton" Text="Registracija" Grid.Row="5" Grid.Column="1" Clicked="registracijaButton_Clicked"></Button>
+                <Label Text="Ime:"  Style="{StaticResource lableStyle}"  Grid.Row="1"></Label>
+                <Entry x:Name="imeInput" Style="{StaticResource entryStyle}" Grid.Row="1" Grid.Column="1" ></Entry>
+           
+
+                <Label Text="Prezime:" Style="{StaticResource lableStyle}" Grid.Row="2" ></Label>
+                <Entry x:Name="prezimeInput" Style="{StaticResource entryStyle}"  Grid.Row="2" Grid.Column="1"></Entry>
+                    
+                <Label Text="Datum rodjenja:" Style="{StaticResource lableStyle}" Grid.Row="3"></Label>
+                <DatePicker x:Name="datumRodjenjaInput" BackgroundColor="WhiteSmoke" Date="01/01/1995" MinimumDate="1/1/1940" Grid.Row="3" Grid.Column="1"></DatePicker>
+
+                <Label Text="Spol:" Style="{StaticResource lableStyle}" Grid.Row="4"></Label>
+                <Picker x:Name="spolPiker" Grid.Row="5" BackgroundColor="WhiteSmoke" Grid.Column="0"></Picker>
+
+                <Label Text="Grad:" Style="{StaticResource lableStyle}" Grid.Row="4" Grid.Column="1"></Label>
+                <Picker x:Name="gradPicker" Grid.Row="5" BackgroundColor="WhiteSmoke" Grid.Column="1"></Picker>
+
+                <Label Text="Adresa:" Style="{StaticResource lableStyle}" Grid.Row="6"></Label>
+                <Entry x:Name="adresaInput"  Style="{StaticResource entryStyle}" Grid.Row="6" Grid.Column="1"></Entry>
+
+                <Label Text="Email:" Style="{StaticResource lableStyle}" Grid.Row="7"></Label>
+                <Entry x:Name="emailInput" Style="{StaticResource entryStyle}" Grid.Row="7" Grid.Column="1"></Entry>
+
+                <Label Text="Telefon:" Style="{StaticResource lableStyle}" Grid.Row="8"></Label>
+                <Entry x:Name="telefonInput"  Style="{StaticResource entryStyle}" Grid.Row="8" Grid.Column="1"></Entry>
+
+
+
+                <Label Text="Korisnicko ime:" Style="{StaticResource lableStyle}" Grid.Row="9"></Label>
+                <Entry x:Name="korisnickoImeInput"  Style="{StaticResource entryStyle}" Grid.Row="9" Grid.Column="1"></Entry>
+
+                <Label Text="Lozinka:" Style="{StaticResource lableStyle}" Grid.Row="10"></Label>
+                <Entry x:Name="lozinkaInput"   Style="{StaticResource entryStyle}" Grid.Row="10" Grid.Column="1" IsPassword="True"></Entry>
+
+
+
+
+
+                <Label Text="Vrsta studenta:" Style="{StaticResource lableStyle}" Grid.Row="11"></Label>
+                <Picker x:Name="vrstaStudentaPicker" BackgroundColor="WhiteSmoke" Grid.Row="11" Grid.Column="1"></Picker>
+
+
+
+                <Button x:Name="registracijaButton"  Style="{StaticResource buttonStyle}"  Text="Registracija" WidthRequest="50" Grid.Row="12" Grid.Column="1" Clicked="registracijaButton_Clicked" ></Button>
             </Grid>
-            
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

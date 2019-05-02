@@ -68,6 +68,8 @@
         <EntityTypeShape EntityType="TutorModel.BanPrijavaTutor" Width="1.5" PointX="13.25" PointY="15.125" />
         <AssociationConnector Association="TutorModel.FK_BanPrijavaTutor_Student" />
         <AssociationConnector Association="TutorModel.FK_BanPrijavaTutor_Tutor" />
+        <AssociationConnector Association="TutorModel.FK_BanPrijavaStudent_Tutor" />
+        <AssociationConnector Association="TutorModel.FK_Student_Spol" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

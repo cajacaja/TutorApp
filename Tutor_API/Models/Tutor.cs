@@ -23,6 +23,7 @@ namespace Tutor_API.Models
             this.Ucionicas = new HashSet<Ucionica>();
             this.Zahtjevs = new HashSet<Zahtjev>();
             this.BanPrijavaTutors = new HashSet<BanPrijavaTutor>();
+            this.BanPrijavaStudents = new HashSet<BanPrijavaStudent>();
         }
     
         public int TutorId { get; set; }
@@ -64,5 +65,7 @@ namespace Tutor_API.Models
         public virtual ICollection<Zahtjev> Zahtjevs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BanPrijavaTutor> BanPrijavaTutors { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BanPrijavaStudent> BanPrijavaStudents { get; set; }
     }
 }

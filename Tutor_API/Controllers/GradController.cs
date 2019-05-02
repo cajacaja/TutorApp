@@ -17,10 +17,11 @@ namespace Tutor_API.Controllers
         private TutorEntities db = new TutorEntities();
 
         // GET: api/Grad
-        public List<Grad_Result> GetGrads()
+        public List<Grad> GetGrads()
         {
+            //Promjenio si iz Grad_Resul u Grad vjerovatno nece radit u Tutor_UI provjeri kasnije!
             db.Configuration.LazyLoadingEnabled = false;
-            return db.tsp_Grad_SelectAll().ToList();
+            return db.Grads.ToList();
         }
 
         // GET: api/Grad/5

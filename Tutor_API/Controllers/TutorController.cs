@@ -27,7 +27,7 @@ namespace Tutor_API.Controllers
 
         [HttpGet]
         [Route("api/Tutor/TutorFilter/{searchName?}/{GradId?}/{OblastId?}")]
-        public List<Tutor_SearchSelect_Result> TutorFilter(string searchName = "", int GradId=0, int OblastId=0)
+        public List<Tutor_SearchSelect_Result> TutorFilter(string searchName = "", int GradId = 0, int OblastId = 0)
         {
             //Magic string(ne vvalja koristit mogo bi biti bug)
             if (searchName == "Empty") searchName = null;
@@ -52,7 +52,8 @@ namespace Tutor_API.Controllers
         [HttpGet]
         [Route("api/Tutor/TutorDetails/{id?}")]
         [ResponseType(typeof(Tutor_Details_Result))]
-        public IHttpActionResult TutorDetails(int id) {
+        public IHttpActionResult TutorDetails(int id)
+        {
 
             //promjeni ime
             var nesto = db.tsp_Tutor_Details(id).FirstOrDefault();
@@ -64,8 +65,9 @@ namespace Tutor_API.Controllers
 
         [HttpGet]
         [Route("api/Tutor/BanovaniTutori")]
-        
-        public List<Tutori_SelectBanTutor_Result> BanovaniTutori() {
+
+        public List<Tutori_SelectBanTutor_Result> BanovaniTutori()
+        {
 
             return db.tsp_Tutori_SelectBanTutor().ToList();
         }
@@ -82,8 +84,148 @@ namespace Tutor_API.Controllers
             return Ok(tutor);
         }
 
+
+
+        [HttpGet]
+        [Route("api/Tutor/Picture/{id}")]
+        [ResponseType(typeof(byte[]))]
+        public IHttpActionResult Picture(int id)
+        {
+
+            var slika = db.Tutors.FirstOrDefault(x => x.TutorId == id);
+
+            if (slika == null) return NotFound();
+
+            return Ok(slika.SlikaOdobrenja);
+        }
+
+        [Route("api/Tutor")]//(Fix) dodan iz razloga jer odjednom post za tutora je prestao da radi(Magija)
+        [HttpPost]
+        public IHttpActionResult PostTutor(Tutor t)
+        {
+           
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            KorisnickiNalog kNalog = new KorisnickiNalog()
+            {
+                KorisnickoIme = t.KorisnickoIme,
+                LozinkaSalt = t.LozinkaSalt,
+                LozinkaHash = t.LozinkaHash
+            };
+            db.KorisnickiNalogs.Add(kNalog);
+            try { db.SaveChanges(); }
+            catch (DbUpdateException ex)
+            {
+                SqlException greska = ex.InnerException.InnerException as SqlException;
+
+                if (greska != null)
+                {
+                    return BadRequest(Util.ExceptionHandler.DbUpdateExceptionHandler(greska));
+                }
+
+
+            }
+
+            KontaktInfo kontak = new KontaktInfo()
+            {
+                Email = t.Email,
+                Telefon = t.Telefon,
+                Adresa = t.Adresa
+            };
+            try {
+                db.KontaktInfoes.Add(kontak);
+            }
+            
+             catch (DbUpdateException ex)
+            {
+                db.KorisnickiNalogs.Remove(kNalog);
+                SqlException greska = ex.InnerException.InnerException as SqlException;
+
+                if (greska != null)
+                {
+                    return BadRequest(Util.ExceptionHandler.DbUpdateExceptionHandler(greska));
+                }
+
+
+            }
+
+            Tutor noviTutor = new Tutor()
+            {
+                Ime = t.Ime,
+                Prezime = t.Prezime,
+                DatumDodavanja = DateTime.Today,
+                DatumRodjenja = t.DatumRodjenja,
+                NazivUstanove = t.NazivUstanove,
+                SpolId = t.SpolId,
+                GradId = t.GradId,
+                RadnoStanjeId = t.RadnoStanjeId,
+                TutorTitulaId = t.TutorTitulaId,
+                PodKategorijaId = t.PodKategorijaId,
+                CijenaCasa = t.CijenaCasa,
+                TutorSlika = t.TutorSlika,
+                TutorTumbnail = t.TutorTumbnail,
+                SlikaOdobrenja = t.SlikaOdobrenja,
+                StatusKorisnickoRacunaId = t.StatusKorisnickoRacunaId,
+                KorisnickiNalogId = kNalog.KorisnickiNalogId,
+                KontaktInfoId = kontak.KontaktInfoId
+
+            };
+            try { db.Tutors.Add(noviTutor); }            
+            catch (DbUpdateException ex)
+            {
+                db.KorisnickiNalogs.Remove(kNalog);
+                db.KontaktInfoes.Remove(kontak);
+                SqlException greska = ex.InnerException.InnerException as SqlException;
+
+                if (greska != null)
+                {
+                    return BadRequest(Util.ExceptionHandler.DbUpdateExceptionHandler(greska));
+                }
+
+
+            }
+            foreach (var vrstaSudenta in t.TipStudenta)
+            {
+                ObimStudent tipStudenta = new ObimStudent()
+                {
+                    TutorId = noviTutor.TutorId,
+                    TipStudentaId = vrstaSudenta.TipoviStudentaId
+                };
+
+                db.ObimStudents.Add(tipStudenta);
+
+            }
+
+            db.SaveChanges();
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbUpdateException ex)
+            {
+                SqlException greska = ex.InnerException.InnerException as SqlException;
+
+                if (greska != null)
+                {
+                    return BadRequest(Util.ExceptionHandler.DbUpdateExceptionHandler(greska));
+                }
+
+
+            }
+
+
+
+
+            return Created("api/Tutor",noviTutor);//koricenje Creted radi neobicnog ponasanja API
+            
+        }
+
+
         [HttpPut]
-        public IHttpActionResult PutTutor(int id,Tutor tutor)
+        public IHttpActionResult PutTutor(int id, Tutor tutor)
         {
 
             if (!ModelState.IsValid)
@@ -116,95 +258,6 @@ namespace Tutor_API.Controllers
 
             return StatusCode(HttpStatusCode.NoContent);
         }
-
-        [HttpGet]
-        [Route("api/Tutor/Picture/{id}")]
-        [ResponseType(typeof(byte[]))]
-        public IHttpActionResult Picture(int id) {
-
-            var slika = db.Tutors.FirstOrDefault(x => x.TutorId == id);
-
-            if (slika == null) return NotFound();
-
-            return Ok(slika.SlikaOdobrenja);
-        }
-
-        [HttpPost]
-        public IHttpActionResult PostTutor(Tutor t)
-        {
-
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            KorisnickiNalog kNalog = new KorisnickiNalog()
-            {
-                KorisnickoIme=t.KorisnickoIme,
-                LozinkaSalt=t.LozinkaSalt,
-                LozinkaHash=t.LozinkaHash
-            };
-            db.KorisnickiNalogs.Add(kNalog);
-
-            KontaktInfo kontak = new KontaktInfo() {
-                Email=t.Email,
-                Telefon=t.Telefon,
-                Adresa=t.Adresa
-            };
-            db.KontaktInfoes.Add(kontak);
-
-            Tutor noviTutor = new Tutor() {
-                Ime=t.Ime,
-                Prezime=t.Prezime,
-                DatumDodavanja=DateTime.Today,
-                DatumRodjenja=t.DatumRodjenja,
-                NazivUstanove=t.NazivUstanove,
-                SpolId=t.SpolId,
-                GradId=t.GradId,
-                RadnoStanjeId=t.RadnoStanjeId,
-                TutorTitulaId=t.TutorTitulaId,
-                PodKategorijaId=t.PodKategorijaId,
-                CijenaCasa=t.CijenaCasa,
-                TutorSlika=t.TutorSlika,
-                TutorTumbnail=t.TutorTumbnail,
-                SlikaOdobrenja=t.SlikaOdobrenja,
-                StatusKorisnickoRacunaId=t.StatusKorisnickoRacunaId
-            };
-
-            db.Tutors.Add(noviTutor);
-
-            foreach (var vrstaSudenta in t.ObimStudents)
-            {
-                ObimStudent tipStudenta = new ObimStudent()
-                {
-                    TutorId=noviTutor.TutorId,
-                    TipStudentaId=vrstaSudenta.TipStudentaId
-                };
-
-                db.ObimStudents.Add(tipStudenta);
-                
-            }
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateException ex)
-            {
-                SqlException greska = ex.InnerException.InnerException as SqlException;
-
-                if (greska!=null)
-                {
-                    return BadRequest(Util.ExceptionHandler.DbUpdateExceptionHandler(greska));                    
-                }
-
-                
-            }
-            
-
-
-            return CreatedAtRoute("DefaultApi", new { id = noviTutor.TutorId}, t);
-        }
-
 
         protected override void Dispose(bool disposing)
         {

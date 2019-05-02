@@ -24,5 +24,6 @@ namespace Tutor_API.Models
         public virtual BanPrijavaStudent BanPrijavaStudent1 { get; set; }
         public virtual BanPrijavaStudent BanPrijavaStudent2 { get; set; }
         public virtual Student Student { get; set; }
+        public virtual Tutor Tutor { get; set; }
     }
 }

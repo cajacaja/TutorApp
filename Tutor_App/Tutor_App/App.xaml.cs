@@ -11,7 +11,7 @@ namespace Tutor_App
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new Login());
+            MainPage = new NavigationPage(new LoginPage());
         }
 
         protected override void OnStart()

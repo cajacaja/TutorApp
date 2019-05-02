@@ -18,6 +18,7 @@ namespace Tutor_API.Models
         public Spol()
         {
             this.Tutors = new HashSet<Tutor>();
+            this.Students = new HashSet<Student>();
         }
     
         public int SpolId { get; set; }
@@ -25,5 +26,7 @@ namespace Tutor_API.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tutor> Tutors { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Student> Students { get; set; }
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace PCL_tutor.Util
 {
@@ -29,7 +30,11 @@ namespace PCL_tutor.Util
             return client.GetAsync(route + "/" + action + "/" + parameter).Result;
         }
 
-       
+        public HttpResponseMessage PostResponse(object newObject)
+        {
+            var jsonObject = new StringContent(JsonConvert.SerializeObject(newObject), Encoding.UTF8, "application/json");
+            return client.PostAsync(route, jsonObject).Result;
+        }
 
         public HttpResponseMessage DeleteResponse(string parameter = "")
         {

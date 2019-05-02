@@ -260,5 +260,62 @@ namespace Tutor_API.Models
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Student_BanStudents_Result>("tsp_Student_SelectBanStudents");
         }
+    
+        public virtual int tsp_Student_Insert(string ime, string prezime, Nullable<System.DateTime> datumRodjenja, Nullable<System.DateTime> datumDodavanja, string email, string telefon, string adresa, string korisnickoIme, string lozinkaHash, string lozinkaSalt, Nullable<int> spolId, Nullable<int> gradId, Nullable<int> tipStudentaId)
+        {
+            var imeParameter = ime != null ?
+                new ObjectParameter("Ime", ime) :
+                new ObjectParameter("Ime", typeof(string));
+    
+            var prezimeParameter = prezime != null ?
+                new ObjectParameter("Prezime", prezime) :
+                new ObjectParameter("Prezime", typeof(string));
+    
+            var datumRodjenjaParameter = datumRodjenja.HasValue ?
+                new ObjectParameter("DatumRodjenja", datumRodjenja) :
+                new ObjectParameter("DatumRodjenja", typeof(System.DateTime));
+    
+            var datumDodavanjaParameter = datumDodavanja.HasValue ?
+                new ObjectParameter("DatumDodavanja", datumDodavanja) :
+                new ObjectParameter("DatumDodavanja", typeof(System.DateTime));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
+    
+            var telefonParameter = telefon != null ?
+                new ObjectParameter("Telefon", telefon) :
+                new ObjectParameter("Telefon", typeof(string));
+    
+            var adresaParameter = adresa != null ?
+                new ObjectParameter("Adresa", adresa) :
+                new ObjectParameter("Adresa", typeof(string));
+    
+            var korisnickoImeParameter = korisnickoIme != null ?
+                new ObjectParameter("KorisnickoIme", korisnickoIme) :
+                new ObjectParameter("KorisnickoIme", typeof(string));
+    
+            var lozinkaHashParameter = lozinkaHash != null ?
+                new ObjectParameter("LozinkaHash", lozinkaHash) :
+                new ObjectParameter("LozinkaHash", typeof(string));
+    
+            var lozinkaSaltParameter = lozinkaSalt != null ?
+                new ObjectParameter("LozinkaSalt", lozinkaSalt) :
+                new ObjectParameter("LozinkaSalt", typeof(string));
+    
+            var spolIdParameter = spolId.HasValue ?
+                new ObjectParameter("SpolId", spolId) :
+                new ObjectParameter("SpolId", typeof(int));
+    
+            var gradIdParameter = gradId.HasValue ?
+                new ObjectParameter("GradId", gradId) :
+                new ObjectParameter("GradId", typeof(int));
+    
+            var tipStudentaIdParameter = tipStudentaId.HasValue ?
+                new ObjectParameter("TipStudentaId", tipStudentaId) :
+                new ObjectParameter("TipStudentaId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("tsp_Student_Insert", imeParameter, prezimeParameter, datumRodjenjaParameter, datumDodavanjaParameter, emailParameter, telefonParameter, adresaParameter, korisnickoImeParameter, lozinkaHashParameter, lozinkaSaltParameter, spolIdParameter, gradIdParameter, tipStudentaIdParameter);
+        }
     }
 }
