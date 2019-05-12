@@ -8,6 +8,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using Tutor_API.Models;
+using Tutor_API.Util;
 
 namespace Tutor_API.Controllers
 {
@@ -40,6 +41,25 @@ namespace Tutor_API.Controllers
         public List<Administrator_NameSelect> SearchByName(string name = "")
         {
             return db.tsp_Administrator_SelectByImePrezime(name).ToList();
+        }
+
+        [HttpGet]
+        [Route("api/Administrator/LoginCheck/{username}/{password}")]
+        [ResponseType(typeof(Tutor))]
+        public IHttpActionResult LoginCheck(string username, string password)
+        {
+            db.Configuration.LazyLoadingEnabled = false;
+            var korisnickiNalog = db.KorisnickiNalogs.FirstOrDefault(x => x.KorisnickoIme == username);
+            if (korisnickiNalog == null) return NotFound();
+
+            var passwordHash = PasswordCheck.GenerateHash(korisnickiNalog.LozinkaSalt, password);
+            if (passwordHash != korisnickiNalog.LozinkaHash) return NotFound();
+
+            var administrator = db.Administrators.FirstOrDefault(x => x.KorisnickiNalogId == korisnickiNalog.KorisnickiNalogId);
+            if (administrator == null) return NotFound();
+
+
+            return Ok(administrator);
         }
 
         [HttpPost]

@@ -33,6 +33,7 @@ namespace Tutor_API.Controllers
         [ResponseType(typeof(Student))]
         public IHttpActionResult GetStudent(int id)
         {
+            db.Configuration.LazyLoadingEnabled = false;
             Student student = db.Students.Find(id);
             if (student == null)
             {
@@ -52,7 +53,7 @@ namespace Tutor_API.Controllers
         [HttpGet]
         [Route("api/Student/LoginCheck/{username}/{password}")]
         [ResponseType(typeof(int))]
-        public IHttpActionResult LoginCheck(string username,string password)
+        public IHttpActionResult LoginCheck(string username, string password)
         {
             db.Configuration.LazyLoadingEnabled = false;
             var korisnickiNalog = db.KorisnickiNalogs.FirstOrDefault(x => x.KorisnickoIme == username);
@@ -68,6 +69,58 @@ namespace Tutor_API.Controllers
             return Ok(student.StudentId);
         }
 
+        [HttpGet]
+        [Route("api/Student/SearchStudent/{searchName?}/{GradId?}")]        
+        public List<Student_SearchSelect_Result> SearchStudent(string searchName = "", int GradId=0)
+        {
+            if (searchName == "Empty") searchName = null;
+            if (GradId == 0)
+                return db.tsp_Student_SearchSelect(searchName, null).ToList();
+                
+            return db.tsp_Student_SearchSelect(searchName, GradId).ToList();
+        }
+
+        [HttpGet]
+        [Route("api/Student/StudentDetails/{id?}")]
+        [ResponseType(typeof(Student_Details_Result))]
+        public IHttpActionResult StudentDetails(int id)
+        {
+
+            //promjeni ime
+            var student = db.tsp_Student_Details(id).FirstOrDefault();
+
+            if (student == null) return NotFound();
+
+            return Ok(student);
+        }
+
+
+        [HttpGet]
+        [Route("api/Student/PohadjeniPredmeti/{id?}")]
+        [ResponseType(typeof(List<Student_PohadajniPredmeti_Result>))]
+        public IHttpActionResult PohadjeniPredmeti(int id)
+        {
+
+            //promjeni ime
+            var student = db.Students.Find(id);
+
+            if (student == null) return NotFound();
+
+            return Ok(db.tsp_Student_PohadajniPredmeti(id).ToList());
+        }
+
+        [HttpGet]
+        [Route("api/Student/PohadjaneUcionice/{id?}")]
+        [ResponseType(typeof(List<Student_SelectUcionice_Result>))]
+        public IHttpActionResult PohadjaneUcionice(int id) {
+
+            var student = db.Students.Find(id);
+
+            if (student == null) return NotFound();
+
+
+            return Ok(db.tsp_Student_SelectUcionice(id).ToList());
+        }
         // PUT: api/Student/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutStudent(int id, Student student)

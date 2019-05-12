@@ -36,6 +36,21 @@ namespace Tutor_API.Controllers
             return Ok(podkategorija);
         }
 
+        [HttpGet]
+        [ResponseType(typeof(List<Predmet_Report_Result>))]
+        [Route("api/Podkategorija/Report/{GradId?}/{DatumOd?}/{DatumDo?}")]
+        public IHttpActionResult Report(int GradId,DateTime DatumOd,DateTime DatumDo) {
+
+            if (GradId == 0)
+            {
+               return Ok(db.tps_Predmet_Report(null, DatumOd, DatumDo).ToList());
+            }
+
+           return Ok(db.tps_Predmet_Report(GradId, DatumOd, DatumDo).ToList());
+        }
+
+        
+
         // PUT: api/Podkategorija/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutPodkategorija(int id, Podkategorija podkategorija)

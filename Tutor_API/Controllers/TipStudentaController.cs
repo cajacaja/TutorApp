@@ -23,10 +23,10 @@ namespace Tutor_API.Controllers
             return db.TipStudentas.ToList();
         }
 
-        // GET: api/TipStudenta/5
-        [ResponseType(typeof(Oblast_select_Result))]
+        // GET: api/TipStudenta/5        
         public List<Oblast_select_Result> GetTipStudenta(int id)
         {
+            var test= db.tps_Oblast_select(id).ToList();
             return db.tps_Oblast_select(id).ToList();
         }
 

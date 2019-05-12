@@ -317,5 +317,206 @@ namespace Tutor_API.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("tsp_Student_Insert", imeParameter, prezimeParameter, datumRodjenjaParameter, datumDodavanjaParameter, emailParameter, telefonParameter, adresaParameter, korisnickoImeParameter, lozinkaHashParameter, lozinkaSaltParameter, spolIdParameter, gradIdParameter, tipStudentaIdParameter);
         }
+    
+        public virtual ObjectResult<Student_SearchSelect_Result> tsp_Student_SearchSelect(string imeprezime, Nullable<int> gradId)
+        {
+            var imeprezimeParameter = imeprezime != null ?
+                new ObjectParameter("Imeprezime", imeprezime) :
+                new ObjectParameter("Imeprezime", typeof(string));
+    
+            var gradIdParameter = gradId.HasValue ?
+                new ObjectParameter("GradId", gradId) :
+                new ObjectParameter("GradId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Student_SearchSelect_Result>("tsp_Student_SearchSelect", imeprezimeParameter, gradIdParameter);
+        }
+    
+        public virtual ObjectResult<Student_Details_Result> tsp_Student_Details(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Student_Details_Result>("tsp_Student_Details", idParameter);
+        }
+    
+        public virtual ObjectResult<OcjenaStudent_SelectComments_Result> tsp_OcjenaStudent_SelectComments(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<OcjenaStudent_SelectComments_Result>("tsp_OcjenaStudent_SelectComments", idParameter);
+        }
+    
+        public virtual ObjectResult<Student_PohadajniPredmeti_Result> tsp_Student_PohadajniPredmeti(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Student_PohadajniPredmeti_Result>("tsp_Student_PohadajniPredmeti", idParameter);
+        }
+    
+        public virtual ObjectResult<Student_SelectUcionice_Result> tsp_Student_SelectUcionice(Nullable<int> studentId)
+        {
+            var studentIdParameter = studentId.HasValue ?
+                new ObjectParameter("StudentId", studentId) :
+                new ObjectParameter("StudentId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Student_SelectUcionice_Result>("tsp_Student_SelectUcionice", studentIdParameter);
+        }
+    
+        public virtual ObjectResult<Ucionica_SelectActive_Result> tsp_Ucionica_SelectActive(Nullable<int> oblastId, Nullable<int> gradId)
+        {
+            var oblastIdParameter = oblastId.HasValue ?
+                new ObjectParameter("OblastId", oblastId) :
+                new ObjectParameter("OblastId", typeof(int));
+    
+            var gradIdParameter = gradId.HasValue ?
+                new ObjectParameter("GradId", gradId) :
+                new ObjectParameter("GradId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Ucionica_SelectActive_Result>("tsp_Ucionica_SelectActive", oblastIdParameter, gradIdParameter);
+        }
+    
+        public virtual ObjectResult<Ucionica_SelectStaro_Result> tsp_Ucionica_SelectStaro(Nullable<int> oblastId, Nullable<int> gradId)
+        {
+            var oblastIdParameter = oblastId.HasValue ?
+                new ObjectParameter("OblastId", oblastId) :
+                new ObjectParameter("OblastId", typeof(int));
+    
+            var gradIdParameter = gradId.HasValue ?
+                new ObjectParameter("GradId", gradId) :
+                new ObjectParameter("GradId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Ucionica_SelectStaro_Result>("tsp_Ucionica_SelectStaro", oblastIdParameter, gradIdParameter);
+        }
+    
+        public virtual ObjectResult<Ucionica_Details_Result> tsp_Ucionica_Details(Nullable<int> ucionicaId)
+        {
+            var ucionicaIdParameter = ucionicaId.HasValue ?
+                new ObjectParameter("UcionicaId", ucionicaId) :
+                new ObjectParameter("UcionicaId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Ucionica_Details_Result>("tsp_Ucionica_Details", ucionicaIdParameter);
+        }
+    
+        public virtual ObjectResult<Ucionica_SelectUcenici_Result> tsp_Ucionica_SelectUcenici(Nullable<int> ucionicaid)
+        {
+            var ucionicaidParameter = ucionicaid.HasValue ?
+                new ObjectParameter("Ucionicaid", ucionicaid) :
+                new ObjectParameter("Ucionicaid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Ucionica_SelectUcenici_Result>("tsp_Ucionica_SelectUcenici", ucionicaidParameter);
+        }
+    
+        public virtual ObjectResult<Predmet_Report_Result> tps_Predmet_Report(Nullable<int> gradId, Nullable<System.DateTime> datumOd, Nullable<System.DateTime> datumDo)
+        {
+            var gradIdParameter = gradId.HasValue ?
+                new ObjectParameter("GradId", gradId) :
+                new ObjectParameter("GradId", typeof(int));
+    
+            var datumOdParameter = datumOd.HasValue ?
+                new ObjectParameter("DatumOd", datumOd) :
+                new ObjectParameter("DatumOd", typeof(System.DateTime));
+    
+            var datumDoParameter = datumDo.HasValue ?
+                new ObjectParameter("DatumDo", datumDo) :
+                new ObjectParameter("DatumDo", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Predmet_Report_Result>("tps_Predmet_Report", gradIdParameter, datumOdParameter, datumDoParameter);
+        }
+    
+        public virtual ObjectResult<Tutor_SelectBest_Result> tsp_Tutor_SelectBest(Nullable<int> gradId, Nullable<int> oblastId, Nullable<System.DateTime> datumOd, Nullable<System.DateTime> datumDo)
+        {
+            var gradIdParameter = gradId.HasValue ?
+                new ObjectParameter("GradId", gradId) :
+                new ObjectParameter("GradId", typeof(int));
+    
+            var oblastIdParameter = oblastId.HasValue ?
+                new ObjectParameter("OblastId", oblastId) :
+                new ObjectParameter("OblastId", typeof(int));
+    
+            var datumOdParameter = datumOd.HasValue ?
+                new ObjectParameter("DatumOd", datumOd) :
+                new ObjectParameter("DatumOd", typeof(System.DateTime));
+    
+            var datumDoParameter = datumDo.HasValue ?
+                new ObjectParameter("DatumDo", datumDo) :
+                new ObjectParameter("DatumDo", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Tutor_SelectBest_Result>("tsp_Tutor_SelectBest", gradIdParameter, oblastIdParameter, datumOdParameter, datumDoParameter);
+        }
+    
+        public virtual ObjectResult<Tutor_UpdateSelect_Result> tsp_Tutor_UpdateSelect(Nullable<int> tutorId)
+        {
+            var tutorIdParameter = tutorId.HasValue ?
+                new ObjectParameter("tutorId", tutorId) :
+                new ObjectParameter("tutorId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Tutor_UpdateSelect_Result>("tsp_Tutor_UpdateSelect", tutorIdParameter);
+        }
+    
+        public virtual int tsp_Tutor_Update(Nullable<int> tutuorId, Nullable<int> gradId, Nullable<int> radnoStanjeId, Nullable<int> tutorTitulaId, Nullable<int> podKategorijaId, string nazivUstanove, Nullable<double> cijenaCasA, byte[] tutorTumbnail, byte[] tutorSlika, string lozinkaSalt, string lozinkaHash, string email, string telefon, string adresa)
+        {
+            var tutuorIdParameter = tutuorId.HasValue ?
+                new ObjectParameter("TutuorId", tutuorId) :
+                new ObjectParameter("TutuorId", typeof(int));
+    
+            var gradIdParameter = gradId.HasValue ?
+                new ObjectParameter("GradId", gradId) :
+                new ObjectParameter("GradId", typeof(int));
+    
+            var radnoStanjeIdParameter = radnoStanjeId.HasValue ?
+                new ObjectParameter("RadnoStanjeId", radnoStanjeId) :
+                new ObjectParameter("RadnoStanjeId", typeof(int));
+    
+            var tutorTitulaIdParameter = tutorTitulaId.HasValue ?
+                new ObjectParameter("TutorTitulaId", tutorTitulaId) :
+                new ObjectParameter("TutorTitulaId", typeof(int));
+    
+            var podKategorijaIdParameter = podKategorijaId.HasValue ?
+                new ObjectParameter("PodKategorijaId", podKategorijaId) :
+                new ObjectParameter("PodKategorijaId", typeof(int));
+    
+            var nazivUstanoveParameter = nazivUstanove != null ?
+                new ObjectParameter("NazivUstanove", nazivUstanove) :
+                new ObjectParameter("NazivUstanove", typeof(string));
+    
+            var cijenaCasAParameter = cijenaCasA.HasValue ?
+                new ObjectParameter("CijenaCasA", cijenaCasA) :
+                new ObjectParameter("CijenaCasA", typeof(double));
+    
+            var tutorTumbnailParameter = tutorTumbnail != null ?
+                new ObjectParameter("TutorTumbnail", tutorTumbnail) :
+                new ObjectParameter("TutorTumbnail", typeof(byte[]));
+    
+            var tutorSlikaParameter = tutorSlika != null ?
+                new ObjectParameter("TutorSlika", tutorSlika) :
+                new ObjectParameter("TutorSlika", typeof(byte[]));
+    
+            var lozinkaSaltParameter = lozinkaSalt != null ?
+                new ObjectParameter("LozinkaSalt", lozinkaSalt) :
+                new ObjectParameter("LozinkaSalt", typeof(string));
+    
+            var lozinkaHashParameter = lozinkaHash != null ?
+                new ObjectParameter("LozinkaHash", lozinkaHash) :
+                new ObjectParameter("LozinkaHash", typeof(string));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
+    
+            var telefonParameter = telefon != null ?
+                new ObjectParameter("Telefon", telefon) :
+                new ObjectParameter("Telefon", typeof(string));
+    
+            var adresaParameter = adresa != null ?
+                new ObjectParameter("Adresa", adresa) :
+                new ObjectParameter("Adresa", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("tsp_Tutor_Update", tutuorIdParameter, gradIdParameter, radnoStanjeIdParameter, tutorTitulaIdParameter, podKategorijaIdParameter, nazivUstanoveParameter, cijenaCasAParameter, tutorTumbnailParameter, tutorSlikaParameter, lozinkaSaltParameter, lozinkaHashParameter, emailParameter, telefonParameter, adresaParameter);
+        }
     }
 }

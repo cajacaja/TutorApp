@@ -4,11 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using Tutor_API.Models;
 
 namespace Tutor_UI
 {
     public static class Global
     {
+        
+
         public const string URI = "http://localhost:61494/";
 
         public const string AdministratorRoute = "api/Administrator";
@@ -26,6 +29,14 @@ namespace Tutor_UI
         public const string BanStudentRoute = "api/BanPrijavaStudent"; 
         public const string BanTutorRoute = "api/BanPrijavaTutors";
         public const string StudentRoute = " api/Student";
+        public const string OcjenaStudentRoute = "api/OcjenaStudent";
+
+
+        public static Administrator prijavljeniAdministrator { get; set; }
+
+        public static Tutor prijavljeniTutor { get; set; }
+
+
 
 
         public static Tuple<bool, string> TextInputProvjera(string inputText,string regex="")

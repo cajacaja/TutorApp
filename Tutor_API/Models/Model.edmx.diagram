@@ -40,7 +40,6 @@
         <AssociationConnector Association="TutorModel.FK_Tutor_KorisnickiNalog" ManuallyRouted="false" />
         <AssociationConnector Association="TutorModel.FK_Materijal_Ucionica" ManuallyRouted="false" />
         <AssociationConnector Association="TutorModel.FK_Ucionica_NivoTezine" ManuallyRouted="false" />
-        <AssociationConnector Association="TutorModel.FK_ObimStudent_ObimStudent" ManuallyRouted="false" />
         <AssociationConnector Association="TutorModel.FK_ObimStudent_ObimStudent1" ManuallyRouted="false" />
         <AssociationConnector Association="TutorModel.FK_ObimStudent_Tutor" ManuallyRouted="false" />
         <AssociationConnector Association="TutorModel.FK_Oblast_Oblast" ManuallyRouted="false" />
@@ -63,7 +62,6 @@
         <AssociationConnector Association="TutorModel.FK_Ucionica_Tutor" ManuallyRouted="false" />
         <AssociationConnector Association="TutorModel.FK_Zahtjev_Tutor" ManuallyRouted="false" />
         <EntityTypeShape EntityType="TutorModel.BanPrijavaStudent" Width="1.5" PointX="8.25" PointY="16.25" />
-        <AssociationConnector Association="TutorModel.FK_BanPrijavaStudent_BanPrijavaStudent" />
         <AssociationConnector Association="TutorModel.FK_BanPrijavaStudent_Student" />
         <EntityTypeShape EntityType="TutorModel.BanPrijavaTutor" Width="1.5" PointX="13.25" PointY="15.125" />
         <AssociationConnector Association="TutorModel.FK_BanPrijavaTutor_Student" />

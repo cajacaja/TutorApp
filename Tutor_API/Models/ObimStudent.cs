@@ -18,8 +18,6 @@ namespace Tutor_API.Models
         public int TutorId { get; set; }
         public int TipStudentaId { get; set; }
     
-        public virtual ObimStudent ObimStudent1 { get; set; }
-        public virtual ObimStudent ObimStudent2 { get; set; }
         public virtual TipStudenta TipStudenta { get; set; }
         public virtual Tutor Tutor { get; set; }
     }

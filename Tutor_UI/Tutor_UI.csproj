@@ -32,8 +32,29 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.900.148\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.900.148\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.900.148\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.900.148\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.900.148\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -58,93 +79,159 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Messeges.resx</DependentUpon>
     </Compile>
+    <Compile Include="PredmetDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PredmetDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="PredmetReport.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PredmetReport.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Users\AddTutor.cs">
+    <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="Users\Administrator\AddTutor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Users\AddTutor.Designer.cs">
+    <Compile Include="Users\Administrator\AddTutor.Designer.cs">
       <DependentUpon>AddTutor.cs</DependentUpon>
     </Compile>
-    <Compile Include="Users\AdministratorAdd.cs">
+    <Compile Include="Users\Administrator\AdministratorAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Users\AdministratorAdd.Designer.cs">
+    <Compile Include="Users\Administrator\AdministratorAdd.Designer.cs">
       <DependentUpon>AdministratorAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="Users\AdministratorForm.cs">
+    <Compile Include="Users\Administrator\AdministratorForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Users\AdministratorForm.Designer.cs">
+    <Compile Include="Users\Administrator\AdministratorForm.Designer.cs">
       <DependentUpon>AdministratorForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Users\BanovaniKorisniciForm.cs">
+    <Compile Include="Users\Administrator\BanovaniKorisniciForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Users\BanovaniKorisniciForm.Designer.cs">
+    <Compile Include="Users\Administrator\BanovaniKorisniciForm.Designer.cs">
       <DependentUpon>BanovaniKorisniciForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Users\EditAdministrator.cs">
+    <Compile Include="Users\Administrator\EditAdministrator.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Users\EditAdministrator.Designer.cs">
+    <Compile Include="Users\Administrator\EditAdministrator.Designer.cs">
       <DependentUpon>EditAdministrator.cs</DependentUpon>
     </Compile>
-    <Compile Include="Users\MainForm.cs">
+    <Compile Include="Users\Administrator\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Users\MainForm.Designer.cs">
+    <Compile Include="Users\Administrator\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Users\PrijaveStudentForm.cs">
+    <Compile Include="Users\Administrator\PrijaveStudentForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Users\PrijaveStudentForm.Designer.cs">
+    <Compile Include="Users\Administrator\PrijaveStudentForm.Designer.cs">
       <DependentUpon>PrijaveStudentForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Users\PrijaveTutorForm.cs">
+    <Compile Include="Users\Administrator\PrijaveTutorForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Users\PrijaveTutorForm.Designer.cs">
+    <Compile Include="Users\Administrator\PrijaveTutorForm.Designer.cs">
       <DependentUpon>PrijaveTutorForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Users\StudentPrijaveDetailsForm.cs">
+    <Compile Include="Users\Administrator\ReportPredmet.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Users\StudentPrijaveDetailsForm.Designer.cs">
+    <Compile Include="Users\Administrator\ReportPredmet.Designer.cs">
+      <DependentUpon>ReportPredmet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Users\Administrator\ReportTutora.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\Administrator\ReportTutora.Designer.cs">
+      <DependentUpon>ReportTutora.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Users\Administrator\StudentDetalj.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\Administrator\StudentDetalj.Designer.cs">
+      <DependentUpon>StudentDetalj.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Users\Administrator\StudentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\Administrator\StudentForm.Designer.cs">
+      <DependentUpon>StudentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Users\Administrator\StudentPrijaveDetailsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\Administrator\StudentPrijaveDetailsForm.Designer.cs">
       <DependentUpon>StudentPrijaveDetailsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Users\TutorDetalj.cs">
+    <Compile Include="Users\Administrator\TutorDetalj.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Users\TutorDetalj.Designer.cs">
+    <Compile Include="Users\Administrator\TutorDetalj.Designer.cs">
       <DependentUpon>TutorDetalj.cs</DependentUpon>
     </Compile>
-    <Compile Include="Users\TutorForm.cs">
+    <Compile Include="Users\Administrator\TutorForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Users\TutorForm.Designer.cs">
+    <Compile Include="Users\Administrator\TutorForm.Designer.cs">
       <DependentUpon>TutorForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Users\TutorPrijaveDetailsForm.cs">
+    <Compile Include="Users\Administrator\TutorPrijaveDetailsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Users\TutorPrijaveDetailsForm.Designer.cs">
+    <Compile Include="Users\Administrator\TutorPrijaveDetailsForm.Designer.cs">
       <DependentUpon>TutorPrijaveDetailsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Users\TutotrDokaz.cs">
+    <Compile Include="Users\Administrator\TutotrDokaz.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Users\TutotrDokaz.Designer.cs">
+    <Compile Include="Users\Administrator\TutotrDokaz.Designer.cs">
       <DependentUpon>TutotrDokaz.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Users\Administrator\UcionicaDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\Administrator\UcionicaDetails.Designer.cs">
+      <DependentUpon>UcionicaDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Users\Administrator\UcioniceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\Administrator\UcioniceForm.Designer.cs">
+      <DependentUpon>UcioniceForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Users\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Users\Tutor\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\Tutor\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Users\Tutor\ProfilDetailsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\Tutor\ProfilDetailsForm.Designer.cs">
+      <DependentUpon>ProfilDetailsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Users\Tutor\TutorEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\Tutor\TutorEditForm.Designer.cs">
+      <DependentUpon>TutorEditForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Util\UIHelper.cs" />
     <Compile Include="Util\WebAPIHelper.cs" />
-    <Compile Include="_140109DataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>_140109DataSet.xsd</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Messeges.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Messeges.Designer.cs</LastGenOutput>
@@ -159,46 +246,102 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Users\AddTutor.resx">
+    <EmbeddedResource Include="Report\BestTutorReport.rdlc" />
+    <EmbeddedResource Include="Users\Administrator\AddTutor.resx">
       <DependentUpon>AddTutor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Users\AdministratorAdd.resx">
+    <EmbeddedResource Include="Users\Administrator\AdministratorAdd.resx">
       <DependentUpon>AdministratorAdd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Users\AdministratorForm.resx">
+    <EmbeddedResource Include="Users\Administrator\AdministratorForm.resx">
       <DependentUpon>AdministratorForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Users\BanovaniKorisniciForm.resx">
+    <EmbeddedResource Include="Users\Administrator\BanovaniKorisniciForm.resx">
       <DependentUpon>BanovaniKorisniciForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Users\EditAdministrator.resx">
+    <EmbeddedResource Include="Users\Administrator\EditAdministrator.resx">
       <DependentUpon>EditAdministrator.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Users\MainForm.resx">
+    <EmbeddedResource Include="Users\Administrator\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Users\PrijaveStudentForm.resx">
+    <EmbeddedResource Include="Users\Administrator\PrijaveStudentForm.resx">
       <DependentUpon>PrijaveStudentForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Users\PrijaveTutorForm.resx">
+    <EmbeddedResource Include="Users\Administrator\PrijaveTutorForm.resx">
       <DependentUpon>PrijaveTutorForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Users\StudentPrijaveDetailsForm.resx">
+    <EmbeddedResource Include="Report\ReportPredmet.rdlc" />
+    <EmbeddedResource Include="Users\Administrator\ReportPredmet.resx">
+      <DependentUpon>ReportPredmet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\Administrator\ReportTutora.resx">
+      <DependentUpon>ReportTutora.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\Administrator\StudentDetalj.resx">
+      <DependentUpon>StudentDetalj.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\Administrator\StudentForm.resx">
+      <DependentUpon>StudentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\Administrator\StudentPrijaveDetailsForm.resx">
       <DependentUpon>StudentPrijaveDetailsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Users\TutorDetalj.resx">
+    <EmbeddedResource Include="Users\Administrator\TutorDetalj.resx">
       <DependentUpon>TutorDetalj.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Users\TutorForm.resx">
+    <EmbeddedResource Include="Users\Administrator\TutorForm.resx">
       <DependentUpon>TutorForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Users\TutorPrijaveDetailsForm.resx">
+    <EmbeddedResource Include="Users\Administrator\TutorPrijaveDetailsForm.resx">
       <DependentUpon>TutorPrijaveDetailsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Users\TutotrDokaz.resx">
+    <EmbeddedResource Include="Users\Administrator\TutotrDokaz.resx">
       <DependentUpon>TutotrDokaz.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Users\Administrator\UcionicaDetails.resx">
+      <DependentUpon>UcionicaDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\Administrator\UcioniceForm.resx">
+      <DependentUpon>UcioniceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\Tutor\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\Tutor\ProfilDetailsForm.resx">
+      <DependentUpon>ProfilDetailsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\Tutor\TutorEditForm.resx">
+      <DependentUpon>TutorEditForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="PredmetDataSet.xsc">
+      <DependentUpon>PredmetDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="PredmetDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PredmetDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PredmetDataSet.xss">
+      <DependentUpon>PredmetDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="PredmetReport.xsc">
+      <DependentUpon>PredmetReport.xsd</DependentUpon>
+    </None>
+    <None Include="PredmetReport.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PredmetReport.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PredmetReport.xss">
+      <DependentUpon>PredmetReport.xsd</DependentUpon>
+    </None>
+    <None Include="Properties\DataSources\Tutor_API.Models.Predmet_Report_Result.datasource" />
+    <None Include="Properties\DataSources\Tutor_API.Models.Tutor_SelectBest_Result.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -208,17 +351,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="_140109DataSet.xsc">
-      <DependentUpon>_140109DataSet.xsd</DependentUpon>
-    </None>
-    <None Include="_140109DataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>_140109DataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="_140109DataSet.xss">
-      <DependentUpon>_140109DataSet.xsd</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -232,5 +364,23 @@
   <ItemGroup>
     <None Include="Resources\watchwithme-bg.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\gitara.jpg" />
+    <Content Include="Resources\stock-photo-guitar-against-a-rustic-wood-background-270682895.jpg" />
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

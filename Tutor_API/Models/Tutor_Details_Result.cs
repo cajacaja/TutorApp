@@ -25,5 +25,7 @@ namespace Tutor_API.Models
         public string RadnoStanje { get; set; }
         public string NazivUstanove { get; set; }
         public byte[] TutorTumbnail { get; set; }
+        public string Spol { get; set; }
+        public Nullable<int> Ocjena { get; set; }
     }
 }

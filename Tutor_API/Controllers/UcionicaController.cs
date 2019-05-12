@@ -36,6 +36,53 @@ namespace Tutor_API.Controllers
         }
 
         [HttpGet]
+        [ResponseType(typeof(List<Ucionica_SelectActive_Result>))]
+        [Route("api/Ucionica/AktivneUcionice/{OblastId?}/{GradId?}")]
+        public IHttpActionResult AktivneUcionice(int OblastId=0,int GradId=0) {
+
+            if (OblastId == 0) {
+
+                if (GradId == 0) {
+
+                    return Ok(db.tsp_Ucionica_SelectActive(null, null).ToList());
+                }
+                return Ok(db.tsp_Ucionica_SelectActive(null, GradId).ToList());
+            }
+
+            if (GradId == 0) {
+                return Ok(db.tsp_Ucionica_SelectActive(OblastId, null).ToList());
+            }
+
+            return Ok(db.tsp_Ucionica_SelectActive(OblastId, GradId).ToList());
+        }
+
+
+        [HttpGet]
+        [ResponseType(typeof(List<Ucionica_SelectStaro_Result>))]
+        [Route("api/Ucionica/StareUcionice/{OblastId?}/{GradId?}")]
+        public IHttpActionResult StareUcionice(int OblastId = 0, int GradId = 0)
+        {
+
+            if (OblastId == 0)
+            {
+
+                if (GradId == 0)
+                {
+
+                    return Ok(db.tsp_Ucionica_SelectStaro(null, null).ToList());
+                }
+                return Ok(db.tsp_Ucionica_SelectStaro(null, GradId).ToList());
+            }
+
+            if (GradId == 0)
+            {
+                return Ok(db.tsp_Ucionica_SelectStaro(OblastId, null).ToList());
+            }
+
+            return Ok(db.tsp_Ucionica_SelectStaro(OblastId, GradId).ToList());
+        }
+
+        [HttpGet]
         [ResponseType(typeof(List<Ucionica_SelectTutorUcionica_Result>))]
         [Route("api/Ucionica/TutorUcionice/{id}")]
         public IHttpActionResult TutorUcionice(int id) {
@@ -46,6 +93,35 @@ namespace Tutor_API.Controllers
 
 
             return Ok(listaUcionica);
+        }
+
+        [HttpGet]
+        [ResponseType(typeof(Ucionica_Details_Result))]
+        [Route("api/Ucionica/UcionicaDetails/{id}")]
+        public IHttpActionResult UcionicaDetails(int id) {
+
+            var ucionica = db.Ucionicas.Find(id);
+
+            if (ucionica == null) return NotFound();
+
+
+
+            return Ok(db.tsp_Ucionica_Details(id).FirstOrDefault());
+        }
+
+        [HttpGet]
+        [ResponseType(typeof(List<Ucionica_SelectUcenici_Result>))]
+        [Route("api/Ucionica/StudentiUcionice/{id}")]
+        public IHttpActionResult StudentiUcionice(int id)
+        {
+
+            var ucionica = db.Ucionicas.Find(id);
+
+            if (ucionica == null) return NotFound();
+
+
+
+            return Ok(db.tsp_Ucionica_SelectUcenici(id).ToList());
         }
 
         // PUT: api/Ucionica/5

@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using Tutor_API.Models;
+using Tutor_API.Util;
 
 namespace Tutor_API.Controllers
 {
@@ -20,7 +21,8 @@ namespace Tutor_API.Controllers
 
         [HttpGet]
         [Route("api/Tutor")]
-        public List<Tutor_SelectAll_Result> GetTutor() {
+        public List<Tutor_SelectAll_Result> GetTutor()
+        {
 
             return db.tsp_Tutor_SelectAll().ToList();
         }
@@ -99,11 +101,63 @@ namespace Tutor_API.Controllers
             return Ok(slika.SlikaOdobrenja);
         }
 
+        [HttpGet]
+        [Route("api/Tutor/SelectBest/{GradId?}/{OblastId?}/{DatumOd}/{DatumDo}")]
+        [ResponseType(typeof(List<Tutor_SelectBest_Result>))]
+        public IHttpActionResult SelectBest(int GradId, int OblastId, DateTime DatumOd, DateTime DatumDo)
+        {
+            if (GradId == 0)
+            {
+                if (OblastId == 0)
+                {
+                    return Ok(db.tsp_Tutor_SelectBest(null, null, DatumOd, DatumDo).ToList());
+                }
+                return Ok(db.tsp_Tutor_SelectBest(null, OblastId, DatumOd, DatumDo).ToList());
+            }
+
+            if (OblastId == 0)
+            {
+                return Ok(db.tsp_Tutor_SelectBest(GradId, null, DatumOd, DatumDo).ToList());
+            }
+
+            return Ok(db.tsp_Tutor_SelectBest(GradId, OblastId, DatumOd, DatumDo).ToList());
+        }
+        [HttpGet]
+        [Route("api/Tutor/SelectOne/{TutorId}")]
+        [ResponseType(typeof(Tutor_UpdateSelect_Result))]
+        public IHttpActionResult SelectOne(int TutorId)
+        {
+
+            var tutor = db.Tutors.Find(TutorId);
+            if (tutor.Equals(null)) return NotFound();
+
+            return Ok(db.tsp_Tutor_UpdateSelect(TutorId).FirstOrDefault());
+        }
+
+        [HttpGet]
+        [Route("api/Tutor/LoginCheck/{username}/{password}")]
+        [ResponseType(typeof(Tutor))]
+        public IHttpActionResult LoginCheck(string username, string password)
+        {
+            db.Configuration.LazyLoadingEnabled = false;
+            var korisnickiNalog = db.KorisnickiNalogs.FirstOrDefault(x => x.KorisnickoIme == username);
+            if (korisnickiNalog == null) return NotFound();
+
+            var passwordHash = PasswordCheck.GenerateHash(korisnickiNalog.LozinkaSalt, password);
+            if (passwordHash != korisnickiNalog.LozinkaHash) return NotFound();
+
+            var tutor = db.Tutors.FirstOrDefault(x => x.KorisnickiNalogId == korisnickiNalog.KorisnickiNalogId);
+            if (tutor == null) return NotFound();
+
+
+            return Ok(tutor);
+        }
+
         [Route("api/Tutor")]//(Fix) dodan iz razloga jer odjednom post za tutora je prestao da radi(Magija)
         [HttpPost]
         public IHttpActionResult PostTutor(Tutor t)
         {
-           
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -135,11 +189,12 @@ namespace Tutor_API.Controllers
                 Telefon = t.Telefon,
                 Adresa = t.Adresa
             };
-            try {
+            try
+            {
                 db.KontaktInfoes.Add(kontak);
             }
-            
-             catch (DbUpdateException ex)
+
+            catch (DbUpdateException ex)
             {
                 db.KorisnickiNalogs.Remove(kNalog);
                 SqlException greska = ex.InnerException.InnerException as SqlException;
@@ -173,7 +228,7 @@ namespace Tutor_API.Controllers
                 KontaktInfoId = kontak.KontaktInfoId
 
             };
-            try { db.Tutors.Add(noviTutor); }            
+            try { db.Tutors.Add(noviTutor); }
             catch (DbUpdateException ex)
             {
                 db.KorisnickiNalogs.Remove(kNalog);
@@ -199,7 +254,7 @@ namespace Tutor_API.Controllers
 
             }
 
-            db.SaveChanges();
+
             try
             {
                 db.SaveChanges();
@@ -219,8 +274,8 @@ namespace Tutor_API.Controllers
 
 
 
-            return Created("api/Tutor",noviTutor);//koricenje Creted radi neobicnog ponasanja API
-            
+            return Created("api/Tutor", noviTutor);//koricenje Creted radi neobicnog ponasanja API
+
         }
 
 
@@ -228,33 +283,37 @@ namespace Tutor_API.Controllers
         public IHttpActionResult PutTutor(int id, Tutor tutor)
         {
 
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            var checkTutor = db.Tutors.Find(id);
+            if (checkTutor.Equals(null)) return NotFound();
 
-            if (id != tutor.TutorId)
-            {
-                return BadRequest();
-            }
+            db.tsp_Tutor_Update(id, tutor.GradId, tutor.RadnoStanjeId, tutor.TutorTitulaId, tutor.PodKategorijaId,
+                                tutor.NazivUstanove, tutor.CijenaCasa, tutor.TutorTumbnail, tutor.TutorSlika, tutor.LozinkaSalt, tutor.LozinkaHash,
+                                tutor.Email, tutor.Telefon, tutor.Adresa);
 
-            db.Entry(tutor).State = EntityState.Modified;
+            var lst = db.ObimStudents.Where(x => x.TutorId == id);
 
-            try
+            if (lst != null)
             {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!TutorExists(id))
+                foreach (var item in lst)
                 {
-                    return NotFound();
+                    db.ObimStudents.Remove(item);
                 }
-                else
-                {
-                    throw;
-                }
+               
             }
+
+            foreach (var vrstaSudenta in tutor.TipStudenta)
+            {
+                ObimStudent tipStudenta = new ObimStudent()
+                {
+                    TutorId = checkTutor.TutorId,
+                    TipStudentaId = vrstaSudenta.TipoviStudentaId
+                };
+
+                db.ObimStudents.Add(tipStudenta);
+
+            }
+
+            db.SaveChanges();
 
             return StatusCode(HttpStatusCode.NoContent);
         }
@@ -277,13 +336,13 @@ namespace Tutor_API.Controllers
             HttpResponseMessage msg = new HttpResponseMessage()
             {
                 StatusCode = HttpStatusCode.Conflict,
-                ReasonPhrase=reason,
-                Content=new StringContent(reason)
-               
+                ReasonPhrase = reason,
+                Content = new StringContent(reason)
+
             };
 
             return new HttpResponseException(msg);
-        
+
         }
     }
 }

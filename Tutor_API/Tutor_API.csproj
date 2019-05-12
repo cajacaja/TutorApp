@@ -109,6 +109,7 @@
     <Compile Include="Controllers\BanPrijavaTutorsController.cs" />
     <Compile Include="Controllers\GradController.cs" />
     <Compile Include="Controllers\OblastController.cs" />
+    <Compile Include="Controllers\OcjenaStudentController.cs" />
     <Compile Include="Controllers\OcjenaTutorController.cs" />
     <Compile Include="Controllers\PodkategorijaController.cs" />
     <Compile Include="Controllers\RadnoStanjeController.cs" />
@@ -206,10 +207,16 @@
     <Compile Include="Models\OcjenaStudent.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\OcjenaStudent_SelectComments_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\OcjenaTutor.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Podkategorija.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Predmet_Report_Result.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Prijava.cs">
@@ -229,6 +236,18 @@
     </Compile>
     <Compile Include="Models\StudentExstension.cs" />
     <Compile Include="Models\Student_BanStudents_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Student_Details_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Student_PohadajniPredmeti_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Student_SearchSelect_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Student_SelectUcionice_Result.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagram.cs">
@@ -262,10 +281,28 @@
     <Compile Include="Models\Tutor_SelectAll_Result.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Tutor_SelectBest_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tutor_UpdateSelect_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Ucionica.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Ucionica_Details_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Ucionica_SelectActive_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Ucionica_SelectStaro_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Ucionica_SelectTutorUcionica_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Ucionica_SelectUcenici_Result.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Zahtjev.cs">
@@ -286,7 +323,6 @@
   <ItemGroup>
     <EntityDeploy Include="Models\Model.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <Content Include="Models\Model.edmx.diagram">
       <DependentUpon>Model.edmx</DependentUpon>

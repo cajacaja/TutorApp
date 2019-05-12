@@ -19,6 +19,7 @@ namespace Tutor_API.Models
         public string Komentar { get; set; }
         public int TutorId { get; set; }
         public int StudentId { get; set; }
+        public int Ocjena { get; set; }
     
         public virtual Student Student { get; set; }
         public virtual Tutor Tutor { get; set; }

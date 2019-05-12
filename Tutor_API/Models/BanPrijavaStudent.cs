@@ -21,8 +21,6 @@ namespace Tutor_API.Models
         public System.DateTime DatumPrijave { get; set; }
         public bool IsRead { get; set; }
     
-        public virtual BanPrijavaStudent BanPrijavaStudent1 { get; set; }
-        public virtual BanPrijavaStudent BanPrijavaStudent2 { get; set; }
         public virtual Student Student { get; set; }
         public virtual Tutor Tutor { get; set; }
     }
