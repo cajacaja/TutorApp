@@ -30,13 +30,19 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.tutorProfilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.zahtjeviZaCasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mojiStudentiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ucioniceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tutorProfilToolStripMenuItem});
+            this.tutorProfilToolStripMenuItem,
+            this.zahtjeviZaCasToolStripMenuItem,
+            this.mojiStudentiToolStripMenuItem,
+            this.ucioniceToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
@@ -49,6 +55,27 @@
             this.tutorProfilToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
             this.tutorProfilToolStripMenuItem.Text = "Tutor profil";
             this.tutorProfilToolStripMenuItem.Click += new System.EventHandler(this.tutorProfilToolStripMenuItem_Click);
+            // 
+            // zahtjeviZaCasToolStripMenuItem
+            // 
+            this.zahtjeviZaCasToolStripMenuItem.Name = "zahtjeviZaCasToolStripMenuItem";
+            this.zahtjeviZaCasToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
+            this.zahtjeviZaCasToolStripMenuItem.Text = "Zahtjevi za cas";
+            this.zahtjeviZaCasToolStripMenuItem.Click += new System.EventHandler(this.zahtjeviZaCasToolStripMenuItem_Click);
+            // 
+            // mojiStudentiToolStripMenuItem
+            // 
+            this.mojiStudentiToolStripMenuItem.Name = "mojiStudentiToolStripMenuItem";
+            this.mojiStudentiToolStripMenuItem.Size = new System.Drawing.Size(89, 20);
+            this.mojiStudentiToolStripMenuItem.Text = "Moji studenti";
+            this.mojiStudentiToolStripMenuItem.Click += new System.EventHandler(this.mojiStudentiToolStripMenuItem_Click);
+            // 
+            // ucioniceToolStripMenuItem
+            // 
+            this.ucioniceToolStripMenuItem.Name = "ucioniceToolStripMenuItem";
+            this.ucioniceToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
+            this.ucioniceToolStripMenuItem.Text = "Ucionice";
+            this.ucioniceToolStripMenuItem.Click += new System.EventHandler(this.ucioniceToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -70,5 +97,8 @@
 
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem tutorProfilToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem zahtjeviZaCasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mojiStudentiToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ucioniceToolStripMenuItem;
     }
 }

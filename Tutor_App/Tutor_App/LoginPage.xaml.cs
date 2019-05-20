@@ -20,6 +20,7 @@ namespace Tutor_App
 		{
 			InitializeComponent ();
             errorMessage.IsVisible = false;
+           
 
         }
 

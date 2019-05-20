@@ -23,8 +23,6 @@ namespace Tutor_API.Models
         public int OblastId { get; set; }
         public string Naziv { get; set; }
     
-        public virtual Oblast Oblast1 { get; set; }
-        public virtual Oblast Oblast2 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Podkategorija> Podkategorijas { get; set; }
     }

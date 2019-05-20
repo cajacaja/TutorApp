@@ -12,18 +12,14 @@ namespace Tutor_API.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Dan
+    public partial class TerminCasa
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Dan()
-        {
-            this.Termins = new HashSet<Termin>();
-        }
+        public int TerminId { get; set; }
+        public int ZahtjevId { get; set; }
+        public System.DateTime DatumCasa { get; set; }
+        public System.TimeSpan VrijemePocetka { get; set; }
+        public string DanNaziv { get; set; }
     
-        public int DanId { get; set; }
-        public string Naziv { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Termin> Termins { get; set; }
+        public virtual Zahtjev Zahtjev { get; set; }
     }
 }

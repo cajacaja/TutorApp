@@ -28,7 +28,6 @@ namespace Tutor_API.Models
         }
     
         public virtual DbSet<Administrator> Administrators { get; set; }
-        public virtual DbSet<Dan> Dans { get; set; }
         public virtual DbSet<Grad> Grads { get; set; }
         public virtual DbSet<KontaktInfo> KontaktInfoes { get; set; }
         public virtual DbSet<KorisnickiNalog> KorisnickiNalogs { get; set; }
@@ -53,6 +52,7 @@ namespace Tutor_API.Models
         public virtual DbSet<Zahtjev> Zahtjevs { get; set; }
         public virtual DbSet<BanPrijavaStudent> BanPrijavaStudents { get; set; }
         public virtual DbSet<BanPrijavaTutor> BanPrijavaTutors { get; set; }
+        public virtual DbSet<TerminCasa> TerminCasas { get; set; }
     
         public virtual int tsp_Administrator_Insert(string ime, string prezime, Nullable<System.DateTime> datumDodavanja, string email, string telefon, string korisnickoIme, string lozinkaHash, string lozinkaSalt)
         {
@@ -517,6 +517,69 @@ namespace Tutor_API.Models
                 new ObjectParameter("Adresa", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("tsp_Tutor_Update", tutuorIdParameter, gradIdParameter, radnoStanjeIdParameter, tutorTitulaIdParameter, podKategorijaIdParameter, nazivUstanoveParameter, cijenaCasAParameter, tutorTumbnailParameter, tutorSlikaParameter, lozinkaSaltParameter, lozinkaHashParameter, emailParameter, telefonParameter, adresaParameter);
+        }
+    
+        public virtual ObjectResult<Zahtjev_SelectUnread_Result> tsp_Zahtjev_SelectUnread(Nullable<int> tutorId)
+        {
+            var tutorIdParameter = tutorId.HasValue ?
+                new ObjectParameter("TutorId", tutorId) :
+                new ObjectParameter("TutorId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Zahtjev_SelectUnread_Result>("tsp_Zahtjev_SelectUnread", tutorIdParameter);
+        }
+    
+        public virtual ObjectResult<Zahtjev_SelectDetail_Result> tsp_Zahtjev_SelectDetail(Nullable<int> zahtjevId)
+        {
+            var zahtjevIdParameter = zahtjevId.HasValue ?
+                new ObjectParameter("ZahtjevId", zahtjevId) :
+                new ObjectParameter("ZahtjevId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Zahtjev_SelectDetail_Result>("tsp_Zahtjev_SelectDetail", zahtjevIdParameter);
+        }
+    
+        public virtual ObjectResult<TerminCas_SelectTermins_Result> tsp_TerminCas_SelectTermins(Nullable<int> tutuorId)
+        {
+            var tutuorIdParameter = tutuorId.HasValue ?
+                new ObjectParameter("TutuorId", tutuorId) :
+                new ObjectParameter("TutuorId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<TerminCas_SelectTermins_Result>("tsp_TerminCas_SelectTermins", tutuorIdParameter);
+        }
+    
+        public virtual ObjectResult<Tutor_SelectTutorStudents_Result> tsp_Tutor_SelectTutorStudents(Nullable<int> tutorId)
+        {
+            var tutorIdParameter = tutorId.HasValue ?
+                new ObjectParameter("TutorId", tutorId) :
+                new ObjectParameter("TutorId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Tutor_SelectTutorStudents_Result>("tsp_Tutor_SelectTutorStudents", tutorIdParameter);
+        }
+    
+        public virtual ObjectResult<Tutor_SelectActiveUcionica_Result> tsp_Tutor_SelectActiveUcionica(Nullable<int> tutorid)
+        {
+            var tutoridParameter = tutorid.HasValue ?
+                new ObjectParameter("Tutorid", tutorid) :
+                new ObjectParameter("Tutorid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Tutor_SelectActiveUcionica_Result>("tsp_Tutor_SelectActiveUcionica", tutoridParameter);
+        }
+    
+        public virtual ObjectResult<Ucionica_SelectDetails_Result> tsp_Ucionica_SelectDetails(Nullable<int> ucionicaId)
+        {
+            var ucionicaIdParameter = ucionicaId.HasValue ?
+                new ObjectParameter("UcionicaId", ucionicaId) :
+                new ObjectParameter("UcionicaId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Ucionica_SelectDetails_Result>("tsp_Ucionica_SelectDetails", ucionicaIdParameter);
+        }
+    
+        public virtual ObjectResult<Prijave_SelectAccepted_Result> tsp_Prijave_SelectAccepted(Nullable<int> ucionicaId)
+        {
+            var ucionicaIdParameter = ucionicaId.HasValue ?
+                new ObjectParameter("UcionicaId", ucionicaId) :
+                new ObjectParameter("UcionicaId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Prijave_SelectAccepted_Result>("tsp_Prijave_SelectAccepted", ucionicaIdParameter);
         }
     }
 }

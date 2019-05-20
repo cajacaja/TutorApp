@@ -16,10 +16,9 @@ namespace Tutor_API.Models
     {
         public int TerminId { get; set; }
         public int UcionicaId { get; set; }
-        public int DanId { get; set; }
         public string PocetakCasa { get; set; }
+        public string Dan { get; set; }
     
-        public virtual Dan Dan { get; set; }
         public virtual Ucionica Ucionica { get; set; }
     }
 }

@@ -6,7 +6,6 @@
     <edmx:Diagrams>
       <Diagram DiagramId="075adcd3dac2407a944878047817ea89" Name="Diagram1">
         <EntityTypeShape EntityType="TutorModel.Administrator" Width="1.5" PointX="3" PointY="14.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="TutorModel.Dan" Width="1.5" PointX="11.25" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="TutorModel.Grad" Width="1.5" PointX="0.75" PointY="11.125" IsExpanded="true" />
         <EntityTypeShape EntityType="TutorModel.KontaktInfo" Width="1.5" PointX="0.75" PointY="14.375" IsExpanded="true" />
         <EntityTypeShape EntityType="TutorModel.KorisnickiNalog" Width="1.5" PointX="0.75" PointY="17.625" IsExpanded="true" />
@@ -14,14 +13,14 @@
         <EntityTypeShape EntityType="TutorModel.NivoTezine" Width="1.5" PointX="6" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="TutorModel.ObimStudent" Width="1.5" PointX="5.25" PointY="8.375" IsExpanded="true" />
         <EntityTypeShape EntityType="TutorModel.Oblast" Width="1.5" PointX="1.5" PointY="23.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TutorModel.OcjenaStudent" Width="1.5" PointX="8.25" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TutorModel.OcjenaStudent" Width="1.5" PointX="9.25" PointY="12.75" IsExpanded="true" />
         <EntityTypeShape EntityType="TutorModel.OcjenaTutor" Width="1.5" PointX="11.25" PointY="10.875" IsExpanded="true" />
         <EntityTypeShape EntityType="TutorModel.Podkategorija" Width="1.5" PointX="0.75" PointY="20.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TutorModel.Prijava" Width="1.5" PointX="10.5" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TutorModel.Prijava" Width="1.5" PointX="11.625" PointY="14.25" IsExpanded="true" />
         <EntityTypeShape EntityType="TutorModel.RadnoStanje" Width="1.5" PointX="0.75" PointY="26.5" IsExpanded="true" />
         <EntityTypeShape EntityType="TutorModel.Spol" Width="1.5" PointX="0.75" PointY="28.875" IsExpanded="true" />
         <EntityTypeShape EntityType="TutorModel.StatusKorisnickogRacuna" Width="1.5" PointX="0.75" PointY="31.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="TutorModel.Student" Width="1.5" PointX="6" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TutorModel.Student" Width="1.5" PointX="6.125" PointY="12.75" IsExpanded="true" />
         <EntityTypeShape EntityType="TutorModel.sysdiagram" Width="1.5" PointX="5.75" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="TutorModel.Termin" Width="1.5" PointX="13.5" PointY="8.5" IsExpanded="true" />
         <EntityTypeShape EntityType="TutorModel.TipStudenta" Width="1.5" PointX="3" PointY="2.625" IsExpanded="true" />
@@ -31,7 +30,6 @@
         <EntityTypeShape EntityType="TutorModel.Zahtjev" Width="1.5" PointX="11.25" PointY="6.5" IsExpanded="true" />
         <AssociationConnector Association="TutorModel.FK_Administrator_KontaktInfo" ManuallyRouted="false" />
         <AssociationConnector Association="TutorModel.FK_Administrator_KorisnickiNalog" ManuallyRouted="false" />
-        <AssociationConnector Association="TutorModel.FK_Termin_Dan" ManuallyRouted="false" />
         <AssociationConnector Association="TutorModel.FK_Student_Grad" ManuallyRouted="false" />
         <AssociationConnector Association="TutorModel.FK_Tutor_Grad" ManuallyRouted="false" />
         <AssociationConnector Association="TutorModel.FK_Student_KontaktInfo" ManuallyRouted="false" />
@@ -42,9 +40,7 @@
         <AssociationConnector Association="TutorModel.FK_Ucionica_NivoTezine" ManuallyRouted="false" />
         <AssociationConnector Association="TutorModel.FK_ObimStudent_ObimStudent1" ManuallyRouted="false" />
         <AssociationConnector Association="TutorModel.FK_ObimStudent_Tutor" ManuallyRouted="false" />
-        <AssociationConnector Association="TutorModel.FK_Oblast_Oblast" ManuallyRouted="false" />
         <AssociationConnector Association="TutorModel.FK_Podkategorija_Oblast" ManuallyRouted="false" />
-        <AssociationConnector Association="TutorModel.FK_OcjenaStudent_Student" ManuallyRouted="false" />
         <AssociationConnector Association="TutorModel.FK_OcjenaStudent_Tutor" ManuallyRouted="false" />
         <AssociationConnector Association="TutorModel.FK_OcjenaTutor_Student" ManuallyRouted="false" />
         <AssociationConnector Association="TutorModel.FK_OcjenaTutor_Tutor" ManuallyRouted="false" />
@@ -68,6 +64,9 @@
         <AssociationConnector Association="TutorModel.FK_BanPrijavaTutor_Tutor" />
         <AssociationConnector Association="TutorModel.FK_BanPrijavaStudent_Tutor" />
         <AssociationConnector Association="TutorModel.FK_Student_Spol" />
+        <EntityTypeShape EntityType="TutorModel.TerminCasa" Width="1.5" PointX="13.5" PointY="5.375" />
+        <AssociationConnector Association="TutorModel.FK_TerminCasa_Zahtjev" />
+        <AssociationConnector Association="TutorModel.FK_OcjenaStudent_Student1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

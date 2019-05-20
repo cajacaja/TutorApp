@@ -38,13 +38,6 @@
           <Property Name="DatumPrijave" Type="date" Nullable="false" />
           <Property Name="IsRead" Type="bit" Nullable="false" />
         </EntityType>
-        <EntityType Name="Dan">
-          <Key>
-            <PropertyRef Name="DanId" />
-          </Key>
-          <Property Name="DanId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Naziv" Type="nvarchar" MaxLength="50" Nullable="false" />
-        </EntityType>
         <EntityType Name="Grad">
           <Key>
             <PropertyRef Name="GradId" />
@@ -108,10 +101,10 @@
           </Key>
           <Property Name="OcjenaStudentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Datum" Type="date" Nullable="false" />
-          <Property Name="Komentar" Type="text" />
+          <Property Name="Komentar" Type="nvarchar" MaxLength="255" />
+          <Property Name="Ocjena" Type="int" Nullable="false" />
           <Property Name="TutorId" Type="int" Nullable="false" />
           <Property Name="StudentId" Type="int" Nullable="false" />
-          <Property Name="Ocjena" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="OcjenaTutor">
           <Key>
@@ -198,8 +191,18 @@
           </Key>
           <Property Name="TerminId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UcionicaId" Type="int" Nullable="false" />
-          <Property Name="DanId" Type="int" Nullable="false" />
           <Property Name="PocetakCasa" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Dan" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TerminCasa">
+          <Key>
+            <PropertyRef Name="TerminId" />
+          </Key>
+          <Property Name="TerminId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ZahtjevId" Type="int" Nullable="false" />
+          <Property Name="DatumCasa" Type="date" Nullable="false" />
+          <Property Name="VrijemePocetka" Type="time" Precision="7" Nullable="false" />
+          <Property Name="DanNaziv" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="TipStudenta">
           <Key>
@@ -271,6 +274,7 @@
           <Property Name="Odbijeno" Type="bit" Nullable="false" />
           <Property Name="TutorId" Type="int" Nullable="false" />
           <Property Name="StudentId" Type="int" Nullable="false" />
+          <Property Name="DatumDo" Type="date" Nullable="false" />
         </EntityType>
         <Association Name="FK_Administrator_KontaktInfo">
           <End Role="KontaktInfo" Type="Self.KontaktInfo" Multiplicity="1" />
@@ -382,13 +386,13 @@
         </Association>
         <Association Name="FK_OcjenaStudent_Student">
           <End Role="Student" Type="Self.Student" Multiplicity="1" />
-          <End Role="OcjenaStudent" Type="Self.OcjenaStudent" Multiplicity="0..1" />
+          <End Role="OcjenaStudent" Type="Self.OcjenaStudent" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Student">
               <PropertyRef Name="StudentId" />
             </Principal>
             <Dependent Role="OcjenaStudent">
-              <PropertyRef Name="OcjenaStudentId" />
+              <PropertyRef Name="StudentId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -536,18 +540,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Termin_Dan">
-          <End Role="Dan" Type="Self.Dan" Multiplicity="1" />
-          <End Role="Termin" Type="Self.Termin" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Dan">
-              <PropertyRef Name="DanId" />
-            </Principal>
-            <Dependent Role="Termin">
-              <PropertyRef Name="DanId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Termin_Ucionica">
           <End Role="Ucionica" Type="Self.Ucionica" Multiplicity="1" />
           <End Role="Termin" Type="Self.Termin" Multiplicity="*" />
@@ -557,6 +549,18 @@
             </Principal>
             <Dependent Role="Termin">
               <PropertyRef Name="UcionicaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TerminCasa_Zahtjev">
+          <End Role="Zahtjev" Type="Self.Zahtjev" Multiplicity="1" />
+          <End Role="TerminCasa" Type="Self.TerminCasa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zahtjev">
+              <PropertyRef Name="ZahtjevId" />
+            </Principal>
+            <Dependent Role="TerminCasa">
+              <PropertyRef Name="ZahtjevId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -759,6 +763,9 @@
         <Function Name="tsp_OcjenaStudent_SelectComments" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
         </Function>
+        <Function Name="tsp_Prijave_SelectAccepted" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UcionicaId" Type="int" Mode="In" />
+        </Function>
         <Function Name="tsp_Student_Details" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
         </Function>
@@ -788,11 +795,17 @@
         <Function Name="tsp_Student_SelectUcionice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="StudentId" Type="int" Mode="In" />
         </Function>
+        <Function Name="tsp_TerminCas_SelectTermins" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TutuorId" Type="int" Mode="In" />
+        </Function>
         <Function Name="tsp_Tutor_Details" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
         </Function>
         <Function Name="tsp_Tutor_ReviewsSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="tsp_Tutor_SelectActiveUcionica" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Tutorid" Type="int" Mode="In" />
         </Function>
         <Function Name="tsp_Tutor_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="tsp_Tutor_SelectBest" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -800,6 +813,9 @@
           <Parameter Name="OblastId" Type="int" Mode="In" />
           <Parameter Name="DatumOd" Type="date" Mode="In" />
           <Parameter Name="DatumDo" Type="date" Mode="In" />
+        </Function>
+        <Function Name="tsp_Tutor_SelectTutorStudents" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TutorId" Type="int" Mode="In" />
         </Function>
         <Function Name="tsp_Tutor_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="TutuorId" Type="int" Mode="In" />
@@ -828,6 +844,9 @@
           <Parameter Name="OblastId" Type="int" Mode="In" />
           <Parameter Name="GradId" Type="int" Mode="In" />
         </Function>
+        <Function Name="tsp_Ucionica_SelectDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UcionicaId" Type="int" Mode="In" />
+        </Function>
         <Function Name="tsp_Ucionica_SelectStaro" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="OblastId" Type="int" Mode="In" />
           <Parameter Name="GradId" Type="int" Mode="In" />
@@ -838,11 +857,16 @@
         <Function Name="tsp_Ucionica_SelectUcenici" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Ucionicaid" Type="int" Mode="In" />
         </Function>
+        <Function Name="tsp_Zahtjev_SelectDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ZahtjevId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="tsp_Zahtjev_SelectUnread" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TutorId" Type="int" Mode="In" />
+        </Function>
         <EntityContainer Name="TutorModelStoreContainer">
           <EntitySet Name="Administrator" EntityType="Self.Administrator" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BanPrijavaStudent" EntityType="Self.BanPrijavaStudent" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BanPrijavaTutor" EntityType="Self.BanPrijavaTutor" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Dan" EntityType="Self.Dan" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Grad" EntityType="Self.Grad" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="KontaktInfo" EntityType="Self.KontaktInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="KorisnickiNalog" EntityType="Self.KorisnickiNalog" Schema="dbo" store:Type="Tables" />
@@ -860,6 +884,7 @@
           <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Termin" EntityType="Self.Termin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TerminCasa" EntityType="Self.TerminCasa" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TipStudenta" EntityType="Self.TipStudenta" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tutor" EntityType="Self.Tutor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TutorTitula" EntityType="Self.TutorTitula" Schema="dbo" store:Type="Tables" />
@@ -953,13 +978,13 @@
             <End Role="TipStudenta" EntitySet="TipStudenta" />
             <End Role="Student" EntitySet="Student" />
           </AssociationSet>
-          <AssociationSet Name="FK_Termin_Dan" Association="Self.FK_Termin_Dan">
-            <End Role="Dan" EntitySet="Dan" />
-            <End Role="Termin" EntitySet="Termin" />
-          </AssociationSet>
           <AssociationSet Name="FK_Termin_Ucionica" Association="Self.FK_Termin_Ucionica">
             <End Role="Ucionica" EntitySet="Ucionica" />
             <End Role="Termin" EntitySet="Termin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TerminCasa_Zahtjev" Association="Self.FK_TerminCasa_Zahtjev">
+            <End Role="Zahtjev" EntitySet="Zahtjev" />
+            <End Role="TerminCasa" EntitySet="TerminCasa" />
           </AssociationSet>
           <AssociationSet Name="FK_Tutor_Grad" Association="Self.FK_Tutor_Grad">
             <End Role="Grad" EntitySet="Grad" />
@@ -1026,14 +1051,6 @@
           <Property Name="KontaktInfoId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="KontaktInfo" Relationship="Self.FK_Administrator_KontaktInfo" FromRole="Administrator" ToRole="KontaktInfo" />
           <NavigationProperty Name="KorisnickiNalog" Relationship="Self.FK_Administrator_KorisnickiNalog" FromRole="Administrator" ToRole="KorisnickiNalog" />
-        </EntityType>
-        <EntityType Name="Dan">
-          <Key>
-            <PropertyRef Name="DanId" />
-          </Key>
-          <Property Name="DanId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Naziv" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Termins" Relationship="Self.FK_Termin_Dan" FromRole="Dan" ToRole="Termin" />
         </EntityType>
         <EntityType Name="Grad">
           <Key>
@@ -1103,8 +1120,6 @@
           </Key>
           <Property Name="OblastId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Naziv" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Oblast1" Relationship="Self.FK_Oblast_Oblast" FromRole="Oblast" ToRole="Oblast1" />
-          <NavigationProperty Name="Oblast2" Relationship="Self.FK_Oblast_Oblast" FromRole="Oblast1" ToRole="Oblast" />
           <NavigationProperty Name="Podkategorijas" Relationship="Self.FK_Podkategorija_Oblast" FromRole="Oblast" ToRole="Podkategorija" />
         </EntityType>
         <EntityType Name="OcjenaStudent">
@@ -1113,12 +1128,12 @@
           </Key>
           <Property Name="OcjenaStudentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Datum" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Komentar" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Komentar" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="TutorId" Type="Int32" Nullable="false" />
           <Property Name="StudentId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Student" Relationship="Self.FK_OcjenaStudent_Student" FromRole="OcjenaStudent" ToRole="Student" />
           <NavigationProperty Name="Tutor" Relationship="Self.FK_OcjenaStudent_Tutor" FromRole="OcjenaStudent" ToRole="Tutor" />
           <Property Name="Ocjena" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Student" Relationship="TutorModel.FK_OcjenaStudent_Student1" FromRole="OcjenaStudent" ToRole="Student" />
         </EntityType>
         <EntityType Name="OcjenaTutor">
           <Key>
@@ -1201,7 +1216,6 @@
           <NavigationProperty Name="Grad" Relationship="Self.FK_Student_Grad" FromRole="Student" ToRole="Grad" />
           <NavigationProperty Name="KontaktInfo" Relationship="Self.FK_Student_KontaktInfo" FromRole="Student" ToRole="KontaktInfo" />
           <NavigationProperty Name="KorisnickiNalog" Relationship="Self.FK_Student_KorisnickiNalog" FromRole="Student" ToRole="KorisnickiNalog" />
-          <NavigationProperty Name="OcjenaStudent" Relationship="Self.FK_OcjenaStudent_Student" FromRole="Student" ToRole="OcjenaStudent" />
           <NavigationProperty Name="OcjenaTutors" Relationship="Self.FK_OcjenaTutor_Student" FromRole="Student" ToRole="OcjenaTutor" />
           <NavigationProperty Name="Prijavas" Relationship="Self.FK_Prijava_Student" FromRole="Student" ToRole="Prijava" />
           <NavigationProperty Name="StatusKorisnickogRacuna" Relationship="Self.FK_Student_StatusKorisnickogRacuna" FromRole="Student" ToRole="StatusKorisnickogRacuna" />
@@ -1211,6 +1225,7 @@
           <NavigationProperty Name="BanPrijavaTutors" Relationship="TutorModel.FK_BanPrijavaTutor_Student" FromRole="Student" ToRole="BanPrijavaTutor" />
           <Property Name="SpolId" Type="Int32" />
           <NavigationProperty Name="Spol1" Relationship="TutorModel.FK_Student_Spol" FromRole="Student" ToRole="Spol" />
+          <NavigationProperty Name="OcjenaStudents" Relationship="TutorModel.FK_OcjenaStudent_Student1" FromRole="Student" ToRole="OcjenaStudent" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -1228,10 +1243,9 @@
           </Key>
           <Property Name="TerminId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UcionicaId" Type="Int32" Nullable="false" />
-          <Property Name="DanId" Type="Int32" Nullable="false" />
           <Property Name="PocetakCasa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Dan" Relationship="Self.FK_Termin_Dan" FromRole="Termin" ToRole="Dan" />
           <NavigationProperty Name="Ucionica" Relationship="Self.FK_Termin_Ucionica" FromRole="Termin" ToRole="Ucionica" />
+          <Property Name="Dan" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="TipStudenta">
           <Key>
@@ -1328,6 +1342,8 @@
           <Property Name="StudentId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Student" Relationship="Self.FK_Zahtjev_Student" FromRole="Zahtjev" ToRole="Student" />
           <NavigationProperty Name="Tutor" Relationship="Self.FK_Zahtjev_Tutor" FromRole="Zahtjev" ToRole="Tutor" />
+          <Property Name="DatumDo" Type="DateTime" Precision="0" Nullable="false" />
+          <NavigationProperty Name="TerminCasas" Relationship="TutorModel.FK_TerminCasa_Zahtjev" FromRole="Zahtjev" ToRole="TerminCasa" />
         </EntityType>
         <Association Name="FK_Administrator_KontaktInfo">
           <End Role="KontaktInfo" Type="Self.KontaktInfo" Multiplicity="1" />
@@ -1350,18 +1366,6 @@
             </Principal>
             <Dependent Role="Administrator">
               <PropertyRef Name="KorisnickiNalogId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Termin_Dan">
-          <End Role="Dan" Type="Self.Dan" Multiplicity="1" />
-          <End Role="Termin" Type="Self.Termin" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Dan">
-              <PropertyRef Name="DanId" />
-            </Principal>
-            <Dependent Role="Termin">
-              <PropertyRef Name="DanId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1485,18 +1489,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Oblast_Oblast">
-          <End Role="Oblast" Type="Self.Oblast" Multiplicity="1" />
-          <End Role="Oblast1" Type="Self.Oblast" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Oblast">
-              <PropertyRef Name="OblastId" />
-            </Principal>
-            <Dependent Role="Oblast1">
-              <PropertyRef Name="OblastId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Podkategorija_Oblast">
           <End Role="Oblast" Type="Self.Oblast" Multiplicity="1" />
           <End Role="Podkategorija" Type="Self.Podkategorija" Multiplicity="*" />
@@ -1506,18 +1498,6 @@
             </Principal>
             <Dependent Role="Podkategorija">
               <PropertyRef Name="OblastId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_OcjenaStudent_Student">
-          <End Role="Student" Type="Self.Student" Multiplicity="1" />
-          <End Role="OcjenaStudent" Type="Self.OcjenaStudent" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Student">
-              <PropertyRef Name="StudentId" />
-            </Principal>
-            <Dependent Role="OcjenaStudent">
-              <PropertyRef Name="OcjenaStudentId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1715,7 +1695,6 @@
         </Association>
         <EntityContainer Name="TutorEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Administrators" EntityType="Self.Administrator" />
-          <EntitySet Name="Dans" EntityType="Self.Dan" />
           <EntitySet Name="Grads" EntityType="Self.Grad" />
           <EntitySet Name="KontaktInfoes" EntityType="Self.KontaktInfo" />
           <EntitySet Name="KorisnickiNalogs" EntityType="Self.KorisnickiNalog" />
@@ -1745,10 +1724,6 @@
           <AssociationSet Name="FK_Administrator_KorisnickiNalog" Association="Self.FK_Administrator_KorisnickiNalog">
             <End Role="KorisnickiNalog" EntitySet="KorisnickiNalogs" />
             <End Role="Administrator" EntitySet="Administrators" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Termin_Dan" Association="Self.FK_Termin_Dan">
-            <End Role="Dan" EntitySet="Dans" />
-            <End Role="Termin" EntitySet="Termins" />
           </AssociationSet>
           <AssociationSet Name="FK_Student_Grad" Association="Self.FK_Student_Grad">
             <End Role="Grad" EntitySet="Grads" />
@@ -1790,17 +1765,9 @@
             <End Role="Tutor" EntitySet="Tutors" />
             <End Role="ObimStudent" EntitySet="ObimStudents" />
           </AssociationSet>
-          <AssociationSet Name="FK_Oblast_Oblast" Association="Self.FK_Oblast_Oblast">
-            <End Role="Oblast" EntitySet="Oblasts" />
-            <End Role="Oblast1" EntitySet="Oblasts" />
-          </AssociationSet>
           <AssociationSet Name="FK_Podkategorija_Oblast" Association="Self.FK_Podkategorija_Oblast">
             <End Role="Oblast" EntitySet="Oblasts" />
             <End Role="Podkategorija" EntitySet="Podkategorijas" />
-          </AssociationSet>
-          <AssociationSet Name="FK_OcjenaStudent_Student" Association="Self.FK_OcjenaStudent_Student">
-            <End Role="Student" EntitySet="Students" />
-            <End Role="OcjenaStudent" EntitySet="OcjenaStudents" />
           </AssociationSet>
           <AssociationSet Name="FK_OcjenaStudent_Tutor" Association="Self.FK_OcjenaStudent_Tutor">
             <End Role="Tutor" EntitySet="Tutors" />
@@ -2021,6 +1988,36 @@
             <Parameter Name="Email" Mode="In" Type="String" />
             <Parameter Name="Telefon" Mode="In" Type="String" />
             <Parameter Name="Adresa" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="tsp_Zahtjev_SelectUnread" ReturnType="Collection(TutorModel.Zahtjev_SelectUnread_Result)">
+          <Parameter Name="TutorId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="tsp_Zahtjev_SelectDetail" ReturnType="Collection(TutorModel.Zahtjev_SelectDetail_Result)">
+          <Parameter Name="ZahtjevId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="TerminCasas" EntityType="TutorModel.TerminCasa" />
+          <AssociationSet Name="FK_TerminCasa_Zahtjev" Association="TutorModel.FK_TerminCasa_Zahtjev">
+            <End Role="Zahtjev" EntitySet="Zahtjevs" />
+            <End Role="TerminCasa" EntitySet="TerminCasas" />
+          </AssociationSet>
+          <FunctionImport Name="tsp_TerminCas_SelectTermins" ReturnType="Collection(TutorModel.TerminCas_SelectTermins_Result)">
+          <Parameter Name="TutuorId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="tsp_Tutor_SelectTutorStudents" ReturnType="Collection(TutorModel.Tutor_SelectTutorStudents_Result)">
+          <Parameter Name="TutorId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <AssociationSet Name="FK_OcjenaStudent_Student1" Association="TutorModel.FK_OcjenaStudent_Student1">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="OcjenaStudent" EntitySet="OcjenaStudents" />
+          </AssociationSet>
+          <FunctionImport Name="tsp_Tutor_SelectActiveUcionica" ReturnType="Collection(TutorModel.Tutor_SelectActiveUcionica_Result)">
+          <Parameter Name="Tutorid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="tsp_Ucionica_SelectDetails" ReturnType="Collection(TutorModel.Ucionica_SelectDetails_Result)">
+          <Parameter Name="UcionicaId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="tsp_Prijave_SelectAccepted" ReturnType="Collection(TutorModel.Prijave_SelectAccepted_Result)">
+            <Parameter Name="UcionicaId" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="Administrator_NameSelect">
@@ -2363,6 +2360,112 @@
           <Property Type="String" Name="Adresa" Nullable="true" MaxLength="150" />
           <Property Type="Binary" Name="TutorSlika" Nullable="true" />
         </ComplexType>
+        <ComplexType Name="Zahtjev_SelectUnread_Result">
+          <Property Type="Int32" Name="ZahtjevId" Nullable="false" />
+          <Property Type="String" Name="Student" Nullable="false" MaxLength="101" />
+          <Property Type="String" Name="TipStudenta" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Godine" Nullable="true" />
+          <Property Type="DateTime" Name="DatumSlanja" Nullable="false" />
+          <Property Type="Int32" Name="BrojCasova" Nullable="false" />
+          <Property Type="Int32" Name="Ocjena" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Zahtjev_SelectDetail_Result">
+          <Property Type="Int32" Name="StudentId" Nullable="false" />
+          <Property Type="Binary" Name="StudentskaSlika" Nullable="true" />
+          <Property Type="String" Name="ImePrezime" Nullable="false" MaxLength="101" />
+          <Property Type="String" Name="TipStudenta" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Godine" Nullable="true" />
+          <Property Type="Int32" Name="Ocjena" Nullable="true" />
+          <Property Type="DateTime" Name="DatumSlanja" Nullable="false" />
+          <Property Type="Int32" Name="BrojCasova" Nullable="false" />
+          <Property Type="DateTime" Name="DatumOd" Nullable="false" />
+          <Property Type="DateTime" Name="DatumDo" Nullable="false" />
+          <Property Type="Time" Name="VrijemeOd" Nullable="false" />
+          <Property Type="Time" Name="VrijemeDo" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="TerminCasa">
+          <Key>
+            <PropertyRef Name="TerminId" />
+          </Key>
+          <Property Name="TerminId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ZahtjevId" Type="Int32" Nullable="false" />
+          <Property Name="DatumCasa" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="VrijemePocetka" Type="Time" Nullable="false" Precision="7" />
+          <NavigationProperty Name="Zahtjev" Relationship="TutorModel.FK_TerminCasa_Zahtjev" FromRole="TerminCasa" ToRole="Zahtjev" />
+          <Property Name="DanNaziv" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_TerminCasa_Zahtjev">
+          <End Type="TutorModel.Zahtjev" Role="Zahtjev" Multiplicity="1" />
+          <End Type="TutorModel.TerminCasa" Role="TerminCasa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zahtjev">
+              <PropertyRef Name="ZahtjevId" />
+            </Principal>
+            <Dependent Role="TerminCasa">
+              <PropertyRef Name="ZahtjevId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="TerminCas_SelectTermins_Result">
+          <Property Type="Int32" Name="StudentId" Nullable="false" />
+          <Property Type="String" Name="ImePrezime" Nullable="false" MaxLength="101" />
+          <Property Type="String" Name="TipStudenta" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Godine" Nullable="true" />
+          <Property Type="String" Name="DanNaziv" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="VrijemePocetka" Nullable="true" MaxLength="5" />
+          <Property Type="DateTime" Name="DatumCasa" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="Tutor_SelectTutorStudents_Result">
+          <Property Type="Int32" Name="StudentId" Nullable="false" />
+          <Property Type="String" Name="ImePrezime" Nullable="false" MaxLength="101" />
+          <Property Type="String" Name="Spol" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Godine" Nullable="true" />
+          <Property Type="String" Name="TipStudenta" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="OdradjenihCasova" Nullable="true" />
+          <Property Type="Int32" Name="OcjenaStudenta" Nullable="true" />
+        </ComplexType>
+        <Association Name="FK_OcjenaStudent_Student1">
+          <End Type="TutorModel.Student" Role="Student" Multiplicity="1" />
+          <End Type="TutorModel.OcjenaStudent" Role="OcjenaStudent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="OcjenaStudent">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="Tutor_SelectActiveUcionica_Result">
+          <Property Type="Int32" Name="UcionicaId" Nullable="false" />
+          <Property Type="String" Name="Naslov" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="DatumPocetka" Nullable="false" />
+          <Property Type="DateTime" Name="DatumZavrsetka" Nullable="false" />
+          <Property Type="Int32" Name="BrojCasova" Nullable="false" />
+          <Property Type="String" Name="Tezina" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="BrojPrijava" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Ucionica_SelectDetails_Result">
+          <Property Type="Int32" Name="UcionicaId" Nullable="false" />
+          <Property Type="Binary" Name="Slika" Nullable="true" />
+          <Property Type="String" Name="Naslov" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Opis" Nullable="false" MaxLength="Max" />
+          <Property Type="DateTime" Name="DatumPocetka" Nullable="false" />
+          <Property Type="DateTime" Name="DatumZavrsetka" Nullable="false" />
+          <Property Type="String" Name="AdresaUcionice" Nullable="false" MaxLength="100" />
+          <Property Type="Double" Name="Cijena" Nullable="false" />
+          <Property Type="Int32" Name="BrojCasova" Nullable="false" />
+          <Property Type="Int32" Name="MaxBrojPolaznika" Nullable="false" />
+          <Property Type="String" Name="NivoTezine" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Prijave_SelectAccepted_Result">
+          <Property Type="Int32" Name="StudentId" Nullable="false" />
+          <Property Type="String" Name="Spol" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Godine" Nullable="true" />
+          <Property Type="String" Name="TipStudenta" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Ocjena" Nullable="true" />
+          <Property Type="String" Name="Student" Nullable="false" MaxLength="101" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2378,14 +2481,6 @@
                 <ScalarProperty Name="DatumDodavanja" ColumnName="DatumDodavanja" />
                 <ScalarProperty Name="KorisnickiNalogId" ColumnName="KorisnickiNalogId" />
                 <ScalarProperty Name="KontaktInfoId" ColumnName="KontaktInfoId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Dans">
-            <EntityTypeMapping TypeName="TutorModel.Dan">
-              <MappingFragment StoreEntitySet="Dan">
-                <ScalarProperty Name="DanId" ColumnName="DanId" />
-                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2555,9 +2650,9 @@
           <EntitySetMapping Name="Termins">
             <EntityTypeMapping TypeName="TutorModel.Termin">
               <MappingFragment StoreEntitySet="Termin">
+                <ScalarProperty Name="Dan" ColumnName="Dan" />
                 <ScalarProperty Name="TerminId" ColumnName="TerminId" />
                 <ScalarProperty Name="UcionicaId" ColumnName="UcionicaId" />
-                <ScalarProperty Name="DanId" ColumnName="DanId" />
                 <ScalarProperty Name="PocetakCasa" ColumnName="PocetakCasa" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -2625,6 +2720,7 @@
           <EntitySetMapping Name="Zahtjevs">
             <EntityTypeMapping TypeName="TutorModel.Zahtjev">
               <MappingFragment StoreEntitySet="Zahtjev">
+                <ScalarProperty Name="DatumDo" ColumnName="DatumDo" />
                 <ScalarProperty Name="ZahtjevId" ColumnName="ZahtjevId" />
                 <ScalarProperty Name="DatumSlanja" ColumnName="DatumSlanja" />
                 <ScalarProperty Name="DatumOd" ColumnName="DatumOd" />
@@ -3036,6 +3132,116 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="tsp_Tutor_Update" FunctionName="TutorModel.Store.tsp_Tutor_Update" />
+          <FunctionImportMapping FunctionImportName="tsp_Zahtjev_SelectUnread" FunctionName="TutorModel.Store.tsp_Zahtjev_SelectUnread">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TutorModel.Zahtjev_SelectUnread_Result">
+                <ScalarProperty Name="ZahtjevId" ColumnName="ZahtjevId" />
+                <ScalarProperty Name="Student" ColumnName="Student" />
+                <ScalarProperty Name="TipStudenta" ColumnName="TipStudenta" />
+                <ScalarProperty Name="Godine" ColumnName="Godine" />
+                <ScalarProperty Name="DatumSlanja" ColumnName="DatumSlanja" />
+                <ScalarProperty Name="BrojCasova" ColumnName="BrojCasova" />
+                <ScalarProperty Name="Ocjena" ColumnName="Ocjena" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="tsp_Zahtjev_SelectDetail" FunctionName="TutorModel.Store.tsp_Zahtjev_SelectDetail">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TutorModel.Zahtjev_SelectDetail_Result">
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="StudentskaSlika" ColumnName="StudentskaSlika" />
+                <ScalarProperty Name="ImePrezime" ColumnName="ImePrezime" />
+                <ScalarProperty Name="TipStudenta" ColumnName="TipStudenta" />
+                <ScalarProperty Name="Godine" ColumnName="Godine" />
+                <ScalarProperty Name="Ocjena" ColumnName="Ocjena" />
+                <ScalarProperty Name="DatumSlanja" ColumnName="DatumSlanja" />
+                <ScalarProperty Name="BrojCasova" ColumnName="BrojCasova" />
+                <ScalarProperty Name="DatumOd" ColumnName="DatumOd" />
+                <ScalarProperty Name="DatumDo" ColumnName="DatumDo" />
+                <ScalarProperty Name="VrijemeOd" ColumnName="VrijemeOd" />
+                <ScalarProperty Name="VrijemeDo" ColumnName="VrijemeDo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="TerminCasas">
+            <EntityTypeMapping TypeName="TutorModel.TerminCasa">
+              <MappingFragment StoreEntitySet="TerminCasa">
+                <ScalarProperty Name="DanNaziv" ColumnName="DanNaziv" />
+                <ScalarProperty Name="VrijemePocetka" ColumnName="VrijemePocetka" />
+                <ScalarProperty Name="DatumCasa" ColumnName="DatumCasa" />
+                <ScalarProperty Name="ZahtjevId" ColumnName="ZahtjevId" />
+                <ScalarProperty Name="TerminId" ColumnName="TerminId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="tsp_TerminCas_SelectTermins" FunctionName="TutorModel.Store.tsp_TerminCas_SelectTermins">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TutorModel.TerminCas_SelectTermins_Result">
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="ImePrezime" ColumnName="ImePrezime" />
+                <ScalarProperty Name="TipStudenta" ColumnName="TipStudenta" />
+                <ScalarProperty Name="Godine" ColumnName="Godine" />
+                <ScalarProperty Name="DanNaziv" ColumnName="DanNaziv" />
+                <ScalarProperty Name="VrijemePocetka" ColumnName="VrijemePocetka" />
+                <ScalarProperty Name="DatumCasa" ColumnName="DatumCasa" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="tsp_Tutor_SelectTutorStudents" FunctionName="TutorModel.Store.tsp_Tutor_SelectTutorStudents">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TutorModel.Tutor_SelectTutorStudents_Result">
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="ImePrezime" ColumnName="ImePrezime" />
+                <ScalarProperty Name="Spol" ColumnName="Spol" />
+                <ScalarProperty Name="Godine" ColumnName="Godine" />
+                <ScalarProperty Name="TipStudenta" ColumnName="TipStudenta" />
+                <ScalarProperty Name="OdradjenihCasova" ColumnName="OdradjenihCasova" />
+                <ScalarProperty Name="OcjenaStudenta" ColumnName="OcjenaStudenta" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="tsp_Tutor_SelectActiveUcionica" FunctionName="TutorModel.Store.tsp_Tutor_SelectActiveUcionica">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TutorModel.Tutor_SelectActiveUcionica_Result">
+                <ScalarProperty Name="UcionicaId" ColumnName="UcionicaId" />
+                <ScalarProperty Name="Naslov" ColumnName="Naslov" />
+                <ScalarProperty Name="DatumPocetka" ColumnName="DatumPocetka" />
+                <ScalarProperty Name="DatumZavrsetka" ColumnName="DatumZavrsetka" />
+                <ScalarProperty Name="BrojCasova" ColumnName="BrojCasova" />
+                <ScalarProperty Name="Tezina" ColumnName="Tezina" />
+                <ScalarProperty Name="BrojPrijava" ColumnName="BrojPrijava" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="tsp_Ucionica_SelectDetails" FunctionName="TutorModel.Store.tsp_Ucionica_SelectDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TutorModel.Ucionica_SelectDetails_Result">
+                <ScalarProperty Name="UcionicaId" ColumnName="UcionicaId" />
+                <ScalarProperty Name="Slika" ColumnName="Slika" />
+                <ScalarProperty Name="Naslov" ColumnName="Naslov" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
+                <ScalarProperty Name="DatumPocetka" ColumnName="DatumPocetka" />
+                <ScalarProperty Name="DatumZavrsetka" ColumnName="DatumZavrsetka" />
+                <ScalarProperty Name="AdresaUcionice" ColumnName="AdresaUcionice" />
+                <ScalarProperty Name="Cijena" ColumnName="Cijena" />
+                <ScalarProperty Name="BrojCasova" ColumnName="BrojCasova" />
+                <ScalarProperty Name="MaxBrojPolaznika" ColumnName="MaxBrojPolaznika" />
+                <ScalarProperty Name="NivoTezine" ColumnName="NivoTezine" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="tsp_Prijave_SelectAccepted" FunctionName="TutorModel.Store.tsp_Prijave_SelectAccepted">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TutorModel.Prijave_SelectAccepted_Result">
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="Spol" ColumnName="Spol" />
+                <ScalarProperty Name="Godine" ColumnName="Godine" />
+                <ScalarProperty Name="TipStudenta" ColumnName="TipStudenta" />
+                <ScalarProperty Name="Ocjena" ColumnName="Ocjena" />
+                <ScalarProperty Name="Student" ColumnName="Student" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -21,18 +21,56 @@ namespace Tutor_API.Controllers
         {
             return db.Zahtjevs;
         }
-
-        // GET: api/Zahtjev/5
-        [ResponseType(typeof(List<Zahtjev_SelectByTutorId_Result>))]
+        [ResponseType(typeof(Zahtjev))]
         public IHttpActionResult GetZahtjev(int id)
         {
-            var zahtjev = db.tps_Zahtjev_SelectByTutorId(id).ToList();
-            if (zahtjev == null)
-            {
-                return NotFound();
-            }
+
+            db.Configuration.LazyLoadingEnabled = false;
+            var zahtjev = db.Zahtjevs.Find(id);
+            if (zahtjev.Equals(null)) return NotFound();
 
             return Ok(zahtjev);
+        }
+
+        // GET: api/Zahtjev/5
+        //[ResponseType(typeof(List<Zahtjev_SelectByTutorId_Result>))]
+        //public IHttpActionResult GetZahtjev(int id)
+        //{
+        //    var zahtjev = db.tps_Zahtjev_SelectByTutorId(id).ToList();
+        //    if (zahtjev == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    return Ok(zahtjev);
+        //}
+        [HttpGet]
+        [ResponseType(typeof(List<Zahtjev_SelectUnread_Result>))]
+        [Route("api/Zahtjev/UnreadZahtjev/{id}")]
+        public IHttpActionResult UnreadZahtjev(int id)
+        {
+            var tutor = db.Tutors.Find(id);
+
+            if (tutor == null) return NotFound();
+
+            var lstZahtjeva = db.tsp_Zahtjev_SelectUnread(id).ToList();
+
+            return Ok(lstZahtjeva);
+        }
+
+
+        [HttpGet]
+        [ResponseType(typeof(Zahtjev_SelectDetail_Result))]
+        [Route("api/Zahtjev/ZahtjevDetail/{id}")]
+        public IHttpActionResult ZahtjevDetail(int id)
+        {
+            var zahtjev = db.Zahtjevs.Find(id);
+
+            if (zahtjev == null) return NotFound();
+
+            var zahtjevDetail = db.tsp_Zahtjev_SelectDetail(id).FirstOrDefault();
+
+            return Ok(zahtjevDetail);
         }
 
         // PUT: api/Zahtjev/5
@@ -100,6 +138,9 @@ namespace Tutor_API.Controllers
 
             return Ok(zahtjev);
         }
+
+        
+
 
         protected override void Dispose(bool disposing)
         {

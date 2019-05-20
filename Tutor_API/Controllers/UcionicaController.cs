@@ -16,6 +16,7 @@ namespace Tutor_API.Controllers
     {
         private TutorEntities db = new TutorEntities();
 
+
         // GET: api/Ucionica
         public IQueryable<Ucionica> GetUcionicas()
         {
@@ -26,6 +27,7 @@ namespace Tutor_API.Controllers
         [ResponseType(typeof(Ucionica))]
         public IHttpActionResult GetUcionica(int id)
         {
+            db.Configuration.LazyLoadingEnabled = false;
             Ucionica ucionica = db.Ucionicas.Find(id);
             if (ucionica == null)
             {
@@ -38,7 +40,7 @@ namespace Tutor_API.Controllers
         [HttpGet]
         [ResponseType(typeof(List<Ucionica_SelectActive_Result>))]
         [Route("api/Ucionica/AktivneUcionice/{OblastId?}/{GradId?}")]
-        public IHttpActionResult AktivneUcionice(int OblastId=0,int GradId=0) {
+        public IHttpActionResult AktivneUcionice(int OblastId = 0, int GradId = 0) {
 
             if (OblastId == 0) {
 
@@ -124,6 +126,32 @@ namespace Tutor_API.Controllers
             return Ok(db.tsp_Ucionica_SelectUcenici(id).ToList());
         }
 
+        [HttpGet]
+        [ResponseType(typeof(Ucionica_SelectDetails_Result))]
+        [Route("api/Ucionica/Details/{ucionicaId}")]
+        public IHttpActionResult Details(int ucionicaId)
+        {
+            var ucionica = db.Ucionicas.Find(ucionicaId);
+            if (ucionica.Equals(null)) return NotFound();
+
+            return Ok(db.tsp_Ucionica_SelectDetails(ucionicaId).FirstOrDefault());
+        }
+
+        [HttpGet]
+        [ResponseType(typeof(List<Termin>))]
+        [Route("api/Ucionica/Termini/{ucionicaId}")]
+        public IHttpActionResult Termini(int ucionicaId)
+        {
+            db.Configuration.LazyLoadingEnabled = false;
+
+            var ucionica = db.Ucionicas.Find(ucionicaId);
+            if (ucionica.Equals(null)) return NotFound();
+
+            var lstTermina = db.Termins.Where(x => x.UcionicaId.Equals(ucionicaId)).ToList();
+
+           return Ok(lstTermina);
+        }
+
         // PUT: api/Ucionica/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutUcionica(int id, Ucionica ucionica)
@@ -163,12 +191,43 @@ namespace Tutor_API.Controllers
         [ResponseType(typeof(Ucionica))]
         public IHttpActionResult PostUcionica(Ucionica ucionica)
         {
+            Ucionica novaUcionica = new Ucionica()
+            {
+                TutorId=ucionica.TutorId,
+                Naslov = ucionica.Naslov,
+                Opis = ucionica.Opis,
+                Slika = ucionica.Slika,
+                AdresaUcionice = ucionica.AdresaUcionice,
+                NivoTezineId = ucionica.NivoTezineId,
+                Cijena = ucionica.Cijena,
+                BrojCasova = ucionica.BrojCasova,
+                MaxBrojPolaznika = ucionica.MaxBrojPolaznika,
+                DatumPocetka = ucionica.DatumPocetka,
+                DatumZavrsetka = ucionica.DatumZavrsetka,
+                Aktivna=true
+
+            };
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Ucionicas.Add(ucionica);
+            db.Ucionicas.Add(novaUcionica);
+            db.SaveChanges();
+
+            foreach (var termin in ucionica.Termini)
+            {
+                Termin noviTermin = new Termin
+                {
+                    UcionicaId = novaUcionica.UcionicaId,
+                    PocetakCasa = termin.PocetakCasa,
+                    Dan = termin.Dan
+                };
+
+                db.Termins.Add(noviTermin);
+            }
+
             db.SaveChanges();
 
             return CreatedAtRoute("DefaultApi", new { id = ucionica.UcionicaId }, ucionica);

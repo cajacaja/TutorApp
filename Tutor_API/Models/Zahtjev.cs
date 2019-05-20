@@ -14,6 +14,12 @@ namespace Tutor_API.Models
     
     public partial class Zahtjev
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Zahtjev()
+        {
+            this.TerminCasas = new HashSet<TerminCasa>();
+        }
+    
         public int ZahtjevId { get; set; }
         public System.DateTime DatumSlanja { get; set; }
         public System.DateTime DatumOd { get; set; }
@@ -24,8 +30,11 @@ namespace Tutor_API.Models
         public bool Odbijeno { get; set; }
         public int TutorId { get; set; }
         public int StudentId { get; set; }
+        public System.DateTime DatumDo { get; set; }
     
         public virtual Student Student { get; set; }
         public virtual Tutor Tutor { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TerminCasa> TerminCasas { get; set; }
     }
 }

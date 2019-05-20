@@ -51,6 +51,15 @@ namespace Tutor_API.Controllers
             return Ok(ocjenaStudent);
         }
 
+        [HttpGet]
+        [Route("api/OcjenaStudent/checkTutor/{tutorId}/{studentId}")]
+        public IHttpActionResult checkTutor (int tutorId,int studentId)
+        {
+            var ocjena = db.OcjenaStudents.FirstOrDefault(x => x.TutorId == tutorId && x.StudentId==studentId);
+            if (ocjena == null) return NotFound();
+
+            return Ok();
+        }
         // PUT: api/OcjenaStudent/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutOcjenaStudent(int id, OcjenaStudent ocjenaStudent)

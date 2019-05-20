@@ -153,6 +153,30 @@ namespace Tutor_API.Controllers
             return Ok(tutor);
         }
 
+        [HttpGet]
+        [Route("api/Tutor/ActiveUcionica/{tutorId}")]
+        [ResponseType(typeof(List<Tutor_SelectActiveUcionica_Result>))]
+        public IHttpActionResult ActiveUcionica(int tutorId)
+        {
+            var tutor = db.Tutors.Find(tutorId);
+            if (tutor.Equals(null)) return NotFound();
+
+            var lstUcionica = db.tsp_Tutor_SelectActiveUcionica(tutorId).ToList();
+
+            return Ok(lstUcionica);
+        }
+
+        [HttpGet]
+        [Route("api/Tutor/SelectStudents/{tutorId}")]
+        [ResponseType(typeof(List<Tutor_SelectTutorStudents_Result>))]
+        public IHttpActionResult SelectStudents(int tutorId)
+        {
+            var tutor = db.Tutors.Find(tutorId);
+
+            if (tutor.Equals(null)) return NotFound();
+
+            return Ok(db.tsp_Tutor_SelectTutorStudents(tutorId).ToList());
+        }
         [Route("api/Tutor")]//(Fix) dodan iz razloga jer odjednom post za tutora je prestao da radi(Magija)
         [HttpPost]
         public IHttpActionResult PostTutor(Tutor t)

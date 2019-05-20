@@ -21,7 +21,7 @@ namespace Tutor_API.Models
         public int StudentId { get; set; }
         public int Ocjena { get; set; }
     
-        public virtual Student Student { get; set; }
         public virtual Tutor Tutor { get; set; }
+        public virtual Student Student { get; set; }
     }
 }

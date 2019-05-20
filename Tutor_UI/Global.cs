@@ -30,6 +30,14 @@ namespace Tutor_UI
         public const string BanTutorRoute = "api/BanPrijavaTutors";
         public const string StudentRoute = " api/Student";
         public const string OcjenaStudentRoute = "api/OcjenaStudent";
+        public const string KontakInfoRoute = "api/KontaktInfo";
+        public const string TerminCasaRoute = "api/TerminCasa";
+        public const string NivoTezineRoute = "api/NivoTezine";
+        public const string PrijavaRoute = "api/Prijava";
+        public const string TerminUcionicaRoute = "api/Termin";
+
+
+
 
 
         public static Administrator prijavljeniAdministrator { get; set; }
