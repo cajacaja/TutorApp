@@ -35,6 +35,7 @@ namespace Tutor_UI
         public const string NivoTezineRoute = "api/NivoTezine";
         public const string PrijavaRoute = "api/Prijava";
         public const string TerminUcionicaRoute = "api/Termin";
+        public const string MaterialRoute = "api/Materijal";
 
 
 

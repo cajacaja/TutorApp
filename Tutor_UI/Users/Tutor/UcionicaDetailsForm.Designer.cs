@@ -61,6 +61,8 @@
             this.TipStudenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ocjena = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label10 = new System.Windows.Forms.Label();
+            this.pregledajBtn = new System.Windows.Forms.Button();
+            this.prijaveBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.slikaInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.terminiDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.prihvacenePrijaveGridView)).BeginInit();
@@ -256,10 +258,10 @@
             this.Ucionica,
             this.Dan,
             this.PocetakCasa});
-            this.terminiDataGridView.Location = new System.Drawing.Point(3, 304);
+            this.terminiDataGridView.Location = new System.Drawing.Point(3, 343);
             this.terminiDataGridView.Name = "terminiDataGridView";
             this.terminiDataGridView.ReadOnly = true;
-            this.terminiDataGridView.Size = new System.Drawing.Size(243, 150);
+            this.terminiDataGridView.Size = new System.Drawing.Size(243, 174);
             this.terminiDataGridView.TabIndex = 31;
             // 
             // TerminId
@@ -304,7 +306,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(0, 288);
+            this.label1.Location = new System.Drawing.Point(0, 327);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(48, 13);
             this.label1.TabIndex = 32;
@@ -322,10 +324,10 @@
             this.Godine,
             this.TipStudenta,
             this.Ocjena});
-            this.prihvacenePrijaveGridView.Location = new System.Drawing.Point(255, 304);
+            this.prihvacenePrijaveGridView.Location = new System.Drawing.Point(255, 343);
             this.prihvacenePrijaveGridView.Name = "prihvacenePrijaveGridView";
             this.prihvacenePrijaveGridView.ReadOnly = true;
-            this.prihvacenePrijaveGridView.Size = new System.Drawing.Size(240, 150);
+            this.prihvacenePrijaveGridView.Size = new System.Drawing.Size(243, 174);
             this.prihvacenePrijaveGridView.TabIndex = 33;
             // 
             // StudentId
@@ -379,17 +381,39 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label10.Location = new System.Drawing.Point(252, 288);
+            this.label10.Location = new System.Drawing.Point(254, 327);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(50, 13);
             this.label10.TabIndex = 34;
             this.label10.Text = "Ucenici";
             // 
+            // pregledajBtn
+            // 
+            this.pregledajBtn.Location = new System.Drawing.Point(112, 290);
+            this.pregledajBtn.Name = "pregledajBtn";
+            this.pregledajBtn.Size = new System.Drawing.Size(139, 23);
+            this.pregledajBtn.TabIndex = 35;
+            this.pregledajBtn.Text = "Pregledaj materijale";
+            this.pregledajBtn.UseVisualStyleBackColor = true;
+            this.pregledajBtn.Click += new System.EventHandler(this.pregledajBtn_Click);
+            // 
+            // prijaveBtn
+            // 
+            this.prijaveBtn.Location = new System.Drawing.Point(336, 290);
+            this.prijaveBtn.Name = "prijaveBtn";
+            this.prijaveBtn.Size = new System.Drawing.Size(139, 23);
+            this.prijaveBtn.TabIndex = 36;
+            this.prijaveBtn.Text = "Pregledaj prijave";
+            this.prijaveBtn.UseVisualStyleBackColor = true;
+            this.prijaveBtn.Click += new System.EventHandler(this.prijaveBtn_Click);
+            // 
             // UcionicaDetailsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(502, 466);
+            this.ClientSize = new System.Drawing.Size(502, 529);
+            this.Controls.Add(this.prijaveBtn);
+            this.Controls.Add(this.pregledajBtn);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.prihvacenePrijaveGridView);
             this.Controls.Add(this.label1);
@@ -418,6 +442,7 @@
             this.Name = "UcionicaDetailsForm";
             this.ShowIcon = false;
             this.Text = "Detalji ucionice";
+            this.Enter += new System.EventHandler(this.UcionicaDetailsForm_Enter);
             ((System.ComponentModel.ISupportInitialize)(this.slikaInput)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.terminiDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.prihvacenePrijaveGridView)).EndInit();
@@ -461,5 +486,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Godine;
         private System.Windows.Forms.DataGridViewTextBoxColumn TipStudenta;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ocjena;
+        private System.Windows.Forms.Button pregledajBtn;
+        private System.Windows.Forms.Button prijaveBtn;
     }
 }

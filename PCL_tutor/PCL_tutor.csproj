@@ -58,12 +58,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\Gradovi.cs" />
+    <Compile Include="Model\Oblast.cs" />
     <Compile Include="Model\Spol.cs" />
     <Compile Include="Model\Student.cs" />
     <Compile Include="Model\TipStudenta.cs" />
+    <Compile Include="Model\Tutori.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\UIHelper.cs" />
     <Compile Include="Util\WebApiHelper.cs" />
+    <Compile Include="ViewModels\TutoriViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

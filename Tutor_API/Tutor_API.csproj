@@ -109,6 +109,7 @@
     <Compile Include="Controllers\BanPrijavaTutorsController.cs" />
     <Compile Include="Controllers\GradController.cs" />
     <Compile Include="Controllers\KontaktInfoController.cs" />
+    <Compile Include="Controllers\MaterijalController.cs" />
     <Compile Include="Controllers\NivoTezineController.cs" />
     <Compile Include="Controllers\OblastController.cs" />
     <Compile Include="Controllers\OcjenaStudentController.cs" />
@@ -174,6 +175,9 @@
     <Compile Include="Models\Materijal.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Materijal_Select_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Model.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -227,6 +231,9 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Prijava.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Prijava_SelectUcionica_Result.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Prijave_SelectAccepted_Result.cs">
@@ -303,6 +310,9 @@
     <Compile Include="Models\Tutor_SelectBest_Result.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Tutor_SelectByOblast_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Tutor_SelectTutorStudents_Result.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -320,6 +330,9 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Ucionica_SelectDetails_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Ucionica_SelectNonActive_Result.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Ucionica_SelectStaro_Result.cs">

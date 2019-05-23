@@ -30,7 +30,7 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                
+                <Image Source="studenticon.png" HorizontalOptions="Center" WidthRequest="125" HeightRequest="125" Grid.Row="0"></Image>
                 <Label x:Name="errorMessage" Margin="0" Grid.Row="1" HorizontalOptions="Center" Text="Pogresno korisnicko ime ili password" TextColor="Red" FontAttributes="Italic" FontSize="14"></Label>
                 <Entry x:Name="KorisnickoImeInput" Grid.Row="2" Placeholder="Korisnicko ime" PlaceholderColor="#bed3c3" FontSize="16"/>
                 <Entry x:Name="PasswordInput" Grid.Row="3" Placeholder="Password" PlaceholderColor="#bed3c3" IsPassword="True" FontSize="16"/>

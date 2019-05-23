@@ -225,11 +225,23 @@
     <Compile Include="Users\Tutor\CasZahtjeviForm.Designer.cs">
       <DependentUpon>CasZahtjeviForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Users\Tutor\KomentariForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\Tutor\KomentariForm.Designer.cs">
+      <DependentUpon>KomentariForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Users\Tutor\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Users\Tutor\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Users\Tutor\MaterijaliForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\Tutor\MaterijaliForm.Designer.cs">
+      <DependentUpon>MaterijaliForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Users\Tutor\OcjeniStudentForm.cs">
       <SubType>Form</SubType>
@@ -302,6 +314,18 @@
     </Compile>
     <Compile Include="Users\Tutor\UcionicaForm.Designer.cs">
       <DependentUpon>UcionicaForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Users\Tutor\UcionicaPrijaveForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\Tutor\UcionicaPrijaveForm.Designer.cs">
+      <DependentUpon>UcionicaPrijaveForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Users\Tutor\UploadForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\Tutor\UploadForm.Designer.cs">
+      <DependentUpon>UploadForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Util\UIHelper.cs" />
     <Compile Include="Util\WebAPIHelper.cs" />
@@ -387,8 +411,14 @@
     <EmbeddedResource Include="Users\Tutor\CasZahtjeviForm.resx">
       <DependentUpon>CasZahtjeviForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Users\Tutor\KomentariForm.resx">
+      <DependentUpon>KomentariForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Users\Tutor\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\Tutor\MaterijaliForm.resx">
+      <DependentUpon>MaterijaliForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Users\Tutor\OcjeniStudentForm.resx">
       <DependentUpon>OcjeniStudentForm.cs</DependentUpon>
@@ -425,6 +455,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Users\Tutor\UcionicaForm.resx">
       <DependentUpon>UcionicaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\Tutor\UcionicaPrijaveForm.resx">
+      <DependentUpon>UcionicaPrijaveForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\Tutor\UploadForm.resx">
+      <DependentUpon>UploadForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="PredmetDataSet.xsc">

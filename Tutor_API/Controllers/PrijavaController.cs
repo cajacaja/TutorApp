@@ -26,6 +26,7 @@ namespace Tutor_API.Controllers
         [ResponseType(typeof(Prijava))]
         public IHttpActionResult GetPrijava(int id)
         {
+            db.Configuration.LazyLoadingEnabled = false;
             Prijava prijava = db.Prijavas.Find(id);
             if (prijava == null)
             {
@@ -33,6 +34,22 @@ namespace Tutor_API.Controllers
             }
 
             return Ok(prijava);
+        }
+        [HttpGet]
+        [ResponseType(typeof(List<Prijava_SelectUcionica_Result>))]
+        [Route("api/Prijava/PrijaveUcionica/{ucionicaId}")]
+        public IHttpActionResult PrijaveUcionica(int ucionicaId)
+        {
+            Ucionica prijava = db.Ucionicas.Find(ucionicaId);
+            if (prijava == null)
+            {
+                return NotFound();
+            }
+
+            var lstPrijava = db.tsp_Prijava_SelectUcionica(ucionicaId).ToList();
+
+
+            return Ok(lstPrijava);
         }
 
         [HttpGet]

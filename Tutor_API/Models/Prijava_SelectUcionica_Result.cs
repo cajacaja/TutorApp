@@ -10,17 +10,16 @@
 namespace Tutor_API.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Materijal
+    public partial class Prijava_SelectUcionica_Result
     {
-        public int MaterijalId { get; set; }
-        public int UcionicaId { get; set; }
-        public string Naslov { get; set; }
-        public System.DateTime DatumPostavljanja { get; set; }
-        public byte[] Materijal1 { get; set; }
-        public string TipFila { get; set; }
-    
-        public virtual Ucionica Ucionica { get; set; }
+        public int PrijavaId { get; set; }
+        public int StudentId { get; set; }
+        public string ImePrezime { get; set; }
+        public string TipStudenta { get; set; }
+        public Nullable<int> Godine { get; set; }
+        public string Spol { get; set; }
+        public System.DateTime DatumPrijave { get; set; }
+        public Nullable<int> Ocjena { get; set; }
     }
 }

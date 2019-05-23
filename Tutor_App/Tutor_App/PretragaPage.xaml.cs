@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace Tutor_App
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class TestniLogin : ContentPage
+	public partial class PretragaPage : ContentPage
 	{
-		public TestniLogin ()
+		public PretragaPage ()
 		{
 			InitializeComponent ();
 		}

@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Tutor_App.PretragaPage" BackgroundColor="#212e53">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="buttonStyle" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#4a919e" />
+                <Setter Property="TextColor" Value="WhiteSmoke"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="BorderColor" Value="#212e53"/>
+                <Setter Property="CornerRadius" Value="5"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+                
+        <StackLayout VerticalOptions="Center">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Image Source="tutoricon.png" Grid.Row="0" Margin="0,0,0,20"  Grid.Column="0"  HeightRequest="100" WidthRequest="100"></Image>
+                <Button Text="Nadji tutora" Grid.Row="0" Margin="20,20,20,45"  Grid.Column="1" Style="{StaticResource buttonStyle}" HeightRequest="20" WidthRequest="50"></Button>
+
+                <Image Source="ucioniaicon.png" Grid.Row="1" Grid.Column="0" HeightRequest="100" WidthRequest="100"></Image>
+                <Button Text="Nadji ucionicu" Grid.Row="1" Margin="20,20,20,25" Grid.Column="1" Style="{StaticResource buttonStyle}" HeightRequest="20" WidthRequest="50"></Button>
+
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

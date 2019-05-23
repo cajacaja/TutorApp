@@ -19,6 +19,11 @@
             <Style x:Key="entryStyle" TargetType="Entry">
                 <Setter Property="BackgroundColor" Value="WhiteSmoke"/>
                 <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="HeightRequest" Value="20"/>
+                <Setter Property="HeightRequest" Value="20"/>
+                <Setter Property="Margin" Value="0,0,0,10"/>
+
+                
             </Style>
 
             <Style x:Key="mainHeader" TargetType="Label">
@@ -49,16 +54,16 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
 
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
@@ -72,23 +77,23 @@
                 <Label Text="Registracija"  Style="{StaticResource mainHeader}"  Grid.ColumnSpan="2" Margin="15" ></Label>
 
                 <Label Text="Ime:"  Style="{StaticResource lableStyle}"  Grid.Row="1"></Label>
-                <Entry x:Name="imeInput" Style="{StaticResource entryStyle}" Grid.Row="1" Grid.Column="1" ></Entry>
+                <Entry x:Name="imeInput" Style="{StaticResource entryStyle}"  Grid.Row="1" Grid.Column="1" ></Entry>
            
 
                 <Label Text="Prezime:" Style="{StaticResource lableStyle}" Grid.Row="2" ></Label>
-                <Entry x:Name="prezimeInput" Style="{StaticResource entryStyle}"  Grid.Row="2" Grid.Column="1"></Entry>
+                <Entry x:Name="prezimeInput"  Style="{StaticResource entryStyle}"  Grid.Row="2" Grid.Column="1"></Entry>
                     
                 <Label Text="Datum rodjenja:" Style="{StaticResource lableStyle}" Grid.Row="3"></Label>
-                <DatePicker x:Name="datumRodjenjaInput" BackgroundColor="WhiteSmoke" Date="01/01/1995" MinimumDate="1/1/1940" Grid.Row="3" Grid.Column="1"></DatePicker>
+                <DatePicker x:Name="datumRodjenjaInput" BackgroundColor="WhiteSmoke" HeightRequest="20" Date="01/01/1995" MinimumDate="1/1/1940" Grid.Row="3" Grid.Column="1"></DatePicker>
 
                 <Label Text="Spol:" Style="{StaticResource lableStyle}" Grid.Row="4"></Label>
-                <Picker x:Name="spolPiker" Grid.Row="5" BackgroundColor="WhiteSmoke" Grid.Column="0"></Picker>
+                <Picker x:Name="spolPiker" Grid.Row="5" HeightRequest="20" Margin="0,0,10,0"  BackgroundColor="WhiteSmoke" Grid.Column="0"></Picker>
 
                 <Label Text="Grad:" Style="{StaticResource lableStyle}" Grid.Row="4" Grid.Column="1"></Label>
-                <Picker x:Name="gradPicker" Grid.Row="5" BackgroundColor="WhiteSmoke" Grid.Column="1"></Picker>
+                <Picker x:Name="gradPicker" Grid.Row="5" BackgroundColor="WhiteSmoke" HeightRequest="20" Grid.Column="1"></Picker>
 
-                <Label Text="Adresa:" Style="{StaticResource lableStyle}" Grid.Row="6"></Label>
-                <Entry x:Name="adresaInput"  Style="{StaticResource entryStyle}" Grid.Row="6" Grid.Column="1"></Entry>
+                <Label Text="Adresa:" Style="{StaticResource lableStyle}"  Grid.Row="6"></Label>
+                <Entry x:Name="adresaInput"  Style="{StaticResource entryStyle}"  Margin="0,10,0,10" HeightRequest="20" Grid.Row="6" Grid.Column="1"></Entry>
 
                 <Label Text="Email:" Style="{StaticResource lableStyle}" Grid.Row="7"></Label>
                 <Entry x:Name="emailInput" Style="{StaticResource entryStyle}" Grid.Row="7" Grid.Column="1"></Entry>
@@ -109,11 +114,11 @@
 
 
                 <Label Text="Vrsta studenta:" Style="{StaticResource lableStyle}" Grid.Row="11"></Label>
-                <Picker x:Name="vrstaStudentaPicker" BackgroundColor="WhiteSmoke" Grid.Row="11" Grid.Column="1"></Picker>
+                <Picker x:Name="vrstaStudentaPicker" BackgroundColor="WhiteSmoke" Margin="0,0,0,10" HeightRequest="20" Grid.Row="11" Grid.Column="1"></Picker>
 
 
 
-                <Button x:Name="registracijaButton"  Style="{StaticResource buttonStyle}"  Text="Registracija" WidthRequest="50" Grid.Row="12" Grid.Column="1" Clicked="registracijaButton_Clicked" ></Button>
+                <Button x:Name="registracijaButton"  Style="{StaticResource buttonStyle}"  Text="Registracija" WidthRequest="50" HeightRequest="30" Grid.Row="12" Grid.Column="1" Clicked="registracijaButton_Clicked" ></Button>
             </Grid>
 
         </StackLayout>

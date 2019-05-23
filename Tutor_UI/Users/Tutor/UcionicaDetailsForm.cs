@@ -20,10 +20,13 @@ namespace Tutor_UI.Users.Tutor
         private WebAPIHelper prijaveService = new WebAPIHelper(Global.URI, Global.PrijavaRoute);
         private WebAPIHelper terminiService = new WebAPIHelper(Global.URI, Global.TerminUcionicaRoute);
 
+        private int idUcionice = 0;
+
         public UcionicaDetailsForm(int ucionicaId)
         {
             InitializeComponent();
-            BindUcionica(ucionicaId);
+            idUcionice = ucionicaId;
+           BindUcionica(ucionicaId);
 
         }
 
@@ -75,6 +78,23 @@ namespace Tutor_UI.Users.Tutor
             }
         }
 
-      
+        private void pregledajBtn_Click(object sender, EventArgs e)
+        {
+            MaterijaliForm materijali = new MaterijaliForm(idUcionice);
+            materijali.Show();
+            materijali.MdiParent = this.MdiParent;
+        }
+
+        private void prijaveBtn_Click(object sender, EventArgs e)
+        {
+            UcionicaPrijaveForm prijaveForm = new UcionicaPrijaveForm(idUcionice);
+            prijaveForm.Show();
+            prijaveForm.MdiParent = this.MdiParent;
+        }
+
+        private void UcionicaDetailsForm_Enter(object sender, EventArgs e)
+        {
+            BindUcenici(idUcionice);
+        }
     }
 }

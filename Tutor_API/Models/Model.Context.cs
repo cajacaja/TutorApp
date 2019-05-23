@@ -555,13 +555,17 @@ namespace Tutor_API.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Tutor_SelectTutorStudents_Result>("tsp_Tutor_SelectTutorStudents", tutorIdParameter);
         }
     
-        public virtual ObjectResult<Tutor_SelectActiveUcionica_Result> tsp_Tutor_SelectActiveUcionica(Nullable<int> tutorid)
+        public virtual ObjectResult<Tutor_SelectActiveUcionica_Result> tsp_Tutor_SelectActiveUcionica(string naslov, Nullable<int> tutorid)
         {
+            var naslovParameter = naslov != null ?
+                new ObjectParameter("Naslov", naslov) :
+                new ObjectParameter("Naslov", typeof(string));
+    
             var tutoridParameter = tutorid.HasValue ?
                 new ObjectParameter("Tutorid", tutorid) :
                 new ObjectParameter("Tutorid", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Tutor_SelectActiveUcionica_Result>("tsp_Tutor_SelectActiveUcionica", tutoridParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Tutor_SelectActiveUcionica_Result>("tsp_Tutor_SelectActiveUcionica", naslovParameter, tutoridParameter);
         }
     
         public virtual ObjectResult<Ucionica_SelectDetails_Result> tsp_Ucionica_SelectDetails(Nullable<int> ucionicaId)
@@ -580,6 +584,54 @@ namespace Tutor_API.Models
                 new ObjectParameter("UcionicaId", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Prijave_SelectAccepted_Result>("tsp_Prijave_SelectAccepted", ucionicaIdParameter);
+        }
+    
+        public virtual ObjectResult<Ucionica_SelectNonActive_Result> tsp_Ucionica_SelectNonActive(string naslov, Nullable<int> tutorID)
+        {
+            var naslovParameter = naslov != null ?
+                new ObjectParameter("Naslov", naslov) :
+                new ObjectParameter("Naslov", typeof(string));
+    
+            var tutorIDParameter = tutorID.HasValue ?
+                new ObjectParameter("TutorID", tutorID) :
+                new ObjectParameter("TutorID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Ucionica_SelectNonActive_Result>("tsp_Ucionica_SelectNonActive", naslovParameter, tutorIDParameter);
+        }
+    
+        public virtual ObjectResult<Materijal_Select_Result> tsp_Materijal_Select(Nullable<int> ucionicaId)
+        {
+            var ucionicaIdParameter = ucionicaId.HasValue ?
+                new ObjectParameter("UcionicaId", ucionicaId) :
+                new ObjectParameter("UcionicaId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Materijal_Select_Result>("tsp_Materijal_Select", ucionicaIdParameter);
+        }
+    
+        public virtual ObjectResult<Prijava_SelectUcionica_Result> tsp_Prijava_SelectUcionica(Nullable<int> ucionicaId)
+        {
+            var ucionicaIdParameter = ucionicaId.HasValue ?
+                new ObjectParameter("UcionicaId", ucionicaId) :
+                new ObjectParameter("UcionicaId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Prijava_SelectUcionica_Result>("tsp_Prijava_SelectUcionica", ucionicaIdParameter);
+        }
+    
+        public virtual ObjectResult<Tutor_SelectByOblast_Result> tsp_Tutor_SelectByOblast(Nullable<int> oblastId, Nullable<int> pageNumber, Nullable<int> pageSize)
+        {
+            var oblastIdParameter = oblastId.HasValue ?
+                new ObjectParameter("OblastId", oblastId) :
+                new ObjectParameter("OblastId", typeof(int));
+    
+            var pageNumberParameter = pageNumber.HasValue ?
+                new ObjectParameter("PageNumber", pageNumber) :
+                new ObjectParameter("PageNumber", typeof(int));
+    
+            var pageSizeParameter = pageSize.HasValue ?
+                new ObjectParameter("PageSize", pageSize) :
+                new ObjectParameter("PageSize", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Tutor_SelectByOblast_Result>("tsp_Tutor_SelectByOblast", oblastIdParameter, pageNumberParameter, pageSizeParameter);
         }
     }
 }

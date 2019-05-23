@@ -154,16 +154,38 @@ namespace Tutor_API.Controllers
         }
 
         [HttpGet]
-        [Route("api/Tutor/ActiveUcionica/{tutorId}")]
+        [Route("api/Tutor/ActiveUcionica/{tutorId}/{naslov?}")]
         [ResponseType(typeof(List<Tutor_SelectActiveUcionica_Result>))]
-        public IHttpActionResult ActiveUcionica(int tutorId)
+        public IHttpActionResult ActiveUcionica(int tutorId,string naslov="")
         {
             var tutor = db.Tutors.Find(tutorId);
             if (tutor.Equals(null)) return NotFound();
 
-            var lstUcionica = db.tsp_Tutor_SelectActiveUcionica(tutorId).ToList();
+            var lstUcionica = db.tsp_Tutor_SelectActiveUcionica(naslov, tutorId).ToList();
 
             return Ok(lstUcionica);
+        }
+
+        [HttpGet]
+        [Route("api/Tutor/NonActiveUcionica/{tutorId}/{naslov?}")]
+        [ResponseType(typeof(List<Ucionica_SelectNonActive_Result>))]
+        public IHttpActionResult NonActiveUcionica(int tutorId, string naslov="")
+        {
+            var tutor = db.Tutors.Find(tutorId);
+            if (tutor.Equals(null)) return NotFound();
+
+            var lstUcionica = db.tsp_Ucionica_SelectNonActive(naslov, tutorId).ToList();
+
+            return Ok(lstUcionica);
+        }
+
+        [HttpGet]
+        [Route("api/Tutor/SelectByOblast/{oblastId}")]
+        [ResponseType(typeof(List<Tutor_SelectByOblast_Result>))]
+        public IHttpActionResult SelectByOblast(int oblastId)
+        {          
+
+            return Ok(db.tsp_Tutor_SelectByOblast(oblastId).ToList());
         }
 
         [HttpGet]

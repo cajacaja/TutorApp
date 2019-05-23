@@ -31,12 +31,6 @@
             this.UcioniceTabControl = new System.Windows.Forms.TabControl();
             this.AktivneUcionice = new System.Windows.Forms.TabPage();
             this.aktivneDataGridView = new System.Windows.Forms.DataGridView();
-            this.UcionicaId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Naslov = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DatumPocetka = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DatumZavrsetka = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BrojCasova = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tezina = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StareUcionice = new System.Windows.Forms.TabPage();
             this.stareDataGridView = new System.Windows.Forms.DataGridView();
             this.NovaUcionicaBtn = new System.Windows.Forms.Button();
@@ -47,7 +41,21 @@
             this.TraziBtn = new System.Windows.Forms.Button();
             this.BackBtn = new System.Windows.Forms.Button();
             this.ForwardBtn = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.pageLable = new System.Windows.Forms.Label();
+            this.UcionicaIdS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NaslovS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DatumZavrsetkaS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BrojCasovaS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CijenaS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TezinaS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BrojPrijava = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UcionicaId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Naslov = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DatumPocetka = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DatumZavrsetka = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BrojCasova = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tezina = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BrojPrijavaA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UcioniceTabControl.SuspendLayout();
             this.AktivneUcionice.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.aktivneDataGridView)).BeginInit();
@@ -65,6 +73,7 @@
             this.UcioniceTabControl.SelectedIndex = 0;
             this.UcioniceTabControl.Size = new System.Drawing.Size(496, 392);
             this.UcioniceTabControl.TabIndex = 0;
+            this.UcioniceTabControl.MouseClick += new System.Windows.Forms.MouseEventHandler(this.UcioniceTabControl_MouseClick);
             // 
             // AktivneUcionice
             // 
@@ -79,6 +88,7 @@
             // 
             // aktivneDataGridView
             // 
+            this.aktivneDataGridView.AllowUserToDeleteRows = false;
             this.aktivneDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.aktivneDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.UcionicaId,
@@ -86,63 +96,14 @@
             this.DatumPocetka,
             this.DatumZavrsetka,
             this.BrojCasova,
-            this.Tezina});
+            this.Tezina,
+            this.BrojPrijavaA});
             this.aktivneDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.aktivneDataGridView.Location = new System.Drawing.Point(3, 3);
             this.aktivneDataGridView.Name = "aktivneDataGridView";
+            this.aktivneDataGridView.ReadOnly = true;
             this.aktivneDataGridView.Size = new System.Drawing.Size(482, 360);
             this.aktivneDataGridView.TabIndex = 0;
-            // 
-            // UcionicaId
-            // 
-            this.UcionicaId.DataPropertyName = "UcionicaId";
-            this.UcionicaId.HeaderText = "UcionicaId";
-            this.UcionicaId.Name = "UcionicaId";
-            this.UcionicaId.ReadOnly = true;
-            this.UcionicaId.Visible = false;
-            // 
-            // Naslov
-            // 
-            this.Naslov.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Naslov.DataPropertyName = "Naslov";
-            this.Naslov.HeaderText = "Naslov ucionice";
-            this.Naslov.Name = "Naslov";
-            this.Naslov.ReadOnly = true;
-            this.Naslov.Width = 99;
-            // 
-            // DatumPocetka
-            // 
-            this.DatumPocetka.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.DatumPocetka.DataPropertyName = "DatumPocetka";
-            this.DatumPocetka.HeaderText = "Datum pocetka";
-            this.DatumPocetka.Name = "DatumPocetka";
-            this.DatumPocetka.ReadOnly = true;
-            this.DatumPocetka.Width = 96;
-            // 
-            // DatumZavrsetka
-            // 
-            this.DatumZavrsetka.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.DatumZavrsetka.DataPropertyName = "DatumZavrsetka";
-            this.DatumZavrsetka.HeaderText = "Datum zavrsetka";
-            this.DatumZavrsetka.Name = "DatumZavrsetka";
-            this.DatumZavrsetka.ReadOnly = true;
-            this.DatumZavrsetka.Width = 103;
-            // 
-            // BrojCasova
-            // 
-            this.BrojCasova.DataPropertyName = "BrojCasova";
-            this.BrojCasova.HeaderText = "Broj casova";
-            this.BrojCasova.Name = "BrojCasova";
-            this.BrojCasova.ReadOnly = true;
-            this.BrojCasova.Width = 65;
-            // 
-            // Tezina
-            // 
-            this.Tezina.DataPropertyName = "Tezina";
-            this.Tezina.HeaderText = "Tezina";
-            this.Tezina.Name = "Tezina";
-            this.Tezina.ReadOnly = true;
-            this.Tezina.Width = 75;
             // 
             // StareUcionice
             // 
@@ -158,6 +119,14 @@
             // stareDataGridView
             // 
             this.stareDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.stareDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.UcionicaIdS,
+            this.NaslovS,
+            this.DatumZavrsetkaS,
+            this.BrojCasovaS,
+            this.CijenaS,
+            this.TezinaS,
+            this.BrojPrijava});
             this.stareDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.stareDataGridView.Location = new System.Drawing.Point(3, 3);
             this.stareDataGridView.Name = "stareDataGridView";
@@ -219,16 +188,18 @@
             this.TraziBtn.TabIndex = 6;
             this.TraziBtn.Text = "Trazi";
             this.TraziBtn.UseVisualStyleBackColor = true;
+            this.TraziBtn.Click += new System.EventHandler(this.TraziBtn_Click);
             // 
             // BackBtn
             // 
             this.BackBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.BackBtn.Location = new System.Drawing.Point(518, 173);
+            this.BackBtn.Location = new System.Drawing.Point(502, 173);
             this.BackBtn.Name = "BackBtn";
             this.BackBtn.Size = new System.Drawing.Size(56, 32);
             this.BackBtn.TabIndex = 7;
             this.BackBtn.Text = "<";
             this.BackBtn.UseVisualStyleBackColor = true;
+            this.BackBtn.Click += new System.EventHandler(this.BackBtn_Click);
             // 
             // ForwardBtn
             // 
@@ -239,22 +210,136 @@
             this.ForwardBtn.TabIndex = 8;
             this.ForwardBtn.Text = ">";
             this.ForwardBtn.UseVisualStyleBackColor = true;
+            this.ForwardBtn.Click += new System.EventHandler(this.ForwardBtn_Click);
             // 
-            // label1
+            // pageLable
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(603, 183);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(24, 13);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "0/0";
+            this.pageLable.AutoSize = true;
+            this.pageLable.Location = new System.Drawing.Point(603, 183);
+            this.pageLable.Name = "pageLable";
+            this.pageLable.Size = new System.Drawing.Size(24, 13);
+            this.pageLable.TabIndex = 9;
+            this.pageLable.Text = "0/0";
+            // 
+            // UcionicaIdS
+            // 
+            this.UcionicaIdS.DataPropertyName = "UcionicaId";
+            this.UcionicaIdS.HeaderText = "UcionicaId";
+            this.UcionicaIdS.Name = "UcionicaIdS";
+            this.UcionicaIdS.ReadOnly = true;
+            this.UcionicaIdS.Visible = false;
+            // 
+            // NaslovS
+            // 
+            this.NaslovS.DataPropertyName = "Naslov";
+            this.NaslovS.HeaderText = "Naslov";
+            this.NaslovS.Name = "NaslovS";
+            this.NaslovS.ReadOnly = true;
+            this.NaslovS.Width = 97;
+            // 
+            // DatumZavrsetkaS
+            // 
+            this.DatumZavrsetkaS.DataPropertyName = "DatumZavrsetka";
+            this.DatumZavrsetkaS.HeaderText = "Datum zavrsetka";
+            this.DatumZavrsetkaS.Name = "DatumZavrsetkaS";
+            this.DatumZavrsetkaS.ReadOnly = true;
+            this.DatumZavrsetkaS.Width = 85;
+            // 
+            // BrojCasovaS
+            // 
+            this.BrojCasovaS.DataPropertyName = "BrojCasova";
+            this.BrojCasovaS.HeaderText = "Broj casova";
+            this.BrojCasovaS.Name = "BrojCasovaS";
+            this.BrojCasovaS.ReadOnly = true;
+            this.BrojCasovaS.Width = 65;
+            // 
+            // CijenaS
+            // 
+            this.CijenaS.DataPropertyName = "Cijena";
+            this.CijenaS.HeaderText = "Cijena";
+            this.CijenaS.Name = "CijenaS";
+            this.CijenaS.ReadOnly = true;
+            this.CijenaS.Width = 50;
+            // 
+            // TezinaS
+            // 
+            this.TezinaS.DataPropertyName = "Tezina";
+            this.TezinaS.HeaderText = "Tezina";
+            this.TezinaS.Name = "TezinaS";
+            this.TezinaS.ReadOnly = true;
+            this.TezinaS.Width = 70;
+            // 
+            // BrojPrijava
+            // 
+            this.BrojPrijava.DataPropertyName = "BrojPrijava";
+            this.BrojPrijava.HeaderText = "Broj prijava";
+            this.BrojPrijava.Name = "BrojPrijava";
+            this.BrojPrijava.ReadOnly = true;
+            this.BrojPrijava.Width = 70;
+            // 
+            // UcionicaId
+            // 
+            this.UcionicaId.DataPropertyName = "UcionicaId";
+            this.UcionicaId.HeaderText = "UcionicaId";
+            this.UcionicaId.Name = "UcionicaId";
+            this.UcionicaId.ReadOnly = true;
+            this.UcionicaId.Visible = false;
+            // 
+            // Naslov
+            // 
+            this.Naslov.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Naslov.DataPropertyName = "Naslov";
+            this.Naslov.HeaderText = "Naslov ucionice";
+            this.Naslov.Name = "Naslov";
+            this.Naslov.ReadOnly = true;
+            this.Naslov.Width = 99;
+            // 
+            // DatumPocetka
+            // 
+            this.DatumPocetka.DataPropertyName = "DatumPocetka";
+            this.DatumPocetka.HeaderText = "Datum pocetka";
+            this.DatumPocetka.Name = "DatumPocetka";
+            this.DatumPocetka.ReadOnly = true;
+            this.DatumPocetka.Width = 75;
+            // 
+            // DatumZavrsetka
+            // 
+            this.DatumZavrsetka.DataPropertyName = "DatumZavrsetka";
+            this.DatumZavrsetka.HeaderText = "Datum zavrsetka";
+            this.DatumZavrsetka.Name = "DatumZavrsetka";
+            this.DatumZavrsetka.ReadOnly = true;
+            this.DatumZavrsetka.Width = 75;
+            // 
+            // BrojCasova
+            // 
+            this.BrojCasova.DataPropertyName = "BrojCasova";
+            this.BrojCasova.HeaderText = "Broj casova";
+            this.BrojCasova.Name = "BrojCasova";
+            this.BrojCasova.ReadOnly = true;
+            this.BrojCasova.Width = 55;
+            // 
+            // Tezina
+            // 
+            this.Tezina.DataPropertyName = "Tezina";
+            this.Tezina.HeaderText = "Tezina";
+            this.Tezina.Name = "Tezina";
+            this.Tezina.ReadOnly = true;
+            this.Tezina.Width = 65;
+            // 
+            // BrojPrijavaA
+            // 
+            this.BrojPrijavaA.DataPropertyName = "BrojPrijava";
+            this.BrojPrijavaA.HeaderText = "Broj prijava";
+            this.BrojPrijavaA.Name = "BrojPrijavaA";
+            this.BrojPrijavaA.ReadOnly = true;
+            this.BrojPrijavaA.Width = 68;
             // 
             // UcionicaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(748, 392);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.pageLable);
             this.Controls.Add(this.ForwardBtn);
             this.Controls.Add(this.BackBtn);
             this.Controls.Add(this.TraziBtn);
@@ -295,12 +380,20 @@
         private System.Windows.Forms.Button TraziBtn;
         private System.Windows.Forms.Button BackBtn;
         private System.Windows.Forms.Button ForwardBtn;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label pageLable;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UcionicaIdS;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NaslovS;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DatumZavrsetkaS;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BrojCasovaS;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CijenaS;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TezinaS;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BrojPrijava;
         private System.Windows.Forms.DataGridViewTextBoxColumn UcionicaId;
         private System.Windows.Forms.DataGridViewTextBoxColumn Naslov;
         private System.Windows.Forms.DataGridViewTextBoxColumn DatumPocetka;
         private System.Windows.Forms.DataGridViewTextBoxColumn DatumZavrsetka;
         private System.Windows.Forms.DataGridViewTextBoxColumn BrojCasova;
         private System.Windows.Forms.DataGridViewTextBoxColumn Tezina;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BrojPrijavaA;
     }
 }

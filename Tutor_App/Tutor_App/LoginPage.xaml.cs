@@ -15,7 +15,7 @@ namespace Tutor_App
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class LoginPage : ContentPage
 	{
-        private WebApiHelper studentService = new WebApiHelper("http://192.168.0.104", "api/Student");
+        private WebApiHelper studentService = new WebApiHelper("http://192.168.0.102", "api/Student");
         public LoginPage ()
 		{
 			InitializeComponent ();
@@ -24,14 +24,14 @@ namespace Tutor_App
 
         }
 
-        private void LogIn_Clicked(object sender, EventArgs e)
+        private async void LogIn_Clicked(object sender, EventArgs e)
         {
             var parametar = KorisnickoImeInput.Text + "/" + PasswordInput.Text;
             HttpResponseMessage response = studentService.GetActionResponse("LoginCheck", parametar);
 
             if (response.IsSuccessStatusCode) {
                 errorMessage.IsVisible = false;
-                DisplayAlert("Info", "Uspjesno logirani", "Ok");
+                await Navigation.PushAsync(new PretragaPage());
 
             }
             else
