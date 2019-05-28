@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Tutor_App.OcjeniPage">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="Center" Padding="5,10">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Text="Komentar:" FontAttributes="Bold"></Label>
+                <Editor Grid.Row="1"  x:Name="Komentar" HorizontalOptions="Fill" Keyboard="Text" AutoSize="TextChanges"></Editor>
+                <Label Grid.Row="2"  Text="Ocjena:" FontAttributes="Bold"></Label>
+                <Picker Grid.Row="3"  x:Name="ocjenaPiker" WidthRequest="85"></Picker>
+                <Button Grid.Row="4"  x:Name="ocjeniBtn" Text="Ocjeni" Clicked="OcjeniBtn_Clicked"></Button>
+            </Grid>
+           
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

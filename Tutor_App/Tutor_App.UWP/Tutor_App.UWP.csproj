@@ -131,9 +131,15 @@
     <Content Include="Assets\Wide310x150Logo.scale-100.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
     <Content Include="Assets\Wide310x150Logo.scale-400.png" />
+    <Content Include="fivestar.png" />
+    <Content Include="fourstars.png" />
+    <Content Include="onestar.png" />
+    <Content Include="pdf.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="studenticon.png" />
+    <Content Include="threstars.png" />
     <Content Include="tutoricon.png" />
+    <Content Include="twostars.png" />
     <Content Include="ucioniaicon.png" />
   </ItemGroup>
   <ItemGroup>

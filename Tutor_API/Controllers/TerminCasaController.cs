@@ -47,6 +47,20 @@ namespace Tutor_API.Controllers
 
             return Ok(db.tsp_TerminCas_SelectTermins(tutorId).ToList());
         }
+
+        [HttpGet]
+        [ResponseType(typeof(List<TerminCasa>))]
+        [Route("api/TerminCasa/TerminByZahtjev/{zahtjevId}")]
+        public IHttpActionResult TerminByZahtjev(int zahtjevId)
+        {
+            db.Configuration.LazyLoadingEnabled = false;
+            var zahtjev = db.Zahtjevs.Find(zahtjevId);
+            if (zahtjev == null) return NotFound();
+
+            var termini = db.TerminCasas.Where(x => x.ZahtjevId.Equals(zahtjevId)).ToList();
+
+            return Ok(termini);
+        }
         // PUT: api/TerminCasa/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutTerminCasa(int id, TerminCasa terminCasa)

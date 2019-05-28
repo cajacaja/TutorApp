@@ -64,6 +64,18 @@ namespace Tutor_API.Controllers
             return Ok(Ocjena);
         }
 
+        [HttpGet]
+        [ResponseType(typeof(List<OcjenaTutor_SelectMobile_Result>))]
+        [Route("api/OcjenaTutor/studetComments/{tutorId}/{pageNum}/{pageSize}")]
+        public IHttpActionResult studetComments(int tutorId,int pageNum,int pageSize)
+        {
+
+            var tutor = db.Tutors.FirstOrDefault(x => x.TutorId.Equals(tutorId));
+            if (tutor.Equals(null)) return NotFound();
+
+            return Ok(db.tsp_OcjenaTutor_SelectMobile(tutorId,pageNum,pageSize).ToList());
+        }
+
 
         // PUT: api/OcjenaTutor/5
         [ResponseType(typeof(void))]

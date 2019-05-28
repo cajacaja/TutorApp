@@ -21,10 +21,24 @@ namespace Tutor_API.Controllers
 
         [HttpGet]
         [Route("api/Tutor")]
-        public List<Tutor_SelectAll_Result> GetTutor()
+        public List<Tutor> GetTutor()
         {
+            db.Configuration.LazyLoadingEnabled = false;
+            return db.Tutors.ToList();
+        }
 
-            return db.tsp_Tutor_SelectAll().ToList();
+        [HttpGet]
+        [Route("api/Tutor/TutorCount/{oblastId}/{gradId}/{tipStudentaId}")]
+        public int TutorCount( int oblastId,int gradId,int tipStudentaId)
+        {
+            var lst = from x in db.Tutors
+                      join p in db.Podkategorijas on x.PodKategorijaId equals p.PodKategorijaId
+                      join o in db.Oblasts on p.OblastId equals o.OblastId
+                      join os in db.ObimStudents on x.TutorId equals os.TutorId
+                      where o.OblastId == oblastId && x.GradId == gradId && os.TipStudentaId == tipStudentaId
+                      select x.TutorId;
+
+            return lst.Count();
         }
 
         [HttpGet]
@@ -180,12 +194,12 @@ namespace Tutor_API.Controllers
         }
 
         [HttpGet]
-        [Route("api/Tutor/SelectByOblast/{oblastId}")]
+        [Route("api/Tutor/SelectByOblast/{oblastId}/{gradId}/{tipStudentaId}/{page}/{PageSize}")]
         [ResponseType(typeof(List<Tutor_SelectByOblast_Result>))]
-        public IHttpActionResult SelectByOblast(int oblastId)
+        public IHttpActionResult SelectByOblast(int oblastId,int gradId,int tipStudentaId, int page,int PageSize)
         {          
 
-            return Ok(db.tsp_Tutor_SelectByOblast(oblastId).ToList());
+            return Ok(db.tsp_Tutor_SelectByOblast(oblastId,gradId,tipStudentaId,page,PageSize).ToList());
         }
 
         [HttpGet]

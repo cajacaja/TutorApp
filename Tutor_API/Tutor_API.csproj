@@ -224,6 +224,9 @@
     <Compile Include="Models\OcjenaTutor.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\OcjenaTutor_SelectMobile_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Podkategorija.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -329,6 +332,9 @@
     <Compile Include="Models\Ucionica_SelectActive_Result.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Ucionica_SelectByOblast_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Ucionica_SelectDetails_Result.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -345,6 +351,9 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Zahtjev.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Zahtjevi_SelectAktuelne.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Zahtjev_SelectByTutorId_Result.cs">

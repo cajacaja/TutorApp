@@ -22,6 +22,8 @@ namespace Tutor_UI.Users
         {
             InitializeComponent();
             this.AutoValidate = AutoValidate.Disable;
+
+            HttpResponseMessage response = tutorService.GetActionResponse("TutorCount", "1/1/3");
         }
 
         private void PrijavaBtn_Click(object sender, EventArgs e)

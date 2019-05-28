@@ -27,10 +27,10 @@
                 </Grid.ColumnDefinitions>
 
                 <Image Source="tutoricon.png" Grid.Row="0" Margin="0,0,0,20"  Grid.Column="0"  HeightRequest="100" WidthRequest="100"></Image>
-                <Button Text="Nadji tutora" Grid.Row="0" Margin="20,20,20,45"  Grid.Column="1" Style="{StaticResource buttonStyle}" HeightRequest="20" WidthRequest="50"></Button>
+                <Button Text="Nadji tutora" x:Name="tutorBtn" Grid.Row="0" Margin="20,20,20,45"  Grid.Column="1" Style="{StaticResource buttonStyle}" HeightRequest="20" WidthRequest="50" Clicked="TutorBtn_Clicked"></Button>
 
                 <Image Source="ucioniaicon.png" Grid.Row="1" Grid.Column="0" HeightRequest="100" WidthRequest="100"></Image>
-                <Button Text="Nadji ucionicu" Grid.Row="1" Margin="20,20,20,25" Grid.Column="1" Style="{StaticResource buttonStyle}" HeightRequest="20" WidthRequest="50"></Button>
+                <Button Text="Nadji ucionicu"  x:Name="ucionicaBtn" Grid.Row="1" Margin="20,20,20,25" Grid.Column="1" Style="{StaticResource buttonStyle}" HeightRequest="20" WidthRequest="50" Clicked="UcionicaBtn_Clicked"></Button>
 
             </Grid>
         </StackLayout>

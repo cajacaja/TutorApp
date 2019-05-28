@@ -16,5 +16,15 @@ namespace Tutor_App
 		{
 			InitializeComponent ();
 		}
-	}
+
+        private void TutorBtn_Clicked(object sender, EventArgs e)
+        {
+            this.Navigation.PushAsync(new TutoriPage());
+        }
+
+        private void UcionicaBtn_Clicked(object sender, EventArgs e)
+        {
+            this.Navigation.PushAsync(new UcionicePage());
+        }
+    }
 }

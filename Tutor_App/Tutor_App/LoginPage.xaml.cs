@@ -9,6 +9,8 @@ using Xamarin.Forms.Xaml;
 using PCL_tutor;
 using PCL_tutor.Util;
 using System.Net.Http;
+using Newtonsoft.Json;
+using PCL_tutor.Model;
 
 namespace Tutor_App
 {
@@ -20,8 +22,8 @@ namespace Tutor_App
 		{
 			InitializeComponent ();
             errorMessage.IsVisible = false;
-           
 
+           
         }
 
         private async void LogIn_Clicked(object sender, EventArgs e)
@@ -31,7 +33,10 @@ namespace Tutor_App
 
             if (response.IsSuccessStatusCode) {
                 errorMessage.IsVisible = false;
-                await Navigation.PushAsync(new PretragaPage());
+                var jasonObject = response.Content.ReadAsStringAsync();
+                Global.prijavljeniStudent = JsonConvert.DeserializeObject<Student>(jasonObject.Result);
+               
+                await Navigation.PushAsync(new StudentUcionice());
 
             }
             else

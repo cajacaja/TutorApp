@@ -52,6 +52,7 @@ namespace Tutor_App.UWP
 
                 rootFrame.NavigationFailed += OnNavigationFailed;
 
+               
                 Xamarin.Forms.Forms.Init(e);
 
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)

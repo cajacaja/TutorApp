@@ -149,9 +149,33 @@ namespace Tutor_API.Controllers
 
             var lstTermina = db.Termins.Where(x => x.UcionicaId.Equals(ucionicaId)).ToList();
 
-           return Ok(lstTermina);
+            return Ok(lstTermina);
         }
 
+
+        [HttpGet]
+        [ResponseType(typeof(List<Ucionica_SelectByOblast_Result>))]
+        [Route("api/Ucionica/selectMobile/{oblastId}/{gradId}/{tipStudentaId}/{page}/{pageSize}")]
+        public IHttpActionResult selectMobile(int oblastId, int gradId, int tipStudentaId, int page, int pageSize)
+        {
+            return Ok(db.tsp_Ucionica_SelectByOblast(oblastId, gradId, tipStudentaId, page, pageSize).ToList());
+        }
+
+        [HttpGet]
+        [ResponseType(typeof(int))]
+        [Route("api/Ucionica/selectMobileNum/{oblastId}/{gradId}/{tipStudentaId}")]
+        public IHttpActionResult selectMobileNum(int oblastId, int gradId, int tipStudentaId)
+        {
+            var brojUcionica = from u in db.Ucionicas
+                               join t in db.Tutors on u.TutorId equals t.TutorId
+                               join p in db.Podkategorijas on t.PodKategorijaId equals p.PodKategorijaId
+                               join o in db.Oblasts on p.OblastId equals o.OblastId
+                               join ob in db.ObimStudents on t.TutorId equals ob.TutorId
+                               where o.OblastId == oblastId && t.GradId == gradId && ob.TipStudentaId == tipStudentaId && u.Aktivna==true && u.DatumPocetka>DateTime.Today
+                               select u.UcionicaId;
+
+           return Ok(brojUcionica.Count());
+         }
         // PUT: api/Ucionica/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutUcionica(int id, Ucionica ucionica)

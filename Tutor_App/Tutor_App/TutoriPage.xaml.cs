@@ -7,7 +7,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-
+using Tutor_App.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -18,9 +18,11 @@ namespace Tutor_App
 	{
         private WebApiHelper oblastService = new WebApiHelper("http://192.168.0.102", "api/Oblast");
         private WebApiHelper tutorService = new WebApiHelper("http://192.168.0.102", "api/Tutor");
+
         public TutoriPage ()
 		{
 			InitializeComponent ();
+            
 		}
 
         protected override void OnAppearing()
@@ -42,15 +44,16 @@ namespace Tutor_App
             if (oblastPicker.SelectedItem != null)
             {
                 int oblasdtId = (oblastPicker.SelectedItem as Oblast).OblastId;
-                HttpResponseMessage response = tutorService.GetActionResponse("SelectByOblast",oblasdtId.ToString());
-                if (response.IsSuccessStatusCode)
-                {
-                    var jasonObject = response.Content.ReadAsStringAsync();
-                    List<Tutori> tutori = JsonConvert.DeserializeObject<List<Tutori>>(jasonObject.Result);
+                BindingContext = new TutoriViewModel(oblasdtId,Global.prijavljeniStudent.GradId,Global.prijavljeniStudent.TipoviStudentaId);
+            }
+        }
 
-                    tutorLista.ItemsSource = tutori;
-                    
-                }
+        private void TutorLista_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            if (e.Item != null)
+            {
+                this.Navigation.PushAsync(new TutorDetails((e.Item as Tutori).TutorId));
+                
             }
         }
     }

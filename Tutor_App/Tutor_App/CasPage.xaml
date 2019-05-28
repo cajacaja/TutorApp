@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             x:Class="Tutor_App.CasPage">
+    <ContentPage.Content>
+        <StackLayout Padding="15">
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" Text="Odaberite datum kada vam cas odgovara"></Label>
+                <DatePicker Grid.Row="1" x:Name="DatumOd" VerticalOptions="CenterAndExpand" Date="{x:Static sys:DateTime.Now}" MinimumDate="{x:Static sys:DateTime.Now}">
+                    <DatePicker.Format>yyyy-MM-dd</DatePicker.Format>
+                    <DatePicker.MaximumDate>
+                        <sys:DateTime x:FactoryMethod="Parse">
+                            <x:Arguments>
+                                <x:String>Dec 31 2050</x:String>
+                            </x:Arguments>
+                        </sys:DateTime>
+                    </DatePicker.MaximumDate>
+                </DatePicker>
+                <Label Grid.Row="3" Text="DO" HorizontalOptions="Center"></Label>
+                <DatePicker x:Name="DatumDo" VerticalOptions="CenterAndExpand" Date="{x:Static sys:DateTime.Now}" MinimumDate="{x:Static sys:DateTime.Now}">
+                    <DatePicker.Format>yyyy-MM-dd</DatePicker.Format>
+                    <DatePicker.MaximumDate>
+                        <sys:DateTime x:FactoryMethod="Parse">
+                            <x:Arguments>
+                                <x:String>Dec 31 2050</x:String>
+                            </x:Arguments>
+                        </sys:DateTime>
+                    </DatePicker.MaximumDate>
+                </DatePicker>               
+                <Label Grid.Row="4" Text="Odaberite vrijeme casa kada vam cas odgovara"></Label>
+                <TimePicker Grid.Row="5"  x:Name="timePickerOd" />
+                <Label Grid.Row="6" Text="DO" HorizontalOptions="Center"></Label>
+                <TimePicker Grid.Row="7" x:Name="timePickerDo" />
+                <Label Grid.Row="8" Text="Broj casova:"></Label>
+                <Entry Grid.Row="9" x:Name="brojCasovaInput" Keyboard="Numeric"></Entry>
+                <Button Grid.Row="10" x:Name="posaljeBtn" Text="Posalji zahtjev" Clicked="PosaljeBtn_Clicked"></Button>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

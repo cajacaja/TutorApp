@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Tutor_App.Converters"
-             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"             
              x:Class="Tutor_App.TutoriPage">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -14,7 +14,10 @@
         <StackLayout Padding="30">
             <Picker x:Name="oblastPicker" Title="Odaberite oblast" SelectedIndexChanged="oblastPicker_SelectedIndexChanged"></Picker>
 
-            <ListView x:Name="tutorLista" RowHeight="125">
+            <ListView CachingStrategy="RecycleElement" x:Name="tutorLista" ItemsSource="{Binding Items}" RowHeight="125" ItemTapped="TutorLista_ItemTapped">
+
+                
+
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -48,7 +51,7 @@
 
                                         <Label Text="{Binding Tutor}" Grid.Row="0" Grid.Column="1" ></Label>
                                         <Label Text="{Binding Predmet}" Grid.Row="1"  Grid.Column="1"  ></Label>
-                                        <Label Text= "{Binding Cijena, StringFormat='{0} KM'}" Grid.Row="2" Grid.Column="1" ></Label>
+                                        <Label Text= "{Binding CijenaCasa, StringFormat='{0} KM'}" Grid.Row="2" Grid.Column="1" ></Label>
                                         <Label Text="{Binding Ocjena}" Grid.Row="3"  Grid.Column="1"></Label>
                                     </Grid>
                                     
@@ -57,6 +60,11 @@
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
+                <ListView.Footer>
+                    <Grid Padding="6">
+                        <Button x:Name="loadBtn" Text="Load" Command="{Binding LoadComand}" IsVisible="{Binding nextPage}"></Button>                    
+                    </Grid>
+                </ListView.Footer>
             </ListView>
         </StackLayout>
         

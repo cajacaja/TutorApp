@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:local="clr-namespace:Tutor_App.Converters"
+             x:Class="Tutor_App.UcionicePage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:ImageConverter x:Key="imgConv"></local:ImageConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout  Padding="30">
+            
+            <Picker x:Name="oblastPicker" 
+                    Title="Odaberite oblast" 
+                    SelectedIndexChanged="OblastPicker_SelectedIndexChanged">
+                
+            </Picker>
+
+            <ListView CachingStrategy="RecycleElement" 
+                      x:Name="ucionicaList"
+                      ItemsSource="{Binding Items}" 
+                      RowHeight="200" 
+                      ItemTapped="UcionicaList_ItemTapped">
+
+
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="15">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+
+                                
+                                    <Image Source="{Binding Slika,Converter={StaticResource imgConv}}"
+                                           Grid.Column="0"
+                                           HeightRequest="125"
+                                           Aspect="AspectFill"
+                                       >
+                                    
+                                    </Image>
+                                
+                                <Frame HeightRequest="125"
+                                       WidthRequest="250"
+                                       Grid.Column="1" 
+                                       Padding="0">
+                                <StackLayout  >
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                            <RowDefinition/>   
+                                            <RowDefinition/>  
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                        </Grid.ColumnDefinitions>
+                                        
+                                        <Label Text="Predmet:" 
+                                           Grid.Row="1"
+                                           Grid.Column="0"
+                                           FontAttributes="Bold">
+                                        </Label>
+                                        <Label Text="Cijena:" 
+                                           Grid.Row="2"
+                                           Grid.Column="0"
+                                           FontAttributes="Bold">
+
+                                        </Label>
+
+                                        <Label Text="Tezina:" 
+                                           Grid.Row="4"
+                                           Grid.Column="0"
+                                           FontAttributes="Bold">
+
+                                         </Label>
+                                            <Label Text="{Binding Naslov}" 
+                                           Grid.Row="0"
+                                           Grid.Column="0"
+                                           Grid.ColumnSpan="2"    
+                                           FontAttributes="Bold">
+                                        </Label>
+                                        <Label Text="Br. prijavljenih:" 
+                                           Grid.Row="3"
+                                           Grid.Column="0"
+                                           FontAttributes="Bold">
+                                        </Label>
+
+                                        <Label Text="{Binding Predmet}" 
+                                           Grid.Row="1"
+                                           Grid.Column="1"
+                                           HorizontalOptions="Start">
+                                        </Label>
+                                        
+                                        <Label Text="{Binding Cijena,StringFormat='{0} KM'}" 
+                                           Grid.Row="2"
+                                           Grid.Column="1"
+                                           HorizontalOptions="Start">
+                                        </Label>
+                                        <Label Text="{Binding BrojPrijavljenih}" 
+                                           Grid.Row="3"
+                                           Grid.Column="1"
+                                           HorizontalOptions="Start">
+                                        </Label>
+
+                                        <Label Text="{Binding Tezina}" 
+                                           Grid.Row="4"
+                                           Grid.Column="1"
+                                           HorizontalOptions="Start">
+                                        </Label>
+                                        </Grid>
+
+                                   
+
+
+                                </StackLayout>
+                                </Frame>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <ListView.Footer>
+                    <Grid Padding="6">
+                        <Button x:Name="loadBtn" Text="Load" Command="{Binding LoadComand}" IsVisible="{Binding nextPage}"></Button>
+                    </Grid>
+                </ListView.Footer>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

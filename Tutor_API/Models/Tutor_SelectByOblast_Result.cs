@@ -16,8 +16,8 @@ namespace Tutor_API.Models
         public int TutorId { get; set; }
         public string Tutor { get; set; }
         public string Predmet { get; set; }
-        public double Cijena { get; set; }
-        public Nullable<int> Ocjena { get; set; }
         public byte[] TutorTumbnail { get; set; }
+        public double CijenaCasa { get; set; }
+        public Nullable<int> Ocjena { get; set; }
     }
 }

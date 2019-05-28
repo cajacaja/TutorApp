@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:local="clr-namespace:Tutor_App.Converters"   
+             x:Class="Tutor_App.StudentUcionice">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:ImageConverter x:Key="imgConv"></local:ImageConverter>           
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Orientation="Horizontal">
+            <Label Text="Broj ne odgovorenih prijava:"
+                   FontAttributes="Bold">
+                
+            </Label>
+            <Label x:Name="neodgovoreneInput"
+                   FontAttributes="Bold">
+
+            </Label>
+            </StackLayout>
+
+            <Label Text="Prihavceni casovi:"
+                   FontAttributes="Bold">
+
+            </Label>
+            <ListView CachingStrategy="RecycleElement" x:Name="prihvaceneList" HeightRequest="125" ItemTapped="PrihvaceneList_ItemTapped">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+
+
+                                <Image Source="{Binding Slika,Converter={StaticResource imgConv}}" Grid.Column="0" WidthRequest="100" HeightRequest="100"  Aspect="AspectFill"></Image>
+
+
+                                <StackLayout Grid.Column="1" Padding="10" >
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>                                            
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+
+
+                                        <Label Text="Cijena:" Grid.Row="1"   Grid.Column="0"  FontAttributes="Bold" FontSize="13" ></Label>
+                                        <Label Text= "MaxBrojPolaznika:" Grid.Row="2"  Grid.Column="0"  FontAttributes="Bold" FontSize="13" ></Label>
+                                        <Label Text="Datum pocetka:" Grid.Row="3"  Grid.Column="0"  FontAttributes="Bold" FontSize="13" ></Label>
+                                        <Label Text="Datum zavrsetka:" Grid.Row="4"  Grid.Column="0"  FontAttributes="Bold" FontSize="13" ></Label>
+
+
+
+                                        <Label Text="{Binding Naslov}" Grid.Row="0" Grid.Column="0" HorizontalOptions="Start" FontAttributes="Bold" FontSize="13" ></Label>
+                                        <Label Text="{Binding Cijena}" Grid.Row="1"  Grid.Column="1" FontSize="13"  ></Label>
+                                        <Label Text= "{Binding MaxBrojPolaznika}" Grid.Row="2" Grid.Column="1" FontSize="13" ></Label>
+                                        <Label Text="{Binding DatumPocetka,StringFormat='{0:MM/dd/yyyy}'}" Grid.Row="3"  Grid.Column="1" FontSize="13" ></Label>
+                                        <Label Text="{Binding DatumZavrsetka,StringFormat='{0:MM/dd/yyyy}'}" Grid.Row="4"  Grid.Column="1" FontSize="13" ></Label>
+
+                                    </Grid>
+                                </StackLayout>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Label Text="Odbijeni casovi:"
+                   FontAttributes="Bold">
+
+            </Label>
+            <ListView CachingStrategy="RecycleElement" x:Name="odbijeniList" ItemTapped="OdbijeniList_ItemTapped" HeightRequest="125">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+
+
+                                <Image Source="{Binding Slika,Converter={StaticResource imgConv}}" Grid.Column="0" WidthRequest="100" HeightRequest="100"  Aspect="AspectFill"></Image>
+
+
+                                <StackLayout Grid.Column="1" Padding="10" >
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+
+
+                                        <Label Text="Cijena:" Grid.Row="1"   Grid.Column="0"  FontAttributes="Bold" FontSize="13" ></Label>
+                                        <Label Text= "MaxBrojPolaznika:" Grid.Row="2"  Grid.Column="0"  FontAttributes="Bold" FontSize="13" ></Label>
+                                        <Label Text="Datum pocetka:" Grid.Row="3"  Grid.Column="0"  FontAttributes="Bold" FontSize="13" ></Label>
+                                        <Label Text="Datum zavrsetka:" Grid.Row="4"  Grid.Column="0"  FontAttributes="Bold" FontSize="13" ></Label>
+
+
+
+                                        <Label Text="{Binding Naslov}" Grid.Row="0" Grid.Column="0" HorizontalOptions="Start" FontAttributes="Bold" FontSize="13" ></Label>
+                                        <Label Text="{Binding Cijena}" Grid.Row="1"  Grid.Column="1" FontSize="13"  ></Label>
+                                        <Label Text= "{Binding MaxBrojPolaznika}" Grid.Row="2" Grid.Column="1" FontSize="13" ></Label>
+                                        <Label Text="{Binding DatumPocetka,StringFormat='{0:MM/dd/yyyy}'}" Grid.Row="3"  Grid.Column="1" FontSize="13" ></Label>
+                                        <Label Text="{Binding DatumZavrsetka,StringFormat='{0:MM/dd/yyyy}'}" Grid.Row="4"  Grid.Column="1" FontSize="13" ></Label>
+
+                                    </Grid>
+                                </StackLayout>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -16,7 +16,7 @@ namespace Tutor_UI.Users
 {
     public partial class TutorForm : Form
     {
-        private WebAPIHelper administratorService = new WebAPIHelper(Global.URI, Global.TutorRoute);
+        private WebAPIHelper tutorService = new WebAPIHelper(Global.URI, Global.TutorRoute);
         private WebAPIHelper gradService = new WebAPIHelper(Global.URI, Global.GradRoute);
         private WebAPIHelper predmetService = new WebAPIHelper(Global.URI, Global.OblastRoute);
 
@@ -39,7 +39,7 @@ namespace Tutor_UI.Users
 
             return await Task.Factory.StartNew(() => {
 
-                var response = administratorService.GetActionResponse("TutorFilter");
+                var response = tutorService.GetActionResponse("TutorFilter");
                 return response.Content.ReadAsAsync<List<Tutor_SearchSelect_Result>>().Result.ToPagedList(pageNummber, pageSize);
 
             });
@@ -49,7 +49,7 @@ namespace Tutor_UI.Users
 
         private void BindForm()
         {
-            var response = administratorService.GetActionResponse("TutorFilter");
+            var response = tutorService.GetActionResponse("TutorFilter");
             if (response.IsSuccessStatusCode)
             {
                 var tutori = response.Content.ReadAsAsync<List<Tutor_SearchSelect_Result>>().Result;
@@ -94,7 +94,7 @@ namespace Tutor_UI.Users
             {
                 parametar = "Empty" + '/' + GradoviCmb.SelectedValue.ToString() + '/' + PredmetCmb.SelectedValue.ToString();
             }
-            var response = administratorService.GetActionResponse("TutorFilter", parametar);
+            var response = tutorService.GetActionResponse("TutorFilter", parametar);
             if (response.IsSuccessStatusCode)
             {
                 var tutori = response.Content.ReadAsAsync<List<Tutor_SearchSelect_Result>>().Result;

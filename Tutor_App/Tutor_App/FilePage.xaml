@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Tutor_App.FilePage">
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView x:Name="materijalList" ItemTapped="MaterijalList_ItemTapped">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" HeightRequest="120" Padding="10" >
+                                <Image Source="pdf.png"
+                                      HeightRequest="85"
+                                      WidthRequest="85">
+                                    
+                                </Image>
+
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Label Text="{Binding Naslov}"
+                                           Grid.Row="0"
+                                           FontAttributes="Bold">
+                                        
+                                    </Label>
+                                    <Label Text="{Binding DatumPostavljanja,StringFormat='{0:MM/dd/yyyy}'}"
+                                           Grid.Row="1"
+                                           FontAttributes="Bold">
+
+                                    </Label>
+                                </Grid>
+                                
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

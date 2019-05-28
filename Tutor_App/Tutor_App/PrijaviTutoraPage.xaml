@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Tutor_App.PrijaviTutoraPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0"
+                       Text="Razlog priave tutora:"
+                       FontAttributes="Bold" >
+                    
+                </Label>
+                <Editor Grid.Row="1" 
+                        x:Name="razlogInput"                       
+                        HorizontalOptions="Fill" 
+                        Keyboard="Text" 
+                        AutoSize="TextChanges" >
+                    
+                </Editor>
+                <Button Grid.Row="2"
+                        x:Name="prijaviBtn"
+                        Clicked="PrijaviBtn_Clicked"
+                        Text="Prijavi tutora">
+                    
+                </Button>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

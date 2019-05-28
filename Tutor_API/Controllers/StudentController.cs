@@ -52,7 +52,7 @@ namespace Tutor_API.Controllers
 
         [HttpGet]
         [Route("api/Student/LoginCheck/{username}/{password}")]
-        [ResponseType(typeof(int))]
+        [ResponseType(typeof(Student))]
         public IHttpActionResult LoginCheck(string username, string password)
         {
             db.Configuration.LazyLoadingEnabled = false;
@@ -66,7 +66,7 @@ namespace Tutor_API.Controllers
             if (student == null) return NotFound();
 
 
-            return Ok(student.StudentId);
+            return Ok(student);
         }
 
         [HttpGet]
@@ -120,6 +120,24 @@ namespace Tutor_API.Controllers
 
 
             return Ok(db.tsp_Student_SelectUcionice(id).ToList());
+        }
+
+        [HttpGet]
+        [Route("api/Student/AllPrijave/{studentId}")]
+        [ResponseType(typeof(List<Prijava>))]
+        public IHttpActionResult AllPrijave(int studentId)
+        {
+            db.Configuration.LazyLoadingEnabled = false;
+            var student = db.Students.Find(studentId);
+
+            if (student == null) return NotFound();
+
+            var prijava = from u in db.Prijavas
+                          where  u.StudentId == studentId
+                          select u;
+            
+
+            return Ok(prijava.ToList());
         }
         // PUT: api/Student/5
         [ResponseType(typeof(void))]

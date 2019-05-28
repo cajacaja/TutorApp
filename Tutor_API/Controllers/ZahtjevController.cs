@@ -73,6 +73,20 @@ namespace Tutor_API.Controllers
             return Ok(zahtjevDetail);
         }
 
+        [HttpGet]
+        [ResponseType(typeof(List<Zahtjevi_SelectAktuelne>))]
+        [Route("api/Zahtjev/Aktuelni/{studentId}")]
+        public IHttpActionResult Aktuelni(int studentId)
+        {
+            var student = db.Students.Find(studentId);
+
+            if (student.Equals(null)) return NotFound();
+
+            
+
+            return Ok(db.tsp_Zahtjevi_SelectAktulne(studentId).ToList());
+        }
+
         // PUT: api/Zahtjev/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutZahtjev(int id, Zahtjev zahtjev)
