@@ -22,7 +22,7 @@ namespace Tutor_App.ViewModels
         int TutorId = 0;
 
 
-        private WebApiHelper ocjenaTutorService = new WebApiHelper("http://192.168.0.102", "api/OcjenaTutor");        
+        private WebApiHelper ocjenaTutorService = new WebApiHelper("OcjenaTutor");        
         public ObservableCollection<OcjenaTutor> Items { get; set; }
         public ICommand LoadComand { get; set; }
 

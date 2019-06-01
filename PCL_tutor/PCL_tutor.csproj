@@ -62,9 +62,13 @@
     <Compile Include="Model\AktuelniZahtjev.cs" />
     <Compile Include="Model\CountModel.cs" />
     <Compile Include="Model\Gradovi.cs" />
+    <Compile Include="Model\KontaktInfo.cs" />
+    <Compile Include="Model\KorisnickiNalog.cs" />
     <Compile Include="Model\Materijal.cs" />
     <Compile Include="Model\Oblast.cs" />
     <Compile Include="Model\OcjenaTutor.cs" />
+    <Compile Include="Model\PohadjaneUcionice.cs" />
+    <Compile Include="Model\PohadjaniPredmeti.cs" />
     <Compile Include="Model\Prijava.cs" />
     <Compile Include="Model\PrijavaTutora.cs" />
     <Compile Include="Model\Spol.cs" />

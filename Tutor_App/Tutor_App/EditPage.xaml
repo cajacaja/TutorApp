@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Tutor_App.EditPage"
+             BackgroundColor="#212e53">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="lableStyle" TargetType="Label">
+                <Setter Property="VerticalTextAlignment"
+                        Value="Center" />
+                <Setter Property="HorizontalTextAlignment"
+                        Value="Start" />
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="TextColor" Value="#bed3c3" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontFamily" Value="Georgia" />
+            </Style>
+
+            <Style x:Key="entryStyle" TargetType="Entry">                
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="HeightRequest" Value="38"/>               
+                <Setter Property="Margin" Value="0,0,0,10"/>
+
+
+            </Style>
+
+            <Style x:Key="buttonStyle" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#4a919e" />
+                <Setter Property="TextColor" Value="WhiteSmoke"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="BorderColor" Value="#212e53"/>
+                <Setter Property="CornerRadius" Value="5"/>
+                <Setter Property="HeightRequest" Value="35"/>
+                <Setter Property="WidthRequest" Value="100"/>
+            </Style>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Padding="15" VerticalOptions="CenterAndExpand">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="6*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Text="Grad:" Style="{StaticResource lableStyle}" Grid.Row="0" Grid.Column="0"></Label>
+                <Picker x:Name="gradPicker" Grid.Row="0" Grid.Column="1"></Picker>
+
+                <Label Text="Vrsta studenta:" Style="{StaticResource lableStyle}" Grid.Row="1" Grid.Column="0"></Label>
+                <Picker x:Name="vrstaStudentaPicker"  Margin="0,0,0,10"  Grid.Row="1" Grid.Column="1"></Picker>
+
+                <Label Text="Email:" Style="{StaticResource lableStyle}" Grid.Row="3" Grid.Column="0"></Label>
+                <Entry x:Name="emailInput" Style="{StaticResource entryStyle}" Grid.Row="3" Grid.Column="1"></Entry>
+
+
+                <Label Text="Telefon:" Style="{StaticResource lableStyle}" Grid.Row="4" Grid.Column="0"></Label>
+                <Entry x:Name="telefonInput"  Style="{StaticResource entryStyle}" Grid.Row="4" Grid.Column="1"></Entry>
+
+                <Label Text="Adresa:" Style="{StaticResource lableStyle}"  Grid.Row="5" Grid.Column="0"></Label>
+                <Entry x:Name="adresaInput"  Style="{StaticResource entryStyle}"   Grid.Row="5" Grid.Column="1"></Entry>
+
+                <Label Text="Nova lozinka:" Style="{StaticResource lableStyle}" Grid.Row="6" Grid.Column="0"></Label>
+                <Entry x:Name="lozinkaInput"    Style="{StaticResource entryStyle}" Grid.Row="6" Grid.Column="1" IsPassword="True"></Entry>
+
+                <Button x:Name="editBtn" HorizontalOptions="End" Style="{StaticResource buttonStyle}" Text="Edit" Clicked="EditBtn_Clicked"  Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2"></Button>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

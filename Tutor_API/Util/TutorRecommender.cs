@@ -13,6 +13,7 @@ namespace Tutor_API.Util
 
         public List<Tutor> GetSlicneTutore(int TutuorId,int tipStudenta)
         {
+            db.Configuration.LazyLoadingEnabled = false;
             UcitajTutore(TutuorId, tipStudenta);
             var ocjenePosmatranogTutora = db.OcjenaTutors.Where(x => x.TutorId == TutuorId).OrderBy(x => x.StudentId).ToList();
 
@@ -80,7 +81,7 @@ namespace Tutor_API.Util
 
             foreach (var t in aktivniTutori)
             {
-                ocjene = db.OcjenaTutors.Where(x => x.TutorId == tutorId).OrderBy(x => x.StudentId).ToList();
+                ocjene = db.OcjenaTutors.Where(x => x.TutorId == t.TutorId).OrderBy(x => x.StudentId).ToList();
                 if (ocjene.Count > 0)
                     tutori.Add(t.TutorId, ocjene);
             }

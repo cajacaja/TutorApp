@@ -77,6 +77,24 @@ namespace Tutor_API.Controllers
         }
 
 
+        [HttpGet]
+        [ResponseType(typeof(bool))]
+        [Route("api/OcjenaTutor/CheckOcjena/{tutorId}/{studentId}")]
+        public IHttpActionResult CheckOcjena(int tutorId, int studentId)
+        {
+            var student = db.Students.Find(studentId);
+            if (student.Equals(null)) return NotFound();
+
+            var tutor = db.Tutors.Find(tutorId);
+            if (tutor.Equals(null)) return NotFound();
+
+            var ocjena = db.OcjenaTutors.Where(x => x.TutorId.Equals(tutorId) && x.StudentId.Equals(studentId));
+            if (ocjena.Equals(null)) return Ok(false);
+
+            return Ok(true);
+        }
+
+
         // PUT: api/OcjenaTutor/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutOcjenaTutor(int id, OcjenaTutor ocjenaTutor)

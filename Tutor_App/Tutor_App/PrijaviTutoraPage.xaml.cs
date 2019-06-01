@@ -15,7 +15,7 @@ namespace Tutor_App
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class PrijaviTutoraPage : ContentPage
 	{
-        private WebApiHelper prijavaService = new WebApiHelper("http://192.168.0.102", "api/BanPrijavaStudent");
+        private WebApiHelper prijavaService = new WebApiHelper("BanPrijavaStudent");
         private int idTutora = 0;
 		public PrijaviTutoraPage (int tutorId)
 		{

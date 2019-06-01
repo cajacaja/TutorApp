@@ -17,9 +17,9 @@ namespace Tutor_App
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class UcionicDetails : ContentPage
     {
-        private WebApiHelper ucionicaService = new WebApiHelper("http://192.168.0.102", "api/Ucionica");
-        private WebApiHelper prijavaService = new WebApiHelper("http://192.168.0.102", "api/Prijava");
-        private WebApiHelper studentService = new WebApiHelper("http://192.168.0.102", "api/Student");
+        private WebApiHelper ucionicaService = new WebApiHelper("Ucionica");
+        private WebApiHelper prijavaService = new WebApiHelper("Prijava");
+        private WebApiHelper studentService = new WebApiHelper("Student");
 
 
         int idUcionice = 0;
@@ -83,7 +83,7 @@ namespace Tutor_App
                 jasonObject = response.Content.ReadAsStringAsync();
                 var termini = JsonConvert.DeserializeObject<List<Termin>>(jasonObject.Result);
                 terminiList.ItemsSource = termini;
-                terminiList.HeightRequest = terminiList.RowHeight * (termini.Count + 1);
+                terminiList.HeightRequest = terminiList.RowHeight * (termini.Count +1);
                 //popuni podatke
 
                 PrijavaCheck();

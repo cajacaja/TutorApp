@@ -11,43 +11,70 @@ using PCL_tutor.Util;
 using System.Net.Http;
 using Newtonsoft.Json;
 using PCL_tutor.Model;
+using System.Threading;
 
 namespace Tutor_App
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class LoginPage : ContentPage
 	{
-        private WebApiHelper studentService = new WebApiHelper("http://192.168.0.102", "api/Student");
+        private WebApiHelper studentService = new WebApiHelper("Student");
         public LoginPage ()
 		{
 			InitializeComponent ();
+            NavigationPage.SetHasNavigationBar(this, false);
             errorMessage.IsVisible = false;
+            loginIndicator.IsVisible = false;
+            loginIndicator.IsRunning = false;
 
-           
+
+
         }
 
-        private async void LogIn_Clicked(object sender, EventArgs e)
+        private async  void LogIn_Clicked(object sender, EventArgs e)
         {
+           
             var parametar = KorisnickoImeInput.Text + "/" + PasswordInput.Text;
-            HttpResponseMessage response = studentService.GetActionResponse("LoginCheck", parametar);
+            errorMessage.IsVisible = false;
+            loginIndicator.IsVisible = true;
+            loginIndicator.IsRunning = true;
+            HttpResponseMessage response = await Task.Run(() =>studentService.GetActionResponse("LoginCheck", parametar));
+                
+                
+            
 
             if (response.IsSuccessStatusCode) {
                 errorMessage.IsVisible = false;
                 var jasonObject = response.Content.ReadAsStringAsync();
-                Global.prijavljeniStudent = JsonConvert.DeserializeObject<Student>(jasonObject.Result);
+                var student= JsonConvert.DeserializeObject<Student>(jasonObject.Result);
+
+                loginIndicator.IsVisible = false;
+                loginIndicator.IsRunning = false;
+                if (student.StatusKorisnickoRacunaId == 3)
+                {
+                   await DisplayAlert("Ban", "Vas racun je banovan.Za vise informacija kontaktirajte administraciju", "OK");
+                }
+                else
+                {
+                    Global.prijavljeniStudent = student;
+                    Application.Current.MainPage = new Nav.Menu();
+
+                }
+
                
-                await Navigation.PushAsync(new StudentUcionice());
 
             }
             else
             {
+                loginIndicator.IsVisible = false;
+                loginIndicator.IsRunning = false;
                 errorMessage.IsVisible = true;
             }
 
         }
 
         private async void Registracija_Clicked(object sender, EventArgs e) {
-
+            
             await Navigation.PushAsync(new Registracija());
         }
 

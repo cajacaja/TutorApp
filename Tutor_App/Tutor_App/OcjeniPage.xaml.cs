@@ -15,7 +15,7 @@ namespace Tutor_App
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class OcjeniPage : ContentPage
 	{
-        private WebApiHelper ocjeneService = new WebApiHelper("http://192.168.0.102", "api/OcjenaTutor");
+        private WebApiHelper ocjeneService = new WebApiHelper("OcjenaTutor");
         private int[] ocjene = { 1, 2, 3, 4, 5 };
         private int idTutora = 0;
 

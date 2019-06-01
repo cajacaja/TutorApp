@@ -24,7 +24,7 @@ namespace Tutor_App.ViewModels
 
 
 
-        private WebApiHelper ucionicaService = new WebApiHelper("http://192.168.0.102", "api/Ucionica");
+        private WebApiHelper ucionicaService = new WebApiHelper("Ucionica");
 
         public ObservableCollection<Ucionica> Items { get; set; }
         public ICommand LoadComand { get; set; }

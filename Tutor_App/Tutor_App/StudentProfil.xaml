@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin" 
+             x:Class="Tutor_App.StudentProfil"
+             BackgroundColor="#212e53"
+             Title="Profil">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+           
+            <Style x:Key="buttonStyle" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#4a919e" />
+                <Setter Property="TextColor" Value="WhiteSmoke"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="BorderColor" Value="#212e53"/>
+                <Setter Property="CornerRadius" Value="5"/>
+            </Style>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Padding="15">
+            <StackLayout Orientation="Horizontal">
+                <StackLayout Orientation="Vertical">
+                <controls:CircleImage x:Name="studentPicture"
+                                          HeightRequest="125" 
+                                          WidthRequest="125"                                          
+                                          BorderColor="#4a919e"
+                                          BorderThickness="4"
+                                          VerticalOptions="Start">
+
+
+                </controls:CircleImage>
+
+                    <Button Text="Promejni sliku" Style="{StaticResource buttonStyle}" x:Name="izborBtn" Clicked="izborBtn_Clicked"></Button>
+                    <Button Text="Edit profil" Style="{StaticResource buttonStyle}" x:Name="editBtn" Clicked="EditBtn_Clicked"></Button>
+
+                    <Button x:Name="izaberiBtn" Style="{StaticResource buttonStyle}" Text="Izaberi sliku" Clicked="IzaberiBtn_Clicked" IsVisible="False"></Button>
+                    <Button x:Name="uslikajBtn" Style="{StaticResource buttonStyle}" Text="Uslikaj sliku" Clicked="UslikajBtn_Clicked" IsVisible="False"></Button>
+                </StackLayout>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>                                          
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Text="Osnovni podaci"
+                           FontAttributes="Bold"
+                           Grid.Row="0"
+                           Grid.Column="0"
+                           TextColor="WhiteSmoke"/>
+                    <Label Text="Spol:"
+                           FontAttributes="Bold"
+                           Grid.Row="1"
+                           Grid.Column="0"
+                           TextColor="WhiteSmoke"/>
+                    <Label Text="Datum rodjenja:"
+                           FontAttributes="Bold"
+                           Grid.Row="2"
+                           Grid.Column="0"
+                           TextColor="WhiteSmoke"/>
+                    <Label Text="Grad:"
+                           FontAttributes="Bold"
+                           Grid.Row="3"
+                           Grid.Column="0"
+                           TextColor="WhiteSmoke"/>
+                    <Label Text="KontaktInfo"
+                           FontAttributes="Bold"
+                           Grid.Row="4"
+                           Grid.Column="0"
+                           Margin="0,15,0,0"
+                           TextColor="WhiteSmoke"/>
+                    <Label Text="E-mail:"
+                           FontAttributes="Bold"
+                           Grid.Row="5"
+                           Grid.Column="0"
+                           TextColor="WhiteSmoke"/>
+                    <Label Text="Telefon:"
+                           FontAttributes="Bold"
+                           Grid.Row="6"
+                           Grid.Column="0"
+                           TextColor="WhiteSmoke"/>
+                    <Label Text="Adresa:"
+                           FontAttributes="Bold"
+                           Grid.Row="7"
+                           Grid.Column="0"
+                           TextColor="WhiteSmoke"/>
+                    <Label Text="Profil info"
+                           FontAttributes="Bold"
+                           Grid.Row="8"
+                           Grid.Column="0"
+                           Margin="0,15,0,0"
+                           TextColor="WhiteSmoke"/>
+                    
+                    <Label Text="Korisnicko ime:"
+                           FontAttributes="Bold"
+                           Grid.Row="9"
+                           Grid.Column="0"
+                           TextColor="WhiteSmoke"/>
+                    
+                    <Label Text="Tip studenta:"
+                           FontAttributes="Bold"
+                           Grid.Row="10"
+                           Grid.Column="0"
+                           TextColor="WhiteSmoke"/>
+                   
+
+                    <Label x:Name="spolInput"                          
+                       Grid.Row="1"
+                       Grid.Column="1"
+                           TextColor="WhiteSmoke"/>
+                    
+                    <Label x:Name="datumRodjenjaInput"                          
+                       Grid.Row="2"
+                       Grid.Column="1"
+                           TextColor="WhiteSmoke"/>
+                    
+                    <Label x:Name="gradInput"                          
+                       Grid.Row="3"
+                       Grid.Column="1"
+                           TextColor="WhiteSmoke"/>
+
+                      <Label x:Name="emailInput"                          
+                       Grid.Row="5"
+                       Grid.Column="1"
+                             TextColor="WhiteSmoke"/>
+                    
+                      <Label x:Name="telefonInput"                          
+                       Grid.Row="6"
+                       Grid.Column="1"
+                             TextColor="WhiteSmoke"/>
+
+                       <Label x:Name="adresaInput"                          
+                       Grid.Row="7"
+                       Grid.Column="1"
+                              TextColor="WhiteSmoke"/>
+                    
+                       <Label x:Name="korisnickoImeInput"                          
+                       Grid.Row="9"
+                       Grid.Column="1"
+                              TextColor="WhiteSmoke"/>
+                    
+                       <Label x:Name="tipStudentaInput"                          
+                       Grid.Row="10"
+                       Grid.Column="1"
+                              TextColor="WhiteSmoke"/>
+
+                    </Grid>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -2095,7 +2095,7 @@
             <Parameter Name="PageSize" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="tsp_Zahtjevi_SelectAktulne" ReturnType="Collection(TutorModel.Zahtjevi_SelectAktuelne)">
-            <Parameter Name="StudentId" Mode="In" Type="Int32" />
+          <Parameter Name="StudentId" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="Administrator_NameSelect">
@@ -2361,6 +2361,7 @@
           <Property Type="Int32" Name="BrojCasova" Nullable="true" />
           <Property Type="String" Name="Naziv" Nullable="false" MaxLength="100" />
           <Property Type="String" Name="Tutor" Nullable="false" MaxLength="101" />
+          <Property Type="Int32" Name="TutorId" Nullable="false" />
         </ComplexType>
         <ComplexType Name="Student_SelectUcionice_Result">
           <Property Type="Int32" Name="UcionicaId" Nullable="false" />
@@ -2371,6 +2372,7 @@
           <Property Type="String" Name="NivoTezine" Nullable="false" MaxLength="50" />
           <Property Type="Int32" Name="BrojCasova" Nullable="false" />
           <Property Type="Double" Name="Cijena" Nullable="false" />
+          <Property Type="Int32" Name="TutorId" Nullable="false" />
         </ComplexType>
         <ComplexType Name="Ucionica_SelectActive_Result">
           <Property Type="Int32" Name="UcionicaId" Nullable="false" />
@@ -3166,6 +3168,7 @@
                 <ScalarProperty Name="BrojCasova" ColumnName="BrojCasova" />
                 <ScalarProperty Name="Naziv" ColumnName="Naziv" />
                 <ScalarProperty Name="Tutor" ColumnName="Tutor" />
+                <ScalarProperty Name="TutorId" ColumnName="TutorId" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -3180,6 +3183,7 @@
                 <ScalarProperty Name="NivoTezine" ColumnName="NivoTezine" />
                 <ScalarProperty Name="BrojCasova" ColumnName="BrojCasova" />
                 <ScalarProperty Name="Cijena" ColumnName="Cijena" />
+                <ScalarProperty Name="TutorId" ColumnName="TutorId" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

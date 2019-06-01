@@ -15,8 +15,8 @@ namespace Tutor_App
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class StudentCasovi : ContentPage
 	{
-        private WebApiHelper zahtjevService = new WebApiHelper("http://192.168.0.102", "api/Zahtjev");
-        private WebApiHelper tutorService = new WebApiHelper("http://192.168.0.102", "api/Tutor");
+        private WebApiHelper zahtjevService = new WebApiHelper("Zahtjev");
+        private WebApiHelper tutorService = new WebApiHelper("Tutor");
         private List<AktuelniZahtjev> lstZahtjeva { get; set; }
         private List<AktuelniZahtjev> lstPrihvacenih { get; set; }
         private List<AktuelniZahtjev> lstOdbijenih { get; set; }
@@ -50,11 +50,10 @@ namespace Tutor_App
 
         private void LoadPrihvacene()
         {
-            lstPrihvacenih = lstZahtjeva.Where(x => x.Prihvaceno.Equals(true)).ToList();
-            
+            lstPrihvacenih = lstZahtjeva.Where(x => x.Prihvaceno.Equals(true)).ToList();           
 
             tutorLista.ItemsSource = lstPrihvacenih;
-            tutorLista.HeightRequest = tutorLista.RowHeight * (lstPrihvacenih.Count + 1);
+            tutorLista.HeightRequest = tutorLista.RowHeight +10;
         }
         private void LoadOdbijene()
         {
@@ -62,7 +61,7 @@ namespace Tutor_App
            
 
             tutorListaOdb.ItemsSource = lstOdbijenih;
-            tutorListaOdb.HeightRequest = tutorListaOdb.RowHeight * (lstOdbijenih.Count + 1);
+            tutorListaOdb.HeightRequest = tutorListaOdb.RowHeight+10;
 
 
         }

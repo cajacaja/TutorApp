@@ -16,5 +16,6 @@ namespace Tutor_API.Models
         public Nullable<int> BrojCasova { get; set; }
         public string Naziv { get; set; }
         public string Tutor { get; set; }
+        public int TutorId { get; set; }
     }
 }

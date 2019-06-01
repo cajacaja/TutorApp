@@ -16,11 +16,13 @@ namespace Tutor_App
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class UcionicePage : ContentPage
 	{
-        private WebApiHelper oblastService = new WebApiHelper("http://192.168.0.102", "api/Oblast");
+        private WebApiHelper oblastService = new WebApiHelper("Oblast");
         public UcionicePage ()
 		{
 			InitializeComponent ();
-		}
+            ucionicaList.IsVisible = false;
+           
+        }
 
         protected override void OnAppearing()
         {
@@ -42,7 +44,10 @@ namespace Tutor_App
             {
                 int oblasdtId = (oblastPicker.SelectedItem as Oblast).OblastId;
                 BindingContext = new UcionicaViewModel(oblasdtId, Global.prijavljeniStudent.GradId, Global.prijavljeniStudent.TipoviStudentaId);
+                ucionicaList.IsVisible = true;
             }
+
+            
         }
 
         private void UcionicaList_ItemTapped(object sender, ItemTappedEventArgs e)

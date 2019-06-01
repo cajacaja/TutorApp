@@ -3,33 +3,36 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Tutor_App.Converters"
              xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"             
-             x:Class="Tutor_App.TutoriPage">
+             x:Class="Tutor_App.TutoriPage"
+             BackgroundColor="#212e53"
+             Title="Lista tutora">
     <ContentPage.Resources>
         <ResourceDictionary>
             <local:ImageConverter x:Key="imgConv"></local:ImageConverter>
+            <local:starConverter x:Key="starConv"></local:starConverter>
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
         
         <StackLayout Padding="30">
-            <Picker x:Name="oblastPicker" Title="Odaberite oblast" SelectedIndexChanged="oblastPicker_SelectedIndexChanged"></Picker>
+            <Picker x:Name="oblastPicker" Title="Odaberite oblast" TitleColor="WhiteSmoke" TextColor="WhiteSmoke" SelectedIndexChanged="oblastPicker_SelectedIndexChanged"></Picker>
 
-            <ListView CachingStrategy="RecycleElement" x:Name="tutorLista" ItemsSource="{Binding Items}" RowHeight="125" ItemTapped="TutorLista_ItemTapped">
+            <ListView CachingStrategy="RecycleElement" x:Name="tutorLista" HasUnevenRows="True"  ItemsSource="{Binding Items}" RowHeight="125" ItemTapped="TutorLista_ItemTapped">
 
                 
 
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Grid>
+                            <Grid Margin="0,0,0,10" BackgroundColor="#4a919e">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
-                                
-                                   
-                                
-                                <controls:CircleImage Source="{Binding TutorTumbnail,Converter={StaticResource imgConv}}" Grid.Column="0" WidthRequest="100" HeightRequest="100" BorderColor="#4a919e" BorderThickness="4" Aspect="AspectFill"></controls:CircleImage>
+
+
+
+                                <controls:CircleImage Source="{Binding TutorTumbnail,Converter={StaticResource imgConv}}" Grid.Column="0" WidthRequest="100" HeightRequest="100" BorderColor="#212e53" BorderThickness="4" Aspect="AspectFill"></controls:CircleImage>
                                 
                                 
                                 <StackLayout Grid.Column="1" Padding="10">
@@ -44,15 +47,15 @@
                                             <ColumnDefinition Width="Auto"/>
                                             <ColumnDefinition Width="Auto"/>
                                         </Grid.ColumnDefinitions>
-                                        <Label Text="Tutor:" Grid.Row="0" Grid.Column="0" FontAttributes="Bold"></Label>
-                                        <Label Text="Predmet:" Grid.Row="1"   Grid.Column="0"  FontAttributes="Bold" ></Label>
-                                        <Label Text= "Cijena casa:" Grid.Row="2"  Grid.Column="0"  FontAttributes="Bold"></Label>
-                                        <Label Text="Ocjena tutora:" Grid.Row="3"  Grid.Column="0"  FontAttributes="Bold"></Label>
+                                        <Label Text="Tutor:" Grid.Row="0" Grid.Column="0" FontAttributes="Bold"  TextColor="WhiteSmoke" ></Label>
+                                        <Label Text="Predmet:" Grid.Row="1"   Grid.Column="0"  FontAttributes="Bold"  TextColor="WhiteSmoke" ></Label>
+                                        <Label Text= "Cijena casa:" Grid.Row="2"  Grid.Column="0"  FontAttributes="Bold"  TextColor="WhiteSmoke" ></Label>
 
-                                        <Label Text="{Binding Tutor}" Grid.Row="0" Grid.Column="1" ></Label>
-                                        <Label Text="{Binding Predmet}" Grid.Row="1"  Grid.Column="1"  ></Label>
-                                        <Label Text= "{Binding CijenaCasa, StringFormat='{0} KM'}" Grid.Row="2" Grid.Column="1" ></Label>
-                                        <Label Text="{Binding Ocjena}" Grid.Row="3"  Grid.Column="1"></Label>
+
+                                        <Label Text="{Binding Tutor}" Grid.Row="0" Grid.Column="1"  TextColor="WhiteSmoke" ></Label>
+                                        <Label Text="{Binding Predmet}" Grid.Row="1"  Grid.Column="1"   TextColor="WhiteSmoke" ></Label>
+                                        <Label Text= "{Binding CijenaCasa, StringFormat='{0} KM'}" Grid.Row="2" Grid.Column="1"  TextColor="WhiteSmoke" ></Label>
+                                        <Image  Grid.Row="3" Grid.Column="0"  HorizontalOptions="Start"  HeightRequest="20" Source="{Binding Ocjena,Converter={StaticResource starConv}}"></Image>
                                     </Grid>
                                     
                                 </StackLayout>
@@ -62,7 +65,7 @@
                 </ListView.ItemTemplate>
                 <ListView.Footer>
                     <Grid Padding="6">
-                        <Button x:Name="loadBtn" Text="Load" Command="{Binding LoadComand}" IsVisible="{Binding nextPage}"></Button>                    
+                        <Button x:Name="loadBtn" Text="Load more"  BackgroundColor="Transparent" TextColor="WhiteSmoke" FontSize="18" HorizontalOptions="Center" Command="{Binding LoadComand}" IsVisible="{Binding nextPage}"></Button>                    
                     </Grid>
                 </ListView.Footer>
             </ListView>

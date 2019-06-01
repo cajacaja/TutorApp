@@ -14,7 +14,8 @@ namespace Tutor_App
 	{
 		public PretragaPage ()
 		{
-			InitializeComponent ();
+           
+            InitializeComponent ();
 		}
 
         private void TutorBtn_Clicked(object sender, EventArgs e)

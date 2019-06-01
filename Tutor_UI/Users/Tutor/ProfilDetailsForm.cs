@@ -75,7 +75,7 @@ namespace Tutor_UI.Users.Tutor
 
         private void FillList(int id)
         {
-            var response = tipService.GetResponse(id.ToString());
+            var response = tipService.GetActionResponse("PreferiraniStudenti", id.ToString());
             if (response.IsSuccessStatusCode)
             {
                 obimListBox.DataSource = response.Content.ReadAsAsync<List<Oblast_select_Result>>().Result;

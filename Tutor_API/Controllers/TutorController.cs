@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Core;
 using System.Data.Entity.Infrastructure;
 using System.Data.SqlClient;
 using System.Linq;
@@ -213,6 +214,18 @@ namespace Tutor_API.Controllers
 
             return Ok(db.tsp_Tutor_SelectTutorStudents(tutorId).ToList());
         }
+
+
+        [HttpGet]
+        [Route("api/Tutor/RecommendTutor/{tutorId}/{tipStudentaId}")]       
+        public List<Tutor> RecommendTutor(int tutorId,int tipStudentaId)
+        {
+            db.Configuration.LazyLoadingEnabled = false;
+            TutorRecommender r = new TutorRecommender();
+
+            return r.GetSlicneTutore(tutorId, tipStudentaId);
+        }
+
         [Route("api/Tutor")]//(Fix) dodan iz razloga jer odjednom post za tutora je prestao da radi(Magija)
         [HttpPost]
         public IHttpActionResult PostTutor(Tutor t)
@@ -346,10 +359,21 @@ namespace Tutor_API.Controllers
             var checkTutor = db.Tutors.Find(id);
             if (checkTutor.Equals(null)) return NotFound();
 
-            db.tsp_Tutor_Update(id, tutor.GradId, tutor.RadnoStanjeId, tutor.TutorTitulaId, tutor.PodKategorijaId,
-                                tutor.NazivUstanove, tutor.CijenaCasa, tutor.TutorTumbnail, tutor.TutorSlika, tutor.LozinkaSalt, tutor.LozinkaHash,
-                                tutor.Email, tutor.Telefon, tutor.Adresa);
-
+            try
+            {
+                db.tsp_Tutor_Update(id, tutor.GradId, tutor.RadnoStanjeId, tutor.TutorTitulaId, tutor.PodKategorijaId,
+                                    tutor.NazivUstanove, tutor.CijenaCasa, tutor.TutorTumbnail, tutor.TutorSlika, tutor.LozinkaSalt, tutor.LozinkaHash,
+                                    tutor.Email, tutor.Telefon, tutor.Adresa);
+            }
+            catch (EntityCommandExecutionException ex)
+            {
+                var nesto = ex.GetType().ToString();
+                SqlException greska = ex.InnerException as SqlException;
+                if (greska != null)
+                {
+                    return BadRequest(Util.ExceptionHandler.DbUpdateExceptionHandler(greska));
+                }
+            }
             var lst = db.ObimStudents.Where(x => x.TutorId == id);
 
             if (lst != null)

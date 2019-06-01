@@ -9,27 +9,30 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout Padding="30">
             <StackLayout Orientation="Horizontal">
             <Label Text="Broj ne odgovorenih prijava:"
-                   FontAttributes="Bold">
+                   FontAttributes="Bold"
+                   TextColor="WhiteSmoke">
                 
             </Label>
             <Label x:Name="neodgovoreneInput"
-                   FontAttributes="Bold">
+                   FontAttributes="Bold"
+                    TextColor="WhiteSmoke">
 
             </Label>
             </StackLayout>
 
-            <Label Text="Prihavceni casovi:"
-                   FontAttributes="Bold">
+            <Label Text="Prihavcene ucionice:"
+                   FontAttributes="Bold"
+                    TextColor="WhiteSmoke">
 
             </Label>
             <ListView CachingStrategy="RecycleElement" x:Name="prihvaceneList" HeightRequest="125" ItemTapped="PrihvaceneList_ItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Grid>
+                            <Grid Margin="0,0,0,10" BackgroundColor="#4a919e">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
@@ -37,7 +40,7 @@
 
 
 
-                                <Image Source="{Binding Slika,Converter={StaticResource imgConv}}" Grid.Column="0" WidthRequest="100" HeightRequest="100"  Aspect="AspectFill"></Image>
+                                <Image Source="{Binding Slika,Converter={StaticResource imgConv}}" Grid.Column="0" WidthRequest="180" HeightRequest="100"  Aspect="AspectFill"></Image>
 
 
                                 <StackLayout Grid.Column="1" Padding="10" >
@@ -55,18 +58,18 @@
                                         </Grid.ColumnDefinitions>
 
 
-                                        <Label Text="Cijena:" Grid.Row="1"   Grid.Column="0"  FontAttributes="Bold" FontSize="13" ></Label>
-                                        <Label Text= "MaxBrojPolaznika:" Grid.Row="2"  Grid.Column="0"  FontAttributes="Bold" FontSize="13" ></Label>
-                                        <Label Text="Datum pocetka:" Grid.Row="3"  Grid.Column="0"  FontAttributes="Bold" FontSize="13" ></Label>
-                                        <Label Text="Datum zavrsetka:" Grid.Row="4"  Grid.Column="0"  FontAttributes="Bold" FontSize="13" ></Label>
+                                        <Label Text="Cijena:" Grid.Row="1"   Grid.Column="0"  FontAttributes="Bold" FontSize="13"  TextColor="WhiteSmoke"></Label>
+                                        <Label Text= "MaxBrojPolaznika:" Grid.Row="2"  Grid.Column="0"  FontAttributes="Bold" FontSize="13"  TextColor="WhiteSmoke"></Label>
+                                        <Label Text="Datum pocetka:" Grid.Row="3"  Grid.Column="0"  FontAttributes="Bold" FontSize="13"  TextColor="WhiteSmoke"></Label>
+                                        <Label Text="Datum zavrsetka:" Grid.Row="4"  Grid.Column="0"  FontAttributes="Bold" FontSize="13"  TextColor="WhiteSmoke"></Label>
 
 
 
-                                        <Label Text="{Binding Naslov}" Grid.Row="0" Grid.Column="0" HorizontalOptions="Start" FontAttributes="Bold" FontSize="13" ></Label>
-                                        <Label Text="{Binding Cijena}" Grid.Row="1"  Grid.Column="1" FontSize="13"  ></Label>
-                                        <Label Text= "{Binding MaxBrojPolaznika}" Grid.Row="2" Grid.Column="1" FontSize="13" ></Label>
-                                        <Label Text="{Binding DatumPocetka,StringFormat='{0:MM/dd/yyyy}'}" Grid.Row="3"  Grid.Column="1" FontSize="13" ></Label>
-                                        <Label Text="{Binding DatumZavrsetka,StringFormat='{0:MM/dd/yyyy}'}" Grid.Row="4"  Grid.Column="1" FontSize="13" ></Label>
+                                        <Label Text="{Binding Naslov}" Grid.Row="0" Grid.Column="0" HorizontalOptions="Start" FontAttributes="Bold" FontSize="13"  TextColor="WhiteSmoke"></Label>
+                                        <Label Text="{Binding Cijena}" Grid.Row="1"  Grid.Column="1" FontSize="13"   TextColor="WhiteSmoke"></Label>
+                                        <Label Text= "{Binding MaxBrojPolaznika}" Grid.Row="2" Grid.Column="1"  FontSize="13" TextColor="WhiteSmoke"></Label>
+                                        <Label Text="{Binding DatumPocetka,StringFormat='{0:MM/dd/yyyy}'}" Grid.Row="3"  Grid.Column="1" FontSize="13"  TextColor="WhiteSmoke"></Label>
+                                        <Label Text="{Binding DatumZavrsetka,StringFormat='{0:MM/dd/yyyy}'}" Grid.Row="4"  Grid.Column="1" FontSize="13"  TextColor="WhiteSmoke"></Label>
 
                                     </Grid>
                                 </StackLayout>
@@ -75,15 +78,16 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <Label Text="Odbijeni casovi:"
-                   FontAttributes="Bold">
+            <Label Text="Odbijene ucionice:"
+                   FontAttributes="Bold"
+                   TextColor="WhiteSmoke">
 
             </Label>
             <ListView CachingStrategy="RecycleElement" x:Name="odbijeniList" ItemTapped="OdbijeniList_ItemTapped" HeightRequest="125">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Grid>
+                            <Grid Margin="0,0,0,10" BackgroundColor="#4a919e">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
@@ -91,10 +95,10 @@
 
 
 
-                                <Image Source="{Binding Slika,Converter={StaticResource imgConv}}" Grid.Column="0" WidthRequest="100" HeightRequest="100"  Aspect="AspectFill"></Image>
+                                <Image Source="{Binding Slika,Converter={StaticResource imgConv}}" Grid.Column="0" WidthRequest="180" HeightRequest="100"  Aspect="AspectFill"></Image>
 
 
-                                <StackLayout Grid.Column="1" Padding="10" >
+                                <StackLayout Grid.Column="1" Padding="10"  >
                                     <Grid>
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="Auto"/>
@@ -109,18 +113,18 @@
                                         </Grid.ColumnDefinitions>
 
 
-                                        <Label Text="Cijena:" Grid.Row="1"   Grid.Column="0"  FontAttributes="Bold" FontSize="13" ></Label>
-                                        <Label Text= "MaxBrojPolaznika:" Grid.Row="2"  Grid.Column="0"  FontAttributes="Bold" FontSize="13" ></Label>
-                                        <Label Text="Datum pocetka:" Grid.Row="3"  Grid.Column="0"  FontAttributes="Bold" FontSize="13" ></Label>
-                                        <Label Text="Datum zavrsetka:" Grid.Row="4"  Grid.Column="0"  FontAttributes="Bold" FontSize="13" ></Label>
+                                        <Label Text="Cijena:" Grid.Row="1"   Grid.Column="0"  FontAttributes="Bold" FontSize="13"  TextColor="WhiteSmoke"></Label>
+                                        <Label Text= "MaxBrojPolaznika:" Grid.Row="2"  Grid.Column="0"  FontAttributes="Bold" FontSize="13"  TextColor="WhiteSmoke"></Label>
+                                        <Label Text="Datum pocetka:" Grid.Row="3"  Grid.Column="0"  FontAttributes="Bold" FontSize="13"  TextColor="WhiteSmoke"></Label>
+                                        <Label Text="Datum zavrsetka:" Grid.Row="4"  Grid.Column="0"  FontAttributes="Bold" FontSize="13"  TextColor="WhiteSmoke"></Label>
 
 
 
-                                        <Label Text="{Binding Naslov}" Grid.Row="0" Grid.Column="0" HorizontalOptions="Start" FontAttributes="Bold" FontSize="13" ></Label>
-                                        <Label Text="{Binding Cijena}" Grid.Row="1"  Grid.Column="1" FontSize="13"  ></Label>
-                                        <Label Text= "{Binding MaxBrojPolaznika}" Grid.Row="2" Grid.Column="1" FontSize="13" ></Label>
-                                        <Label Text="{Binding DatumPocetka,StringFormat='{0:MM/dd/yyyy}'}" Grid.Row="3"  Grid.Column="1" FontSize="13" ></Label>
-                                        <Label Text="{Binding DatumZavrsetka,StringFormat='{0:MM/dd/yyyy}'}" Grid.Row="4"  Grid.Column="1" FontSize="13" ></Label>
+                                        <Label Text="{Binding Naslov}" Grid.Row="0" Grid.Column="0" HorizontalOptions="Start" FontAttributes="Bold" FontSize="13"  TextColor="WhiteSmoke"></Label>
+                                        <Label Text="{Binding Cijena}" Grid.Row="1"  Grid.Column="1" FontSize="13"  TextColor="WhiteSmoke" ></Label>
+                                        <Label Text= "{Binding MaxBrojPolaznika}" Grid.Row="2" Grid.Column="1" FontSize="13" TextColor="WhiteSmoke"></Label>
+                                        <Label Text="{Binding DatumPocetka,StringFormat='{0:MM/dd/yyyy}'}" Grid.Row="3"  Grid.Column="1" FontSize="13"  TextColor="WhiteSmoke"></Label>
+                                        <Label Text="{Binding DatumZavrsetka,StringFormat='{0:MM/dd/yyyy}'}" Grid.Row="4"  Grid.Column="1" FontSize="13" TextColor="WhiteSmoke" ></Label>
 
                                     </Grid>
                                 </StackLayout>

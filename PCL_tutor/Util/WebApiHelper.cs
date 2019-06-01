@@ -12,11 +12,11 @@ namespace PCL_tutor.Util
     {
         private HttpClient client { get; set; }
         private string route { get; set; }
-
-        public WebApiHelper(string uri, string route)
+        private string URI = "http://192.168.0.103/api/";
+        public WebApiHelper(string route)
         {
             client = new HttpClient();
-            client.BaseAddress = new Uri(uri);
+            client.BaseAddress = new Uri(URI);
             this.route = route;
 
         }
@@ -34,6 +34,13 @@ namespace PCL_tutor.Util
         {
             var jsonObject = new StringContent(JsonConvert.SerializeObject(newObject), Encoding.UTF8, "application/json");
             return client.PostAsync(route, jsonObject).Result;
+        }
+
+        public HttpResponseMessage PutResponse(int id, Object existingObject)
+        {
+
+            var jsonObject = new StringContent(JsonConvert.SerializeObject(existingObject), Encoding.UTF8, "application/json");
+            return client.PutAsync(route + "/" + id, jsonObject).Result;
         }
 
         public HttpResponseMessage DeleteResponse(string parameter = "")

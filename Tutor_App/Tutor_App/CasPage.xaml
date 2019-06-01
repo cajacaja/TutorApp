@@ -2,10 +2,45 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
-             x:Class="Tutor_App.CasPage">
-    <ContentPage.Content>
-        <StackLayout Padding="15">
+             x:Class="Tutor_App.CasPage"
+             Title="Zakazi cas"
+              BackgroundColor="#212e53">
+    <ContentPage.Resources>
+        <ResourceDictionary>
 
+            <Style x:Key="buttonStyle" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#4a919e" />
+                <Setter Property="TextColor" Value="WhiteSmoke"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="BorderColor" Value="#212e53"/>
+                <Setter Property="CornerRadius" Value="5"/>
+            </Style>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Padding="15" VerticalOptions="Center">
+
+            <StackLayout>
+                <Label x:Name="datumError"
+                       TextColor="Red"
+                       FontAttributes="Italic"
+                       FontSize="11">
+                    
+                </Label>               
+                <Label x:Name="vrijemeError"
+                       TextColor="Red"
+                       FontAttributes="Italic"
+                       FontSize="11">
+
+                </Label>
+                <Label x:Name="brojCasovaError"
+                       TextColor="Red"
+                       FontAttributes="Italic"
+                       FontSize="11">
+
+                </Label>
+            </StackLayout>
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -21,7 +56,7 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <Label Grid.Row="0" Text="Odaberite datum kada vam cas odgovara"></Label>
+                <Label Grid.Row="0" Text="Odaberite datum kada vam cas odgovara" TextColor="WhiteSmoke"></Label>
                 <DatePicker Grid.Row="1" x:Name="DatumOd" VerticalOptions="CenterAndExpand" Date="{x:Static sys:DateTime.Now}" MinimumDate="{x:Static sys:DateTime.Now}">
                     <DatePicker.Format>yyyy-MM-dd</DatePicker.Format>
                     <DatePicker.MaximumDate>
@@ -32,8 +67,8 @@
                         </sys:DateTime>
                     </DatePicker.MaximumDate>
                 </DatePicker>
-                <Label Grid.Row="3" Text="DO" HorizontalOptions="Center"></Label>
-                <DatePicker x:Name="DatumDo" VerticalOptions="CenterAndExpand" Date="{x:Static sys:DateTime.Now}" MinimumDate="{x:Static sys:DateTime.Now}">
+                <Label Grid.Row="2" Text="DO" HorizontalOptions="Center" TextColor="WhiteSmoke"></Label>
+                <DatePicker x:Name="DatumDo" Grid.Row="3" VerticalOptions="CenterAndExpand" Date="{x:Static sys:DateTime.Now}" MinimumDate="{x:Static sys:DateTime.Now}">
                     <DatePicker.Format>yyyy-MM-dd</DatePicker.Format>
                     <DatePicker.MaximumDate>
                         <sys:DateTime x:FactoryMethod="Parse">
@@ -42,14 +77,14 @@
                             </x:Arguments>
                         </sys:DateTime>
                     </DatePicker.MaximumDate>
-                </DatePicker>               
-                <Label Grid.Row="4" Text="Odaberite vrijeme casa kada vam cas odgovara"></Label>
+                </DatePicker>
+                <Label Grid.Row="4" Text="Odaberite vrijeme casa kada vam odgovara" TextColor="WhiteSmoke"></Label>
                 <TimePicker Grid.Row="5"  x:Name="timePickerOd" />
-                <Label Grid.Row="6" Text="DO" HorizontalOptions="Center"></Label>
+                <Label Grid.Row="6" Text="DO" HorizontalOptions="Center" TextColor="WhiteSmoke"></Label>
                 <TimePicker Grid.Row="7" x:Name="timePickerDo" />
-                <Label Grid.Row="8" Text="Broj casova:"></Label>
-                <Entry Grid.Row="9" x:Name="brojCasovaInput" Keyboard="Numeric"></Entry>
-                <Button Grid.Row="10" x:Name="posaljeBtn" Text="Posalji zahtjev" Clicked="PosaljeBtn_Clicked"></Button>
+                <Label Grid.Row="8" Text="Broj casova:" TextColor="WhiteSmoke"></Label>
+                <Entry Grid.Row="9" x:Name="brojCasovaInput" Keyboard="Numeric" ></Entry>
+                <Button Grid.Row="10" x:Name="posaljeBtn" Text="Posalji zahtjev" Style="{StaticResource buttonStyle}" Clicked="PosaljeBtn_Clicked"></Button>
             </Grid>
         </StackLayout>
     </ContentPage.Content>

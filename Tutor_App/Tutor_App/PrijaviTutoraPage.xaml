@@ -1,32 +1,57 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Tutor_App.PrijaviTutoraPage">
+             x:Class="Tutor_App.PrijaviTutoraPage"
+             BackgroundColor="#212e53"
+             Title="Prijava tutora">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <Style x:Key="buttonStyle" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#4a919e" />
+                <Setter Property="TextColor" Value="WhiteSmoke"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="BorderColor" Value="#212e53"/>
+                <Setter Property="CornerRadius" Value="5"/>
+            </Style>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout VerticalOptions="Center" Padding="15">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
+                    <RowDefinition/>
                 </Grid.RowDefinitions>
-
                 <Label Grid.Row="0"
-                       Text="Razlog priave tutora:"
-                       FontAttributes="Bold" >
+                       Text="Prijava tutora"
+                       FontSize="20"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center"
+                       TextColor="WhiteSmoke">
                     
                 </Label>
-                <Editor Grid.Row="1" 
+                <Label Grid.Row="1"
+                       Text="Razlog priave tutora:"
+                       FontAttributes="Bold" 
+                        TextColor="WhiteSmoke">
+                    
+                </Label>
+                <Editor Grid.Row="2" 
                         x:Name="razlogInput"                       
                         HorizontalOptions="Fill" 
                         Keyboard="Text" 
                         AutoSize="TextChanges" >
                     
                 </Editor>
-                <Button Grid.Row="2"
+                <Button Grid.Row="3"
                         x:Name="prijaviBtn"
                         Clicked="PrijaviBtn_Clicked"
-                        Text="Prijavi tutora">
+                        Text="Prijavi tutora"
+                        Style="{StaticResource buttonStyle}">
                     
                 </Button>
             </Grid>

@@ -28,6 +28,7 @@ namespace Tutor_API.Controllers
         [ResponseType(typeof(Grad))]
         public IHttpActionResult GetGrad(int id)
         {
+            db.Configuration.LazyLoadingEnabled = false;
             Grad grad = db.Grads.Find(id);
             if (grad == null)
             {

@@ -18,8 +18,8 @@ namespace Tutor_App
 	public partial class CasDetalji : ContentPage
 	{
         
-        private WebApiHelper tutorService = new WebApiHelper("http://192.168.0.102", "api/Tutor");
-        private WebApiHelper terminiService = new WebApiHelper("http://192.168.0.102", "api/TerminCasa");
+        private WebApiHelper tutorService = new WebApiHelper("Tutor");
+        private WebApiHelper terminiService = new WebApiHelper("TerminCasa");
         int idTutora = 0;
         int idZahtjeva = 0;
 

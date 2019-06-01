@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Tutor_App.Nav.Menu"
+             xmlns:nav="clr-namespace:Tutor_App.Nav"
+             xmlns:pages="clr-namespace:Tutor_App"
+             MasterBehavior="Popover">
+  <MasterDetailPage.Master>
+    <nav:MenuMaster x:Name="MasterPage" />
+  </MasterDetailPage.Master>
+  <MasterDetailPage.Detail>
+    <NavigationPage>
+        
+      <x:Arguments>
+        <pages:StudentProfil />
+      </x:Arguments>
+    </NavigationPage>
+  </MasterDetailPage.Detail>
+</MasterDetailPage>

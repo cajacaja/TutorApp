@@ -8,5 +8,8 @@ namespace Tutor_App
     public static class Global
     {
         public static Student prijavljeniStudent { get; set; }
+
+       
+
     }
 }

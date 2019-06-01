@@ -16,11 +16,12 @@
 
         </ResourceDictionary>
     </ContentPage.Resources>
+    
     <ContentPage.Content>
 
 
         <StackLayout VerticalOptions="CenterAndExpand" Margin="20,0,20,0">
-          
+           
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -31,13 +32,15 @@
                 </Grid.RowDefinitions>
 
                 <Image Source="studenticon.png" HorizontalOptions="Center" WidthRequest="125" HeightRequest="125" Grid.Row="0"></Image>
-                <Label x:Name="errorMessage" Margin="0" Grid.Row="1" HorizontalOptions="Center" Text="Pogresno korisnicko ime ili password" TextColor="Red" FontAttributes="Italic" FontSize="14"></Label>
+                <Label x:Name="errorMessage" Margin="0" Grid.Row="1" HorizontalOptions="Center" Text="Pogresno korisnicko ime ili password" TextColor="Red" FontAttributes="Italic" FontSize="14" ></Label>
+                <ActivityIndicator x:Name="loginIndicator" Grid.Row="1"  VerticalOptions="Center" HorizontalOptions="Center" Color="WhiteSmoke"></ActivityIndicator>
                 <Entry x:Name="KorisnickoImeInput" Grid.Row="2" Placeholder="Korisnicko ime" PlaceholderColor="#bed3c3" FontSize="16"/>
                 <Entry x:Name="PasswordInput" Grid.Row="3" Placeholder="Password" PlaceholderColor="#bed3c3" IsPassword="True" FontSize="16"/>
                 <Button Text="LogIn"  Style="{StaticResource buttonStyle}" TextColor="White"  WidthRequest="30" VerticalOptions="Center" Clicked="LogIn_Clicked" Grid.Row="4"/>
             </Grid>
 
             <StackLayout>
+                
                 <Button  Text="Registracija" BackgroundColor="Transparent" TextColor="WhiteSmoke" FontSize="18" HorizontalOptions="Center" Clicked="Registracija_Clicked"></Button>
             </StackLayout>
             

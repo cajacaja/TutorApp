@@ -19,10 +19,10 @@ namespace Tutor_App
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Registracija : ContentPage
     {
-        private WebApiHelper spolService = new WebApiHelper("http://192.168.0.102", "api/Spol");
-        private WebApiHelper gradService = new WebApiHelper("http://192.168.0.102", "api/Grad");
-        private WebApiHelper tipStudentaService = new WebApiHelper("http://192.168.0.102", "api/TipStudenta");
-        private WebApiHelper studentService = new WebApiHelper("http://192.168.0.102", "api/Student");
+        private WebApiHelper spolService = new WebApiHelper("Spol");
+        private WebApiHelper gradService = new WebApiHelper("Grad");
+        private WebApiHelper tipStudentaService = new WebApiHelper("TipStudenta");
+        private WebApiHelper studentService = new WebApiHelper("Student");
 
         public Registracija()
         {
@@ -284,7 +284,7 @@ namespace Tutor_App
             if (String.IsNullOrEmpty(adresaInput.Text))
             {
                 adresaInput.PlaceholderColor = Color.Red;
-                adresaInput.Placeholder = "Prezime ne smije biti prazno";
+                adresaInput.Placeholder = "Polje ne smije biti prazno";
 
                 return false;
             }

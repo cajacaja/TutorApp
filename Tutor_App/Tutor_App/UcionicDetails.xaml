@@ -1,44 +1,65 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Tutor_App.UcionicDetails">
+             x:Class="Tutor_App.UcionicDetails"
+             BackgroundColor="#212e53"
+             Title="Ucionica detalji">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <Style x:Key="buttonStyle" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#4a919e" />
+                <Setter Property="TextColor" Value="WhiteSmoke"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="BorderColor" Value="#212e53"/>
+                <Setter Property="CornerRadius" Value="5"/>
+            </Style>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout>
+            <StackLayout Padding="30">
 
 
                 <Label x:Name="naslovInput"
-                   HorizontalOptions="Center"
-                   FontAttributes="Bold">
+                   HorizontalOptions="CenterAndExpand"
+                   FontAttributes="Bold"
+                       FontSize="18"
+                       TextColor="WhiteSmoke">
 
                 </Label>
 
                 <Image x:Name="ucionicaSlika"
-                   HorizontalOptions="FillAndExpand"
+                   HorizontalOptions="Fill"
                    HeightRequest="230"
                        Aspect="AspectFill">
 
                 </Image>
 
                 <Label x:Name="opisInput"                                    
-                    >
+                    FontSize="15"
+                        TextColor="WhiteSmoke">
 
                 </Label>
 
                <StackLayout Orientation="Horizontal">
                     <Button x:Name="tutorBtn"
                         Text="Tutor"
-                        Clicked="TutorBtn_Clicked">
+                        Clicked="TutorBtn_Clicked"
+                             Style="{StaticResource buttonStyle}">
                     </Button>
 
                     <Button x:Name="zahtjevBtn"
                         Text="Posalji prijavu"
-                        Clicked="ZahtjevBtn_Clicked">
+                        Clicked="ZahtjevBtn_Clicked"
+                             Style="{StaticResource buttonStyle}">
                     </Button>
 
                     <Button x:Name="docDownloadBtn"
                         Text="Skini materijale"
-                        Clicked="DocDownloadBtn_Clicked">
+                        Clicked="DocDownloadBtn_Clicked"
+                             Style="{StaticResource buttonStyle}">
                     </Button>
                 </StackLayout>
                 
@@ -60,68 +81,79 @@
                     <Label Text="Datum pocetka:"
                        FontAttributes="Bold"
                        Grid.Row="0"
-                       Grid.Column="0">
+                       Grid.Column="0"
+                            TextColor="WhiteSmoke">
 
                     </Label>
                     <Label Text="Datum zavrsetka:"
                        FontAttributes="Bold"
                        Grid.Row="1"
-                       Grid.Column="0">
+                       Grid.Column="0"
+                            TextColor="WhiteSmoke">
 
                     </Label>
                     <Label Text="Adresa ucionice:"
                        FontAttributes="Bold"
                        Grid.Row="2"
-                       Grid.Column="0">
+                       Grid.Column="0"
+                            TextColor="WhiteSmoke">
 
                     </Label>
                     <Label Text="Max. br. ucenika:"
                        FontAttributes="Bold"
                        Grid.Row="3"
-                       Grid.Column="0">
+                       Grid.Column="0"
+                            TextColor="WhiteSmoke">
 
                     </Label>
 
                     <Label Text="Cijena:"
                        FontAttributes="Bold"
                        Grid.Row="4"
-                       Grid.Column="0">
+                       Grid.Column="0"
+                            TextColor="WhiteSmoke">
 
                     </Label>
                     <Label x:Name="datumPocetkaInput"                     
                        Grid.Row="0"
-                       Grid.Column="1">
+                       Grid.Column="1"
+                            TextColor="WhiteSmoke">
 
                     </Label>
 
                     <Label x:Name="datumZavrsetkaInput"    
                        Grid.Row="1"
-                       Grid.Column="1">
+                       Grid.Column="1"
+                            TextColor="WhiteSmoke">
 
                     </Label>
 
                     <Label x:Name="adresaInput"
                        Grid.Row="2"
-                       Grid.Column="1">
+                       Grid.Column="1"
+                            TextColor="WhiteSmoke">
 
                     </Label>
                     <Label x:Name="maxBrUcenikaInput"
                        Grid.Row="3"
                        Grid.Column="1"
-                       HorizontalOptions="Start">
+                       HorizontalOptions="Start"
+                            TextColor="WhiteSmoke">
 
                     </Label>
                     <Label x:Name="cijenaInput"
                        Grid.Row="4"
                        Grid.Column="1"
-                       HorizontalOptions="Start">
+                       HorizontalOptions="Start"
+                            TextColor="WhiteSmoke">
                     </Label>
 
                 </Grid>
                 <StackLayout Padding="10">
                     <Label Text="Termini"
                            FontAttributes="Bold"
-                           HorizontalOptions="Center">
+                           HorizontalOptions="Center"
+                            TextColor="WhiteSmoke">
                         
                     </Label>
                 </StackLayout>
@@ -133,18 +165,20 @@
                     <Label Text="Dan"
                            FontAttributes="Bold"
                            HorizontalOptions="Start"
-                           Grid.Column="0">
+                           Grid.Column="0"
+                            TextColor="WhiteSmoke">
 
                     </Label>
                     <Label Text="Pocetak casa"
                            FontAttributes="Bold"
                            HorizontalOptions="Start"
-                           Grid.Column="1">
+                           Grid.Column="1"
+                            TextColor="WhiteSmoke">
 
                      </Label>
                 </Grid>
                 
-                    <ListView x:Name="terminiList" IsEnabled="False">
+                    <ListView x:Name="terminiList" IsEnabled="False" RowHeight="18">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
@@ -159,14 +193,16 @@
                                         <Label Text="{Binding Dan}"
                                            FontAttributes="Bold"
                                            HorizontalOptions="Start"                                       
-                                           Grid.Column="0">
+                                           Grid.Column="0"
+                                                TextColor="WhiteSmoke">
 
                                         </Label>
 
                                         <Label Text="{Binding PocetakCasa}"
                                         FontAttributes="Bold"
                                         HorizontalOptions="Start"                                       
-                                           Grid.Column="1">
+                                           Grid.Column="1"
+                                                TextColor="WhiteSmoke">
 
                                         </Label>
 

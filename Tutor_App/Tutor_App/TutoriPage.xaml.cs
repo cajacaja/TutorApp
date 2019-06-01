@@ -16,17 +16,19 @@ namespace Tutor_App
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class TutoriPage : ContentPage
 	{
-        private WebApiHelper oblastService = new WebApiHelper("http://192.168.0.102", "api/Oblast");
-        private WebApiHelper tutorService = new WebApiHelper("http://192.168.0.102", "api/Tutor");
+        private WebApiHelper oblastService = new WebApiHelper("Oblast");
+        private WebApiHelper tutorService = new WebApiHelper("Tutor");
 
         public TutoriPage ()
 		{
 			InitializeComponent ();
+              
             
 		}
 
         protected override void OnAppearing()
         {
+                     
             HttpResponseMessage response = oblastService.GetResponse();
             if (response.IsSuccessStatusCode)
             {
@@ -36,6 +38,8 @@ namespace Tutor_App
                 oblastPicker.ItemsSource = oblasti;
                 oblastPicker.ItemDisplayBinding = new Binding("Naziv");
             }
+
+            tutorLista.IsVisible = false;
             base.OnAppearing();
         }
 
@@ -43,8 +47,15 @@ namespace Tutor_App
         {
             if (oblastPicker.SelectedItem != null)
             {
+                tutorLista.IsVisible = true;
                 int oblasdtId = (oblastPicker.SelectedItem as Oblast).OblastId;
                 BindingContext = new TutoriViewModel(oblasdtId,Global.prijavljeniStudent.GradId,Global.prijavljeniStudent.TipoviStudentaId);
+
+                var index = (tutorLista.ItemsSource as List<Tutori>);
+                if (index != null)
+                tutorLista.HeightRequest = tutorLista.RowHeight * (index.Count + 1);
+
+                
             }
         }
 

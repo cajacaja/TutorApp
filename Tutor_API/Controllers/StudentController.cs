@@ -159,16 +159,16 @@ namespace Tutor_API.Controllers
             {
                 db.SaveChanges();
             }
-            catch (DbUpdateConcurrencyException)
+            catch (Exception ex)
             {
-                if (!StudentExists(id))
+                SqlException greska = ex.InnerException as SqlException;
+
+                if (greska != null)
                 {
-                    return NotFound();
+                    return BadRequest(Util.ExceptionHandler.DbUpdateExceptionHandler(greska));
                 }
-                else
-                {
-                    throw;
-                }
+
+
             }
 
             return StatusCode(HttpStatusCode.NoContent);

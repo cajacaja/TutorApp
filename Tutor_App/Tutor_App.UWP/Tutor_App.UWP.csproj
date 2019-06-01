@@ -133,9 +133,12 @@
     <Content Include="Assets\Wide310x150Logo.scale-400.png" />
     <Content Include="fivestar.png" />
     <Content Include="fourstars.png" />
+    <Content Include="logout.png" />
     <Content Include="onestar.png" />
     <Content Include="pdf.png" />
+    <Content Include="profil.png" />
     <Content Include="Properties\Default.rd.xml" />
+    <Content Include="search.png" />
     <Content Include="studenticon.png" />
     <Content Include="threstars.png" />
     <Content Include="tutoricon.png" />
@@ -158,6 +161,9 @@
     </PackageReference>
     <PackageReference Include="PCLCrypto">
       <Version>2.0.147</Version>
+    </PackageReference>
+    <PackageReference Include="Xam.Plugin.Media">
+      <Version>4.0.1.5</Version>
     </PackageReference>
     <PackageReference Include="Xam.Plugins.Forms.ImageCircle">
       <Version>3.0.0.5</Version>

@@ -17,6 +17,8 @@ namespace Tutor_UI.Users
     {
         private WebAPIHelper administratorService = new WebAPIHelper(Global.URI, Global.AdministratorRoute);
         private WebAPIHelper tutorService = new WebAPIHelper(Global.URI, Global.TutorRoute);
+       
+
 
         public LoginForm()
         {
@@ -30,9 +32,13 @@ namespace Tutor_UI.Users
         {
             if (this.ValidateChildren())
             {
+
+
                 var parametar = korisnickoImeInput.Text + '/' + lozinkaInput.Text;
+                
                 HttpResponseMessage provjeriAdministrator = administratorService.GetActionResponse("LoginCheck", parametar);
                 HttpResponseMessage provjeraTutor = tutorService.GetActionResponse("LoginCheck", parametar);
+               
                 if (provjeriAdministrator.IsSuccessStatusCode)
                 {
                     Users.MainForm mainForm = new MainForm();

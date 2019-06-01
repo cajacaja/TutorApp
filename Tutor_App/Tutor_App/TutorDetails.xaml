@@ -3,22 +3,36 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"             
              xmlns:local="clr-namespace:Tutor_App.Converters"
-             x:Class="Tutor_App.TutorDetails">
+             x:Class="Tutor_App.TutorDetails"
+             BackgroundColor="#212e53"
+             Title="Detalji o tutoru">
     <ContentPage.Resources>
         <ResourceDictionary>
             <local:ImageConverter x:Key="imgConv"></local:ImageConverter>
             <local:starConverter x:Key="starConv"></local:starConverter>
+
+            <Style x:Key="buttonStyle" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#4a919e" />
+                <Setter Property="TextColor" Value="WhiteSmoke"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="BorderColor" Value="#212e53"/>
+                <Setter Property="CornerRadius" Value="5"/>
+            </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout Padding="30" HeightRequest="120">
+        <StackLayout Padding="15" Orientation="Vertical">
+            <StackLayout Padding="5,10,5,10" Spacing="10">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
-
-                <controls:CircleImage x:Name="tutorSlika" HorizontalOptions="Start" Grid.Column="0" WidthRequest="100" HeightRequest="100" BorderColor="#4a919e" BorderThickness="4" Aspect="AspectFill"></controls:CircleImage>
+                <StackLayout Grid.Column="0">
+                    <controls:CircleImage x:Name="tutorSlika" HorizontalOptions="Start" WidthRequest="100" HeightRequest="100" BorderColor="#4a919e" BorderThickness="4" Aspect="AspectFill"></controls:CircleImage>
+                   
+                </StackLayout>
+               
                 <StackLayout Grid.Column="1" HorizontalOptions="Center">
                     <Grid>
                         <Grid.RowDefinitions>
@@ -28,47 +42,113 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
+                           
+
+                            </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="*"/>                            
-                        </Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                             <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
 
-                        <Label Text="Ime:" Grid.Row="0" Grid.Column="0" FontAttributes="Bold" HorizontalOptions="Start"></Label>
-                        <Label Text="Prezime:" Grid.Row="1" Grid.Column="0" FontAttributes="Bold" HorizontalOptions="Start"></Label>
-                        <Label Text="Spol:" Grid.Row="2" Grid.Column="0" FontAttributes="Bold" HorizontalOptions="Start"></Label>
-                        <Label Text="Predmet:" Grid.Row="3"   Grid.Column="0"  FontAttributes="Bold" HorizontalOptions="Start"></Label>
-                        <Label Text= "Cijena casa:" Grid.Row="4"  Grid.Column="0"  FontAttributes="Bold" HorizontalOptions="Start"></Label>
-                        <Label Text="Ocjena tutora:" Grid.Row="5"  Grid.Column="0"  FontAttributes="Bold" HorizontalOptions="Start"></Label>
+                        <Label Text="Ime:" Grid.Row="0" Grid.Column="0" FontAttributes="Bold" HorizontalOptions="Start" TextColor="WhiteSmoke"></Label>
+                        <Label Text="Prezime:" Grid.Row="1" Grid.Column="0" FontAttributes="Bold" HorizontalOptions="Start" TextColor="WhiteSmoke"></Label>
+                        <Label Text="Spol:" Grid.Row="2" Grid.Column="0" FontAttributes="Bold" HorizontalOptions="Start" TextColor="WhiteSmoke"></Label>
+                        <Label Text="Predmet:" Grid.Row="3"   Grid.Column="0"  FontAttributes="Bold" HorizontalOptions="Start" TextColor="WhiteSmoke"></Label>
+                        <Label Text= "Cijena casa:" Grid.Row="4"  Grid.Column="0"  FontAttributes="Bold" HorizontalOptions="Start" TextColor="WhiteSmoke"></Label>
 
-                        <Label x:Name="imeInput" Grid.Row="0" Grid.Column="1" HorizontalOptions="Start"></Label>
-                        <Label x:Name="prezimeInput" Grid.Row="1" Grid.Column="1" HorizontalOptions="Start" ></Label>
-                        <Label x:Name="spolInput" Grid.Row="2" Grid.Column="1" HorizontalOptions="Start"></Label>
-                        <Label x:Name="predmetInput" Grid.Row="3"   Grid.Column="1" HorizontalOptions="Start"></Label>
-                        <Label x:Name="cijenaInput" Grid.Row="4"  Grid.Column="1" HorizontalOptions="Start"></Label>
-                        <StackLayout x:Name="starList"  Grid.Row="5" Grid.Column="1" Orientation="Horizontal" Padding="0" Spacing="0">
+
+                        <Label x:Name="imeInput" Grid.Row="0" Grid.Column="1" HorizontalOptions="Start" TextColor="WhiteSmoke"></Label>
+                        <Label x:Name="prezimeInput" Grid.Row="1" Grid.Column="1" HorizontalOptions="Start" TextColor="WhiteSmoke"></Label>
+                        <Label x:Name="spolInput" Grid.Row="2" Grid.Column="1" HorizontalOptions="Start" TextColor="WhiteSmoke"></Label>
+                        <Label x:Name="predmetInput" Grid.Row="3"   Grid.Column="1" HorizontalOptions="Start" TextColor="WhiteSmoke"></Label>
+                        <Label x:Name="cijenaInput" Grid.Row="4"  Grid.Column="1" HorizontalOptions="Start" TextColor="WhiteSmoke"></Label>
+                        <StackLayout x:Name="starList"  Grid.Row="5" Grid.Column="0" Orientation="Horizontal" Padding="0" Spacing="0" >
                             
                         </StackLayout>
-                  
-                        <Button Text="Ocjeni" Grid.Row="6" Grid.Column="0" WidthRequest="80" HorizontalOptions="Start" Clicked="Ocjeni_Clicked"></Button>
-                        <Button Text="Zakazi cas" x:Name="zakaziBtn" Grid.Row="6" Grid.Column="1" WidthRequest="100" HorizontalOptions="Center" Clicked="ZakaziBtn_Clicked"></Button>
+
+                            
+                                <Button Text="Zakazi cas" x:Name="zakaziBtn" WidthRequest="100" Grid.Row="0" Grid.Column="2" Style="{StaticResource buttonStyle}"   HorizontalOptions="Start" Clicked="ZakaziBtn_Clicked"></Button>
+                            <Button Text="Prijavi" x:Name="prijaviBtn" WidthRequest="100" Grid.Row="1" Grid.Column="2" HorizontalOptions="Start" Style="{StaticResource buttonStyle}"  Clicked="Prijavi_Clicked"></Button>
+                            <Button Text="Ocjeni" x:Name="ocjeniBtn" WidthRequest="100" Grid.Row="2" Grid.Column="2" Style="{StaticResource buttonStyle}" Clicked="Ocjeni_Clicked" HorizontalOptions="Start"></Button>
+                            
                     </Grid>
                 </StackLayout>
             </Grid>
-            <StackLayout Padding="0,15,0,0">
-                <Button Text="Prijavi" HorizontalOptions="Start" WidthRequest="60" Clicked="Prijavi_Clicked"></Button>
-                <Label Text="Ocjene tutora:" FontAttributes="Bold" HorizontalOptions="Start"></Label>
+           </StackLayout>           
+            
+            
+            <StackLayout Orientation="Vertical">
+                <Label Text="Slicni tutori:" FontAttributes="Bold" HorizontalOptions="Start" TextColor="WhiteSmoke"></Label>
             </StackLayout>
-            <ListView CachingStrategy="RecycleElement" x:Name="tutorLista" ItemsSource="{Binding Items}" RowHeight="170">
 
-                
+            <ListView CachingStrategy="RecycleElement" x:Name="preporukaList" ItemTapped="PreporukaList_ItemTapped" HasUnevenRows="True" HeightRequest="180"  RowHeight="150">
+
+
 
                 <ListView.ItemTemplate>
-                    <DataTemplate>                       
+                    <DataTemplate>
                         <ViewCell>
-                            
-                            <Grid Margin="10">
+
+                            <Grid Margin="0,0,0,10" BackgroundColor="#4a919e" Padding="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+
+
+                                <controls:CircleImage Source="{Binding TutorTumbnail,Converter={StaticResource imgConv}}" Grid.Column="0" WidthRequest="90" HeightRequest="90" BorderColor="#212e53" BorderThickness="2" Aspect="AspectFill"></controls:CircleImage>
+
+
+                                <StackLayout Grid.Column="1"  HorizontalOptions="Start">
+                                    <Frame>
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+
+
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+
+
+
+                                            <Label Text="Ime:" Grid.Row="0" TextColor="WhiteSmoke"  Grid.Column="0"   FontAttributes="Bold" FontSize="14"></Label>
+                                            <Label Text="Prezime:" Grid.Row="1" TextColor="WhiteSmoke" Grid.Column="0"      FontAttributes="Bold" FontSize="14"></Label>
+                                            <Label Text="Cijena:" Grid.Row="2" TextColor="WhiteSmoke"  Grid.Column="0"     FontAttributes="Bold" FontSize="14"></Label>
+
+
+                                            <Label Text="{Binding Ime}" Grid.Row="0" TextColor="WhiteSmoke"  Grid.Column="1"   HorizontalOptions="Start"  FontAttributes="Bold" FontSize="14"></Label>
+                                            <Label Text="{Binding Prezime}" Grid.Row="1" TextColor="WhiteSmoke" Grid.Column="1"    FontSize="14" ></Label>
+                                            <Label Text="{Binding CijenaCasa,StringFormat='{0} KM'}" Grid.Row="2" TextColor="WhiteSmoke" HorizontalOptions="Start" Grid.Column="1" FontAttributes="Italic" FontSize="14"></Label>
+
+
+                                        </Grid>
+                                    </Frame>
+                                </StackLayout>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <StackLayout Orientation="Vertical">
+                <Label Text="Ocjene tutora:" FontAttributes="Bold" HorizontalOptions="Start" TextColor="WhiteSmoke"></Label>
+            </StackLayout>
+
+            <ListView CachingStrategy="RecycleElement" x:Name="tutorLista" ItemsSource="{Binding Items}" HasUnevenRows="True" RowHeight="165">
+
+
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+
+                            <Grid Margin="0,0,0,10" BackgroundColor="#4a919e" >
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
@@ -76,33 +156,33 @@
 
 
                                 <Frame HeightRequest="100">
-                                    <controls:CircleImage Source="{Binding StudentskaSlika,Converter={StaticResource imgConv}}" Grid.Column="0" WidthRequest="90" HeightRequest="90" BorderColor="#4a919e" BorderThickness="2" Aspect="AspectFill"></controls:CircleImage>
+                                    <controls:CircleImage Source="{Binding StudentskaSlika,Converter={StaticResource imgConv}}" Grid.Column="0" WidthRequest="90" HeightRequest="90" BorderColor="#212e53" BorderThickness="2" Aspect="AspectFill"></controls:CircleImage>
                                 </Frame>
 
                                 <StackLayout Grid.Column="1"  HorizontalOptions="Start">
                                     <Frame>
                                         <Grid>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            
-                                        </Grid.RowDefinitions>
-                                       
-                                        
-                                        
-                                            <Label Text="Komentar:" Grid.Row="1"     FontAttributes="Bold" FontSize="12"></Label>                                            
-                                            
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
 
-                                            <Label Text="{Binding Student}" Grid.Row="0"  HorizontalOptions="Start"  FontAttributes="Bold" FontSize="14"></Label>
-                                            <Label Text="{Binding Komentar}" Grid.Row="2"  FontSize="12" ></Label>
+                                            </Grid.RowDefinitions>
+
+
+
+                                            <Label Text="Komentar:" Grid.Row="1"     FontAttributes="Bold" FontSize="12"></Label>
+
+
+                                            <Label Text="{Binding Student}" Grid.Row="0"  HorizontalOptions="Start" TextColor="WhiteSmoke"  FontAttributes="Bold" FontSize="14"></Label>
+                                            <Label Text="{Binding Komentar}" Grid.Row="2" TextColor="WhiteSmoke"  FontSize="12" ></Label>
                                             <Image  Grid.Row="3" HorizontalOptions="Start"  HeightRequest="20" Source="{Binding Ocjena,Converter={StaticResource starConv}}"></Image>
 
-                                            <Label Text="{Binding Datum,StringFormat='{0:MM/dd/yyyy}'}"  Grid.Row="4" HorizontalOptions="Start"  FontAttributes="Italic" FontSize="12"></Label>
+                                            <Label Text="{Binding Datum,StringFormat='{0:MM/dd/yyyy}'}" TextColor="WhiteSmoke" Grid.Row="4" HorizontalOptions="Start"  FontAttributes="Italic" FontSize="12"></Label>
 
-                                            
+
                                         </Grid>
                                     </Frame>
                                 </StackLayout>

@@ -18,7 +18,11 @@ namespace Tutor_App
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class TutorDetails : ContentPage
 	{
-        private WebApiHelper tutorService = new WebApiHelper("http://192.168.0.102", "api/Tutor");
+        private WebApiHelper tutorService = new WebApiHelper("Tutor");
+        private WebApiHelper studentService = new WebApiHelper("Student");
+        private WebApiHelper ocjenaTutorService = new WebApiHelper("OcjenaTutor");
+        private WebApiHelper zahtjevService = new WebApiHelper("Zahtjev");
+
         private Tutori tutor;
         List<Image> images;
        
@@ -26,10 +30,14 @@ namespace Tutor_App
 		{
 			InitializeComponent ();
             images = new List<Image>();
+            ocjeniBtn.IsVisible = false;
+            prijaviBtn.IsVisible = false;
             LoadTutor(tutorId);
             BindingContext = new OcjeneTutorViewModel(tutorId);
-            
-		}
+          
+            tutorLista.HeightRequest = tutorLista.RowHeight;
+           
+        }
 
         private void LoadTutor(int tutorId)
         {
@@ -55,12 +63,81 @@ namespace Tutor_App
             spolInput.Text = tutor.Spol;
             predmetInput.Text = tutor.Predmet;
             cijenaInput.Text = tutor.CijenaCasa.ToString() + " KM";
-         
+
+
+            string parameter = Global.prijavljeniStudent.StudentId.ToString();
+            var response = studentService.GetActionResponse("PohadjeniPredmeti", parameter);
+            if (response.IsSuccessStatusCode)
+            {
+               jasonObject = response.Content.ReadAsStringAsync();
+               var predmeti = JsonConvert.DeserializeObject<List<PohadjaniPredmeti>>(jasonObject.Result);
+
+                var predmet = predmeti.FirstOrDefault(x => x.TutorId == tutorId);
+                if (predmet != null)
+                {
+                    ocjeniBtn.IsVisible = true;
+                    prijaviBtn.IsVisible = true;
+                }
+            }
+
+            response = studentService.GetActionResponse("PohadjaneUcionice", parameter);
+            if (response.IsSuccessStatusCode)
+            {
+                jasonObject = response.Content.ReadAsStringAsync();
+                var ucionice = JsonConvert.DeserializeObject<List<PohadjaneUcionice>>(jasonObject.Result);
+
+                var ucionica = ucionice.FirstOrDefault(x => x.TutorId == tutorId);
+                if (ucionica != null)
+                {
+                    ocjeniBtn.IsVisible = true;
+                    prijaviBtn.IsVisible = true;
+                }
+            }
+
+            response = ocjenaTutorService.GetActionResponse("CheckOcjena",tutorId.ToString()+"/"+ parameter);
+            if (response.IsSuccessStatusCode)
+            {
+                jasonObject = response.Content.ReadAsStringAsync();
+                var ocjena = JsonConvert.DeserializeObject<bool>(jasonObject.Result);
+
+                if (!ocjena)
+                    ocjeniBtn.IsVisible = true;
+                else
+                    ocjeniBtn.IsVisible = false;
+            }
+
+            response = zahtjevService.GetActionResponse("Aktuelni", parameter);
+            if (response.IsSuccessStatusCode)
+            {
+                jasonObject = response.Content.ReadAsStringAsync();
+                var zahtjevi = JsonConvert.DeserializeObject<List<Zahtjev>>(jasonObject.Result);
+
+                var zahtjev = zahtjevi.FirstOrDefault(x => x.TutorId == tutorId && x.Prihvaceno == true);
+                if (zahtjev != null)
+                    zakaziBtn.IsVisible = false;
+                    
+
+            }
+
+            string parameter1 = tutorId.ToString() + "/" + Global.prijavljeniStudent.TipoviStudentaId.ToString();
+            response = tutorService.GetActionResponse("RecommendTutor", parameter1);
+            if ( response.IsSuccessStatusCode)
+            {
+                jasonObject = response.Content.ReadAsStringAsync();
+                var preporuceniTutori = JsonConvert.DeserializeObject<List<Tutori>>(jasonObject.Result);
+                preporukaList.ItemsSource = preporuceniTutori.Take(3);
+                preporukaList.HeightRequest = preporukaList.RowHeight;
+
+
+            }
+
+            
         }
 
         private void ZakaziBtn_Clicked(object sender, EventArgs e)
         {
             this.Navigation.PushAsync(new CasPage(tutor.TutorId));
+            
         }
 
         private void Ocjeni_Clicked(object sender, EventArgs e)
@@ -71,6 +148,15 @@ namespace Tutor_App
         private void Prijavi_Clicked(object sender, EventArgs e)
         {
             this.Navigation.PushAsync(new PrijaviTutoraPage (tutor.TutorId));
+        }
+
+        private void PreporukaList_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            if (e.Item != null)
+            {
+                int tutorId = (e.Item as Tutori).TutorId;
+                this.Navigation.PushAsync(new TutorDetails(tutorId));
+            }
         }
     }
 }

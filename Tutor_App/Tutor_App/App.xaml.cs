@@ -7,7 +7,7 @@ namespace Tutor_App
 {
     public partial class App : Application
     {
-        public App()
+        public  App()
         {
             InitializeComponent();
 

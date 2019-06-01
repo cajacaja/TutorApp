@@ -2,7 +2,9 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
               xmlns:local="clr-namespace:Tutor_App.Converters"
-             x:Class="Tutor_App.UcionicePage">
+             x:Class="Tutor_App.UcionicePage"
+             BackgroundColor="#212e53"
+             Title="Lista ucionica">
     <ContentPage.Resources>
         <ResourceDictionary>
             <local:ImageConverter x:Key="imgConv"></local:ImageConverter>
@@ -13,7 +15,9 @@
             
             <Picker x:Name="oblastPicker" 
                     Title="Odaberite oblast" 
-                    SelectedIndexChanged="OblastPicker_SelectedIndexChanged">
+                    SelectedIndexChanged="OblastPicker_SelectedIndexChanged"
+                    TitleColor="WhiteSmoke"
+                    TextColor="WhiteSmoke">
                 
             </Picker>
 
@@ -28,13 +32,13 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Grid Padding="15">
+                            <Grid Padding="15" Margin="0,0,0,10" BackgroundColor="#4a919e">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
 
-
+                               
                                 
                                     <Image Source="{Binding Slika,Converter={StaticResource imgConv}}"
                                            Grid.Column="0"
@@ -65,54 +69,65 @@
                                         <Label Text="Predmet:" 
                                            Grid.Row="1"
                                            Grid.Column="0"
-                                           FontAttributes="Bold">
+                                           FontAttributes="Bold"
+                                               TextColor="WhiteSmoke">
                                         </Label>
                                         <Label Text="Cijena:" 
                                            Grid.Row="2"
                                            Grid.Column="0"
-                                           FontAttributes="Bold">
+                                           FontAttributes="Bold"
+                                               TextColor="WhiteSmoke">
 
                                         </Label>
 
                                         <Label Text="Tezina:" 
                                            Grid.Row="4"
                                            Grid.Column="0"
-                                           FontAttributes="Bold">
+                                           FontAttributes="Bold"
+                                               TextColor="WhiteSmoke">
 
                                          </Label>
                                             <Label Text="{Binding Naslov}" 
                                            Grid.Row="0"
                                            Grid.Column="0"
                                            Grid.ColumnSpan="2"    
-                                           FontAttributes="Bold">
+                                           FontAttributes="Bold"
+                                                   HorizontalOptions="CenterAndExpand"
+                                                   FontSize="15"
+                                                   TextColor="WhiteSmoke">
                                         </Label>
                                         <Label Text="Br. prijavljenih:" 
                                            Grid.Row="3"
                                            Grid.Column="0"
-                                           FontAttributes="Bold">
+                                           FontAttributes="Bold"
+                                               TextColor="WhiteSmoke">
                                         </Label>
 
                                         <Label Text="{Binding Predmet}" 
                                            Grid.Row="1"
                                            Grid.Column="1"
-                                           HorizontalOptions="Start">
+                                           HorizontalOptions="Start"
+                                               TextColor="WhiteSmoke">
                                         </Label>
                                         
                                         <Label Text="{Binding Cijena,StringFormat='{0} KM'}" 
                                            Grid.Row="2"
                                            Grid.Column="1"
-                                           HorizontalOptions="Start">
+                                           HorizontalOptions="Start"
+                                               TextColor="WhiteSmoke">
                                         </Label>
                                         <Label Text="{Binding BrojPrijavljenih}" 
                                            Grid.Row="3"
                                            Grid.Column="1"
-                                           HorizontalOptions="Start">
+                                           HorizontalOptions="Start"
+                                               TextColor="WhiteSmoke">
                                         </Label>
 
                                         <Label Text="{Binding Tezina}" 
                                            Grid.Row="4"
                                            Grid.Column="1"
-                                           HorizontalOptions="Start">
+                                           HorizontalOptions="Start"
+                                               TextColor="WhiteSmoke">
                                         </Label>
                                         </Grid>
 
@@ -127,7 +142,7 @@
                 </ListView.ItemTemplate>
                 <ListView.Footer>
                     <Grid Padding="6">
-                        <Button x:Name="loadBtn" Text="Load" Command="{Binding LoadComand}" IsVisible="{Binding nextPage}"></Button>
+                        <Button x:Name="loadBtn" Text="Load more"  BackgroundColor="Transparent" TextColor="WhiteSmoke" FontSize="18" HorizontalOptions="Center" Command="{Binding LoadComand}" IsVisible="{Binding nextPage}"></Button>
                     </Grid>
                 </ListView.Footer>
             </ListView>

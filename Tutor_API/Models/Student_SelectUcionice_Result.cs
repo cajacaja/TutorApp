@@ -21,5 +21,6 @@ namespace Tutor_API.Models
         public string NivoTezine { get; set; }
         public int BrojCasova { get; set; }
         public double Cijena { get; set; }
+        public int TutorId { get; set; }
     }
 }

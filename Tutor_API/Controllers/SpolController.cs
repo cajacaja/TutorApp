@@ -23,84 +23,21 @@ namespace Tutor_API.Controllers
             return db.Spols.ToList();
         }
 
-        // GET: api/Spol/5
-        //[ResponseType(typeof(Spol))]
-        //public IHttpActionResult GetSpol(int id)
-        //{
-        //    Spol spol = db.Spols.Find(id);
-        //    if (spol == null)
-        //    {
-        //        return NotFound();
-        //    }
+        //GET: api/Spol/5
+        [ResponseType(typeof(Spol))]
+        public IHttpActionResult GetSpol(int id)
+        {
+            db.Configuration.LazyLoadingEnabled = false;
+            Spol spol = db.Spols.Find(id);
+            if (spol == null)
+            {
+                return NotFound();
+            }
 
-        //    return Ok(spol);
-        //}
+            return Ok(spol);
+        }
 
-        //// PUT: api/Spol/5
-        //[ResponseType(typeof(void))]
-        //public IHttpActionResult PutSpol(int id, Spol spol)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
-
-        //    if (id != spol.SpolId)
-        //    {
-        //        return BadRequest();
-        //    }
-
-        //    db.Entry(spol).State = EntityState.Modified;
-
-        //    try
-        //    {
-        //        db.SaveChanges();
-        //    }
-        //    catch (DbUpdateConcurrencyException)
-        //    {
-        //        if (!SpolExists(id))
-        //        {
-        //            return NotFound();
-        //        }
-        //        else
-        //        {
-        //            throw;
-        //        }
-        //    }
-
-        //    return StatusCode(HttpStatusCode.NoContent);
-        //}
-
-        //// POST: api/Spol
-        //[ResponseType(typeof(Spol))]
-        //public IHttpActionResult PostSpol(Spol spol)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
-
-        //    db.Spols.Add(spol);
-        //    db.SaveChanges();
-
-        //    return CreatedAtRoute("DefaultApi", new { id = spol.SpolId }, spol);
-        //}
-
-        //// DELETE: api/Spol/5
-        //[ResponseType(typeof(Spol))]
-        //public IHttpActionResult DeleteSpol(int id)
-        //{
-        //    Spol spol = db.Spols.Find(id);
-        //    if (spol == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    db.Spols.Remove(spol);
-        //    db.SaveChanges();
-
-        //    return Ok(spol);
-        //}
+        
 
         protected override void Dispose(bool disposing)
         {

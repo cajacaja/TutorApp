@@ -16,8 +16,8 @@ namespace Tutor_App
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class StudentUcionice : ContentPage
 	{
-        private WebApiHelper studentService = new WebApiHelper("http://192.168.0.102", "api/Student");
-        private WebApiHelper ucionicaService = new WebApiHelper("http://192.168.0.102", "api/Ucionica");
+        private WebApiHelper studentService = new WebApiHelper("Student");
+        private WebApiHelper ucionicaService = new WebApiHelper("Ucionica");
         private List<Prijava> prihvacene;
         private List<Prijava> odbijene;
         private List<Prijava> neOdgovorene;
@@ -97,7 +97,7 @@ namespace Tutor_App
                 {
                     var jasonObject = response.Content.ReadAsStringAsync();
                     var ucionica = JsonConvert.DeserializeObject<Ucionica>(jasonObject.Result);
-                    if (ucionica.Aktivna && ucionica.DatumZavrsetka > DateTime.Today)
+                    if (ucionica.Aktivna && ucionica.DatumZavrsetka >= DateTime.Today)
                         ucionicaPrihvacen.Add(ucionica);
 
                 }

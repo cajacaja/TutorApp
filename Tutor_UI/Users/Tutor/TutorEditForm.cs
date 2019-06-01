@@ -136,7 +136,7 @@ namespace Tutor_UI.Users.Tutor
                 ObimListBox.DisplayMember = "Naziv";
                 ObimListBox.ValueMember = "TipoviStudentaId";
                 ObimListBox.ClearSelected();
-                var response2 = tipService.GetResponse(tutorId.ToString());
+                var response2 = tipService.GetActionResponse("PreferiraniStudenti", tutorId.ToString());
                 if (response2.IsSuccessStatusCode)
                 {
 
@@ -194,6 +194,15 @@ namespace Tutor_UI.Users.Tutor
 
                     MessageBox.Show("Uspjesno promjenjenoj");
                     this.Close();
+                }
+                else
+                {
+                    var errorMessage = Global.ErrorFinder(response.Content.ReadAsStringAsync().Result);
+
+                    if (!String.IsNullOrEmpty(Messeges.ResourceManager.GetString(errorMessage)))
+                        errorMessage = Messeges.ResourceManager.GetString(errorMessage);
+
+                    MessageBox.Show(errorMessage);
                 }
 
             }

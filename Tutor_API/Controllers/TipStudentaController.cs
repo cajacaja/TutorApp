@@ -24,10 +24,28 @@ namespace Tutor_API.Controllers
         }
 
         // GET: api/TipStudenta/5        
-        public List<Oblast_select_Result> GetTipStudenta(int id)
+        [ResponseType(typeof(TipStudenta))]
+        public IHttpActionResult GetTipStudenta(int id)
         {
-            var test= db.tps_Oblast_select(id).ToList();
-            return db.tps_Oblast_select(id).ToList();
+            db.Configuration.LazyLoadingEnabled = false;
+            TipStudenta tipStudenta = db.TipStudentas.Find(id);
+            if (tipStudenta.Equals(null)) return NotFound();
+
+            return Ok(tipStudenta);
+        }
+
+
+        // GET: api/TipStudenta/5        
+        [HttpGet]
+        [Route("api/TipStudenta/PreferiraniStudenti/{tutorId}")]
+        [ResponseType(typeof(TipStudenta))]
+        public IHttpActionResult PreferiraniStudenti(int tutorId)
+        {
+            db.Configuration.LazyLoadingEnabled = false;
+            Tutor tutor = db.Tutors.Find(tutorId);
+            if (tutor.Equals(null)) return NotFound();
+
+            return Ok(db.tps_Oblast_select(tutorId).ToList());
         }
 
         // PUT: api/TipStudenta/5

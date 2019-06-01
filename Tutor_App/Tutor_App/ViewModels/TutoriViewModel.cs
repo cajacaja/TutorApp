@@ -30,7 +30,7 @@ namespace Tutor_App.ViewModels
         
         
         
-        private WebApiHelper tutorService = new WebApiHelper("http://192.168.0.102", "api/Tutor");
+        private WebApiHelper tutorService = new WebApiHelper("Tutor");
 
         public ObservableCollection<Tutori> Items { get; set; }
         public ICommand LoadComand { get; set; }

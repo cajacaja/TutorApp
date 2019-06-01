@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -32,7 +33,46 @@ namespace Tutor_API.Controllers
             return Ok(kontaktInfo);
         }
 
-        
+        // PUT: api/KorisnickiNalog/5
+        [ResponseType(typeof(void))]
+        public IHttpActionResult PutKorisnickiNalog(int id, KontaktInfo kontaktInfo)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            if (id != kontaktInfo.KontaktInfoId)
+            {
+                return BadRequest();
+            }
+
+            db.Entry(kontaktInfo).State = EntityState.Modified;
+
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException ex)
+            {
+                if (!KontaktInfoExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    var nesto = ex.GetType().ToString();
+                    SqlException greska = ex.InnerException as SqlException;
+                    if (greska != null)
+                    {
+                        return BadRequest(Util.ExceptionHandler.DbUpdateExceptionHandler(greska));
+                    }
+                }
+            }
+
+            return StatusCode(HttpStatusCode.NoContent);
+        }
+
 
         protected override void Dispose(bool disposing)
         {

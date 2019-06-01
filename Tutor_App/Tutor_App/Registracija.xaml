@@ -1,7 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Tutor_App.Registracija" BackgroundColor="#212e53">
+             x:Class="Tutor_App.Registracija" BackgroundColor="#212e53"
+             NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasBackButton="True">
 
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -16,11 +18,8 @@
                 <Setter Property="FontFamily" Value="Georgia" />
             </Style>
 
-            <Style x:Key="entryStyle" TargetType="Entry">
-                <Setter Property="BackgroundColor" Value="WhiteSmoke"/>
-                <Setter Property="TextColor" Value="Black"/>
-                <Setter Property="HeightRequest" Value="20"/>
-                <Setter Property="HeightRequest" Value="20"/>
+            <Style x:Key="entryStyle" TargetType="Entry">                
+                <Setter Property="TextColor" Value="Black"/>               
                 <Setter Property="Margin" Value="0,0,0,10"/>
 
                 
@@ -43,10 +42,11 @@
 
         </ResourceDictionary>
     </ContentPage.Resources>
+    
     <ContentPage.Content>
+        <ScrollView>
 
-
-        <StackLayout VerticalOptions="CenterAndExpand" Margin="10" >
+            <StackLayout VerticalOptions="CenterAndExpand" Margin="10" >
 
             <Grid>
                 <Grid.RowDefinitions>
@@ -84,16 +84,16 @@
                 <Entry x:Name="prezimeInput"  Style="{StaticResource entryStyle}"  Grid.Row="2" Grid.Column="1"></Entry>
                     
                 <Label Text="Datum rodjenja:" Style="{StaticResource lableStyle}" Grid.Row="3"></Label>
-                <DatePicker x:Name="datumRodjenjaInput" BackgroundColor="WhiteSmoke" HeightRequest="20" Date="01/01/1995" MinimumDate="1/1/1940" Grid.Row="3" Grid.Column="1"></DatePicker>
+                <DatePicker x:Name="datumRodjenjaInput"   Date="01/01/1995" MinimumDate="1/1/1940" Grid.Row="3" Grid.Column="1"></DatePicker>
 
                 <Label Text="Spol:" Style="{StaticResource lableStyle}" Grid.Row="4"></Label>
-                <Picker x:Name="spolPiker" Grid.Row="5" HeightRequest="20" Margin="0,0,10,0"  BackgroundColor="WhiteSmoke" Grid.Column="0"></Picker>
+                <Picker x:Name="spolPiker" Grid.Row="5" HeightRequest="20" Margin="0,0,10,0"  Grid.Column="0"></Picker>
 
                 <Label Text="Grad:" Style="{StaticResource lableStyle}" Grid.Row="4" Grid.Column="1"></Label>
-                <Picker x:Name="gradPicker" Grid.Row="5" BackgroundColor="WhiteSmoke" HeightRequest="20" Grid.Column="1"></Picker>
+                <Picker x:Name="gradPicker" Grid.Row="5"   Grid.Column="1"></Picker>
 
                 <Label Text="Adresa:" Style="{StaticResource lableStyle}"  Grid.Row="6"></Label>
-                <Entry x:Name="adresaInput"  Style="{StaticResource entryStyle}"  Margin="0,10,0,10" HeightRequest="20" Grid.Row="6" Grid.Column="1"></Entry>
+                <Entry x:Name="adresaInput"  Style="{StaticResource entryStyle}"  Margin="0,10,0,10"  Grid.Row="6" Grid.Column="1"></Entry>
 
                 <Label Text="Email:" Style="{StaticResource lableStyle}" Grid.Row="7"></Label>
                 <Entry x:Name="emailInput" Style="{StaticResource entryStyle}" Grid.Row="7" Grid.Column="1"></Entry>
@@ -114,7 +114,7 @@
 
 
                 <Label Text="Vrsta studenta:" Style="{StaticResource lableStyle}" Grid.Row="11"></Label>
-                <Picker x:Name="vrstaStudentaPicker" BackgroundColor="WhiteSmoke" Margin="0,0,0,10" HeightRequest="20" Grid.Row="11" Grid.Column="1"></Picker>
+                <Picker x:Name="vrstaStudentaPicker" Margin="0,0,0,10" Grid.Row="11" Grid.Column="1"></Picker>
 
 
 
@@ -122,5 +122,7 @@
             </Grid>
 
         </StackLayout>
+     </ScrollView>
     </ContentPage.Content>
+    
 </ContentPage>
