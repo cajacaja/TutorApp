@@ -12,7 +12,7 @@
     </ContentPage.Resources>
     <ContentPage.Content>
     
-        <StackLayout Padding="30">
+        <StackLayout Padding="15">
 
             <StackLayout Orientation="Horizontal">
                 <Label Text="Broj ne odgovorenih casova:"
@@ -29,11 +29,11 @@
                    TextColor="WhiteSmoke">
                 
             </Label>
-            <ListView CachingStrategy="RecycleElement" x:Name="tutorLista" RowHeight="180" ItemTapped="tutorList_ItemTapped">
+            <ListView CachingStrategy="RecycleElement" x:Name="tutorLista" RowHeight="225" ItemTapped="tutorList_ItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Grid BackgroundColor="#4a919e" Margin="0,0,0,10" Padding="10">
+                            <Grid BackgroundColor="#4a919e" Margin="0,0,0,10" Padding="5">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
@@ -41,12 +41,14 @@
 
 
 
-                                <controls:CircleImage Source="{Binding TutorTumbnail,Converter={StaticResource imgConv}}" Grid.Column="0" WidthRequest="100" HeightRequest="100" BorderColor="#212e53" BorderThickness="4" Aspect="AspectFill"></controls:CircleImage>
+                                <controls:CircleImage Source="{Binding TutorTumbnail,Converter={StaticResource imgConv}}" Grid.Column="0" WidthRequest="100" HeightRequest="100" BorderColor="#212e53" BorderThickness="2" Aspect="AspectFill"></controls:CircleImage>
 
 
-                                <StackLayout Grid.Column="1" Padding="10" >
+                                <StackLayout Grid.Column="1" Padding="5" >
                                     <Grid>
                                         <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
                                             <RowDefinition Height="Auto"/>
                                             <RowDefinition Height="Auto"/>
                                             <RowDefinition Height="Auto"/>
@@ -62,17 +64,17 @@
                                         
                                         <Label Text="Predmet:" Grid.Row="1"   Grid.Column="0"  FontAttributes="Bold" FontSize="13" TextColor="WhiteSmoke"></Label>
                                         <Label Text= "Cijena casa:" Grid.Row="2"  Grid.Column="0"  FontAttributes="Bold" FontSize="13" TextColor="WhiteSmoke"></Label>
-                                        <Label Text="Datum pocetka:" Grid.Row="3"  Grid.Column="0"  FontAttributes="Bold" FontSize="13" TextColor="WhiteSmoke"></Label>
-                                        <Label Text="Datum zavrsetka:" Grid.Row="4"  Grid.Column="0"  FontAttributes="Bold" FontSize="13" TextColor="WhiteSmoke"></Label>
+                                        <Label Text="Datum pocetka" Grid.Row="3"  Grid.Column="0"  FontAttributes="Bold" FontSize="13" TextColor="WhiteSmoke"></Label>
+                                        <Label Text="Datum zavrsetka" Grid.Row="5"  Grid.Column="0"  FontAttributes="Bold" FontSize="13" TextColor="WhiteSmoke"></Label>
 
 
 
                                         <Label Text="{Binding Tutor}" Grid.Row="0" Grid.Column="0" HorizontalOptions="Start" FontAttributes="Bold" FontSize="13" TextColor="WhiteSmoke"></Label>
                                         <Label Text="{Binding Predmet}" Grid.Row="1"  Grid.Column="1" FontSize="13" TextColor="WhiteSmoke" ></Label>
                                         <Label Text= "{Binding CijenaCasa, StringFormat='{0} KM'}" Grid.Row="2" Grid.Column="1" FontSize="13" TextColor="WhiteSmoke"></Label>
-                                        <Label Text="{Binding DatumOd,StringFormat='{0:MM/dd/yyyy}'}" Grid.Row="3"  Grid.Column="1" FontSize="13" TextColor="WhiteSmoke"></Label>
-                                        <Label Text="{Binding DatumDo,StringFormat='{0:MM/dd/yyyy}'}" Grid.Row="4"  Grid.Column="1" FontSize="13" TextColor="WhiteSmoke" ></Label>
-                                        <Image  Grid.Row="5" Grid.Column="0" HorizontalOptions="Start"  HeightRequest="20" Source="{Binding Ocjena,Converter={StaticResource starConv}}"></Image>
+                                        <Label Text="{Binding DatumOd,StringFormat='{0:MM/dd/yyyy}'}" Grid.Row="4"  Grid.Column="0" FontSize="13" TextColor="WhiteSmoke"></Label>
+                                        <Label Text="{Binding DatumDo,StringFormat='{0:MM/dd/yyyy}'}" Grid.Row="6"  Grid.Column="0" FontSize="13" TextColor="WhiteSmoke" ></Label>
+                                        <Image  Grid.Row="7" Grid.Column="0" HorizontalOptions="Start"  HeightRequest="20" Source="{Binding Ocjena,Converter={StaticResource starConv}}"></Image>
                                     </Grid>
 
                                 </StackLayout>
@@ -86,7 +88,7 @@
                    TextColor="WhiteSmoke">
 
             </Label>
-            <ListView CachingStrategy="RecycleElement" x:Name="tutorListaOdb" RowHeight="150" ItemTapped="TutorListaOdb_ItemTapped">
+            <ListView CachingStrategy="RecycleElement" x:Name="tutorListaOdb" RowHeight="190" ItemTapped="TutorListaOdb_ItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -108,9 +110,10 @@
                                                       Aspect="AspectFill"></controls:CircleImage>
                                 
 
-                                <StackLayout Grid.Column="1" Padding="10">
+                                <StackLayout Grid.Column="1" Padding="5">
                                     <Grid>
                                         <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
                                             <RowDefinition Height="Auto"/>
                                             <RowDefinition Height="Auto"/>
                                             <RowDefinition Height="Auto"/>
@@ -125,14 +128,14 @@
 
                                         <Label Text="Predmet:" Grid.Row="1"   Grid.Column="0"  FontAttributes="Bold" FontSize="13" TextColor="WhiteSmoke"></Label>
                                         <Label Text= "Cijena casa:" Grid.Row="2"  Grid.Column="0"  FontAttributes="Bold" FontSize="13" TextColor="WhiteSmoke"></Label>
-                                        <Label Text="Datum slanja:" Grid.Row="3"  Grid.Column="0"  FontAttributes="Bold" FontSize="13" TextColor="WhiteSmoke"></Label>
+                                        <Label Text="Datum slanja" Grid.Row="3"  Grid.Column="0"  FontAttributes="Bold" FontSize="13" TextColor="WhiteSmoke"></Label>
 
 
                                         <Label Text="{Binding Tutor}" Grid.Row="0" Grid.Column="0" HorizontalOptions="Start" FontAttributes="Bold" FontSize="13" TextColor="WhiteSmoke"></Label>
                                         <Label Text="{Binding Predmet}" Grid.Row="1"  Grid.Column="1" FontSize="13" TextColor="WhiteSmoke"></Label>
                                         <Label Text= "{Binding CijenaCasa, StringFormat='{0} KM'}" Grid.Row="2" Grid.Column="1" FontSize="13" TextColor="WhiteSmoke"></Label>
-                                        <Image  Grid.Row="4" Grid.Column="0" HorizontalOptions="Start"  HeightRequest="20" Source="{Binding Ocjena,Converter={StaticResource starConv}}"></Image>
-                                        <Label Text="{Binding DatumSlanja,StringFormat='{0:MM/dd/yyyy}'}" Grid.Row="3"  Grid.Column="1" FontSize="13" TextColor="WhiteSmoke"></Label>
+                                        <Image  Grid.Row="5" Grid.Column="0" HorizontalOptions="Start"  HeightRequest="20" Source="{Binding Ocjena,Converter={StaticResource starConv}}"></Image>
+                                        <Label Text="{Binding DatumSlanja,StringFormat='{0:MM/dd/yyyy}'}" Grid.Row="4"  Grid.Column="0" FontSize="12" TextColor="WhiteSmoke"></Label>
                                     </Grid>
 
                                 </StackLayout>

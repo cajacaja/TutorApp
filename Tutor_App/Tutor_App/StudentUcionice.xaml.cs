@@ -85,6 +85,7 @@ namespace Tutor_App
 
             //dodavanjeUListu
             odbijeniList.ItemsSource = ucionicaOdbijen;
+            odbijeniList.HeightRequest = odbijeniList.RowHeight * (ucionicaOdbijen.Count + 1);
         }
 
         private void PrihvacenUcionica()
@@ -104,6 +105,7 @@ namespace Tutor_App
             }
 
             prihvaceneList.ItemsSource = ucionicaPrihvacen;
+            prihvaceneList.HeightRequest = prihvaceneList.RowHeight * (ucionicaPrihvacen.Count + 1);
         }
 
         private async void PrihvaceneList_ItemTapped(object sender, ItemTappedEventArgs e)

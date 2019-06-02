@@ -21,20 +21,19 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout Padding="15" Orientation="Vertical">
-            <StackLayout Padding="5,10,5,10" Spacing="10">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="2*"/>
-                </Grid.ColumnDefinitions>
-                <StackLayout Grid.Column="0">
-                    <controls:CircleImage x:Name="tutorSlika" HorizontalOptions="Start" WidthRequest="100" HeightRequest="100" BorderColor="#4a919e" BorderThickness="4" Aspect="AspectFill"></controls:CircleImage>
-                   
+      <ScrollView>
+        <StackLayout Padding="10" Orientation="Vertical">
+
+                <controls:CircleImage x:Name="tutorSlika" HorizontalOptions="Center" WidthRequest="100" HeightRequest="100" BorderColor="#4a919e" BorderThickness="3" Aspect="AspectFill"></controls:CircleImage>
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                    <Button Text="Zakazi cas" x:Name="zakaziBtn"  Style="{StaticResource buttonStyle}"   Clicked="ZakaziBtn_Clicked"></Button>
+                    <Button Text="Prijavi" x:Name="prijaviBtn"  Style="{StaticResource buttonStyle}"  Clicked="Prijavi_Clicked"></Button>
+                    <Button Text="Ocjeni" x:Name="ocjeniBtn" Style="{StaticResource buttonStyle}" Clicked="Ocjeni_Clicked" ></Button>
                 </StackLayout>
-               
-                <StackLayout Grid.Column="1" HorizontalOptions="Center">
-                    <Grid>
+            
+                
+                    <Grid HorizontalOptions="CenterAndExpand">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
@@ -66,23 +65,19 @@
                         <StackLayout x:Name="starList"  Grid.Row="5" Grid.Column="0" Orientation="Horizontal" Padding="0" Spacing="0" >
                             
                         </StackLayout>
-
                             
-                                <Button Text="Zakazi cas" x:Name="zakaziBtn" WidthRequest="100" Grid.Row="0" Grid.Column="2" Style="{StaticResource buttonStyle}"   HorizontalOptions="Start" Clicked="ZakaziBtn_Clicked"></Button>
-                            <Button Text="Prijavi" x:Name="prijaviBtn" WidthRequest="100" Grid.Row="1" Grid.Column="2" HorizontalOptions="Start" Style="{StaticResource buttonStyle}"  Clicked="Prijavi_Clicked"></Button>
-                            <Button Text="Ocjeni" x:Name="ocjeniBtn" WidthRequest="100" Grid.Row="2" Grid.Column="2" Style="{StaticResource buttonStyle}" Clicked="Ocjeni_Clicked" HorizontalOptions="Start"></Button>
+                            
                             
                     </Grid>
-                </StackLayout>
-            </Grid>
-           </StackLayout>           
+           
+                   
             
             
             <StackLayout Orientation="Vertical">
                 <Label Text="Slicni tutori:" FontAttributes="Bold" HorizontalOptions="Start" TextColor="WhiteSmoke"></Label>
             </StackLayout>
 
-            <ListView CachingStrategy="RecycleElement" x:Name="preporukaList" ItemTapped="PreporukaList_ItemTapped" HasUnevenRows="True" HeightRequest="180"  RowHeight="150">
+            <ListView CachingStrategy="RecycleElement" x:Name="preporukaList" ItemTapped="PreporukaList_ItemTapped" HasUnevenRows="True"    RowHeight="150">
 
 
 
@@ -102,7 +97,7 @@
 
 
                                 <StackLayout Grid.Column="1"  HorizontalOptions="Start">
-                                    <Frame>
+                                    
                                         <Grid>
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="Auto"/>
@@ -129,7 +124,7 @@
 
 
                                         </Grid>
-                                    </Frame>
+                                    
                                 </StackLayout>
                             </Grid>
                         </ViewCell>
@@ -140,7 +135,7 @@
                 <Label Text="Ocjene tutora:" FontAttributes="Bold" HorizontalOptions="Start" TextColor="WhiteSmoke"></Label>
             </StackLayout>
 
-            <ListView CachingStrategy="RecycleElement" x:Name="tutorLista" ItemsSource="{Binding Items}" HasUnevenRows="True" RowHeight="165">
+            <ListView CachingStrategy="RecycleElement" x:Name="tutorLista" ItemsSource="{Binding Items}" HasUnevenRows="True" HeightRequest="175" RowHeight="165" >
 
 
 
@@ -155,13 +150,13 @@
                                 </Grid.ColumnDefinitions>
 
 
-                                <Frame HeightRequest="100">
+                                <Frame HeightRequest="100" BackgroundColor="#4a919e">
                                     <controls:CircleImage Source="{Binding StudentskaSlika,Converter={StaticResource imgConv}}" Grid.Column="0" WidthRequest="90" HeightRequest="90" BorderColor="#212e53" BorderThickness="2" Aspect="AspectFill"></controls:CircleImage>
                                 </Frame>
 
-                                <StackLayout Grid.Column="1"  HorizontalOptions="Start">
-                                    <Frame>
-                                        <Grid>
+                                    <StackLayout Grid.Column="1"  HorizontalOptions="Start" BackgroundColor="#4a919e">
+                                   
+                                        <Grid BackgroundColor="#4a919e">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="Auto"/>
                                                 <RowDefinition Height="Auto"/>
@@ -173,7 +168,7 @@
 
 
 
-                                            <Label Text="Komentar:" Grid.Row="1"     FontAttributes="Bold" FontSize="12"></Label>
+                                            <Label Text="Komentar" Grid.Row="1"  TextColor="WhiteSmoke"   FontAttributes="Bold" FontSize="12"></Label>
 
 
                                             <Label Text="{Binding Student}" Grid.Row="0"  HorizontalOptions="Start" TextColor="WhiteSmoke"  FontAttributes="Bold" FontSize="14"></Label>
@@ -184,7 +179,7 @@
 
 
                                         </Grid>
-                                    </Frame>
+                                  
                                 </StackLayout>
                             </Grid>
                         </ViewCell>
@@ -196,6 +191,8 @@
                     </Grid>
                 </ListView.Footer>
             </ListView>
-        </StackLayout>        
+          
+        </StackLayout>
+      </ScrollView>
     </ContentPage.Content>
 </ContentPage>

@@ -71,7 +71,7 @@ namespace Tutor_API.Controllers
         {
 
             var tutor = db.Tutors.FirstOrDefault(x => x.TutorId.Equals(tutorId));
-            if (tutor.Equals(null)) return NotFound();
+            if (tutor==null) return NotFound();
 
             return Ok(db.tsp_OcjenaTutor_SelectMobile(tutorId,pageNum,pageSize).ToList());
         }

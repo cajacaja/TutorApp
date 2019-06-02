@@ -53,7 +53,10 @@ namespace Tutor_App
             lstPrihvacenih = lstZahtjeva.Where(x => x.Prihvaceno.Equals(true)).ToList();           
 
             tutorLista.ItemsSource = lstPrihvacenih;
-            tutorLista.HeightRequest = tutorLista.RowHeight +10;
+            int broj = 0;
+            if (lstPrihvacenih != null)
+                broj = lstPrihvacenih.Count;
+            tutorLista.HeightRequest = tutorLista.RowHeight *(broj+1);
         }
         private void LoadOdbijene()
         {
@@ -61,8 +64,10 @@ namespace Tutor_App
            
 
             tutorListaOdb.ItemsSource = lstOdbijenih;
-            tutorListaOdb.HeightRequest = tutorListaOdb.RowHeight+10;
-
+            int broj = 0;
+            if (lstOdbijenih != null)
+                broj = lstOdbijenih.Count;
+            tutorListaOdb.HeightRequest = tutorListaOdb.RowHeight * (broj + 1);
 
         }
 

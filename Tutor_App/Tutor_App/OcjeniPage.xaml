@@ -29,7 +29,7 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <Label Grid.Row="0"
-                       Text="Prijava tutora"
+                       Text="Ocjena tutora"
                        FontSize="20"
                        FontAttributes="Bold"
                        HorizontalOptions="Center"

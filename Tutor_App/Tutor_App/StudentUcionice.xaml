@@ -9,7 +9,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout Padding="30">
+        <StackLayout Padding="15">
             <StackLayout Orientation="Horizontal">
             <Label Text="Broj ne odgovorenih prijava:"
                    FontAttributes="Bold"
@@ -28,22 +28,22 @@
                     TextColor="WhiteSmoke">
 
             </Label>
-            <ListView CachingStrategy="RecycleElement" x:Name="prihvaceneList" HeightRequest="125" ItemTapped="PrihvaceneList_ItemTapped">
+            <ListView CachingStrategy="RecycleElement" x:Name="prihvaceneList"  RowHeight="250" ItemTapped="PrihvaceneList_ItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <Grid Margin="0,0,0,10" BackgroundColor="#4a919e">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
 
 
 
-                                <Image Source="{Binding Slika,Converter={StaticResource imgConv}}" Grid.Column="0" WidthRequest="180" HeightRequest="100"  Aspect="AspectFill"></Image>
+                                <Image Source="{Binding Slika,Converter={StaticResource imgConv}}" Grid.Row="0"  HeightRequest="100"  Aspect="AspectFill"></Image>
 
 
-                                <StackLayout Grid.Column="1" Padding="10" >
+                                <StackLayout Grid.Row="1" Padding="5" >
                                     <Grid>
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="Auto"/>
@@ -83,22 +83,22 @@
                    TextColor="WhiteSmoke">
 
             </Label>
-            <ListView CachingStrategy="RecycleElement" x:Name="odbijeniList" ItemTapped="OdbijeniList_ItemTapped" HeightRequest="125">
+            <ListView CachingStrategy="RecycleElement" x:Name="odbijeniList" ItemTapped="OdbijeniList_ItemTapped" RowHeight="250">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <Grid Margin="0,0,0,10" BackgroundColor="#4a919e">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
 
 
 
-                                <Image Source="{Binding Slika,Converter={StaticResource imgConv}}" Grid.Column="0" WidthRequest="180" HeightRequest="100"  Aspect="AspectFill"></Image>
+                                <Image Source="{Binding Slika,Converter={StaticResource imgConv}}" Grid.Row="0" WidthRequest="180" HeightRequest="100"  Aspect="AspectFill"></Image>
 
 
-                                <StackLayout Grid.Column="1" Padding="10"  >
+                                <StackLayout Grid.Row="1" Padding="5"  >
                                     <Grid>
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="Auto"/>

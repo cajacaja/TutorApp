@@ -38,7 +38,7 @@ namespace Tutor_App
             if (response.IsSuccessStatusCode)
             {
                 DisplayAlert("Prijava", "Tutor prijavljen", "OK");
-                this.Navigation.PushAsync(new CasPage(idTutora));
+                this.Navigation.PopAsync();
             }
         }
     }

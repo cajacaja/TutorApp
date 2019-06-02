@@ -34,9 +34,13 @@ namespace Tutor_App
             prijaviBtn.IsVisible = false;
             LoadTutor(tutorId);
             BindingContext = new OcjeneTutorViewModel(tutorId);
-          
-            tutorLista.HeightRequest = tutorLista.RowHeight;
-           
+            List<OcjenaTutor> lst = tutorLista.ItemsSource as List<OcjenaTutor>;
+            int brojac = 0;
+            if (lst != null)
+                brojac = lst.Count;
+            tutorLista.HeightRequest = tutorLista.RowHeight+10;
+
+            
         }
 
         private void LoadTutor(int tutorId)
@@ -126,7 +130,15 @@ namespace Tutor_App
                 jasonObject = response.Content.ReadAsStringAsync();
                 var preporuceniTutori = JsonConvert.DeserializeObject<List<Tutori>>(jasonObject.Result);
                 preporukaList.ItemsSource = preporuceniTutori.Take(3);
-                preporukaList.HeightRequest = preporukaList.RowHeight;
+
+                if (preporuceniTutori.Count == 0)
+                    preporukaList.IsVisible = false;
+                else
+                {
+                    preporukaList.HeightRequest = preporukaList.RowHeight * (preporuceniTutori.Count);
+                    preporukaList.IsVisible = true;
+                }
+                   
 
 
             }

@@ -11,7 +11,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout  Padding="30">
+        <StackLayout  Padding="15">
             
             <Picker x:Name="oblastPicker" 
                     Title="Odaberite oblast" 
@@ -24,7 +24,7 @@
             <ListView CachingStrategy="RecycleElement" 
                       x:Name="ucionicaList"
                       ItemsSource="{Binding Items}" 
-                      RowHeight="200" 
+                      RowHeight="290" 
                       ItemTapped="UcionicaList_ItemTapped">
 
 
@@ -32,27 +32,24 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Grid Padding="15" Margin="0,0,0,10" BackgroundColor="#4a919e">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                </Grid.ColumnDefinitions>
+                            <Grid Padding="5" Margin="0,0,0,10" BackgroundColor="#4a919e">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
 
                                
                                 
                                     <Image Source="{Binding Slika,Converter={StaticResource imgConv}}"
-                                           Grid.Column="0"
-                                           HeightRequest="125"
+                                           Grid.Row="0"
+                                           HeightRequest="100"
                                            Aspect="AspectFill"
                                        >
                                     
                                     </Image>
-                                
-                                <Frame HeightRequest="125"
-                                       WidthRequest="250"
-                                       Grid.Column="1" 
-                                       Padding="0">
-                                <StackLayout  >
+
+
+                                <StackLayout Grid.Row="1" >
                                     <Grid>
                                         <Grid.RowDefinitions>
                                             <RowDefinition/>
@@ -129,13 +126,11 @@
                                            HorizontalOptions="Start"
                                                TextColor="WhiteSmoke">
                                         </Label>
-                                        </Grid>
-
-                                   
+                                        </Grid>                                 
 
 
                                 </StackLayout>
-                                </Frame>
+                               
                             </Grid>
                         </ViewCell>
                     </DataTemplate>

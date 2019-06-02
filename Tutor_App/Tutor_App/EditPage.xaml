@@ -2,7 +2,9 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Tutor_App.EditPage"
-             BackgroundColor="#212e53">
+             BackgroundColor="#212e53"
+             NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasBackButton="True">
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style x:Key="lableStyle" TargetType="Label">
@@ -61,14 +63,14 @@
                 <Picker x:Name="vrstaStudentaPicker"  Margin="0,0,0,10"  Grid.Row="1" Grid.Column="1"></Picker>
 
                 <Label Text="Email:" Style="{StaticResource lableStyle}" Grid.Row="3" Grid.Column="0"></Label>
-                <Entry x:Name="emailInput" Style="{StaticResource entryStyle}" Grid.Row="3" Grid.Column="1"></Entry>
+                <Entry x:Name="emailInput" Style="{StaticResource entryStyle}" Keyboard="Email" FontSize="10" Grid.Row="3" Grid.Column="1"></Entry>
 
 
                 <Label Text="Telefon:" Style="{StaticResource lableStyle}" Grid.Row="4" Grid.Column="0"></Label>
-                <Entry x:Name="telefonInput"  Style="{StaticResource entryStyle}" Grid.Row="4" Grid.Column="1"></Entry>
+                <Entry x:Name="telefonInput"  Style="{StaticResource entryStyle}"  FontSize="10" Grid.Row="4" Grid.Column="1"></Entry>
 
                 <Label Text="Adresa:" Style="{StaticResource lableStyle}"  Grid.Row="5" Grid.Column="0"></Label>
-                <Entry x:Name="adresaInput"  Style="{StaticResource entryStyle}"   Grid.Row="5" Grid.Column="1"></Entry>
+                <Entry x:Name="adresaInput"  Style="{StaticResource entryStyle}"   Grid.Row="5" FontSize="10" Grid.Column="1"></Entry>
 
                 <Label Text="Nova lozinka:" Style="{StaticResource lableStyle}" Grid.Row="6" Grid.Column="0"></Label>
                 <Entry x:Name="lozinkaInput"    Style="{StaticResource entryStyle}" Grid.Row="6" Grid.Column="1" IsPassword="True"></Entry>

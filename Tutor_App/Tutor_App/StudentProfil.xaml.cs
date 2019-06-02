@@ -100,16 +100,7 @@ namespace Tutor_App
             base.OnAppearing();
         }
 
-        private  void izborBtn_Clicked(object sender, EventArgs e)
-        {
-            izaberiBtn.IsVisible = true;
-            uslikajBtn.IsVisible = true;
-            izborBtn.IsVisible = false;
-            editBtn.IsVisible = false;
-            
-        }
-
-        private async void IzaberiBtn_Clicked(object sender, EventArgs e)
+        private async  void izborBtn_Clicked(object sender, EventArgs e)
         {
             if (!CrossMedia.Current.IsPickPhotoSupported)
             {
@@ -120,7 +111,9 @@ namespace Tutor_App
             var mediaFile = await CrossMedia.Current.PickPhotoAsync(new PickMediaOptions
             {
                 PhotoSize = PhotoSize.Medium,
+
             });
+
 
             if (mediaFile.Equals(null))
                 return;
@@ -135,46 +128,12 @@ namespace Tutor_App
             var response = studentService.PutResponse(Global.prijavljeniStudent.StudentId, Global.prijavljeniStudent);
             if (response.IsSuccessStatusCode)
             {
-                izaberiBtn.IsVisible = false;
-                uslikajBtn.IsVisible = false;
                 Application.Current.MainPage = new Nav.Menu();
             }
+
         }
 
-        private async void UslikajBtn_Clicked(object sender, EventArgs e)
-        {
-            await CrossMedia.Current.Initialize();
-
-            if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
-            {
-                await DisplayAlert("No Camera", ":( No camera available.", "OK");
-                return;
-            }
-
-            var file = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
-            {
-                Directory = "Sample",
-                Name = "test.jpg"
-            });
-
-            if (file == null)
-                return;
-
-            Stream stream = file.GetStream();
-            using (var streamReader = new MemoryStream())
-            {
-                stream.CopyTo(streamReader);
-                Global.prijavljeniStudent.StudentskaSlika = streamReader.ToArray();
-            }
-
-            var response = studentService.PutResponse(Global.prijavljeniStudent.StudentId, Global.prijavljeniStudent);
-            if (response.IsSuccessStatusCode)
-            {
-                izaberiBtn.IsVisible = false;
-                uslikajBtn.IsVisible = false;
-                Application.Current.MainPage = new Nav.Menu();
-            }
-        }
+        
 
         private async void EditBtn_Clicked(object sender, EventArgs e)
         {

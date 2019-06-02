@@ -46,7 +46,7 @@ namespace Tutor_App
                 if (response.IsSuccessStatusCode)
                 {
                     DisplayAlert("Zahtjev", "Zahtjev je poslan", "OK");
-                    this.Navigation.PushAsync(new TutorDetails(idTutora));
+                    this.Navigation.PopAsync();
                 }
             }
         }

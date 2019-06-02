@@ -45,7 +45,7 @@ namespace Tutor_App
                 if (response.IsSuccessStatusCode)
                 {
                     DisplayAlert("Ocjena", "Uspjeno ste ocjenili tutora", "OK");
-                    this.Navigation.PushAsync(new TutorDetails(idTutora));
+                    this.Navigation.PopAsync();
                 }
             }
         }

@@ -19,7 +19,7 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout Padding="30">
+            <StackLayout Padding="15">
 
 
                 <Label x:Name="naslovInput"

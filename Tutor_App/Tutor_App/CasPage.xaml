@@ -19,6 +19,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
+        <ScrollView>
         <StackLayout Padding="15" VerticalOptions="Center">
 
             <StackLayout>
@@ -87,5 +88,6 @@
                 <Button Grid.Row="10" x:Name="posaljeBtn" Text="Posalji zahtjev" Style="{StaticResource buttonStyle}" Clicked="PosaljeBtn_Clicked"></Button>
             </Grid>
         </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

@@ -18,27 +18,33 @@
 
         </ResourceDictionary>
     </ContentPage.Resources>
+   
     <ContentPage.Content>
+       
         <StackLayout Padding="15">
-            <StackLayout Orientation="Horizontal">
+            <ScrollView Orientation="Both">
+              <StackLayout Orientation="Vertical">
+                    
                 <StackLayout Orientation="Vertical">
                 <controls:CircleImage x:Name="studentPicture"
                                           HeightRequest="125" 
                                           WidthRequest="125"                                          
                                           BorderColor="#4a919e"
                                           BorderThickness="4"
-                                          VerticalOptions="Start">
+                                          VerticalOptions="Start"
+                                          Aspect="AspectFill">
 
 
                 </controls:CircleImage>
-
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
                     <Button Text="Promejni sliku" Style="{StaticResource buttonStyle}" x:Name="izborBtn" Clicked="izborBtn_Clicked"></Button>
                     <Button Text="Edit profil" Style="{StaticResource buttonStyle}" x:Name="editBtn" Clicked="EditBtn_Clicked"></Button>
 
-                    <Button x:Name="izaberiBtn" Style="{StaticResource buttonStyle}" Text="Izaberi sliku" Clicked="IzaberiBtn_Clicked" IsVisible="False"></Button>
-                    <Button x:Name="uslikajBtn" Style="{StaticResource buttonStyle}" Text="Uslikaj sliku" Clicked="UslikajBtn_Clicked" IsVisible="False"></Button>
-                </StackLayout>
-                <Grid>
+                    
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout HorizontalOptions="CenterAndExpand">
+                        <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
@@ -158,7 +164,9 @@
                               TextColor="WhiteSmoke"/>
 
                     </Grid>
-            </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

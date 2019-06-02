@@ -129,6 +129,7 @@ namespace Tutor_App
                 if (response.IsSuccessStatusCode)
                 {
                     DisplayAlert("Info", "Registrovan", "OK");
+                    this.Navigation.PopAsync();
 
                 }
                 else

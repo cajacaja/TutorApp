@@ -28,7 +28,7 @@ namespace Tutor_App
         public EditPage ()
 		{
 			InitializeComponent ();
-            NavigationPage.SetHasBackButton(this, false);
+            
 		}
 
         protected override  void OnAppearing()
@@ -109,7 +109,7 @@ namespace Tutor_App
                 response = studentService.PutResponse(Global.prijavljeniStudent.StudentId, Global.prijavljeniStudent);
                 if (response.IsSuccessStatusCode)
                 {
-                    Application.Current.MainPage = new Nav.Menu();
+                    this.Navigation.PopAsync();
                 }
                
 

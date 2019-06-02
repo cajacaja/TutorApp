@@ -14,10 +14,10 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         
-        <StackLayout Padding="30">
+        <StackLayout Padding="15">
             <Picker x:Name="oblastPicker" Title="Odaberite oblast" TitleColor="WhiteSmoke" TextColor="WhiteSmoke" SelectedIndexChanged="oblastPicker_SelectedIndexChanged"></Picker>
 
-            <ListView CachingStrategy="RecycleElement" x:Name="tutorLista" HasUnevenRows="True"  ItemsSource="{Binding Items}" RowHeight="125" ItemTapped="TutorLista_ItemTapped">
+            <ListView CachingStrategy="RecycleElement" x:Name="tutorLista" HasUnevenRows="True"  ItemsSource="{Binding Items}" RowHeight="150" ItemTapped="TutorLista_ItemTapped">
 
                 
 
@@ -32,10 +32,10 @@
 
 
 
-                                <controls:CircleImage Source="{Binding TutorTumbnail,Converter={StaticResource imgConv}}" Grid.Column="0" WidthRequest="100" HeightRequest="100" BorderColor="#212e53" BorderThickness="4" Aspect="AspectFill"></controls:CircleImage>
-                                
-                                
-                                <StackLayout Grid.Column="1" Padding="10">
+                                <controls:CircleImage Source="{Binding TutorTumbnail,Converter={StaticResource imgConv}}" Grid.Column="0" WidthRequest="100" HeightRequest="100" BorderColor="#212e53" BorderThickness="2" Aspect="AspectFill"></controls:CircleImage>
+
+
+                                <StackLayout Grid.Column="1" HorizontalOptions="StartAndExpand">
                                     <Grid>
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="Auto"/>

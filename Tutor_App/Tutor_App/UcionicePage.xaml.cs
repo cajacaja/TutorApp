@@ -44,6 +44,7 @@ namespace Tutor_App
             {
                 int oblasdtId = (oblastPicker.SelectedItem as Oblast).OblastId;
                 BindingContext = new UcionicaViewModel(oblasdtId, Global.prijavljeniStudent.GradId, Global.prijavljeniStudent.TipoviStudentaId);
+                
                 ucionicaList.IsVisible = true;
             }
 
