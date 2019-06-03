@@ -15,7 +15,7 @@ namespace Tutor_UI.Users.Tutor
 {
     public partial class KomentariForm : Form
     {
-        private WebAPIHelper ocjenaService = new WebAPIHelper(Global.URI, Global.OcjenaStudentRoute);
+        private WebAPIHelper ocjenaService = new WebAPIHelper("OcjenaStudent");
 
         public KomentariForm(int studentId)
         {

@@ -17,8 +17,8 @@ namespace Tutor_UI.Users.Tutor
 {
     public partial class StudentKontakInfoForm : Form
     {
-        private WebAPIHelper studentService = new WebAPIHelper(Global.URI, Global.StudentRoute);
-        private WebAPIHelper kontakService = new WebAPIHelper(Global.URI, Global.KontakInfoRoute);
+        private WebAPIHelper studentService = new WebAPIHelper("Student");
+        private WebAPIHelper kontakService = new WebAPIHelper("KontaktInfo");
 
         public StudentKontakInfoForm(int StudentId)
         {
@@ -87,6 +87,8 @@ namespace Tutor_UI.Users.Tutor
                 studentPictureBox.Image = orignalImage;
             }
         }
+
+       
     }
 
 

@@ -105,8 +105,12 @@
             this.Controls.Add(this.filePathInput);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.naslovInput);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "UploadForm";
-            this.Text = "UploadForm";
+            this.ShowIcon = false;
+            this.Text = "Upload file";
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -32,12 +32,6 @@
             this.GradoviCmb = new System.Windows.Forms.ComboBox();
             this.TraziBtn = new System.Windows.Forms.Button();
             this.TutorGridView = new System.Windows.Forms.DataGridView();
-            this.DodajBtn = new System.Windows.Forms.Button();
-            this.PredmetCmb = new System.Windows.Forms.ComboBox();
-            this.DetaljBtn = new System.Windows.Forms.Button();
-            this.BackBtn = new System.Windows.Forms.Button();
-            this.brojListe = new System.Windows.Forms.Label();
-            this.ForwardBtn = new System.Windows.Forms.Button();
             this.TutorId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Prezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,6 +41,12 @@
             this.Grad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Predmet = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TutorTumbnail = new System.Windows.Forms.DataGridViewImageColumn();
+            this.DodajBtn = new System.Windows.Forms.Button();
+            this.PredmetCmb = new System.Windows.Forms.ComboBox();
+            this.DetaljBtn = new System.Windows.Forms.Button();
+            this.BackBtn = new System.Windows.Forms.Button();
+            this.brojListe = new System.Windows.Forms.Label();
+            this.ForwardBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.TutorGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,20 +54,20 @@
             // 
             this.searchNameInput.Location = new System.Drawing.Point(12, 22);
             this.searchNameInput.Name = "searchNameInput";
-            this.searchNameInput.Size = new System.Drawing.Size(209, 20);
+            this.searchNameInput.Size = new System.Drawing.Size(169, 20);
             this.searchNameInput.TabIndex = 0;
             // 
             // GradoviCmb
             // 
             this.GradoviCmb.FormattingEnabled = true;
-            this.GradoviCmb.Location = new System.Drawing.Point(227, 21);
+            this.GradoviCmb.Location = new System.Drawing.Point(202, 21);
             this.GradoviCmb.Name = "GradoviCmb";
             this.GradoviCmb.Size = new System.Drawing.Size(95, 21);
             this.GradoviCmb.TabIndex = 1;
             // 
             // TraziBtn
             // 
-            this.TraziBtn.Location = new System.Drawing.Point(459, 22);
+            this.TraziBtn.Location = new System.Drawing.Point(435, 20);
             this.TraziBtn.Name = "TraziBtn";
             this.TraziBtn.Size = new System.Drawing.Size(75, 23);
             this.TraziBtn.TabIndex = 2;
@@ -91,65 +91,8 @@
             this.TutorGridView.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.TutorGridView.Location = new System.Drawing.Point(0, 109);
             this.TutorGridView.Name = "TutorGridView";
-            this.TutorGridView.Size = new System.Drawing.Size(857, 285);
+            this.TutorGridView.Size = new System.Drawing.Size(846, 285);
             this.TutorGridView.TabIndex = 3;
-            // 
-            // DodajBtn
-            // 
-            this.DodajBtn.Location = new System.Drawing.Point(730, 22);
-            this.DodajBtn.Name = "DodajBtn";
-            this.DodajBtn.Size = new System.Drawing.Size(75, 23);
-            this.DodajBtn.TabIndex = 4;
-            this.DodajBtn.Text = "Dodaj";
-            this.DodajBtn.UseVisualStyleBackColor = true;
-            this.DodajBtn.Click += new System.EventHandler(this.DodajBtn_Click);
-            // 
-            // PredmetCmb
-            // 
-            this.PredmetCmb.FormattingEnabled = true;
-            this.PredmetCmb.Location = new System.Drawing.Point(345, 22);
-            this.PredmetCmb.Name = "PredmetCmb";
-            this.PredmetCmb.Size = new System.Drawing.Size(94, 21);
-            this.PredmetCmb.TabIndex = 5;
-            // 
-            // DetaljBtn
-            // 
-            this.DetaljBtn.Location = new System.Drawing.Point(649, 22);
-            this.DetaljBtn.Name = "DetaljBtn";
-            this.DetaljBtn.Size = new System.Drawing.Size(75, 23);
-            this.DetaljBtn.TabIndex = 6;
-            this.DetaljBtn.Text = "Detalji";
-            this.DetaljBtn.UseVisualStyleBackColor = true;
-            this.DetaljBtn.Click += new System.EventHandler(this.DetaljBtn_Click);
-            // 
-            // BackBtn
-            // 
-            this.BackBtn.Location = new System.Drawing.Point(284, 80);
-            this.BackBtn.Name = "BackBtn";
-            this.BackBtn.Size = new System.Drawing.Size(38, 23);
-            this.BackBtn.TabIndex = 7;
-            this.BackBtn.Text = "<";
-            this.BackBtn.UseVisualStyleBackColor = true;
-            this.BackBtn.Click += new System.EventHandler(this.BackBtn_Click);
-            // 
-            // brojListe
-            // 
-            this.brojListe.AutoSize = true;
-            this.brojListe.Location = new System.Drawing.Point(404, 85);
-            this.brojListe.Name = "brojListe";
-            this.brojListe.Size = new System.Drawing.Size(24, 13);
-            this.brojListe.TabIndex = 9;
-            this.brojListe.Text = "0/0";
-            // 
-            // ForwardBtn
-            // 
-            this.ForwardBtn.Location = new System.Drawing.Point(518, 80);
-            this.ForwardBtn.Name = "ForwardBtn";
-            this.ForwardBtn.Size = new System.Drawing.Size(38, 23);
-            this.ForwardBtn.TabIndex = 10;
-            this.ForwardBtn.Text = ">";
-            this.ForwardBtn.UseVisualStyleBackColor = true;
-            this.ForwardBtn.Click += new System.EventHandler(this.ForwardBtn_Click);
             // 
             // TutorId
             // 
@@ -215,11 +158,68 @@
             this.TutorTumbnail.Name = "TutorTumbnail";
             this.TutorTumbnail.ReadOnly = true;
             // 
+            // DodajBtn
+            // 
+            this.DodajBtn.Location = new System.Drawing.Point(730, 22);
+            this.DodajBtn.Name = "DodajBtn";
+            this.DodajBtn.Size = new System.Drawing.Size(75, 23);
+            this.DodajBtn.TabIndex = 4;
+            this.DodajBtn.Text = "Dodaj";
+            this.DodajBtn.UseVisualStyleBackColor = true;
+            this.DodajBtn.Click += new System.EventHandler(this.DodajBtn_Click);
+            // 
+            // PredmetCmb
+            // 
+            this.PredmetCmb.FormattingEnabled = true;
+            this.PredmetCmb.Location = new System.Drawing.Point(317, 21);
+            this.PredmetCmb.Name = "PredmetCmb";
+            this.PredmetCmb.Size = new System.Drawing.Size(94, 21);
+            this.PredmetCmb.TabIndex = 5;
+            // 
+            // DetaljBtn
+            // 
+            this.DetaljBtn.Location = new System.Drawing.Point(649, 22);
+            this.DetaljBtn.Name = "DetaljBtn";
+            this.DetaljBtn.Size = new System.Drawing.Size(75, 23);
+            this.DetaljBtn.TabIndex = 6;
+            this.DetaljBtn.Text = "Detalji";
+            this.DetaljBtn.UseVisualStyleBackColor = true;
+            this.DetaljBtn.Click += new System.EventHandler(this.DetaljBtn_Click);
+            // 
+            // BackBtn
+            // 
+            this.BackBtn.Location = new System.Drawing.Point(284, 80);
+            this.BackBtn.Name = "BackBtn";
+            this.BackBtn.Size = new System.Drawing.Size(38, 23);
+            this.BackBtn.TabIndex = 7;
+            this.BackBtn.Text = "<";
+            this.BackBtn.UseVisualStyleBackColor = true;
+            this.BackBtn.Click += new System.EventHandler(this.BackBtn_Click);
+            // 
+            // brojListe
+            // 
+            this.brojListe.AutoSize = true;
+            this.brojListe.Location = new System.Drawing.Point(404, 85);
+            this.brojListe.Name = "brojListe";
+            this.brojListe.Size = new System.Drawing.Size(24, 13);
+            this.brojListe.TabIndex = 9;
+            this.brojListe.Text = "0/0";
+            // 
+            // ForwardBtn
+            // 
+            this.ForwardBtn.Location = new System.Drawing.Point(518, 80);
+            this.ForwardBtn.Name = "ForwardBtn";
+            this.ForwardBtn.Size = new System.Drawing.Size(38, 23);
+            this.ForwardBtn.TabIndex = 10;
+            this.ForwardBtn.Text = ">";
+            this.ForwardBtn.UseVisualStyleBackColor = true;
+            this.ForwardBtn.Click += new System.EventHandler(this.ForwardBtn_Click);
+            // 
             // TutorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(857, 394);
+            this.ClientSize = new System.Drawing.Size(846, 394);
             this.Controls.Add(this.ForwardBtn);
             this.Controls.Add(this.brojListe);
             this.Controls.Add(this.BackBtn);
@@ -235,7 +235,7 @@
             this.MinimizeBox = false;
             this.Name = "TutorForm";
             this.ShowIcon = false;
-            this.Text = "TutorForm";
+            this.Text = "Tutori";
             this.Load += new System.EventHandler(this.TutorForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.TutorGridView)).EndInit();
             this.ResumeLayout(false);

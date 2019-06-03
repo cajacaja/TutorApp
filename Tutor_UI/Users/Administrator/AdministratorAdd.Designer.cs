@@ -183,11 +183,12 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.ImeInput);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AdministratorAdd";
             this.ShowIcon = false;
-            this.Text = "AdministratorAdd";
+            this.Text = "Dodaj administratora";
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

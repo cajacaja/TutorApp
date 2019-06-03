@@ -29,11 +29,6 @@
         private void InitializeComponent()
         {
             this.studentiGridView = new System.Windows.Forms.DataGridView();
-            this.BackBtn = new System.Windows.Forms.Button();
-            this.FowardBtn = new System.Windows.Forms.Button();
-            this.brojListe = new System.Windows.Forms.Label();
-            this.PregledBtn = new System.Windows.Forms.Button();
-            this.PrijaviBtn = new System.Windows.Forms.Button();
             this.StudentId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ImePrezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Spol = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -41,6 +36,11 @@
             this.TipStudenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OdradjenihCasova = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OcjenaStudenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BackBtn = new System.Windows.Forms.Button();
+            this.FowardBtn = new System.Windows.Forms.Button();
+            this.brojListe = new System.Windows.Forms.Label();
+            this.PregledBtn = new System.Windows.Forms.Button();
+            this.PrijaviBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.studentiGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,60 +55,10 @@
             this.TipStudenta,
             this.OdradjenihCasova,
             this.OcjenaStudenta});
-            this.studentiGridView.Location = new System.Drawing.Point(0, 0);
+            this.studentiGridView.Location = new System.Drawing.Point(1, 0);
             this.studentiGridView.Name = "studentiGridView";
-            this.studentiGridView.Size = new System.Drawing.Size(392, 406);
+            this.studentiGridView.Size = new System.Drawing.Size(457, 289);
             this.studentiGridView.TabIndex = 0;
-            // 
-            // BackBtn
-            // 
-            this.BackBtn.Location = new System.Drawing.Point(33, 412);
-            this.BackBtn.Name = "BackBtn";
-            this.BackBtn.Size = new System.Drawing.Size(56, 26);
-            this.BackBtn.TabIndex = 1;
-            this.BackBtn.Text = "<";
-            this.BackBtn.UseVisualStyleBackColor = true;
-            this.BackBtn.Click += new System.EventHandler(this.BackBtn_Click);
-            // 
-            // FowardBtn
-            // 
-            this.FowardBtn.Location = new System.Drawing.Point(228, 412);
-            this.FowardBtn.Name = "FowardBtn";
-            this.FowardBtn.Size = new System.Drawing.Size(56, 26);
-            this.FowardBtn.TabIndex = 2;
-            this.FowardBtn.Text = ">";
-            this.FowardBtn.UseVisualStyleBackColor = true;
-            this.FowardBtn.Click += new System.EventHandler(this.FowardBtn_Click);
-            // 
-            // brojListe
-            // 
-            this.brojListe.AutoSize = true;
-            this.brojListe.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.brojListe.Location = new System.Drawing.Point(143, 419);
-            this.brojListe.Name = "brojListe";
-            this.brojListe.Size = new System.Drawing.Size(27, 13);
-            this.brojListe.TabIndex = 3;
-            this.brojListe.Text = "0/0";
-            // 
-            // PregledBtn
-            // 
-            this.PregledBtn.Location = new System.Drawing.Point(441, 12);
-            this.PregledBtn.Name = "PregledBtn";
-            this.PregledBtn.Size = new System.Drawing.Size(84, 33);
-            this.PregledBtn.TabIndex = 4;
-            this.PregledBtn.Text = "Pregled";
-            this.PregledBtn.UseVisualStyleBackColor = true;
-            this.PregledBtn.Click += new System.EventHandler(this.PregledBtn_Click);
-            // 
-            // PrijaviBtn
-            // 
-            this.PrijaviBtn.Location = new System.Drawing.Point(441, 62);
-            this.PrijaviBtn.Name = "PrijaviBtn";
-            this.PrijaviBtn.Size = new System.Drawing.Size(84, 32);
-            this.PrijaviBtn.TabIndex = 5;
-            this.PrijaviBtn.Text = "Prijavi";
-            this.PrijaviBtn.UseVisualStyleBackColor = true;
-            this.PrijaviBtn.Click += new System.EventHandler(this.PrijaviBtn_Click);
             // 
             // StudentId
             // 
@@ -167,11 +117,61 @@
             this.OcjenaStudenta.ReadOnly = true;
             this.OcjenaStudenta.Width = 65;
             // 
+            // BackBtn
+            // 
+            this.BackBtn.Location = new System.Drawing.Point(103, 295);
+            this.BackBtn.Name = "BackBtn";
+            this.BackBtn.Size = new System.Drawing.Size(56, 26);
+            this.BackBtn.TabIndex = 1;
+            this.BackBtn.Text = "<";
+            this.BackBtn.UseVisualStyleBackColor = true;
+            this.BackBtn.Click += new System.EventHandler(this.BackBtn_Click);
+            // 
+            // FowardBtn
+            // 
+            this.FowardBtn.Location = new System.Drawing.Point(276, 295);
+            this.FowardBtn.Name = "FowardBtn";
+            this.FowardBtn.Size = new System.Drawing.Size(56, 26);
+            this.FowardBtn.TabIndex = 2;
+            this.FowardBtn.Text = ">";
+            this.FowardBtn.UseVisualStyleBackColor = true;
+            this.FowardBtn.Click += new System.EventHandler(this.FowardBtn_Click);
+            // 
+            // brojListe
+            // 
+            this.brojListe.AutoSize = true;
+            this.brojListe.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.brojListe.Location = new System.Drawing.Point(204, 302);
+            this.brojListe.Name = "brojListe";
+            this.brojListe.Size = new System.Drawing.Size(27, 13);
+            this.brojListe.TabIndex = 3;
+            this.brojListe.Text = "0/0";
+            // 
+            // PregledBtn
+            // 
+            this.PregledBtn.Location = new System.Drawing.Point(495, 12);
+            this.PregledBtn.Name = "PregledBtn";
+            this.PregledBtn.Size = new System.Drawing.Size(84, 33);
+            this.PregledBtn.TabIndex = 4;
+            this.PregledBtn.Text = "Pregled";
+            this.PregledBtn.UseVisualStyleBackColor = true;
+            this.PregledBtn.Click += new System.EventHandler(this.PregledBtn_Click);
+            // 
+            // PrijaviBtn
+            // 
+            this.PrijaviBtn.Location = new System.Drawing.Point(495, 51);
+            this.PrijaviBtn.Name = "PrijaviBtn";
+            this.PrijaviBtn.Size = new System.Drawing.Size(84, 32);
+            this.PrijaviBtn.TabIndex = 5;
+            this.PrijaviBtn.Text = "Prijavi";
+            this.PrijaviBtn.UseVisualStyleBackColor = true;
+            this.PrijaviBtn.Click += new System.EventHandler(this.PrijaviBtn_Click);
+            // 
             // StudentiForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(537, 450);
+            this.ClientSize = new System.Drawing.Size(600, 329);
             this.Controls.Add(this.PrijaviBtn);
             this.Controls.Add(this.PregledBtn);
             this.Controls.Add(this.brojListe);

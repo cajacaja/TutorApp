@@ -324,7 +324,7 @@
             this.Godine,
             this.TipStudenta,
             this.Ocjena});
-            this.prihvacenePrijaveGridView.Location = new System.Drawing.Point(255, 343);
+            this.prihvacenePrijaveGridView.Location = new System.Drawing.Point(257, 343);
             this.prihvacenePrijaveGridView.Name = "prihvacenePrijaveGridView";
             this.prihvacenePrijaveGridView.ReadOnly = true;
             this.prihvacenePrijaveGridView.Size = new System.Drawing.Size(243, 174);

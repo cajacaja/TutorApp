@@ -16,7 +16,7 @@ namespace Tutor_UI.Users
 {
     public partial class AdministratorForm : Form
     {
-        private WebAPIHelper administratorService = new WebAPIHelper(Global.URI, Global.AdministratorRoute);
+        private WebAPIHelper administratorService = new WebAPIHelper("Administrator");
 
         int pageNummber = 1;
         IPagedList<Administrator_NameSelect> list;
@@ -42,13 +42,11 @@ namespace Tutor_UI.Users
 
         private void DodajBtn_Click(object sender, EventArgs e)
         {
-            var administratorDodajForm = new AdministratorAdd();
-            if (administratorDodajForm.ShowDialog() == DialogResult.OK)
-            {
-                administratorDodajForm.Show();
+            var administratorDodajForm = new AdministratorAdd();           
+                administratorDodajForm.ShowDialog();
                 administratorDodajForm.MdiParent = this.MdiParent;
                 BindGrid();
-            }
+            
 
         }
 
@@ -79,7 +77,7 @@ namespace Tutor_UI.Users
                 if (administratorGrid.SelectedRows.Count!=0)
                 {
                     var editForm = new EditAdministrator(Convert.ToInt32(administratorGrid.SelectedRows[0].Cells[0].Value));
-                    editForm.Show();
+                    editForm.ShowDialog();
                     editForm.MdiParent = this.MdiParent;
                     BindGrid();
                 }

@@ -39,12 +39,12 @@
             this.Predmet = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StuentiTab = new System.Windows.Forms.TabPage();
             this.BanStudentsGridView = new System.Windows.Forms.DataGridView();
+            this.PregledBtn = new System.Windows.Forms.Button();
             this.StudentId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Prezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DatumDodavanjaStudent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GradStudent = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PregledBtn = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.TutoriTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BanovaniTutoriGridView)).BeginInit();
@@ -60,7 +60,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(452, 450);
+            this.tabControl1.Size = new System.Drawing.Size(460, 316);
             this.tabControl1.TabIndex = 0;
             // 
             // TutoriTab
@@ -69,13 +69,15 @@
             this.TutoriTab.Location = new System.Drawing.Point(4, 22);
             this.TutoriTab.Name = "TutoriTab";
             this.TutoriTab.Padding = new System.Windows.Forms.Padding(3);
-            this.TutoriTab.Size = new System.Drawing.Size(444, 424);
+            this.TutoriTab.Size = new System.Drawing.Size(452, 290);
             this.TutoriTab.TabIndex = 0;
             this.TutoriTab.Text = "Tutori";
             this.TutoriTab.UseVisualStyleBackColor = true;
             // 
             // BanovaniTutoriGridView
             // 
+            this.BanovaniTutoriGridView.AllowUserToAddRows = false;
+            this.BanovaniTutoriGridView.AllowUserToDeleteRows = false;
             this.BanovaniTutoriGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.BanovaniTutoriGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TutorId,
@@ -87,7 +89,8 @@
             this.BanovaniTutoriGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BanovaniTutoriGridView.Location = new System.Drawing.Point(3, 3);
             this.BanovaniTutoriGridView.Name = "BanovaniTutoriGridView";
-            this.BanovaniTutoriGridView.Size = new System.Drawing.Size(438, 418);
+            this.BanovaniTutoriGridView.ReadOnly = true;
+            this.BanovaniTutoriGridView.Size = new System.Drawing.Size(446, 284);
             this.BanovaniTutoriGridView.TabIndex = 0;
             // 
             // TutorId
@@ -139,13 +142,15 @@
             this.StuentiTab.Location = new System.Drawing.Point(4, 22);
             this.StuentiTab.Name = "StuentiTab";
             this.StuentiTab.Padding = new System.Windows.Forms.Padding(3);
-            this.StuentiTab.Size = new System.Drawing.Size(444, 424);
+            this.StuentiTab.Size = new System.Drawing.Size(452, 290);
             this.StuentiTab.TabIndex = 1;
             this.StuentiTab.Text = "Studenti";
             this.StuentiTab.UseVisualStyleBackColor = true;
             // 
             // BanStudentsGridView
             // 
+            this.BanStudentsGridView.AllowUserToAddRows = false;
+            this.BanStudentsGridView.AllowUserToDeleteRows = false;
             this.BanStudentsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.BanStudentsGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.StudentId,
@@ -156,8 +161,19 @@
             this.BanStudentsGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BanStudentsGridView.Location = new System.Drawing.Point(3, 3);
             this.BanStudentsGridView.Name = "BanStudentsGridView";
-            this.BanStudentsGridView.Size = new System.Drawing.Size(438, 418);
+            this.BanStudentsGridView.ReadOnly = true;
+            this.BanStudentsGridView.Size = new System.Drawing.Size(446, 284);
             this.BanStudentsGridView.TabIndex = 0;
+            // 
+            // PregledBtn
+            // 
+            this.PregledBtn.Location = new System.Drawing.Point(466, 25);
+            this.PregledBtn.Name = "PregledBtn";
+            this.PregledBtn.Size = new System.Drawing.Size(92, 37);
+            this.PregledBtn.TabIndex = 0;
+            this.PregledBtn.Text = "Pregled";
+            this.PregledBtn.UseVisualStyleBackColor = true;
+            this.PregledBtn.Click += new System.EventHandler(this.PregledBtn_Click);
             // 
             // StudentId
             // 
@@ -184,7 +200,7 @@
             // DatumDodavanjaStudent
             // 
             this.DatumDodavanjaStudent.DataPropertyName = "DatumDodavanja";
-            this.DatumDodavanjaStudent.HeaderText = "DatumDodavanja";
+            this.DatumDodavanjaStudent.HeaderText = "Datum dodavanja";
             this.DatumDodavanjaStudent.Name = "DatumDodavanjaStudent";
             this.DatumDodavanjaStudent.ReadOnly = true;
             // 
@@ -195,25 +211,19 @@
             this.GradStudent.Name = "GradStudent";
             this.GradStudent.ReadOnly = true;
             // 
-            // PregledBtn
-            // 
-            this.PregledBtn.Location = new System.Drawing.Point(468, 25);
-            this.PregledBtn.Name = "PregledBtn";
-            this.PregledBtn.Size = new System.Drawing.Size(92, 37);
-            this.PregledBtn.TabIndex = 0;
-            this.PregledBtn.Text = "Pregled";
-            this.PregledBtn.UseVisualStyleBackColor = true;
-            this.PregledBtn.Click += new System.EventHandler(this.PregledBtn_Click);
-            // 
             // BanovaniKorisniciForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(582, 450);
+            this.ClientSize = new System.Drawing.Size(570, 316);
             this.Controls.Add(this.PregledBtn);
             this.Controls.Add(this.tabControl1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "BanovaniKorisniciForm";
-            this.Text = "BanovaniKorisniciForm";
+            this.ShowIcon = false;
+            this.Text = "Banovani korisnici";
             this.Enter += new System.EventHandler(this.BanovaniKorisniciForm_Enter);
             this.tabControl1.ResumeLayout(false);
             this.TutoriTab.ResumeLayout(false);

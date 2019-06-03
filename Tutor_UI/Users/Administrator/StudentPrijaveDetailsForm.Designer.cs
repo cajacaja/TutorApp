@@ -42,7 +42,7 @@
             this.DatumPrijaveInput.BackColor = System.Drawing.SystemColors.Control;
             this.DatumPrijaveInput.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.DatumPrijaveInput.Font = new System.Drawing.Font("Modern No. 20", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DatumPrijaveInput.Location = new System.Drawing.Point(148, 26);
+            this.DatumPrijaveInput.Location = new System.Drawing.Point(12, 8);
             this.DatumPrijaveInput.Name = "DatumPrijaveInput";
             this.DatumPrijaveInput.Size = new System.Drawing.Size(151, 17);
             this.DatumPrijaveInput.TabIndex = 13;
@@ -50,15 +50,15 @@
             // 
             // RazlogRichTxtBox
             // 
-            this.RazlogRichTxtBox.Location = new System.Drawing.Point(28, 119);
+            this.RazlogRichTxtBox.Location = new System.Drawing.Point(204, 8);
             this.RazlogRichTxtBox.Name = "RazlogRichTxtBox";
-            this.RazlogRichTxtBox.Size = new System.Drawing.Size(401, 115);
+            this.RazlogRichTxtBox.Size = new System.Drawing.Size(277, 115);
             this.RazlogRichTxtBox.TabIndex = 12;
             this.RazlogRichTxtBox.Text = "";
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(28, 256);
+            this.button2.Location = new System.Drawing.Point(360, 139);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(121, 31);
             this.button2.TabIndex = 11;
@@ -68,7 +68,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(168, 256);
+            this.button1.Location = new System.Drawing.Point(204, 139);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(121, 31);
             this.button1.TabIndex = 10;
@@ -80,18 +80,18 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(185, 75);
+            this.label1.Location = new System.Drawing.Point(44, 90);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(81, 18);
+            this.label1.Size = new System.Drawing.Size(64, 18);
             this.label1.TabIndex = 9;
-            this.label1.Text = "PRIJAVIO";
+            this.label1.Text = "Prijavio";
             // 
             // TutorInput
             // 
             this.TutorInput.BackColor = System.Drawing.SystemColors.Control;
             this.TutorInput.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TutorInput.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.TutorInput.Location = new System.Drawing.Point(28, 75);
+            this.TutorInput.Location = new System.Drawing.Point(12, 51);
             this.TutorInput.Name = "TutorInput";
             this.TutorInput.Size = new System.Drawing.Size(151, 18);
             this.TutorInput.TabIndex = 8;
@@ -102,7 +102,7 @@
             this.StudentInput.BackColor = System.Drawing.SystemColors.Control;
             this.StudentInput.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.StudentInput.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.StudentInput.Location = new System.Drawing.Point(278, 75);
+            this.StudentInput.Location = new System.Drawing.Point(12, 122);
             this.StudentInput.Name = "StudentInput";
             this.StudentInput.Size = new System.Drawing.Size(151, 18);
             this.StudentInput.TabIndex = 7;
@@ -112,7 +112,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(456, 329);
+            this.ClientSize = new System.Drawing.Size(485, 191);
             this.Controls.Add(this.DatumPrijaveInput);
             this.Controls.Add(this.RazlogRichTxtBox);
             this.Controls.Add(this.button2);
@@ -120,8 +120,12 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.TutorInput);
             this.Controls.Add(this.StudentInput);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "StudentPrijaveDetailsForm";
-            this.Text = "StudentPrijaveDetailsForm";
+            this.ShowIcon = false;
+            this.Text = "Prijavljeni student";
             this.Load += new System.EventHandler(this.StudentPrijaveDetailsForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

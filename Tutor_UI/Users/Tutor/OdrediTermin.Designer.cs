@@ -43,9 +43,9 @@
             // 
             // DatumCasaDatePicker
             // 
-            this.DatumCasaDatePicker.Location = new System.Drawing.Point(12, 39);
+            this.DatumCasaDatePicker.Location = new System.Drawing.Point(85, 39);
             this.DatumCasaDatePicker.Name = "DatumCasaDatePicker";
-            this.DatumCasaDatePicker.Size = new System.Drawing.Size(200, 20);
+            this.DatumCasaDatePicker.Size = new System.Drawing.Size(130, 20);
             this.DatumCasaDatePicker.TabIndex = 0;
             // 
             // TimePicker
@@ -89,21 +89,21 @@
             // DatumCasa
             // 
             this.DatumCasa.DataPropertyName = "DatumCasa";
-            this.DatumCasa.HeaderText = "DatumCasa";
+            this.DatumCasa.HeaderText = "Datum casa";
             this.DatumCasa.Name = "DatumCasa";
             this.DatumCasa.ReadOnly = true;
             // 
             // VrijemePocetka
             // 
             this.VrijemePocetka.DataPropertyName = "VrijemePocetka";
-            this.VrijemePocetka.HeaderText = "VrijemePocetka";
+            this.VrijemePocetka.HeaderText = "Vrijeme pocetka";
             this.VrijemePocetka.Name = "VrijemePocetka";
             this.VrijemePocetka.ReadOnly = true;
             // 
             // DanNaziv
             // 
             this.DanNaziv.DataPropertyName = "DanNaziv";
-            this.DanNaziv.HeaderText = "DanNaziv";
+            this.DanNaziv.HeaderText = "Dan";
             this.DanNaziv.Name = "DanNaziv";
             this.DanNaziv.ReadOnly = true;
             // 
@@ -131,6 +131,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(344, 292);
+            this.ControlBox = false;
             this.Controls.Add(this.BrojTerminaLabel);
             this.Controls.Add(this.ZakaziBtn);
             this.Controls.Add(this.terminiGridView);
@@ -142,6 +143,7 @@
             this.Name = "OdrediTermin";
             this.ShowIcon = false;
             this.Text = "Odredi termin";
+
             ((System.ComponentModel.ISupportInitialize)(this.terminiGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -154,11 +156,11 @@
         private System.Windows.Forms.DateTimePicker TimePicker;
         private System.Windows.Forms.DataGridView terminiGridView;
         private System.Windows.Forms.Button ZakaziBtn;
+        private System.Windows.Forms.Label BrojTerminaLabel;
         private System.Windows.Forms.DataGridViewTextBoxColumn TerminId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ZahtjevId;
         private System.Windows.Forms.DataGridViewTextBoxColumn DatumCasa;
         private System.Windows.Forms.DataGridViewTextBoxColumn VrijemePocetka;
         private System.Windows.Forms.DataGridViewTextBoxColumn DanNaziv;
-        private System.Windows.Forms.Label BrojTerminaLabel;
     }
 }

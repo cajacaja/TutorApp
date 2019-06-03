@@ -15,10 +15,10 @@ namespace Tutor_UI.Users.Tutor
 {
     public partial class CasZahtjeviForm : Form
     {
-        private WebAPIHelper zahtjevService = new WebAPIHelper(Global.URI, Global.ZahtjevRoute);
-        private WebAPIHelper terminService = new WebAPIHelper(Global.URI, Global.TerminCasaRoute);
+        private WebAPIHelper zahtjevService = new WebAPIHelper("Zahtjev");
+        private WebAPIHelper terminService = new WebAPIHelper("TerminCasa");
 
-        private int TutorId = 5;//Global.prijavljeniTutor.TutorId;
+        private int TutorId = Global.prijavljeniTutor.TutorId;
 
         public CasZahtjeviForm()
         {
@@ -69,7 +69,7 @@ namespace Tutor_UI.Users.Tutor
                         var response2 = zahtjevService.PutResponse(ZahtjevId, zahtjev);
                         if (response2.IsSuccessStatusCode)
                         {
-                            MessageBox.Show("Zahtjev odbijen");
+                            BindNeprocitano();
                         }
                     }
                 }
@@ -86,7 +86,7 @@ namespace Tutor_UI.Users.Tutor
                 {
                     int ZahtjevId = Convert.ToInt32(neProcitanoGridView.SelectedRows[0].Cells[0].Value);
                     StudentZahtjevForm zahtjev = new StudentZahtjevForm(ZahtjevId);
-                    zahtjev.Show();
+                    zahtjev.ShowDialog();
                     zahtjev.MdiParent = this.MdiParent;
                 }
 
@@ -99,7 +99,7 @@ namespace Tutor_UI.Users.Tutor
                 {
                     int StudentId = Convert.ToInt32(terminiGridView.SelectedRows[0].Cells[0].Value);
                     StudentKontakInfoForm kontakInfo = new StudentKontakInfoForm(StudentId);
-                    kontakInfo.Show();
+                    kontakInfo.ShowDialog();
                     kontakInfo.MdiParent = this.MdiParent;
                 }
                 
@@ -116,6 +116,12 @@ namespace Tutor_UI.Users.Tutor
             {
                 OdbijBtn.Visible = false;
             }
+        }
+
+        private void CasZahtjeviForm_Enter(object sender, EventArgs e)
+        {
+            BindTermine();
+            BindNeprocitano();
         }
     }
 }

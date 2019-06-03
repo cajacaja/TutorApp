@@ -16,7 +16,7 @@ namespace Tutor_UI.Users
 {
     public partial class TutotrDokaz : Form
     {
-        private WebAPIHelper tutorService = new WebAPIHelper(Global.URI, Global.TutorRoute);
+        private WebAPIHelper tutorService = new WebAPIHelper("Tutor");
 
         public TutotrDokaz(int id)
         {

@@ -15,8 +15,8 @@ namespace Tutor_UI.Users
 {
     public partial class LoginForm : Form
     {
-        private WebAPIHelper administratorService = new WebAPIHelper(Global.URI, Global.AdministratorRoute);
-        private WebAPIHelper tutorService = new WebAPIHelper(Global.URI, Global.TutorRoute);
+        private WebAPIHelper administratorService = new WebAPIHelper("Administrator");
+        private WebAPIHelper tutorService = new WebAPIHelper("Tutor");
        
 
 
@@ -45,13 +45,14 @@ namespace Tutor_UI.Users
                     Global.prijavljeniAdministrator = provjeriAdministrator.Content.ReadAsAsync<Administrator>().Result;
                     mainForm.Show();
                     
+                    
                 }
                 else if (provjeraTutor.IsSuccessStatusCode)
                 {
                     Users.Tutor.MainForm mainForm = new Tutor.MainForm();
                     Global.prijavljeniTutor = provjeraTutor.Content.ReadAsAsync<Tutor_API.Models.Tutor>().Result;
-                    mainForm.Show();
-                    
+                    mainForm.ShowDialog();
+                   
                 }
                 else
                 {

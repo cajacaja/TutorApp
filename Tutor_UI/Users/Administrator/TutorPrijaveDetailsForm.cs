@@ -16,7 +16,7 @@ namespace Tutor_UI.Users
     public partial class TutorPrijaveDetailsForm : Form
     {
         //Prijavljeni tutori od strane studenata
-        private WebAPIHelper banStudentService = new WebAPIHelper(Global.URI, Global.BanStudentRoute);
+        private WebAPIHelper banStudentService = new WebAPIHelper("BanPrijavaStudent");
         private BanPrijavaStudente_SelectOne_Result prijava;
 
         public TutorPrijaveDetailsForm(int id)
@@ -58,14 +58,16 @@ namespace Tutor_UI.Users
         private void button1_Click(object sender, EventArgs e)
         {
             Tutor_UI.Users.TutorDetalj tutor = new TutorDetalj(prijava.TutorId);
-            tutor.Show();
+            tutor.ShowDialog();
             
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             StudentDetalj student = new StudentDetalj(prijava.StudentId);
-            student.Show();
+            student.ShowDialog();
         }
+
+        
     }
 }

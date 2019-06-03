@@ -18,8 +18,8 @@ namespace Tutor_UI.Users.Tutor
 {
     public partial class StudentDetalj : Form
     {
-        private WebAPIHelper studentService = new WebAPIHelper(Global.URI, Global.StudentRoute);
-        private WebAPIHelper ocjenaService = new WebAPIHelper(Global.URI, Global.OcjenaStudentRoute);
+        private WebAPIHelper studentService = new WebAPIHelper("Student");
+        private WebAPIHelper ocjenaService = new WebAPIHelper("OcjenaStudent");
 
         int pageNummber = 1;
         int studentId = 0;
@@ -146,13 +146,21 @@ namespace Tutor_UI.Users.Tutor
         private void OcjeniBtn_Click(object sender, EventArgs e)
         {
             OcjeniStudentForm ocjena = new OcjeniStudentForm(studentId);
-            ocjena.Show();
+            ocjena.ShowDialog();
             ocjena.MdiParent = this.MdiParent;
+            OcjeniBtn.Enabled = false;
         }
 
         private void OcjeniBtn_Enter(object sender, EventArgs e)
         {
             isGraded(tutorId, studentId);
+        }
+
+        private void StudentDetalj_Enter(object sender, EventArgs e)
+        {
+            BindForm(studentId);
+            isGraded(tutorId, studentId);
+            BindOcjene();
         }
     }
 

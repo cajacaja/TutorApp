@@ -18,8 +18,8 @@ namespace Tutor_UI.Users.Tutor
 {
     public partial class AddUcionicu : Form
     {
-        private WebAPIHelper ucionicaService = new WebAPIHelper(Global.URI, Global.UcionicaRoute);
-        private WebAPIHelper nivoTezineService = new WebAPIHelper(Global.URI, Global.NivoTezineRoute);
+        private WebAPIHelper ucionicaService = new WebAPIHelper("Ucionica");
+        private WebAPIHelper nivoTezineService = new WebAPIHelper("NivoTezine");
 
 
         byte[] NaslovnaSlika;
@@ -137,7 +137,7 @@ namespace Tutor_UI.Users.Tutor
                 HttpResponseMessage response = ucionicaService.PostResponse(novaUcionica);
                 if (response.IsSuccessStatusCode)
                 {
-                    MessageBox.Show("ok");
+                    this.Close();
                 }
             }
         }

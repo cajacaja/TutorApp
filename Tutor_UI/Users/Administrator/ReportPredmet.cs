@@ -15,8 +15,8 @@ namespace Tutor_UI.Users
 {
     public partial class ReportPredmet : Form
     {
-        private WebAPIHelper predmetService = new WebAPIHelper(Global.URI, Global.PredmetiRoute);
-        private WebAPIHelper gradService = new WebAPIHelper(Global.URI, Global.GradRoute);
+        private WebAPIHelper predmetService = new WebAPIHelper("Podkategorija");
+        private WebAPIHelper gradService = new WebAPIHelper("Grad");
 
         bool flag1 = false;
         bool flag2 = false;
@@ -54,6 +54,7 @@ namespace Tutor_UI.Users
             if (response.IsSuccessStatusCode)
             {
                 var lstGradova = response.Content.ReadAsAsync<List<Grad>>().Result;
+                lstGradova.Insert(0, new Grad() {Naziv="Odaberite grad"});
                 GradCmb.DataSource = lstGradova;
                 GradCmb.DisplayMember = "Naziv";
                 GradCmb.ValueMember = "GradId";

@@ -11,7 +11,7 @@ namespace Tutor_UI.Users
 {
     public partial class AdministratorAdd : Form
     {
-        private WebAPIHelper administratorService = new WebAPIHelper(Global.URI, Global.AdministratorRoute);
+        private WebAPIHelper administratorService = new WebAPIHelper("Administrator");
 
         public AdministratorAdd()
         {
@@ -28,7 +28,7 @@ namespace Tutor_UI.Users
                 admin.Ime = ImeInput.Text;
                 admin.Prezime = PrezimeInput.Text;
                 admin.Email = EmailInput.Text;
-                admin.Telefon = PrezimeInput.Text;
+                admin.Telefon = TelefonInput.Text;
                 admin.KoriniskoIme = KorisnickoImeInput.Text;
                 admin.LozinkaSalt = UIHelper.GenerateSalt();
                 admin.LozinkaHash = UIHelper.GenerateHash(admin.LozinkaSalt, LozinkaInput.Text);

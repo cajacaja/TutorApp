@@ -17,9 +17,9 @@ namespace Tutor_UI.Users.Tutor
 {
     public partial class UcionicaEdit : Form
     {
-        private WebAPIHelper ucionicaService = new WebAPIHelper(Global.URI, Global.UcionicaRoute);
-        private WebAPIHelper nivoTezineService = new WebAPIHelper(Global.URI, Global.NivoTezineRoute);
-        private WebAPIHelper terminiService = new WebAPIHelper(Global.URI, Global.TerminUcionicaRoute);
+        private WebAPIHelper ucionicaService = new WebAPIHelper("Ucionica");
+        private WebAPIHelper nivoTezineService = new WebAPIHelper("NivoTezine");
+        private WebAPIHelper terminiService = new WebAPIHelper("Termin");
         byte[] NaslovnaSlika;
         Ucionica editovanaUcionica = new Ucionica();
         int tutorId = Global.prijavljeniTutor.TutorId;

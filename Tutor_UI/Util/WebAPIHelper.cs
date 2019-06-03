@@ -11,12 +11,12 @@ namespace Tutor_UI.Util
     {
         private HttpClient client { get; set; }
         private string route { get; set; }
-        
 
-        public WebAPIHelper(string uri, string route)
+        private string URI = "http://192.168.0.103/api/";
+        public WebAPIHelper(string route)
         {
             client = new HttpClient();
-            client.BaseAddress = new Uri(uri);
+            client.BaseAddress = new Uri(URI);
             this.route = route;
 
         }

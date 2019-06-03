@@ -16,7 +16,7 @@ namespace Tutor_UI.Users.Tutor
 {
     public partial class UploadForm : Form
     {
-        private WebAPIHelper materijalService = new WebAPIHelper(Global.URI, Global.MaterialRoute);
+        private WebAPIHelper materijalService = new WebAPIHelper("Materijal");
 
         private int idUcionice =0;
         public UploadForm(int UcionicaId)

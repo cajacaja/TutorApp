@@ -19,14 +19,14 @@ namespace Tutor_UI.Users
 {
     public partial class AddTutor : Form
     {
-        private WebAPIHelper spolService = new WebAPIHelper(Global.URI, Global.SpolRoute);
-        private WebAPIHelper gradService = new WebAPIHelper(Global.URI, Global.GradRoute);
-        private WebAPIHelper radnostanjeService = new WebAPIHelper(Global.URI, Global.RadnoStanjeRoute);
-        private WebAPIHelper predmetService = new WebAPIHelper(Global.URI, Global.PredmetiRoute);
-        private WebAPIHelper tipStudentaService = new WebAPIHelper(Global.URI, Global.TipStudentaRoute);
-        private WebAPIHelper titulaService = new WebAPIHelper(Global.URI, Global.TutorTitulaRoute);
-        private WebAPIHelper tutorService = new WebAPIHelper(Global.URI, Global.TutorRoute);
-        private WebAPIHelper studentService = new WebAPIHelper(Global.URI, Global.StudentRoute);
+        private WebAPIHelper spolService = new WebAPIHelper("Spol");
+        private WebAPIHelper gradService = new WebAPIHelper("Grad");
+        private WebAPIHelper radnostanjeService = new WebAPIHelper("RadnoStanje");
+        private WebAPIHelper predmetService = new WebAPIHelper( "Podkategorija");
+        private WebAPIHelper tipStudentaService = new WebAPIHelper("TipStudenta");
+        private WebAPIHelper titulaService = new WebAPIHelper("TutorTitula");
+        private WebAPIHelper tutorService = new WebAPIHelper("Tutor");
+        private WebAPIHelper studentService = new WebAPIHelper("Student");
 
         private byte[] Slika1;
         private byte[] Slika2;
@@ -40,6 +40,7 @@ namespace Tutor_UI.Users
             this.AutoValidate = AutoValidate.Disable;
             openFileDialog1.Filter = "Image Files (JPG,PNG,SVG)|*.JPG;*.PNG;*.SVG";
             openFileDialog2.Filter = "Image Files (JPG,PNG,SVG)|*.JPG;*.PNG;*.SVG";
+            DatumRodjenjaDP.Format= DateTimePickerFormat.Short;
         }
 
 
@@ -169,6 +170,7 @@ namespace Tutor_UI.Users
                 {
 
                     MessageBox.Show("Uspjenso dodan tutor!");
+                    this.Close();
                 }
                 else
                 {

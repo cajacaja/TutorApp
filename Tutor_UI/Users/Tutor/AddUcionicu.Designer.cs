@@ -427,8 +427,12 @@
             this.Controls.Add(this.datumPocetkaDatePicker);
             this.Controls.Add(this.datumZavrsetkaDatePicker);
             this.Controls.Add(this.naslovnaPictureBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "AddUcionicu";
-            this.Text = "AddUcionicu";
+            this.ShowIcon = false;
+            this.Text = "Dodaj ucionicu";
             ((System.ComponentModel.ISupportInitialize)(this.naslovnaPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.brojCasovaInput)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.brojUcenikaInput)).EndInit();

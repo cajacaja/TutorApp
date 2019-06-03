@@ -17,7 +17,7 @@ namespace Tutor_UI.Users.Tutor
 {
     public partial class StudentiForm : Form
     {
-        private WebAPIHelper tutorService = new WebAPIHelper(Global.URI, Global.TutorRoute);
+        private WebAPIHelper tutorService = new WebAPIHelper("Tutor");
 
         private int tutorId = Global.prijavljeniTutor.TutorId;
 
@@ -97,7 +97,7 @@ namespace Tutor_UI.Users.Tutor
             {
                 int studentId = Convert.ToInt32(studentiGridView.SelectedRows[0].Cells[0].Value);
                 PrijavaForm prijava = new PrijavaForm(studentId);
-                prijava.Show();
+                prijava.ShowDialog();
                 prijava.MdiParent = this.MdiParent;
             }
         }
@@ -108,7 +108,7 @@ namespace Tutor_UI.Users.Tutor
             {
                 int studentId = Convert.ToInt32(studentiGridView.SelectedRows[0].Cells[0].Value);
                 StudentDetalj student = new StudentDetalj(studentId);
-                student.Show();
+                student.ShowDialog();
                 student.MdiParent = this.MdiParent;
             }
            

@@ -16,9 +16,9 @@ namespace Tutor_UI.Users
     public partial class ReportTutora : Form
     {
 
-        private WebAPIHelper tutorService = new WebAPIHelper(Global.URI, Global.TutorRoute);
-        private WebAPIHelper gradService = new WebAPIHelper(Global.URI, Global.GradRoute);
-        private WebAPIHelper oblastService = new WebAPIHelper(Global.URI, Global.OblastRoute);
+        private WebAPIHelper tutorService = new WebAPIHelper("Tutor");
+        private WebAPIHelper gradService = new WebAPIHelper("Grad");
+        private WebAPIHelper oblastService = new WebAPIHelper("Oblast");
 
         bool flag1 = false;
         bool flag2 = false;

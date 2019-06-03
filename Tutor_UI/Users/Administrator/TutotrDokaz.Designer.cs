@@ -48,7 +48,11 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(120, 0);
             this.Controls.Add(this.dokazPictureBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "TutotrDokaz";
+            this.ShowIcon = false;
             this.Text = "TutotrDokaz";
             ((System.ComponentModel.ISupportInitialize)(this.dokazPictureBox)).EndInit();
             this.ResumeLayout(false);

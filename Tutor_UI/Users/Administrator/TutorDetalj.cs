@@ -17,11 +17,11 @@ namespace Tutor_UI.Users
 {
     public partial class TutorDetalj : Form
     {
-        private WebAPIHelper tutorService = new WebAPIHelper(Global.URI, Global.TutorRoute);
-        private WebAPIHelper tipService = new WebAPIHelper(Global.URI, Global.TipStudentaRoute);
-        //private WebAPIHelper zahtjevService = new WebAPIHelper(Global.URI, Global.ZahtjevRoute);
-        private WebAPIHelper ocjenaTutorService = new WebAPIHelper(Global.URI, Global.OcjenaTutorRoute);
-        private WebAPIHelper ucionicaService = new WebAPIHelper(Global.URI, Global.UcionicaRoute);
+        private WebAPIHelper tutorService = new WebAPIHelper("Tutor");
+        private WebAPIHelper tipService = new WebAPIHelper("TipStudenta");
+        
+        private WebAPIHelper ocjenaTutorService = new WebAPIHelper("OcjenaTutor");
+        private WebAPIHelper ucionicaService = new WebAPIHelper("Ucionica");
 
         private Tutor_Details_Result Tutor;
 
@@ -117,10 +117,10 @@ namespace Tutor_UI.Users
 
         private void FillList(int id)
         {
-            var response = tipService.GetResponse(id.ToString());
+            var response = tipService.GetActionResponse("PreferiraniStudenti",id.ToString());
             if (response.IsSuccessStatusCode)
             {
-                obimListBox.DataSource = response.Content.ReadAsAsync<List<Oblast_select_Result>>().Result;
+                obimListBox.DataSource = response.Content.ReadAsAsync<List<TipStudenta>>().Result;
                 obimListBox.DisplayMember = "Naziv";
                 for (int i = 0; i < obimListBox.Items.Count; i++)
                 {
@@ -140,7 +140,7 @@ namespace Tutor_UI.Users
         private void PrikazBtn_Click(object sender, EventArgs e)
         {
             TutotrDokaz slika = new TutotrDokaz(Tutor.TutorId);
-            slika.Show();
+            slika.ShowDialog();
             slika.MdiParent = this.MdiParent;
         }
 

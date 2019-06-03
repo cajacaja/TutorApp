@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.Predmet_Report_ResultBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.GradCmb = new System.Windows.Forms.ComboBox();
@@ -50,9 +50,9 @@
             // reportViewer1
             // 
             this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Left;
-            reportDataSource1.Name = "PredmetDataSet";
-            reportDataSource1.Value = this.Predmet_Report_ResultBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            reportDataSource2.Name = "PredmetDataSet";
+            reportDataSource2.Value = this.Predmet_Report_ResultBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Tutor_UI.Report.ReportPredmet.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 0);
             this.reportViewer1.Name = "reportViewer1";
@@ -145,8 +145,12 @@
             this.Controls.Add(this.datumOdDatePicker);
             this.Controls.Add(this.GradCmb);
             this.Controls.Add(this.reportViewer1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "ReportPredmet";
-            this.Text = "ReportPredmet";
+            this.ShowIcon = false;
+            this.Text = "Report predmeta";
             this.Load += new System.EventHandler(this.ReportPredmet_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Predmet_Report_ResultBindingSource)).EndInit();
             this.ResumeLayout(false);

@@ -14,7 +14,7 @@ namespace Tutor_UI.Users.Tutor
 {
     public partial class PrijavaForm : Form
     {
-        private WebAPIHelper banService = new WebAPIHelper(Global.URI,Global.BanTutorRoute);
+        private WebAPIHelper banService = new WebAPIHelper("BanPrijavaTutors");
         private int studentId=0;
         private int tutorId = Global.prijavljeniTutor.TutorId;
         public PrijavaForm(int idStudenta)

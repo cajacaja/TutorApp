@@ -16,9 +16,9 @@ namespace Tutor_UI.Users
 {
     public partial class TutorForm : Form
     {
-        private WebAPIHelper tutorService = new WebAPIHelper(Global.URI, Global.TutorRoute);
-        private WebAPIHelper gradService = new WebAPIHelper(Global.URI, Global.GradRoute);
-        private WebAPIHelper predmetService = new WebAPIHelper(Global.URI, Global.OblastRoute);
+        private WebAPIHelper tutorService = new WebAPIHelper("Tutor");
+        private WebAPIHelper gradService = new WebAPIHelper("Grad");
+        private WebAPIHelper predmetService = new WebAPIHelper("Oblast");
 
         int pageNummber = 1;
         IPagedList<Tutor_SearchSelect_Result> list;
@@ -121,7 +121,7 @@ namespace Tutor_UI.Users
             if (TutorGridView.SelectedRows.Count != 0)
             {
                 TutorDetalj tutorDetalj = new TutorDetalj(Convert.ToInt32(TutorGridView.SelectedRows[0].Cells[0].Value));
-                tutorDetalj.Show();
+                tutorDetalj.ShowDialog();
                 tutorDetalj.MdiParent = this.MdiParent;
             }
 

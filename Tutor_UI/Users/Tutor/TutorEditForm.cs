@@ -19,13 +19,13 @@ namespace Tutor_UI.Users.Tutor
 {
     public partial class TutorEditForm : Form
     {
-        private WebAPIHelper tutorService = new WebAPIHelper(Global.URI, Global.TutorRoute);
-        private WebAPIHelper tipService = new WebAPIHelper(Global.URI, Global.TipStudentaRoute);
+        private WebAPIHelper tutorService = new WebAPIHelper("Tutor");
+        private WebAPIHelper tipService = new WebAPIHelper("TipStudenta");
 
-        private WebAPIHelper gradService = new WebAPIHelper(Global.URI, Global.GradRoute);
-        private WebAPIHelper radnostanjeService = new WebAPIHelper(Global.URI, Global.RadnoStanjeRoute);
-        private WebAPIHelper predmetService = new WebAPIHelper(Global.URI, Global.PredmetiRoute);
-        private WebAPIHelper titulaService = new WebAPIHelper(Global.URI, Global.TutorTitulaRoute);
+        private WebAPIHelper gradService = new WebAPIHelper("Grad");
+        private WebAPIHelper radnostanjeService = new WebAPIHelper("RadnoStanje");
+        private WebAPIHelper predmetService = new WebAPIHelper("Podkategorija");
+        private WebAPIHelper titulaService = new WebAPIHelper("TutorTitula");
 
         private Tutor_UpdateSelect_Result tutorUpdate;
 
@@ -192,7 +192,7 @@ namespace Tutor_UI.Users.Tutor
                 if (response.IsSuccessStatusCode)
                 {
 
-                    MessageBox.Show("Uspjesno promjenjenoj");
+                    MessageBox.Show("Uspjesno promjenjeno");
                     this.Close();
                 }
                 else

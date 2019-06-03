@@ -16,7 +16,7 @@ namespace Tutor_UI.Users.Tutor
 {
     public partial class MaterijaliForm : Form
     {
-        private WebAPIHelper materijalService = new WebAPIHelper(Global.URI, Global.MaterialRoute);
+        private WebAPIHelper materijalService = new WebAPIHelper("Materijal");
         private int idUcionice = 0;
         public MaterijaliForm(int UcionicaId)
         {
@@ -39,7 +39,7 @@ namespace Tutor_UI.Users.Tutor
         private void uploadBtn_Click(object sender, EventArgs e)
         {
             UploadForm fileUpload = new UploadForm(idUcionice);
-            fileUpload.Show();
+            fileUpload.ShowDialog();
 
         }
 

@@ -16,8 +16,8 @@ namespace Tutor_UI.Users.Tutor
 {
     public partial class UcionicaForm : Form
     {
-        private WebAPIHelper tutorService = new WebAPIHelper(Global.URI,Global.TutorRoute);
-        private WebAPIHelper ucionicaService = new WebAPIHelper(Global.URI, Global.UcionicaRoute);
+        private WebAPIHelper tutorService = new WebAPIHelper("Tutor");
+        private WebAPIHelper ucionicaService = new WebAPIHelper("Ucionica");
         private int tutorID = Global.prijavljeniTutor.TutorId;
 
         int pageNummber = 1;
@@ -68,7 +68,7 @@ namespace Tutor_UI.Users.Tutor
         private void NovaUcionicaBtn_Click(object sender, EventArgs e)
         {
             AddUcionicu addUcionicu = new AddUcionicu();
-            addUcionicu.Show();
+            addUcionicu.ShowDialog();
             addUcionicu.MdiParent = this.MdiParent;
         }
 
@@ -102,17 +102,17 @@ namespace Tutor_UI.Users.Tutor
                 {
                     int UcionicaId = Convert.ToInt32(aktivneDataGridView.SelectedRows[0].Cells[0].Value);
                     UcionicaDetailsForm detaljiUcionice = new UcionicaDetailsForm(UcionicaId);
-                    detaljiUcionice.Show();
+                    detaljiUcionice.ShowDialog();
                     detaljiUcionice.MdiParent = this.MdiParent;
                 }
             }
             else if (UcioniceTabControl.SelectedTab == UcioniceTabControl.TabPages["StareUcionice"])
             {
-                if (aktivneDataGridView.SelectedRows.Count != 0)
+                if (stareDataGridView.SelectedRows.Count != 0)
                 {
                     int UcionicaId = Convert.ToInt32(stareDataGridView.SelectedRows[0].Cells[0].Value);
                     UcionicaDetailsForm detaljiUcionice = new UcionicaDetailsForm(UcionicaId);
-                    detaljiUcionice.Show();
+                    detaljiUcionice.ShowDialog();
                     detaljiUcionice.MdiParent = this.MdiParent;
                 }
             }
@@ -126,7 +126,7 @@ namespace Tutor_UI.Users.Tutor
             {
                 int UcionicaId = Convert.ToInt32(aktivneDataGridView.SelectedRows[0].Cells[0].Value);
                 UcionicaEdit editUcionica = new UcionicaEdit(UcionicaId);
-                editUcionica.Show();
+                editUcionica.ShowDialog();
                 editUcionica.MdiParent = this.MdiParent;
             }
         }
@@ -193,6 +193,11 @@ namespace Tutor_UI.Users.Tutor
             {
                 BindNeAktivneUcionice();
             }
+        }
+
+        private void UcionicaForm_Enter(object sender, EventArgs e)
+        {
+            BindAktivneUcionie();
         }
     }
 }

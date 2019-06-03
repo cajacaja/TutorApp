@@ -38,13 +38,13 @@
             this.IsRead = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.ProcitanePrijaveGridView = new System.Windows.Forms.DataGridView();
-            this.PregledBtn = new System.Windows.Forms.Button();
-            this.IzbrisiBtn = new System.Windows.Forms.Button();
             this.StaraPrijavaId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StudentProcitano = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TutorProcitano = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DatumPrijaveProcitano = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.JelProcitano = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.PregledBtn = new System.Windows.Forms.Button();
+            this.IzbrisiBtn = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NovePrijaveGridView)).BeginInit();
@@ -60,7 +60,7 @@
             this.tabControl1.Location = new System.Drawing.Point(165, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(457, 450);
+            this.tabControl1.Size = new System.Drawing.Size(457, 364);
             this.tabControl1.TabIndex = 0;
             this.tabControl1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.tabControl1_MouseClick);
             // 
@@ -70,13 +70,15 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(449, 424);
+            this.tabPage1.Size = new System.Drawing.Size(449, 338);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Nove prijave";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // NovePrijaveGridView
             // 
+            this.NovePrijaveGridView.AllowUserToAddRows = false;
+            this.NovePrijaveGridView.AllowUserToDeleteRows = false;
             this.NovePrijaveGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.NovePrijaveGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.PrijavaStudentId,
@@ -87,7 +89,8 @@
             this.NovePrijaveGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.NovePrijaveGridView.Location = new System.Drawing.Point(3, 3);
             this.NovePrijaveGridView.Name = "NovePrijaveGridView";
-            this.NovePrijaveGridView.Size = new System.Drawing.Size(443, 418);
+            this.NovePrijaveGridView.ReadOnly = true;
+            this.NovePrijaveGridView.Size = new System.Drawing.Size(443, 332);
             this.NovePrijaveGridView.TabIndex = 0;
             // 
             // PrijavaStudentId
@@ -153,26 +156,6 @@
             this.ProcitanePrijaveGridView.Size = new System.Drawing.Size(443, 418);
             this.ProcitanePrijaveGridView.TabIndex = 0;
             // 
-            // PregledBtn
-            // 
-            this.PregledBtn.Location = new System.Drawing.Point(12, 37);
-            this.PregledBtn.Name = "PregledBtn";
-            this.PregledBtn.Size = new System.Drawing.Size(140, 42);
-            this.PregledBtn.TabIndex = 1;
-            this.PregledBtn.Text = "Pregled";
-            this.PregledBtn.UseVisualStyleBackColor = true;
-            this.PregledBtn.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // IzbrisiBtn
-            // 
-            this.IzbrisiBtn.Location = new System.Drawing.Point(12, 99);
-            this.IzbrisiBtn.Name = "IzbrisiBtn";
-            this.IzbrisiBtn.Size = new System.Drawing.Size(140, 42);
-            this.IzbrisiBtn.TabIndex = 2;
-            this.IzbrisiBtn.Text = "Izbrisi";
-            this.IzbrisiBtn.UseVisualStyleBackColor = true;
-            this.IzbrisiBtn.Click += new System.EventHandler(this.IzbrisiBtn_Click);
-            // 
             // StaraPrijavaId
             // 
             this.StaraPrijavaId.DataPropertyName = "PrijavaStudentId";
@@ -209,16 +192,40 @@
             this.JelProcitano.Name = "JelProcitano";
             this.JelProcitano.ReadOnly = true;
             // 
+            // PregledBtn
+            // 
+            this.PregledBtn.Location = new System.Drawing.Point(12, 37);
+            this.PregledBtn.Name = "PregledBtn";
+            this.PregledBtn.Size = new System.Drawing.Size(140, 42);
+            this.PregledBtn.TabIndex = 1;
+            this.PregledBtn.Text = "Pregled";
+            this.PregledBtn.UseVisualStyleBackColor = true;
+            this.PregledBtn.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // IzbrisiBtn
+            // 
+            this.IzbrisiBtn.Location = new System.Drawing.Point(12, 99);
+            this.IzbrisiBtn.Name = "IzbrisiBtn";
+            this.IzbrisiBtn.Size = new System.Drawing.Size(140, 42);
+            this.IzbrisiBtn.TabIndex = 2;
+            this.IzbrisiBtn.Text = "Izbrisi";
+            this.IzbrisiBtn.UseVisualStyleBackColor = true;
+            this.IzbrisiBtn.Click += new System.EventHandler(this.IzbrisiBtn_Click);
+            // 
             // PrijaveTutorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(622, 450);
+            this.ClientSize = new System.Drawing.Size(622, 364);
             this.Controls.Add(this.IzbrisiBtn);
             this.Controls.Add(this.PregledBtn);
             this.Controls.Add(this.tabControl1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "PrijaveTutorForm";
-            this.Text = "PrijaveTutorForm";
+            this.ShowIcon = false;
+            this.Text = "Ban prijave od strane studenta";
             this.Load += new System.EventHandler(this.PrijaveTutorForm_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);

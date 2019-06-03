@@ -36,13 +36,13 @@
             this.BackBtn = new System.Windows.Forms.Button();
             this.FowardBtn = new System.Windows.Forms.Button();
             this.brojListe = new System.Windows.Forms.Label();
-            this.Grad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TipStudenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DatumDodavanja = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DatumRodjenja = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Prezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StudentId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Prezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DatumRodjenja = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DatumDodavanja = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TipStudenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Grad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.StudentGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -73,6 +73,8 @@
             // 
             // StudentGridView
             // 
+            this.StudentGridView.AllowUserToAddRows = false;
+            this.StudentGridView.AllowUserToDeleteRows = false;
             this.StudentGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.StudentGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.StudentId,
@@ -83,8 +85,9 @@
             this.TipStudenta,
             this.Grad});
             this.StudentGridView.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.StudentGridView.Location = new System.Drawing.Point(0, 85);
+            this.StudentGridView.Location = new System.Drawing.Point(0, 87);
             this.StudentGridView.Name = "StudentGridView";
+            this.StudentGridView.ReadOnly = true;
             this.StudentGridView.Size = new System.Drawing.Size(620, 237);
             this.StudentGridView.TabIndex = 3;
             // 
@@ -129,48 +132,6 @@
             this.brojListe.TabIndex = 7;
             this.brojListe.Text = "0/0";
             // 
-            // Grad
-            // 
-            this.Grad.DataPropertyName = "Grad";
-            this.Grad.HeaderText = "Grad";
-            this.Grad.Name = "Grad";
-            this.Grad.ReadOnly = true;
-            // 
-            // TipStudenta
-            // 
-            this.TipStudenta.DataPropertyName = "TipStudenta";
-            this.TipStudenta.HeaderText = "Tip studenta";
-            this.TipStudenta.Name = "TipStudenta";
-            this.TipStudenta.ReadOnly = true;
-            // 
-            // DatumDodavanja
-            // 
-            this.DatumDodavanja.DataPropertyName = "DatumDodavanja";
-            this.DatumDodavanja.HeaderText = "DatumDodavanja";
-            this.DatumDodavanja.Name = "DatumDodavanja";
-            this.DatumDodavanja.ReadOnly = true;
-            // 
-            // DatumRodjenja
-            // 
-            this.DatumRodjenja.DataPropertyName = "DatumRodjenja";
-            this.DatumRodjenja.HeaderText = "DatumRodjenja";
-            this.DatumRodjenja.Name = "DatumRodjenja";
-            this.DatumRodjenja.ReadOnly = true;
-            // 
-            // Prezime
-            // 
-            this.Prezime.DataPropertyName = "Prezime";
-            this.Prezime.HeaderText = "Prezime";
-            this.Prezime.Name = "Prezime";
-            this.Prezime.ReadOnly = true;
-            // 
-            // Ime
-            // 
-            this.Ime.DataPropertyName = "Ime";
-            this.Ime.HeaderText = "Ime";
-            this.Ime.Name = "Ime";
-            this.Ime.ReadOnly = true;
-            // 
             // StudentId
             // 
             this.StudentId.DataPropertyName = "StudentId";
@@ -179,11 +140,53 @@
             this.StudentId.ReadOnly = true;
             this.StudentId.Visible = false;
             // 
+            // Ime
+            // 
+            this.Ime.DataPropertyName = "Ime";
+            this.Ime.HeaderText = "Ime";
+            this.Ime.Name = "Ime";
+            this.Ime.ReadOnly = true;
+            // 
+            // Prezime
+            // 
+            this.Prezime.DataPropertyName = "Prezime";
+            this.Prezime.HeaderText = "Prezime";
+            this.Prezime.Name = "Prezime";
+            this.Prezime.ReadOnly = true;
+            // 
+            // DatumRodjenja
+            // 
+            this.DatumRodjenja.DataPropertyName = "DatumRodjenja";
+            this.DatumRodjenja.HeaderText = "Datum rodjenja";
+            this.DatumRodjenja.Name = "DatumRodjenja";
+            this.DatumRodjenja.ReadOnly = true;
+            // 
+            // DatumDodavanja
+            // 
+            this.DatumDodavanja.DataPropertyName = "DatumDodavanja";
+            this.DatumDodavanja.HeaderText = "Datum dodavanja";
+            this.DatumDodavanja.Name = "DatumDodavanja";
+            this.DatumDodavanja.ReadOnly = true;
+            // 
+            // TipStudenta
+            // 
+            this.TipStudenta.DataPropertyName = "TipStudenta";
+            this.TipStudenta.HeaderText = "Tip studenta";
+            this.TipStudenta.Name = "TipStudenta";
+            this.TipStudenta.ReadOnly = true;
+            // 
+            // Grad
+            // 
+            this.Grad.DataPropertyName = "Grad";
+            this.Grad.HeaderText = "Grad";
+            this.Grad.Name = "Grad";
+            this.Grad.ReadOnly = true;
+            // 
             // StudentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(620, 322);
+            this.ClientSize = new System.Drawing.Size(620, 324);
             this.Controls.Add(this.brojListe);
             this.Controls.Add(this.FowardBtn);
             this.Controls.Add(this.BackBtn);
@@ -192,8 +195,12 @@
             this.Controls.Add(this.GradCmb);
             this.Controls.Add(this.TraziBtn);
             this.Controls.Add(this.searchNameInput);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "StudentForm";
-            this.Text = "StudentForm";
+            this.ShowIcon = false;
+            this.Text = "Studenti";
             this.Load += new System.EventHandler(this.StudentForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.StudentGridView)).EndInit();
             this.ResumeLayout(false);

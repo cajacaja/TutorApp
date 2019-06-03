@@ -16,7 +16,7 @@ namespace Tutor_UI.Users
 {
     public partial class UcionicaDetails : Form
     {
-        private WebAPIHelper ucionicaService = new WebAPIHelper(Global.URI, Global.UcionicaRoute);
+        private WebAPIHelper ucionicaService = new WebAPIHelper("Ucionica");
         private int TutorId = 0;
         public UcionicaDetails(int UcionicaId)
         {
@@ -64,7 +64,7 @@ namespace Tutor_UI.Users
                 predmetInput.Text = ucionica.Predmet;
                 GradInput.Text = ucionica.Grad;
                 adresaInput.Text = ucionica.AdresaUcionice;
-                CijenaInput.Text = ucionica.Cijena.ToString();
+                CijenaInput.Text = ucionica.Cijena.ToString() +" KM";
                 maxBrUcenikaInput.Text = ucionica.MaxBrojPolaznika.ToString();
                 tezinaInput.Text = ucionica.Tezina;
                 brojCasovaInput.Text = ucionica.BrojCasova.ToString();
@@ -74,7 +74,7 @@ namespace Tutor_UI.Users
         private void TutorInput_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             TutorDetalj tutor = new TutorDetalj(TutorId);
-            tutor.Show();
+            tutor.ShowDialog();
             tutor.MdiParent = this.MdiParent;
         }
     }

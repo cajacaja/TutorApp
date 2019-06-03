@@ -79,16 +79,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Messeges.resx</DependentUpon>
     </Compile>
-    <Compile Include="PredmetDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PredmetDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="PredmetReport.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PredmetReport.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\UcionicaTermini.cs" />
@@ -463,28 +453,6 @@
       <DependentUpon>UploadForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
-    <None Include="PredmetDataSet.xsc">
-      <DependentUpon>PredmetDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="PredmetDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>PredmetDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="PredmetDataSet.xss">
-      <DependentUpon>PredmetDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="PredmetReport.xsc">
-      <DependentUpon>PredmetReport.xsd</DependentUpon>
-    </None>
-    <None Include="PredmetReport.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>PredmetReport.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="PredmetReport.xss">
-      <DependentUpon>PredmetReport.xsd</DependentUpon>
-    </None>
     <None Include="Properties\DataSources\Tutor_API.Models.Predmet_Report_Result.datasource" />
     <None Include="Properties\DataSources\Tutor_API.Models.Tutor_SelectBest_Result.datasource" />
     <None Include="Properties\Settings.settings">

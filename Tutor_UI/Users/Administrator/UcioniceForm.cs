@@ -18,9 +18,9 @@ namespace Tutor_UI.Users
 {
     public partial class UcioniceForm : Form
     {
-        private WebAPIHelper ucionicaService = new WebAPIHelper(Global.URI, Global.UcionicaRoute);
-        private WebAPIHelper oblastService = new WebAPIHelper(Global.URI, Global.OblastRoute);
-        private WebAPIHelper gradService = new WebAPIHelper(Global.URI, Global.GradRoute);
+        private WebAPIHelper ucionicaService = new WebAPIHelper("Ucionica");
+        private WebAPIHelper oblastService = new WebAPIHelper("Oblast");
+        private WebAPIHelper gradService = new WebAPIHelper("Grad");
 
         int pageNummber1 = 1;
         int pageNummber2 = 1;
@@ -260,7 +260,7 @@ namespace Tutor_UI.Users
             if (actUcioniceGridView.SelectedRows.Count != 0)
             {
                 UcionicaDetails ucionicaDetalj = new UcionicaDetails(Convert.ToInt32(actUcioniceGridView.SelectedRows[0].Cells[0].Value));
-                ucionicaDetalj.Show();
+                ucionicaDetalj.ShowDialog();
                 ucionicaDetalj.MdiParent = this.MdiParent;
             }
         }

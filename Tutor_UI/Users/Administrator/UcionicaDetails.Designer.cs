@@ -50,12 +50,12 @@
             this.label12 = new System.Windows.Forms.Label();
             this.tezinaInput = new System.Windows.Forms.TextBox();
             this.uceniciGridView = new System.Windows.Forms.DataGridView();
-            this.TutorInput = new System.Windows.Forms.LinkLabel();
-            this.opisInput = new System.Windows.Forms.RichTextBox();
             this.Ucenik = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Spol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DatumRodjenja = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TipStudenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TutorInput = new System.Windows.Forms.LinkLabel();
+            this.opisInput = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.ucionicaPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uceniciGridView)).BeginInit();
             this.SuspendLayout();
@@ -284,26 +284,6 @@
             this.uceniciGridView.Size = new System.Drawing.Size(444, 116);
             this.uceniciGridView.TabIndex = 24;
             // 
-            // TutorInput
-            // 
-            this.TutorInput.AutoSize = true;
-            this.TutorInput.Location = new System.Drawing.Point(95, 303);
-            this.TutorInput.Name = "TutorInput";
-            this.TutorInput.Size = new System.Drawing.Size(55, 13);
-            this.TutorInput.TabIndex = 25;
-            this.TutorInput.TabStop = true;
-            this.TutorInput.Text = "ImeTutora";
-            this.TutorInput.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.TutorInput_LinkClicked);
-            // 
-            // opisInput
-            // 
-            this.opisInput.BackColor = System.Drawing.SystemColors.Control;
-            this.opisInput.Location = new System.Drawing.Point(1, 184);
-            this.opisInput.Name = "opisInput";
-            this.opisInput.Size = new System.Drawing.Size(443, 85);
-            this.opisInput.TabIndex = 3;
-            this.opisInput.Text = "";
-            // 
             // Ucenik
             // 
             this.Ucenik.DataPropertyName = "Ucenik";
@@ -331,6 +311,26 @@
             this.TipStudenta.HeaderText = "Tip studenta";
             this.TipStudenta.Name = "TipStudenta";
             this.TipStudenta.ReadOnly = true;
+            // 
+            // TutorInput
+            // 
+            this.TutorInput.AutoSize = true;
+            this.TutorInput.Location = new System.Drawing.Point(95, 303);
+            this.TutorInput.Name = "TutorInput";
+            this.TutorInput.Size = new System.Drawing.Size(55, 13);
+            this.TutorInput.TabIndex = 25;
+            this.TutorInput.TabStop = true;
+            this.TutorInput.Text = "ImeTutora";
+            this.TutorInput.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.TutorInput_LinkClicked);
+            // 
+            // opisInput
+            // 
+            this.opisInput.BackColor = System.Drawing.SystemColors.Control;
+            this.opisInput.Location = new System.Drawing.Point(1, 184);
+            this.opisInput.Name = "opisInput";
+            this.opisInput.Size = new System.Drawing.Size(443, 85);
+            this.opisInput.TabIndex = 3;
+            this.opisInput.Text = "";
             // 
             // UcionicaDetails
             // 
@@ -361,7 +361,11 @@
             this.Controls.Add(this.ucionicaPictureBox);
             this.Controls.Add(this.datumPocetkaInput);
             this.Controls.Add(this.NaslovLabel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "UcionicaDetails";
+            this.ShowIcon = false;
             this.Text = "UcionicaDetails";
             ((System.ComponentModel.ISupportInitialize)(this.ucionicaPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uceniciGridView)).EndInit();

@@ -15,8 +15,8 @@ namespace Tutor_UI.Users.Tutor
 {
     public partial class OdrediTermin : Form
     {
-        private WebAPIHelper zahtjevService = new WebAPIHelper(Global.URI, Global.ZahtjevRoute);
-        private WebAPIHelper terminCasaService = new WebAPIHelper(Global.URI, Global.TerminCasaRoute);
+        private WebAPIHelper zahtjevService = new WebAPIHelper("Zahtjev");
+        private WebAPIHelper terminCasaService = new WebAPIHelper("TerminCasa");
 
         int brojCasova = 0;
         int brojac = 0;
@@ -29,6 +29,7 @@ namespace Tutor_UI.Users.Tutor
             TimePicker.CustomFormat = "HH:mm";
             TimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             TimePicker.ShowUpDown = true;
+            DatumCasaDatePicker.Format = DateTimePickerFormat.Short;
 
             BindForm(zahtjevId);
         }
@@ -95,11 +96,14 @@ namespace Tutor_UI.Users.Tutor
                     var response2 = zahtjevService.PutResponse(IDzahtjeva, zahtjev);
                     if (response2.IsSuccessStatusCode)
                     {
-                        MessageBox.Show("Zahtjev odobren");
+                        
                         StudentKontakInfoForm kontakInfo = new StudentKontakInfoForm(zahtjev.StudentId);
-                        kontakInfo.Show();
+                        kontakInfo.ShowDialog();
                         kontakInfo.MdiParent = this.MdiParent;
                         ZakaziBtn.Enabled = false;
+                        this.ControlBox = true;
+                       
+                        
                     }
                 }
             }
@@ -139,5 +143,7 @@ namespace Tutor_UI.Users.Tutor
 
             return dan;
         }
+
+        
     }
 }

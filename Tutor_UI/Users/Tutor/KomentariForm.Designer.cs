@@ -99,7 +99,7 @@
             this.MinimizeBox = false;
             this.Name = "KomentariForm";
             this.ShowIcon = false;
-            this.Text = "KomentariForm";
+            this.Text = "Komentari";
             ((System.ComponentModel.ISupportInitialize)(this.komentariGridView)).EndInit();
             this.ResumeLayout(false);
 

@@ -17,8 +17,8 @@ namespace Tutor_UI.Users.Tutor
 {
     public partial class StudentZahtjevForm : Form
     {
-        private WebAPIHelper zahtjevService = new WebAPIHelper(Global.URI, Global.ZahtjevRoute);
-        private WebAPIHelper ocjenaService = new WebAPIHelper(Global.URI, Global.OcjenaStudentRoute);
+        private WebAPIHelper zahtjevService = new WebAPIHelper("Zahtjev");
+        private WebAPIHelper ocjenaService = new WebAPIHelper("OcjenaStudent");
         
         private int  ZahtjevId=0;
 
@@ -120,8 +120,9 @@ namespace Tutor_UI.Users.Tutor
                 if (response2.IsSuccessStatusCode)
                 {
                     OdrediTermin termini = new OdrediTermin(ZahtjevId);
-                    termini.Show();
+                    termini.ShowDialog();
                     termini.MdiParent = this.MdiParent;
+                    PrihvatiBtn.Enabled = false;
                 }
             }
         }

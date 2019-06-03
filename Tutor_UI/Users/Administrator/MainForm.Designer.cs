@@ -40,6 +40,7 @@
             this.reportiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.najpopularnijiPredmetiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.najpopularnijiTutoriToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,7 +52,8 @@
             this.prijaveToolStripMenuItem,
             this.studentiToolStripMenuItem,
             this.ucioniceToolStripMenuItem,
-            this.reportiToolStripMenuItem});
+            this.reportiToolStripMenuItem,
+            this.logoutToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
@@ -140,6 +142,14 @@
             this.najpopularnijiTutoriToolStripMenuItem.Text = "Najpopularniji tutori";
             this.najpopularnijiTutoriToolStripMenuItem.Click += new System.EventHandler(this.najpopularnijiTutoriToolStripMenuItem_Click);
             // 
+            // logoutToolStripMenuItem
+            // 
+            this.logoutToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
+            this.logoutToolStripMenuItem.Text = "Logout";
+            this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -148,6 +158,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
+            this.ShowIcon = false;
             this.Text = "MainForm";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -170,5 +181,6 @@
         private System.Windows.Forms.ToolStripMenuItem reportiToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem najpopularnijiPredmetiToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem najpopularnijiTutoriToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
     }
 }

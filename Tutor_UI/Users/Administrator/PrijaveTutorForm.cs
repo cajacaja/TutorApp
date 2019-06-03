@@ -15,7 +15,7 @@ namespace Tutor_UI.Users
 {
     public partial class PrijaveTutorForm : Form
     {
-        private WebAPIHelper banStudentService = new WebAPIHelper(Global.URI, Global.BanStudentRoute);
+        private WebAPIHelper banStudentService = new WebAPIHelper("BanPrijavaStudent");
         public PrijaveTutorForm()
         {
             InitializeComponent();
@@ -76,7 +76,7 @@ namespace Tutor_UI.Users
             }
 
             var detalji = new TutorPrijaveDetailsForm(TutorId);
-            detalji.Show();
+            detalji.ShowDialog();
             BindNeProcitano();
             BindProcitano();
         }
@@ -103,7 +103,7 @@ namespace Tutor_UI.Users
                 if (response.IsSuccessStatusCode)
                 {
 
-                    MessageBox.Show("Uspjenos obrisana prijava");
+                    MessageBox.Show("Uspjesno obrisana prijava");
                     BindProcitano();
                 }
 

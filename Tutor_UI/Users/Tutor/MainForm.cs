@@ -22,28 +22,41 @@ namespace Tutor_UI.Users.Tutor
         private void tutorProfilToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ProfilDetailsForm tutorProfil = new ProfilDetailsForm(Global.prijavljeniTutor.TutorId);
-            tutorProfil.Show();
+            tutorProfil.ShowDialog();
+            tutorProfil.MdiParent = this;
         }
 
         private void zahtjeviZaCasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CasZahtjeviForm zahtjevi = new CasZahtjeviForm();
-            zahtjevi.Show();
+            zahtjevi.ShowDialog();
             zahtjevi.MdiParent = this;
         }
 
         private void mojiStudentiToolStripMenuItem_Click(object sender, EventArgs e)
         {
             StudentiForm studentiForm = new StudentiForm();
-            studentiForm.Show();
+            studentiForm.ShowDialog();
             studentiForm.MdiParent = this;
         }
 
         private void ucioniceToolStripMenuItem_Click(object sender, EventArgs e)
         {
             UcionicaForm ucionicaForm = new UcionicaForm();
-            ucionicaForm.Show();
+            ucionicaForm.ShowDialog();
             ucionicaForm.MdiParent = this;
+        }
+
+        private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Global.prijavljeniAdministrator != null)
+                Global.prijavljeniAdministrator = null;
+            else
+            {
+                Global.prijavljeniTutor = null;
+            }
+            
+            this.Close();
         }
     }
 }

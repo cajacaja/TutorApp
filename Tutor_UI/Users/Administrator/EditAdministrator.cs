@@ -16,7 +16,7 @@ namespace Tutor_UI.Users
 {
     public partial class EditAdministrator : Form
     {
-        private WebAPIHelper administratorService = new WebAPIHelper(Global.URI, Global.AdministratorRoute);
+        private WebAPIHelper administratorService = new WebAPIHelper("Administrator");
         private Administrator_SelectOne admin;
 
         public EditAdministrator(int administratorId)

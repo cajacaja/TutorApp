@@ -18,8 +18,8 @@ namespace Tutor_UI.Users
 {
     public partial class StudentDetalj : Form
     {
-        private WebAPIHelper studentService = new WebAPIHelper(Global.URI, Global.StudentRoute);
-        private WebAPIHelper ocjenaService = new WebAPIHelper(Global.URI, Global.OcjenaStudentRoute);
+        private WebAPIHelper studentService = new WebAPIHelper("Student");
+        private WebAPIHelper ocjenaService = new WebAPIHelper("OcjenaStudent");
         private int StudentId;
 
 

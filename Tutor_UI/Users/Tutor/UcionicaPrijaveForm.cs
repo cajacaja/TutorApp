@@ -15,7 +15,7 @@ namespace Tutor_UI.Users.Tutor
 {
     public partial class UcionicaPrijaveForm : Form
     {
-        private WebAPIHelper prijaveService = new WebAPIHelper(Global.URI, Global.PrijavaRoute);
+        private WebAPIHelper prijaveService = new WebAPIHelper("Prijava");
 
         int idUcionice = 0;
         public UcionicaPrijaveForm(int ucionicaId)
@@ -79,7 +79,7 @@ namespace Tutor_UI.Users.Tutor
             {
                 int studentId = Convert.ToInt32(prijaveGridView.SelectedRows[0].Cells[1].Value);
                 KomentariForm komentari = new KomentariForm(studentId);
-                komentari.Show();
+                komentari.ShowDialog();
                 komentari.MdiParent = this.MdiParent;
             }
            

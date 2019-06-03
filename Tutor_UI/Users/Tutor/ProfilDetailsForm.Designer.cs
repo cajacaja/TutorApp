@@ -528,7 +528,9 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ProfilDetailsForm";
+            this.ShowIcon = false;
             this.Text = "Profil";
+            this.Enter += new System.EventHandler(this.ProfilDetailsForm_Enter);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);

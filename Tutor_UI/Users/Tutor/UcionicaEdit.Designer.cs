@@ -266,9 +266,9 @@
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label5.Location = new System.Drawing.Point(104, 260);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(68, 13);
+            this.label5.Size = new System.Drawing.Size(74, 13);
             this.label5.TabIndex = 45;
-            this.label5.Text = "Broj caova";
+            this.label5.Text = "Broj casova";
             // 
             // label4
             // 
@@ -340,7 +340,6 @@
             this.NaslovInput.Name = "NaslovInput";
             this.NaslovInput.Size = new System.Drawing.Size(157, 20);
             this.NaslovInput.TabIndex = 37;
-
             // 
             // CijenaInput
             // 
@@ -420,8 +419,12 @@
             this.Controls.Add(this.datumPocetkaDatePicker);
             this.Controls.Add(this.datumZavrsetkaDatePicker);
             this.Controls.Add(this.naslovnaPictureBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "UcionicaEdit";
-            this.Text = "UcionicaEdit";
+            this.ShowIcon = false;
+            this.Text = "Edit";
             ((System.ComponentModel.ISupportInitialize)(this.terminiDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CijenaInput)).EndInit();

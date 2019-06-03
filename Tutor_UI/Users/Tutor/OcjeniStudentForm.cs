@@ -15,7 +15,7 @@ namespace Tutor_UI.Users.Tutor
 {
     public partial class OcjeniStudentForm : Form
     {
-        private WebAPIHelper ocjenaService = new WebAPIHelper(Global.URI, Global.OcjenaStudentRoute);
+        private WebAPIHelper ocjenaService = new WebAPIHelper("OcjenaStudent");
         int StudentId = 0;
         int tutorId = Global.prijavljeniTutor.TutorId;
         public OcjeniStudentForm(int studentId)

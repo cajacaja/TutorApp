@@ -203,7 +203,7 @@
             // 
             this.DatumRodjenjaDP.Location = new System.Drawing.Point(244, 116);
             this.DatumRodjenjaDP.Name = "DatumRodjenjaDP";
-            this.DatumRodjenjaDP.Size = new System.Drawing.Size(200, 20);
+            this.DatumRodjenjaDP.Size = new System.Drawing.Size(144, 20);
             this.DatumRodjenjaDP.TabIndex = 15;
             this.DatumRodjenjaDP.Validating += new System.ComponentModel.CancelEventHandler(this.DatumRodjenjaDP_Validating);
             // 
@@ -425,6 +425,7 @@
             // 
             // pictureBox
             // 
+            this.pictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox.Location = new System.Drawing.Point(478, 33);
             this.pictureBox.Name = "pictureBox";
             this.pictureBox.Size = new System.Drawing.Size(100, 134);
@@ -488,8 +489,12 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.Ime);
             this.Controls.Add(this.ImeInput);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "AddTutor";
-            this.Text = "Predmet";
+            this.ShowIcon = false;
+            this.Text = "Dodaj tutora";
             this.Load += new System.EventHandler(this.AddTutor_Load);
             ((System.ComponentModel.ISupportInitialize)(this.CijenaInput)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();

@@ -64,6 +64,17 @@
             this.UcioniceDataGrid = new System.Windows.Forms.DataGridView();
             this.BanBtn = new System.Windows.Forms.Button();
             this.UnbanBtn = new System.Windows.Forms.Button();
+            this.Ime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Prezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Komentar = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Datum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ocjena = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Naslov = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DatumPocetka = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DatumZavrsetka = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BrojCasova = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaxBrojPolaznika = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cijena = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.tutorPictureBox)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -424,10 +435,19 @@
             // 
             // CasoviDataGrid
             // 
+            this.CasoviDataGrid.AllowUserToAddRows = false;
+            this.CasoviDataGrid.AllowUserToDeleteRows = false;
             this.CasoviDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.CasoviDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Ime,
+            this.Prezime,
+            this.Komentar,
+            this.Datum,
+            this.Ocjena});
             this.CasoviDataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CasoviDataGrid.Location = new System.Drawing.Point(3, 3);
             this.CasoviDataGrid.Name = "CasoviDataGrid";
+            this.CasoviDataGrid.ReadOnly = true;
             this.CasoviDataGrid.Size = new System.Drawing.Size(490, 114);
             this.CasoviDataGrid.TabIndex = 0;
             // 
@@ -444,10 +464,20 @@
             // 
             // UcioniceDataGrid
             // 
+            this.UcioniceDataGrid.AllowUserToAddRows = false;
+            this.UcioniceDataGrid.AllowUserToDeleteRows = false;
             this.UcioniceDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.UcioniceDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Naslov,
+            this.DatumPocetka,
+            this.DatumZavrsetka,
+            this.BrojCasova,
+            this.MaxBrojPolaznika,
+            this.Cijena});
             this.UcioniceDataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.UcioniceDataGrid.Location = new System.Drawing.Point(3, 3);
             this.UcioniceDataGrid.Name = "UcioniceDataGrid";
+            this.UcioniceDataGrid.ReadOnly = true;
             this.UcioniceDataGrid.Size = new System.Drawing.Size(490, 114);
             this.UcioniceDataGrid.TabIndex = 0;
             // 
@@ -471,6 +501,96 @@
             this.UnbanBtn.UseVisualStyleBackColor = true;
             this.UnbanBtn.Click += new System.EventHandler(this.UnbanBtn_Click);
             // 
+            // Ime
+            // 
+            this.Ime.DataPropertyName = "Ime";
+            this.Ime.HeaderText = "Ime";
+            this.Ime.Name = "Ime";
+            this.Ime.ReadOnly = true;
+            this.Ime.Width = 95;
+            // 
+            // Prezime
+            // 
+            this.Prezime.DataPropertyName = "Prezime";
+            this.Prezime.HeaderText = "Prezime";
+            this.Prezime.Name = "Prezime";
+            this.Prezime.ReadOnly = true;
+            this.Prezime.Width = 95;
+            // 
+            // Komentar
+            // 
+            this.Komentar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Komentar.DataPropertyName = "Komentar";
+            this.Komentar.HeaderText = "Komentar";
+            this.Komentar.Name = "Komentar";
+            this.Komentar.ReadOnly = true;
+            this.Komentar.Width = 77;
+            // 
+            // Datum
+            // 
+            this.Datum.DataPropertyName = "Datum";
+            this.Datum.HeaderText = "Datum";
+            this.Datum.Name = "Datum";
+            this.Datum.ReadOnly = true;
+            this.Datum.Width = 85;
+            // 
+            // Ocjena
+            // 
+            this.Ocjena.DataPropertyName = "Ocjena";
+            this.Ocjena.HeaderText = "Ocjena";
+            this.Ocjena.Name = "Ocjena";
+            this.Ocjena.ReadOnly = true;
+            this.Ocjena.Width = 65;
+            // 
+            // Naslov
+            // 
+            this.Naslov.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Naslov.DataPropertyName = "Naslov";
+            this.Naslov.HeaderText = "Naslov";
+            this.Naslov.Name = "Naslov";
+            this.Naslov.ReadOnly = true;
+            this.Naslov.Width = 65;
+            // 
+            // DatumPocetka
+            // 
+            this.DatumPocetka.DataPropertyName = "DatumPocetka";
+            this.DatumPocetka.HeaderText = "Datum pocetka ";
+            this.DatumPocetka.Name = "DatumPocetka";
+            this.DatumPocetka.ReadOnly = true;
+            this.DatumPocetka.Width = 85;
+            // 
+            // DatumZavrsetka
+            // 
+            this.DatumZavrsetka.DataPropertyName = "DatumZavrsetka";
+            this.DatumZavrsetka.HeaderText = "Datum zavrsetka";
+            this.DatumZavrsetka.Name = "DatumZavrsetka";
+            this.DatumZavrsetka.ReadOnly = true;
+            this.DatumZavrsetka.Width = 85;
+            // 
+            // BrojCasova
+            // 
+            this.BrojCasova.DataPropertyName = "BrojCasova";
+            this.BrojCasova.HeaderText = "Broj casova";
+            this.BrojCasova.Name = "BrojCasova";
+            this.BrojCasova.ReadOnly = true;
+            this.BrojCasova.Width = 65;
+            // 
+            // MaxBrojPolaznika
+            // 
+            this.MaxBrojPolaznika.DataPropertyName = "MaxBrojPolaznika";
+            this.MaxBrojPolaznika.HeaderText = "Max br. polaznika";
+            this.MaxBrojPolaznika.Name = "MaxBrojPolaznika";
+            this.MaxBrojPolaznika.ReadOnly = true;
+            this.MaxBrojPolaznika.Width = 70;
+            // 
+            // Cijena
+            // 
+            this.Cijena.DataPropertyName = "Cijena";
+            this.Cijena.HeaderText = "Cijena(KM)";
+            this.Cijena.Name = "Cijena";
+            this.Cijena.ReadOnly = true;
+            this.Cijena.Width = 65;
+            // 
             // TutorDetalj
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -483,8 +603,12 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.tutorPictureBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "TutorDetalj";
-            this.Text = "TutorDetalj";
+            this.ShowIcon = false;
+            this.Text = "Tutor";
             this.Load += new System.EventHandler(this.TutorDetalj_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tutorPictureBox)).EndInit();
             this.groupBox1.ResumeLayout(false);
@@ -540,5 +664,16 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox ocjenaInput;
         private System.Windows.Forms.Button UnbanBtn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Prezime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Komentar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Datum;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ocjena;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Naslov;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DatumPocetka;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DatumZavrsetka;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BrojCasova;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaxBrojPolaznika;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cijena;
     }
 }

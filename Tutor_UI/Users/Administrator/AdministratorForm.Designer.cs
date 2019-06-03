@@ -50,12 +50,12 @@
             // 
             this.searchInput.Location = new System.Drawing.Point(12, 12);
             this.searchInput.Name = "searchInput";
-            this.searchInput.Size = new System.Drawing.Size(274, 20);
+            this.searchInput.Size = new System.Drawing.Size(178, 20);
             this.searchInput.TabIndex = 0;
             // 
             // TraziBtn
             // 
-            this.TraziBtn.Location = new System.Drawing.Point(324, 12);
+            this.TraziBtn.Location = new System.Drawing.Point(207, 10);
             this.TraziBtn.Name = "TraziBtn";
             this.TraziBtn.Size = new System.Drawing.Size(75, 23);
             this.TraziBtn.TabIndex = 1;
@@ -65,7 +65,7 @@
             // 
             // DodajBtn
             // 
-            this.DodajBtn.Location = new System.Drawing.Point(544, 12);
+            this.DodajBtn.Location = new System.Drawing.Point(434, 12);
             this.DodajBtn.Name = "DodajBtn";
             this.DodajBtn.Size = new System.Drawing.Size(75, 27);
             this.DodajBtn.TabIndex = 2;
@@ -87,15 +87,15 @@
             this.Email,
             this.Telefon});
             this.administratorGrid.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.administratorGrid.Location = new System.Drawing.Point(0, 102);
+            this.administratorGrid.Location = new System.Drawing.Point(0, 121);
             this.administratorGrid.Name = "administratorGrid";
             this.administratorGrid.ReadOnly = true;
-            this.administratorGrid.Size = new System.Drawing.Size(724, 176);
+            this.administratorGrid.Size = new System.Drawing.Size(602, 176);
             this.administratorGrid.TabIndex = 3;
             // 
             // EditBtn
             // 
-            this.EditBtn.Location = new System.Drawing.Point(625, 12);
+            this.EditBtn.Location = new System.Drawing.Point(515, 12);
             this.EditBtn.Name = "EditBtn";
             this.EditBtn.Size = new System.Drawing.Size(75, 27);
             this.EditBtn.TabIndex = 4;
@@ -106,7 +106,7 @@
             // brojListe
             // 
             this.brojListe.AutoSize = true;
-            this.brojListe.Location = new System.Drawing.Point(346, 62);
+            this.brojListe.Location = new System.Drawing.Point(300, 98);
             this.brojListe.Name = "brojListe";
             this.brojListe.Size = new System.Drawing.Size(24, 13);
             this.brojListe.TabIndex = 10;
@@ -115,7 +115,7 @@
             // FowardBtn
             // 
             this.FowardBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.FowardBtn.Location = new System.Drawing.Point(458, 56);
+            this.FowardBtn.Location = new System.Drawing.Point(374, 92);
             this.FowardBtn.Name = "FowardBtn";
             this.FowardBtn.Size = new System.Drawing.Size(31, 23);
             this.FowardBtn.TabIndex = 9;
@@ -126,7 +126,7 @@
             // BackBtn
             // 
             this.BackBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.BackBtn.Location = new System.Drawing.Point(239, 56);
+            this.BackBtn.Location = new System.Drawing.Point(221, 92);
             this.BackBtn.Name = "BackBtn";
             this.BackBtn.Size = new System.Drawing.Size(31, 23);
             this.BackBtn.TabIndex = 8;
@@ -146,6 +146,7 @@
             // 
             // Ime
             // 
+            this.Ime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.Ime.DataPropertyName = "Ime";
             this.Ime.HeaderText = "Ime";
             this.Ime.Name = "Ime";
@@ -154,6 +155,7 @@
             // 
             // Prezime
             // 
+            this.Prezime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.Prezime.DataPropertyName = "Prezime";
             this.Prezime.HeaderText = "Prezime";
             this.Prezime.Name = "Prezime";
@@ -197,7 +199,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(724, 278);
+            this.ClientSize = new System.Drawing.Size(602, 297);
             this.Controls.Add(this.brojListe);
             this.Controls.Add(this.FowardBtn);
             this.Controls.Add(this.BackBtn);
@@ -206,8 +208,12 @@
             this.Controls.Add(this.DodajBtn);
             this.Controls.Add(this.TraziBtn);
             this.Controls.Add(this.searchInput);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "AdministratorForm";
-            this.Text = "AdministratorForm";
+            this.ShowIcon = false;
+            this.Text = "Administratori";
             this.Load += new System.EventHandler(this.AdministratorForm_Load);
             this.Enter += new System.EventHandler(this.AdministratorForm_Enter);
             ((System.ComponentModel.ISupportInitialize)(this.administratorGrid)).EndInit();

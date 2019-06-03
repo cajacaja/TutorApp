@@ -15,8 +15,8 @@ namespace Tutor_UI.Users
 {
     public partial class BanovaniKorisniciForm : Form
     {
-        private WebAPIHelper tutorService = new WebAPIHelper(Global.URI, Global.TutorRoute);
-        private WebAPIHelper studentService = new WebAPIHelper(Global.URI, Global.StudentRoute);
+        private WebAPIHelper tutorService = new WebAPIHelper("Tutor");
+        private WebAPIHelper studentService = new WebAPIHelper("Student");
         public BanovaniKorisniciForm()
         {
             InitializeComponent();
@@ -60,7 +60,7 @@ namespace Tutor_UI.Users
                 {
                     TutorId = Convert.ToInt32(BanovaniTutoriGridView.SelectedRows[0].Cells[0].Value);
                     var detalji = new TutorDetalj(TutorId);
-                    detalji.Show();
+                    detalji.ShowDialog();
                     detalji.MdiParent = this.MdiParent;
                 }
                
@@ -71,7 +71,7 @@ namespace Tutor_UI.Users
                 if (BanStudentsGridView.SelectedRows.Count != 0) {
                     StudentId= Convert.ToInt32(BanStudentsGridView.SelectedRows[0].Cells[0].Value);
                     var studentDetalji = new StudentDetalj(StudentId);
-                    studentDetalji.Show();
+                    studentDetalji.ShowDialog();
                     studentDetalji.MdiParent = this.MdiParent;
                 }
                

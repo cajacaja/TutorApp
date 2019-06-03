@@ -17,12 +17,14 @@ namespace Tutor_UI.Users.Tutor
 {
     public partial class ProfilDetailsForm : Form
     {
-        private WebAPIHelper tutorService = new WebAPIHelper(Global.URI, Global.TutorRoute);
-        private WebAPIHelper tipService = new WebAPIHelper(Global.URI, Global.TipStudentaRoute);
-        private WebAPIHelper ocjenaTutorService = new WebAPIHelper(Global.URI, Global.OcjenaTutorRoute);
+        private WebAPIHelper tutorService = new WebAPIHelper("Tutor");
+        private WebAPIHelper tipService = new WebAPIHelper("TipStudenta");
+        private WebAPIHelper ocjenaTutorService = new WebAPIHelper("OcjenaTutor");
 
         int pageNummber = 1;
         IPagedList<Tutor_ReviewsSelect_Result> list;
+
+        private int IdTutor = 0;
 
         public async Task<IPagedList<Tutor_ReviewsSelect_Result>> GetPagedListAsync(int pageNummber = 1, int pageSize = 5)
         {
@@ -41,6 +43,7 @@ namespace Tutor_UI.Users.Tutor
         {
             InitializeComponent();
 
+            IdTutor = tutorId;
             BindForm(tutorId);
         }
 
@@ -130,7 +133,13 @@ namespace Tutor_UI.Users.Tutor
         {
             TutorEditForm editTutor = new TutorEditForm(Global.prijavljeniTutor.TutorId);
 
-            editTutor.Show();
+            editTutor.ShowDialog();
+            editTutor.MdiParent = this.MdiParent;
+        }
+
+        private void ProfilDetailsForm_Enter(object sender, EventArgs e)
+        {
+            BindForm(IdTutor);
         }
     }
 }

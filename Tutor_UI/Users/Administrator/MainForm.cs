@@ -22,7 +22,7 @@ namespace Tutor_UI.Users
         private void administratorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AdministratorForm administrator = new AdministratorForm();
-            administrator.Show();
+            administrator.ShowDialog();
             administrator.MdiParent = this;
         }
 
@@ -30,7 +30,7 @@ namespace Tutor_UI.Users
         {
             Cursor = Cursors.WaitCursor;
             TutorForm tutori = new TutorForm();
-            tutori.Show();
+            tutori.ShowDialog();
             Cursor = Cursors.Arrow;
             tutori.MdiParent = this;
 
@@ -39,52 +39,63 @@ namespace Tutor_UI.Users
         private void listaBanovanihKorisnikaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var banovani = new BanovaniKorisniciForm();
-            banovani.Show();
+            banovani.ShowDialog();
             banovani.MdiParent = this;
         }
 
         private void prijavljeniTutoriToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var prijavljeniTutori = new PrijaveStudentForm();
-            prijavljeniTutori.Show();
+            prijavljeniTutori.ShowDialog();
             prijavljeniTutori.MdiParent = this;
         }
 
         private void prijavljeniStudentiToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var prijavljeniStudenti = new PrijaveTutorForm();
-            prijavljeniStudenti.Show();
+            prijavljeniStudenti.ShowDialog();
             prijavljeniStudenti.MdiParent = this;
         }
 
         private void studentiToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var studentiForm = new StudentForm();
-            studentiForm.Show();
+            studentiForm.ShowDialog();
             studentiForm.MdiParent = this;
         }
 
         private void ucioniceToolStripMenuItem_Click(object sender, EventArgs e)
         {
             UcioniceForm ucionice = new UcioniceForm();
-            ucionice.Show();
+            ucionice.ShowDialog();
             ucionice.MdiParent = this;
         }
 
         private void najpopularnijiPredmetiToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ReportPredmet reportPredmet = new ReportPredmet();
-            reportPredmet.Show();
+            reportPredmet.ShowDialog();
             reportPredmet.MdiParent = this;
         }
 
         private void najpopularnijiTutoriToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ReportTutora reportTutor = new ReportTutora();
-            reportTutor.Show();
+            reportTutor.ShowDialog();
             reportTutor.MdiParent = this;
         }
 
-       
+        private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            if (Global.prijavljeniAdministrator != null)
+                Global.prijavljeniAdministrator = null;
+            else
+            {
+                Global.prijavljeniTutor = null;
+            }
+            Parent.Visible = true;
+            this.Close();
+        }
     }
 }

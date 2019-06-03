@@ -367,8 +367,11 @@
             this.Controls.Add(this.SnimiBtn);
             this.Controls.Add(this.SlikaBtn);
             this.Controls.Add(this.SlikaTutorInput);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "TutorEditForm";
-            this.Text = "TutorEditForm";
+            this.ShowIcon = false;
+            this.Text = "Edit";
             ((System.ComponentModel.ISupportInitialize)(this.tutorPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CijenaInput)).EndInit();

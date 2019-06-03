@@ -52,6 +52,10 @@
             this.BackBtn = new System.Windows.Forms.Button();
             this.FowardBtn = new System.Windows.Forms.Button();
             this.brojListe = new System.Windows.Forms.Label();
+            this.ImePrezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Komentar = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ocjena = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Datum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.studentSlikaPictureBox)).BeginInit();
@@ -263,10 +267,18 @@
             // 
             // ocjeneGridView
             // 
+            this.ocjeneGridView.AllowUserToAddRows = false;
+            this.ocjeneGridView.AllowUserToDeleteRows = false;
             this.ocjeneGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ocjeneGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ImePrezime,
+            this.Komentar,
+            this.Ocjena,
+            this.Datum});
             this.ocjeneGridView.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.ocjeneGridView.Location = new System.Drawing.Point(0, 343);
             this.ocjeneGridView.Name = "ocjeneGridView";
+            this.ocjeneGridView.ReadOnly = true;
             this.ocjeneGridView.Size = new System.Drawing.Size(473, 150);
             this.ocjeneGridView.TabIndex = 29;
             // 
@@ -312,6 +324,40 @@
             this.brojListe.TabIndex = 33;
             this.brojListe.Text = "0/0";
             // 
+            // ImePrezime
+            // 
+            this.ImePrezime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.ImePrezime.DataPropertyName = "ImePrezime";
+            this.ImePrezime.HeaderText = "Tutor";
+            this.ImePrezime.Name = "ImePrezime";
+            this.ImePrezime.ReadOnly = true;
+            this.ImePrezime.Width = 57;
+            // 
+            // Komentar
+            // 
+            this.Komentar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Komentar.DataPropertyName = "Komentar";
+            this.Komentar.HeaderText = "Komentar";
+            this.Komentar.Name = "Komentar";
+            this.Komentar.ReadOnly = true;
+            this.Komentar.Width = 77;
+            // 
+            // Ocjena
+            // 
+            this.Ocjena.DataPropertyName = "Ocjena";
+            this.Ocjena.HeaderText = "Ocjena";
+            this.Ocjena.Name = "Ocjena";
+            this.Ocjena.ReadOnly = true;
+            this.Ocjena.Width = 65;
+            // 
+            // Datum
+            // 
+            this.Datum.DataPropertyName = "Datum";
+            this.Datum.HeaderText = "Datum";
+            this.Datum.Name = "Datum";
+            this.Datum.ReadOnly = true;
+            this.Datum.Width = 75;
+            // 
             // StudentDetalj
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -325,8 +371,13 @@
             this.Controls.Add(this.studentSlikaPictureBox);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "StudentDetalj";
-            this.Text = "StudentDetalj";
+            this.ShowIcon = false;
+            this.Text = "Student";
+            this.Enter += new System.EventHandler(this.StudentDetalj_Enter);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -364,5 +415,9 @@
         private System.Windows.Forms.Button BackBtn;
         private System.Windows.Forms.Button FowardBtn;
         private System.Windows.Forms.Label brojListe;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ImePrezime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Komentar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ocjena;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Datum;
     }
 }

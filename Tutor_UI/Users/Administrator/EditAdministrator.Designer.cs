@@ -181,8 +181,11 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.ImeInput);
             this.Controls.Add(this.label1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "EditAdministrator";
-            this.Text = "EditAdministrator";
+            this.ShowIcon = false;
+            this.Text = "Edit administrator";
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
