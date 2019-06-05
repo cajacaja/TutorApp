@@ -34,7 +34,6 @@ namespace Tutor_API.Models
         public double Cijena { get; set; }
         public int BrojCasova { get; set; }
         public bool Aktivna { get; set; }
-        public byte[] Sylabus { get; set; }
         public int NivoTezineId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -12,7 +12,7 @@ namespace Tutor_UI.Util
         private HttpClient client { get; set; }
         private string route { get; set; }
 
-        private string URI = "http://192.168.0.103/api/";
+        private string URI =  "http://192.168.0.103/api/";//"http://localhost:61494/api/";
         public WebAPIHelper(string route)
         {
             client = new HttpClient();

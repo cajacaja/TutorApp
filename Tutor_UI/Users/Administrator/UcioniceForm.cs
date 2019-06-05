@@ -186,7 +186,7 @@ namespace Tutor_UI.Users
                     list2 = await GetPagedListStareAsync(--pageNummber1);
                     BackBtn.Enabled = list2.HasPreviousPage;
                     ForwardBtn.Enabled = list2.HasNextPage;
-                    actUcioniceGridView.DataSource = list2.ToList();
+                    strUcioniceGridView.DataSource = list2.ToList();
                     pageNumLabel.Text = string.Format("Page {0}/{1}", pageNummber2, list2.PageCount);
 
                 }
@@ -219,50 +219,42 @@ namespace Tutor_UI.Users
                     list2 = await GetPagedListStareAsync(++pageNummber1);
                     BackBtn.Enabled = list2.HasPreviousPage;
                     ForwardBtn.Enabled = list2.HasNextPage;
-                    actUcioniceGridView.DataSource = list2.ToList();
+                    strUcioniceGridView.DataSource = list2.ToList();
                     pageNumLabel.Text = string.Format("Page {0}/{1}", pageNummber2, list2.PageCount);
 
                 }
             }
         }
 
-        private void testBtn_Click(object sender, EventArgs e)
-        {
-            Ucionica ucionica = new Ucionica();
-            var ms = new MemoryStream();
-            Image image = Image.FromFile(@"C:\Users\emirc\source\repos\Tutor\Tutor_UI\Resources\stock-photo-guitar-against-a-rustic-wood-background-270682895.jpg");
-            image.Save(ms, ImageFormat.Png);
-            ucionica.Slika = ms.ToArray();
-            ucionica.NivoTezineId = 1;
-            ucionica.TutorId = 5;
-            ucionica.AdresaUcionice = "Neka adresa ucionice";
-            ucionica.Naslov = "Testna ucionica neka";
-            ucionica.Opis = "Da li vase dijete ima depresiju?Da li je stalno za racunarom? Ne birinite mi cemo " +
-                "vam pomoce da ga se rijesite uz ucionicu koja ne radi nista nego samo otklanja vase dijete od vas na nekokiko sati da se" +
-                " odmorite od tog vrapca!";
-            ucionica.DatumPocetka = new DateTime(2019, 5, 8);
-            ucionica.DatumZavrsetka= new DateTime(2019, 5, 31);
-            ucionica.Cijena = 100;
-            ucionica.MaxBrojPolaznika = 10;
-            ucionica.BrojCasova = 6;
-            ucionica.Aktivna = true;
-
-            var response = ucionicaService.PostResponse(ucionica);
-            if (response.IsSuccessStatusCode) {
-
-                MessageBox.Show("Dodana ucionica");
-            }
-
-        }
+       
 
         private void DetaljiBtn_Click(object sender, EventArgs e)
         {
-            if (actUcioniceGridView.SelectedRows.Count != 0)
+
+            if (tabControl1.SelectedTab == tabControl1.TabPages["tabPage1"])
             {
-                UcionicaDetails ucionicaDetalj = new UcionicaDetails(Convert.ToInt32(actUcioniceGridView.SelectedRows[0].Cells[0].Value));
-                ucionicaDetalj.ShowDialog();
-                ucionicaDetalj.MdiParent = this.MdiParent;
+
+
+                if (actUcioniceGridView.SelectedRows.Count != 0)
+                {
+                    UcionicaDetails ucionicaDetalj = new UcionicaDetails(Convert.ToInt32(actUcioniceGridView.SelectedRows[0].Cells[0].Value));
+                    ucionicaDetalj.ShowDialog();
+                    ucionicaDetalj.MdiParent = this.MdiParent;
+                }
             }
+
+            if (tabControl1.SelectedTab == tabControl1.TabPages["tabPage2"])
+            {
+
+
+                if (strUcioniceGridView.SelectedRows.Count != 0)
+                {
+                    UcionicaDetails ucionicaDetalj = new UcionicaDetails(Convert.ToInt32(strUcioniceGridView.SelectedRows[0].Cells[0].Value));
+                    ucionicaDetalj.ShowDialog();
+                    ucionicaDetalj.MdiParent = this.MdiParent;
+                }
+            }
+
         }
     }
 }

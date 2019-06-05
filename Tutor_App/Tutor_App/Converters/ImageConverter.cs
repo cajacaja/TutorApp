@@ -11,7 +11,7 @@ namespace Tutor_App.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value.Equals(null))
+            if (value==null)
             {
                 return null;
             }

@@ -23,6 +23,8 @@ namespace Tutor_App
         private WebApiHelper ocjenaTutorService = new WebApiHelper("OcjenaTutor");
         private WebApiHelper zahtjevService = new WebApiHelper("Zahtjev");
 
+      
+
         private Tutori tutor;
         List<Image> images;
        
@@ -41,6 +43,7 @@ namespace Tutor_App
             tutorLista.HeightRequest = tutorLista.RowHeight+10;
 
             
+           
         }
 
         private void LoadTutor(int tutorId)
@@ -70,6 +73,7 @@ namespace Tutor_App
 
 
             string parameter = Global.prijavljeniStudent.StudentId.ToString();
+            //provjeri jel predavao taj predmet tutor
             var response = studentService.GetActionResponse("PohadjeniPredmeti", parameter);
             if (response.IsSuccessStatusCode)
             {
@@ -79,11 +83,24 @@ namespace Tutor_App
                 var predmet = predmeti.FirstOrDefault(x => x.TutorId == tutorId);
                 if (predmet != null)
                 {
-                    ocjeniBtn.IsVisible = true;
+                    //ako jest provjeri jel student dao ocjenu vec
+                    response = ocjenaTutorService.GetActionResponse("CheckOcjena", tutorId.ToString() + "/" + parameter);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        jasonObject = response.Content.ReadAsStringAsync();
+                        var ocjena = JsonConvert.DeserializeObject<bool>(jasonObject.Result);
+                        //ako nije onda stavi da moze da ocjeni
+                        if (!ocjena)
+                            ocjeniBtn.IsVisible = true;
+                        else
+                            ocjeniBtn.IsVisible = false;
+                    }
+                    
                     prijaviBtn.IsVisible = true;
                 }
             }
 
+            //provjeri jel taj tutor predavao studentu ucionicu
             response = studentService.GetActionResponse("PohadjaneUcionice", parameter);
             if (response.IsSuccessStatusCode)
             {
@@ -93,22 +110,23 @@ namespace Tutor_App
                 var ucionica = ucionice.FirstOrDefault(x => x.TutorId == tutorId);
                 if (ucionica != null)
                 {
-                    ocjeniBtn.IsVisible = true;
+                    //ako jest provjeri jel ocjenen tutor
+                    response = ocjenaTutorService.GetActionResponse("CheckOcjena", tutorId.ToString() + "/" + parameter);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        jasonObject = response.Content.ReadAsStringAsync();
+                        var ocjena = JsonConvert.DeserializeObject<bool>(jasonObject.Result);
+                        //ako nije postavi da student moze ocjenit tutora
+                        if (!ocjena)
+                            ocjeniBtn.IsVisible = true;
+                        else
+                            ocjeniBtn.IsVisible = false;
+                    }
                     prijaviBtn.IsVisible = true;
                 }
             }
 
-            response = ocjenaTutorService.GetActionResponse("CheckOcjena",tutorId.ToString()+"/"+ parameter);
-            if (response.IsSuccessStatusCode)
-            {
-                jasonObject = response.Content.ReadAsStringAsync();
-                var ocjena = JsonConvert.DeserializeObject<bool>(jasonObject.Result);
-
-                if (!ocjena)
-                    ocjeniBtn.IsVisible = true;
-                else
-                    ocjeniBtn.IsVisible = false;
-            }
+           
 
             response = zahtjevService.GetActionResponse("Aktuelni", parameter);
             if (response.IsSuccessStatusCode)
@@ -154,6 +172,7 @@ namespace Tutor_App
 
         private void Ocjeni_Clicked(object sender, EventArgs e)
         {
+           
             this.Navigation.PushAsync(new OcjeniPage(tutor.TutorId));
         }
 

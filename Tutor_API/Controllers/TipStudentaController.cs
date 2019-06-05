@@ -29,7 +29,7 @@ namespace Tutor_API.Controllers
         {
             db.Configuration.LazyLoadingEnabled = false;
             TipStudenta tipStudenta = db.TipStudentas.Find(id);
-            if (tipStudenta.Equals(null)) return NotFound();
+            if (tipStudenta==null) return NotFound();
 
             return Ok(tipStudenta);
         }
@@ -43,7 +43,7 @@ namespace Tutor_API.Controllers
         {
             db.Configuration.LazyLoadingEnabled = false;
             Tutor tutor = db.Tutors.Find(tutorId);
-            if (tutor.Equals(null)) return NotFound();
+            if (tutor==null) return NotFound();
 
             var tipStudenta = from x in db.TipStudentas
                               join s in db.ObimStudents on x.TipoviStudentaId equals s.TipStudentaId

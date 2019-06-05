@@ -50,12 +50,12 @@
             this.label12 = new System.Windows.Forms.Label();
             this.tezinaInput = new System.Windows.Forms.TextBox();
             this.uceniciGridView = new System.Windows.Forms.DataGridView();
+            this.TutorInput = new System.Windows.Forms.LinkLabel();
+            this.opisInput = new System.Windows.Forms.RichTextBox();
             this.Ucenik = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Spol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DatumRodjenja = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TipStudenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TutorInput = new System.Windows.Forms.LinkLabel();
-            this.opisInput = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.ucionicaPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uceniciGridView)).BeginInit();
             this.SuspendLayout();
@@ -272,6 +272,8 @@
             // 
             // uceniciGridView
             // 
+            this.uceniciGridView.AllowUserToAddRows = false;
+            this.uceniciGridView.AllowUserToDeleteRows = false;
             this.uceniciGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.uceniciGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Ucenik,
@@ -281,36 +283,9 @@
             this.uceniciGridView.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.uceniciGridView.Location = new System.Drawing.Point(0, 405);
             this.uceniciGridView.Name = "uceniciGridView";
+            this.uceniciGridView.ReadOnly = true;
             this.uceniciGridView.Size = new System.Drawing.Size(444, 116);
             this.uceniciGridView.TabIndex = 24;
-            // 
-            // Ucenik
-            // 
-            this.Ucenik.DataPropertyName = "Ucenik";
-            this.Ucenik.HeaderText = "Ucenik";
-            this.Ucenik.Name = "Ucenik";
-            this.Ucenik.ReadOnly = true;
-            // 
-            // Spol
-            // 
-            this.Spol.DataPropertyName = "Spol";
-            this.Spol.HeaderText = "Spol";
-            this.Spol.Name = "Spol";
-            this.Spol.ReadOnly = true;
-            // 
-            // DatumRodjenja
-            // 
-            this.DatumRodjenja.DataPropertyName = "DatumRodjenja";
-            this.DatumRodjenja.HeaderText = "Datum rodjenja";
-            this.DatumRodjenja.Name = "DatumRodjenja";
-            this.DatumRodjenja.ReadOnly = true;
-            // 
-            // TipStudenta
-            // 
-            this.TipStudenta.DataPropertyName = "TipStudenta";
-            this.TipStudenta.HeaderText = "Tip studenta";
-            this.TipStudenta.Name = "TipStudenta";
-            this.TipStudenta.ReadOnly = true;
             // 
             // TutorInput
             // 
@@ -331,6 +306,38 @@
             this.opisInput.Size = new System.Drawing.Size(443, 85);
             this.opisInput.TabIndex = 3;
             this.opisInput.Text = "";
+            // 
+            // Ucenik
+            // 
+            this.Ucenik.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Ucenik.DataPropertyName = "Ucenik";
+            this.Ucenik.HeaderText = "Ucenik";
+            this.Ucenik.Name = "Ucenik";
+            this.Ucenik.ReadOnly = true;
+            this.Ucenik.Width = 66;
+            // 
+            // Spol
+            // 
+            this.Spol.DataPropertyName = "Spol";
+            this.Spol.HeaderText = "Spol";
+            this.Spol.Name = "Spol";
+            this.Spol.ReadOnly = true;
+            this.Spol.Width = 65;
+            // 
+            // DatumRodjenja
+            // 
+            this.DatumRodjenja.DataPropertyName = "DatumRodjenja";
+            this.DatumRodjenja.HeaderText = "Datum rodjenja";
+            this.DatumRodjenja.Name = "DatumRodjenja";
+            this.DatumRodjenja.ReadOnly = true;
+            // 
+            // TipStudenta
+            // 
+            this.TipStudenta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.TipStudenta.DataPropertyName = "TipStudenta";
+            this.TipStudenta.HeaderText = "Tip studenta";
+            this.TipStudenta.Name = "TipStudenta";
+            this.TipStudenta.ReadOnly = true;
             // 
             // UcionicaDetails
             // 

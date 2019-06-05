@@ -17,7 +17,7 @@ namespace Tutor_UI.Users
     {
         private WebAPIHelper administratorService = new WebAPIHelper("Administrator");
         private WebAPIHelper tutorService = new WebAPIHelper("Tutor");
-       
+
 
 
         public LoginForm()
@@ -35,24 +35,35 @@ namespace Tutor_UI.Users
 
 
                 var parametar = korisnickoImeInput.Text + '/' + lozinkaInput.Text;
-                
+
                 HttpResponseMessage provjeriAdministrator = administratorService.GetActionResponse("LoginCheck", parametar);
                 HttpResponseMessage provjeraTutor = tutorService.GetActionResponse("LoginCheck", parametar);
-               
+
+
                 if (provjeriAdministrator.IsSuccessStatusCode)
                 {
-                    Users.MainForm mainForm = new MainForm();
+
                     Global.prijavljeniAdministrator = provjeriAdministrator.Content.ReadAsAsync<Administrator>().Result;
+                    Users.MainForm mainForm = new MainForm();
                     mainForm.Show();
-                    
-                    
+
+
                 }
                 else if (provjeraTutor.IsSuccessStatusCode)
                 {
-                    Users.Tutor.MainForm mainForm = new Tutor.MainForm();
+
                     Global.prijavljeniTutor = provjeraTutor.Content.ReadAsAsync<Tutor_API.Models.Tutor>().Result;
-                    mainForm.ShowDialog();
-                   
+                    if (Global.prijavljeniTutor.StatusKorisnickoRacunaId != 3)
+                    {
+                        Users.Tutor.MainForm mainForm = new Tutor.MainForm();
+                        mainForm.ShowDialog();
+                    }
+                    else
+                    {
+                        Global.prijavljeniTutor = null;
+                        MessageBox.Show("Vas korisnicki racun je banovan.Za vise informacija konaktirajte administraciju.");
+                    }
+
                 }
                 else
                 {

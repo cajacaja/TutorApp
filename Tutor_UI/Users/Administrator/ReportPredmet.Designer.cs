@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.Predmet_Report_ResultBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.GradCmb = new System.Windows.Forms.ComboBox();
             this.datumOdDatePicker = new System.Windows.Forms.DateTimePicker();
@@ -40,37 +39,33 @@
             this.label3 = new System.Windows.Forms.Label();
             this.RefreshBtn = new System.Windows.Forms.Button();
             this.resetBtn = new System.Windows.Forms.Button();
+            this.Predmet_Report_ResultBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.Predmet_Report_ResultBindingSource)).BeginInit();
             this.SuspendLayout();
-            // 
-            // Predmet_Report_ResultBindingSource
-            // 
-            this.Predmet_Report_ResultBindingSource.DataSource = typeof(Tutor_API.Models.Predmet_Report_Result);
             // 
             // reportViewer1
             // 
             this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Left;
             reportDataSource2.Name = "PredmetDataSet";
-            reportDataSource2.Value = this.Predmet_Report_ResultBindingSource;
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Tutor_UI.Report.ReportPredmet.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 0);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(294, 350);
+            this.reportViewer1.Size = new System.Drawing.Size(321, 361);
             this.reportViewer1.TabIndex = 0;
             // 
             // GradCmb
             // 
             this.GradCmb.FormattingEnabled = true;
-            this.GradCmb.Location = new System.Drawing.Point(303, 39);
+            this.GradCmb.Location = new System.Drawing.Point(330, 25);
             this.GradCmb.Name = "GradCmb";
             this.GradCmb.Size = new System.Drawing.Size(121, 21);
             this.GradCmb.TabIndex = 1;
             // 
             // datumOdDatePicker
             // 
-            this.datumOdDatePicker.Location = new System.Drawing.Point(303, 91);
+            this.datumOdDatePicker.Location = new System.Drawing.Point(330, 77);
             this.datumOdDatePicker.Name = "datumOdDatePicker";
             this.datumOdDatePicker.Size = new System.Drawing.Size(121, 20);
             this.datumOdDatePicker.TabIndex = 2;
@@ -78,7 +73,7 @@
             // 
             // DatumDoDatePicker
             // 
-            this.DatumDoDatePicker.Location = new System.Drawing.Point(303, 138);
+            this.DatumDoDatePicker.Location = new System.Drawing.Point(330, 124);
             this.DatumDoDatePicker.Name = "DatumDoDatePicker";
             this.DatumDoDatePicker.Size = new System.Drawing.Size(121, 20);
             this.DatumDoDatePicker.TabIndex = 3;
@@ -87,7 +82,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(300, 23);
+            this.label1.Location = new System.Drawing.Point(327, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(30, 13);
             this.label1.TabIndex = 4;
@@ -96,7 +91,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(300, 75);
+            this.label2.Location = new System.Drawing.Point(327, 61);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 13);
             this.label2.TabIndex = 5;
@@ -105,7 +100,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(300, 122);
+            this.label3.Location = new System.Drawing.Point(327, 108);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 13);
             this.label3.TabIndex = 6;
@@ -113,7 +108,7 @@
             // 
             // RefreshBtn
             // 
-            this.RefreshBtn.Location = new System.Drawing.Point(303, 180);
+            this.RefreshBtn.Location = new System.Drawing.Point(330, 166);
             this.RefreshBtn.Name = "RefreshBtn";
             this.RefreshBtn.Size = new System.Drawing.Size(184, 29);
             this.RefreshBtn.TabIndex = 7;
@@ -123,7 +118,7 @@
             // 
             // resetBtn
             // 
-            this.resetBtn.Location = new System.Drawing.Point(441, 129);
+            this.resetBtn.Location = new System.Drawing.Point(468, 115);
             this.resetBtn.Name = "resetBtn";
             this.resetBtn.Size = new System.Drawing.Size(46, 29);
             this.resetBtn.TabIndex = 8;
@@ -131,11 +126,15 @@
             this.resetBtn.UseVisualStyleBackColor = true;
             this.resetBtn.Click += new System.EventHandler(this.resetBtn_Click);
             // 
+            // Predmet_Report_ResultBindingSource
+            // 
+            this.Predmet_Report_ResultBindingSource.DataSource = typeof(Tutor_API.Models.Predmet_Report_Result);
+            // 
             // ReportPredmet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(490, 350);
+            this.ClientSize = new System.Drawing.Size(522, 361);
             this.Controls.Add(this.resetBtn);
             this.Controls.Add(this.RefreshBtn);
             this.Controls.Add(this.label3);
@@ -161,7 +160,6 @@
         #endregion
 
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
-        private System.Windows.Forms.BindingSource Predmet_Report_ResultBindingSource;
         private System.Windows.Forms.ComboBox GradCmb;
         private System.Windows.Forms.DateTimePicker datumOdDatePicker;
         private System.Windows.Forms.DateTimePicker DatumDoDatePicker;
@@ -170,5 +168,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button RefreshBtn;
         private System.Windows.Forms.Button resetBtn;
+        private System.Windows.Forms.BindingSource Predmet_Report_ResultBindingSource;
     }
 }

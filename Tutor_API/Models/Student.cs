@@ -31,7 +31,6 @@ namespace Tutor_API.Models
         public System.DateTime DatumDodavanja { get; set; }
         public System.DateTime DatumRodjenja { get; set; }
         public byte[] StudentskaSlika { get; set; }
-        public string NazivUstanove { get; set; }
         public int KorisnickiNalogId { get; set; }
         public int KontaktInfoId { get; set; }
         public int GradId { get; set; }

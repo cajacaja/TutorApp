@@ -70,7 +70,7 @@ namespace Tutor_API.Controllers
         public IHttpActionResult studetComments(int tutorId,int pageNum,int pageSize)
         {
 
-            var tutor = db.Tutors.FirstOrDefault(x => x.TutorId.Equals(tutorId));
+            var tutor = db.Tutors.FirstOrDefault(x => x.TutorId==tutorId);
             if (tutor==null) return NotFound();
 
             return Ok(db.tsp_OcjenaTutor_SelectMobile(tutorId,pageNum,pageSize).ToList());
@@ -83,13 +83,13 @@ namespace Tutor_API.Controllers
         public IHttpActionResult CheckOcjena(int tutorId, int studentId)
         {
             var student = db.Students.Find(studentId);
-            if (student.Equals(null)) return NotFound();
+            if (student==null) return NotFound();
 
             var tutor = db.Tutors.Find(tutorId);
-            if (tutor.Equals(null)) return NotFound();
+            if (tutor==null) return NotFound();
 
-            var ocjena = db.OcjenaTutors.Where(x => x.TutorId.Equals(tutorId) && x.StudentId.Equals(studentId));
-            if (ocjena.Equals(null)) return Ok(false);
+            var ocjena = db.OcjenaTutors.Where(x => x.TutorId==tutorId && x.StudentId==studentId).FirstOrDefault();
+            if (ocjena==null) return Ok(false);
 
             return Ok(true);
         }

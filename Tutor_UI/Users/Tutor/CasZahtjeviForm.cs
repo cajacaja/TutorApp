@@ -86,6 +86,7 @@ namespace Tutor_UI.Users.Tutor
                 {
                     int ZahtjevId = Convert.ToInt32(neProcitanoGridView.SelectedRows[0].Cells[0].Value);
                     StudentZahtjevForm zahtjev = new StudentZahtjevForm(ZahtjevId);
+                    zahtjev.FormClosed+= new FormClosedEventHandler(Form_Closed);
                     zahtjev.ShowDialog();
                     zahtjev.MdiParent = this.MdiParent;
                 }
@@ -98,7 +99,7 @@ namespace Tutor_UI.Users.Tutor
                 if (terminiGridView.SelectedRows.Count != 0)
                 {
                     int StudentId = Convert.ToInt32(terminiGridView.SelectedRows[0].Cells[0].Value);
-                    StudentKontakInfoForm kontakInfo = new StudentKontakInfoForm(StudentId);
+                    StudentKontakInfoForm kontakInfo = new StudentKontakInfoForm(StudentId);                  
                     kontakInfo.ShowDialog();
                     kontakInfo.MdiParent = this.MdiParent;
                 }
@@ -116,6 +117,12 @@ namespace Tutor_UI.Users.Tutor
             {
                 OdbijBtn.Visible = false;
             }
+        }
+
+        void Form_Closed(object sender, FormClosedEventArgs e)
+        {
+            BindTermine();
+            BindNeprocitano();
         }
 
         private void CasZahtjeviForm_Enter(object sender, EventArgs e)

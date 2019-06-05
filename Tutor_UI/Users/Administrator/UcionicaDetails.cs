@@ -49,12 +49,14 @@ namespace Tutor_UI.Users
                 var ms = new MemoryStream(ucionica.Slika);
                 Image orignalImage = Image.FromStream(ms);
 
-                if (orignalImage.Width > ucionicaPictureBox.Width*2)
+                if (orignalImage.Width > ucionicaPictureBox.Width)
                 {
                     Image resizedImage = UIHelper.ResizeImage(orignalImage, new Size(ucionicaPictureBox.Width, ucionicaPictureBox.Height));
                     
                     ucionicaPictureBox.Image = resizedImage;
                 }
+                else
+                    ucionicaPictureBox.Image = orignalImage;
 
 
                 opisInput.Text = ucionica.Opis;

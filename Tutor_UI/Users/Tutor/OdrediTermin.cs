@@ -44,6 +44,7 @@ namespace Tutor_UI.Users.Tutor
                 DatumCasaDatePicker.MinDate = zahtjev.DatumOd;
                 DatumCasaDatePicker.MaxDate = zahtjev.DatumDo;
 
+                TimePicker.Value= DateTime.Parse(zahtjev.VrijemeOd.ToString());
                 TimePicker.MinDate = DateTime.Parse(zahtjev.VrijemeOd.ToString());
                 TimePicker.MaxDate= DateTime.Parse(zahtjev.VrijemeDo.ToString());
 
@@ -73,7 +74,7 @@ namespace Tutor_UI.Users.Tutor
             {
                 ZahtjevId = IDzahtjeva,
                 DatumCasa = DatumCasaDatePicker.Value,
-                VrijemePocetka = TimePicker.Value.TimeOfDay,
+                VrijemePocetka = TimeSpan.Parse(TimePicker.Value.ToString("HH:mm")),
                 DanNaziv = VratiDan(DatumCasaDatePicker.Value.ToString("dddd"))
 
             };

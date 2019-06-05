@@ -181,6 +181,7 @@
             this.Grad.HeaderText = "Grad";
             this.Grad.Name = "Grad";
             this.Grad.ReadOnly = true;
+            this.Grad.Width = 75;
             // 
             // StudentForm
             // 

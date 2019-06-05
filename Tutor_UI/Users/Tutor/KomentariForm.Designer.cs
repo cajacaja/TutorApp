@@ -30,9 +30,9 @@
         {
             this.komentariGridView = new System.Windows.Forms.DataGridView();
             this.ImePrezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Komentar = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ocjena = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Datum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ocjena = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Komentar = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.komentariGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -43,9 +43,9 @@
             this.komentariGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.komentariGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ImePrezime,
-            this.Komentar,
+            this.Datum,
             this.Ocjena,
-            this.Datum});
+            this.Komentar});
             this.komentariGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.komentariGridView.Location = new System.Drawing.Point(0, 0);
             this.komentariGridView.Name = "komentariGridView";
@@ -62,14 +62,14 @@
             this.ImePrezime.ReadOnly = true;
             this.ImePrezime.Width = 57;
             // 
-            // Komentar
+            // Datum
             // 
-            this.Komentar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Komentar.DataPropertyName = "Komentar";
-            this.Komentar.HeaderText = "Komentar ";
-            this.Komentar.Name = "Komentar";
-            this.Komentar.ReadOnly = true;
-            this.Komentar.Width = 80;
+            this.Datum.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Datum.DataPropertyName = "Datum";
+            this.Datum.HeaderText = "Datum ocjenjivanja";
+            this.Datum.Name = "Datum";
+            this.Datum.ReadOnly = true;
+            this.Datum.Width = 112;
             // 
             // Ocjena
             // 
@@ -79,14 +79,13 @@
             this.Ocjena.ReadOnly = true;
             this.Ocjena.Width = 65;
             // 
-            // Datum
+            // Komentar
             // 
-            this.Datum.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Datum.DataPropertyName = "Datum";
-            this.Datum.HeaderText = "Datum ocjenjivanja";
-            this.Datum.Name = "Datum";
-            this.Datum.ReadOnly = true;
-            this.Datum.Width = 112;
+            this.Komentar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Komentar.DataPropertyName = "Komentar";
+            this.Komentar.HeaderText = "Komentar ";
+            this.Komentar.Name = "Komentar";
+            this.Komentar.ReadOnly = true;
             // 
             // KomentariForm
             // 
@@ -109,8 +108,8 @@
 
         private System.Windows.Forms.DataGridView komentariGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn ImePrezime;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Komentar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Ocjena;
         private System.Windows.Forms.DataGridViewTextBoxColumn Datum;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ocjena;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Komentar;
     }
 }

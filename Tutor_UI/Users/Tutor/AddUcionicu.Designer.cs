@@ -86,21 +86,21 @@
             this.datumZavrsetkaDatePicker.Location = new System.Drawing.Point(283, 276);
             this.datumZavrsetkaDatePicker.Name = "datumZavrsetkaDatePicker";
             this.datumZavrsetkaDatePicker.Size = new System.Drawing.Size(125, 20);
-            this.datumZavrsetkaDatePicker.TabIndex = 1;
+            this.datumZavrsetkaDatePicker.TabIndex = 9;
             // 
             // datumPocetkaDatePicker
             // 
             this.datumPocetkaDatePicker.Location = new System.Drawing.Point(283, 230);
             this.datumPocetkaDatePicker.Name = "datumPocetkaDatePicker";
             this.datumPocetkaDatePicker.Size = new System.Drawing.Size(125, 20);
-            this.datumPocetkaDatePicker.TabIndex = 2;
+            this.datumPocetkaDatePicker.TabIndex = 8;
             // 
             // brojCasovaInput
             // 
             this.brojCasovaInput.Location = new System.Drawing.Point(107, 276);
             this.brojCasovaInput.Name = "brojCasovaInput";
             this.brojCasovaInput.Size = new System.Drawing.Size(55, 20);
-            this.brojCasovaInput.TabIndex = 3;
+            this.brojCasovaInput.TabIndex = 6;
             this.brojCasovaInput.Validating += new System.ComponentModel.CancelEventHandler(this.brojCasovaInput_Validating);
             // 
             // brojUcenikaInput
@@ -108,7 +108,7 @@
             this.brojUcenikaInput.Location = new System.Drawing.Point(18, 320);
             this.brojUcenikaInput.Name = "brojUcenikaInput";
             this.brojUcenikaInput.Size = new System.Drawing.Size(78, 20);
-            this.brojUcenikaInput.TabIndex = 4;
+            this.brojUcenikaInput.TabIndex = 7;
             this.brojUcenikaInput.Validating += new System.ComponentModel.CancelEventHandler(this.brojUcenikaInput_Validating);
             // 
             // CijenaInput
@@ -125,7 +125,7 @@
             this.NaslovInput.Location = new System.Drawing.Point(18, 25);
             this.NaslovInput.Name = "NaslovInput";
             this.NaslovInput.Size = new System.Drawing.Size(157, 20);
-            this.NaslovInput.TabIndex = 6;
+            this.NaslovInput.TabIndex = 0;
             this.NaslovInput.Validating += new System.ComponentModel.CancelEventHandler(this.NaslovInput_Validating);
             // 
             // opisInput
@@ -133,7 +133,7 @@
             this.opisInput.Location = new System.Drawing.Point(12, 74);
             this.opisInput.Name = "opisInput";
             this.opisInput.Size = new System.Drawing.Size(243, 96);
-            this.opisInput.TabIndex = 7;
+            this.opisInput.TabIndex = 1;
             this.opisInput.Text = "";
             this.opisInput.Validating += new System.ComponentModel.CancelEventHandler(this.opisInput_Validating);
             // 
@@ -141,17 +141,18 @@
             // 
             this.nivoTezineCmb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.nivoTezineCmb.FormattingEnabled = true;
+            this.nivoTezineCmb.ItemHeight = 13;
             this.nivoTezineCmb.Location = new System.Drawing.Point(18, 230);
             this.nivoTezineCmb.Name = "nivoTezineCmb";
             this.nivoTezineCmb.Size = new System.Drawing.Size(157, 21);
-            this.nivoTezineCmb.TabIndex = 8;
+            this.nivoTezineCmb.TabIndex = 4;
             // 
             // adresaInput
             // 
             this.adresaInput.Location = new System.Drawing.Point(18, 191);
             this.adresaInput.Name = "adresaInput";
             this.adresaInput.Size = new System.Drawing.Size(157, 20);
-            this.adresaInput.TabIndex = 9;
+            this.adresaInput.TabIndex = 2;
             this.adresaInput.Validating += new System.ComponentModel.CancelEventHandler(this.adresaInput_Validating);
             // 
             // label1
@@ -200,9 +201,9 @@
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label5.Location = new System.Drawing.Point(104, 260);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(68, 13);
+            this.label5.Size = new System.Drawing.Size(74, 13);
             this.label5.TabIndex = 14;
-            this.label5.Text = "Broj caova";
+            this.label5.Text = "Broj casova";
             // 
             // label6
             // 
@@ -250,7 +251,7 @@
             this.slikaInput.Name = "slikaInput";
             this.slikaInput.ReadOnly = true;
             this.slikaInput.Size = new System.Drawing.Size(141, 20);
-            this.slikaInput.TabIndex = 19;
+            this.slikaInput.TabIndex = 3;
             this.slikaInput.Validating += new System.ComponentModel.CancelEventHandler(this.slikaInput_Validating);
             // 
             // naslovnaSlikaBtn
@@ -268,7 +269,7 @@
             this.BtnSnimi.Location = new System.Drawing.Point(430, 470);
             this.BtnSnimi.Name = "BtnSnimi";
             this.BtnSnimi.Size = new System.Drawing.Size(96, 36);
-            this.BtnSnimi.TabIndex = 21;
+            this.BtnSnimi.TabIndex = 14;
             this.BtnSnimi.Text = "Snimi";
             this.BtnSnimi.UseVisualStyleBackColor = true;
             this.BtnSnimi.Click += new System.EventHandler(this.BtnSnimi_Click);
@@ -358,7 +359,7 @@
             this.SnimiBtn.Location = new System.Drawing.Point(264, 398);
             this.SnimiBtn.Name = "SnimiBtn";
             this.SnimiBtn.Size = new System.Drawing.Size(82, 23);
-            this.SnimiBtn.TabIndex = 27;
+            this.SnimiBtn.TabIndex = 12;
             this.SnimiBtn.Text = "Snimi termin";
             this.SnimiBtn.UseVisualStyleBackColor = true;
             this.SnimiBtn.Click += new System.EventHandler(this.SnimiBtn_Click);
@@ -368,7 +369,7 @@
             this.ObrisiBtn.Location = new System.Drawing.Point(372, 398);
             this.ObrisiBtn.Name = "ObrisiBtn";
             this.ObrisiBtn.Size = new System.Drawing.Size(85, 23);
-            this.ObrisiBtn.TabIndex = 28;
+            this.ObrisiBtn.TabIndex = 13;
             this.ObrisiBtn.Text = "Obrisi termin";
             this.ObrisiBtn.UseVisualStyleBackColor = true;
             this.ObrisiBtn.Click += new System.EventHandler(this.ObrisiBtn_Click);
@@ -378,12 +379,13 @@
             this.vrijemeInput.Location = new System.Drawing.Point(372, 372);
             this.vrijemeInput.Name = "vrijemeInput";
             this.vrijemeInput.Size = new System.Drawing.Size(95, 20);
-            this.vrijemeInput.TabIndex = 29;
+            this.vrijemeInput.TabIndex = 11;
             // 
             // daniCmb
             // 
             this.daniCmb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.daniCmb.FormattingEnabled = true;
+            this.daniCmb.ItemHeight = 13;
             this.daniCmb.Location = new System.Drawing.Point(264, 372);
             this.daniCmb.Name = "daniCmb";
             this.daniCmb.Size = new System.Drawing.Size(102, 21);

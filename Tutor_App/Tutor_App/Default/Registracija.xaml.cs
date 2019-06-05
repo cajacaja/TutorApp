@@ -28,7 +28,7 @@ namespace Tutor_App
         {
             InitializeComponent();
 
-
+            telefonInput.Text = @"+387(**)***-***";
 
         }
 

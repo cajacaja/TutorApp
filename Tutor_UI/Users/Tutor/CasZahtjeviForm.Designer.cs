@@ -203,12 +203,11 @@
             // 
             // Ocjena
             // 
-            this.Ocjena.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Ocjena.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Ocjena.DataPropertyName = "Ocjena";
             this.Ocjena.HeaderText = "Ocjena";
             this.Ocjena.Name = "Ocjena";
             this.Ocjena.ReadOnly = true;
-            this.Ocjena.Width = 66;
             // 
             // StudentId
             // 
@@ -220,12 +219,11 @@
             // 
             // ImePrezime
             // 
-            this.ImePrezime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.ImePrezime.DataPropertyName = "ImePrezime";
             this.ImePrezime.HeaderText = "Student";
             this.ImePrezime.Name = "ImePrezime";
             this.ImePrezime.ReadOnly = true;
-            this.ImePrezime.Width = 69;
+            this.ImePrezime.Width = 110;
             // 
             // TipStudentaT
             // 
@@ -252,6 +250,7 @@
             this.DanNaziv.HeaderText = "Dan";
             this.DanNaziv.Name = "DanNaziv";
             this.DanNaziv.ReadOnly = true;
+            this.DanNaziv.Width = 78;
             // 
             // VrijemePocetka
             // 
@@ -262,11 +261,11 @@
             // 
             // DatumCasa
             // 
-            this.DatumCasa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.DatumCasa.DataPropertyName = "DatumCasa";
             this.DatumCasa.HeaderText = "Datum casa";
             this.DatumCasa.Name = "DatumCasa";
             this.DatumCasa.ReadOnly = true;
+            this.DatumCasa.Width = 65;
             // 
             // CasZahtjeviForm
             // 

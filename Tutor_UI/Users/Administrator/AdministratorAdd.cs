@@ -31,6 +31,7 @@ namespace Tutor_UI.Users
                 admin.Telefon = TelefonInput.Text;
                 admin.KoriniskoIme = KorisnickoImeInput.Text;
                 admin.LozinkaSalt = UIHelper.GenerateSalt();
+                admin.DatumDodavanja = DateTime.Today;
                 admin.LozinkaHash = UIHelper.GenerateHash(admin.LozinkaSalt, LozinkaInput.Text);
 
                 HttpResponseMessage response = administratorService.PostResponse(admin);

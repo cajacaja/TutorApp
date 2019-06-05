@@ -442,7 +442,6 @@
             this.Name = "UcionicaDetailsForm";
             this.ShowIcon = false;
             this.Text = "Detalji ucionice";
-            this.Enter += new System.EventHandler(this.UcionicaDetailsForm_Enter);
             ((System.ComponentModel.ISupportInitialize)(this.slikaInput)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.terminiDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.prihvacenePrijaveGridView)).EndInit();

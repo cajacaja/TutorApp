@@ -144,7 +144,7 @@ namespace Tutor_API.Controllers
         {
 
             var tutor = db.Tutors.Find(TutorId);
-            if (tutor.Equals(null)) return NotFound();
+            if (tutor==null) return NotFound();
 
             return Ok(db.tsp_Tutor_UpdateSelect(TutorId).FirstOrDefault());
         }
@@ -174,7 +174,7 @@ namespace Tutor_API.Controllers
         public IHttpActionResult ActiveUcionica(int tutorId,string naslov="")
         {
             var tutor = db.Tutors.Find(tutorId);
-            if (tutor.Equals(null)) return NotFound();
+            if (tutor==null) return NotFound();
 
             var lstUcionica = db.tsp_Tutor_SelectActiveUcionica(naslov, tutorId).ToList();
 
@@ -187,7 +187,7 @@ namespace Tutor_API.Controllers
         public IHttpActionResult NonActiveUcionica(int tutorId, string naslov="")
         {
             var tutor = db.Tutors.Find(tutorId);
-            if (tutor.Equals(null)) return NotFound();
+            if (tutor==null) return NotFound();
 
             var lstUcionica = db.tsp_Ucionica_SelectNonActive(naslov, tutorId).ToList();
 
@@ -210,7 +210,7 @@ namespace Tutor_API.Controllers
         {
             var tutor = db.Tutors.Find(tutorId);
 
-            if (tutor.Equals(null)) return NotFound();
+            if (tutor==null) return NotFound();
 
             return Ok(db.tsp_Tutor_SelectTutorStudents(tutorId).ToList());
         }
@@ -357,7 +357,7 @@ namespace Tutor_API.Controllers
         {
 
             var checkTutor = db.Tutors.Find(id);
-            if (checkTutor.Equals(null)) return NotFound();
+            if (checkTutor==null) return NotFound();
 
             try
             {

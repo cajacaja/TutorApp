@@ -45,6 +45,7 @@ namespace Tutor_UI.Users.Tutor
 
             IdTutor = tutorId;
             BindForm(tutorId);
+            BindOcjene(tutorId);
         }
 
         private void BindForm(int tutorId)
@@ -132,14 +133,17 @@ namespace Tutor_UI.Users.Tutor
         private void EditBtn_Click(object sender, EventArgs e)
         {
             TutorEditForm editTutor = new TutorEditForm(Global.prijavljeniTutor.TutorId);
-
+            editTutor.FormClosed += new FormClosedEventHandler(Form_Closed);
             editTutor.ShowDialog();
+
             editTutor.MdiParent = this.MdiParent;
         }
 
-        private void ProfilDetailsForm_Enter(object sender, EventArgs e)
+        void Form_Closed(object sender, FormClosedEventArgs e)
         {
             BindForm(IdTutor);
         }
+
+        
     }
 }

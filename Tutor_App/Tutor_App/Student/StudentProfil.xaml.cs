@@ -115,7 +115,7 @@ namespace Tutor_App
             });
 
 
-            if (mediaFile.Equals(null))
+            if (mediaFile==null)
                 return;
 
             Stream stream = mediaFile.GetStream();

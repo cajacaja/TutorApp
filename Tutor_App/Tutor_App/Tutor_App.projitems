@@ -15,26 +15,26 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)CasDetalji.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Tutor\CasDetalji.xaml.cs">
       <DependentUpon>CasDetalji.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)CasPage.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Tutor\CasPage.xaml.cs">
       <DependentUpon>CasPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ImageConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\starConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)EditPage.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Student\EditPage.xaml.cs">
       <DependentUpon>EditPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)FilePage.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Ucionica\FilePage.xaml.cs">
       <DependentUpon>FilePage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Global.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)LoginPage.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Default\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -49,47 +49,47 @@
     <Compile Include="$(MSBuildThisFileDirectory)Nav\MenuMenuItem.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)OcjeniPage.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Tutor\OcjeniPage.xaml.cs">
       <DependentUpon>OcjeniPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)PretragaPage.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Default\PretragaPage.xaml.cs">
       <DependentUpon>PretragaPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)PrijaviTutoraPage.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Tutor\PrijaviTutoraPage.xaml.cs">
       <DependentUpon>PrijaviTutoraPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Registracija.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Default\Registracija.xaml.cs">
       <DependentUpon>Registracija.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)StudentCasovi.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Student\StudentCasovi.xaml.cs">
       <DependentUpon>StudentCasovi.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)StudentProfil.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Student\StudentProfil.xaml.cs">
       <DependentUpon>StudentProfil.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)StudentUcionice.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Student\StudentUcionice.xaml.cs">
       <DependentUpon>StudentUcionice.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)TutorDetails.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Tutor\TutorDetails.xaml.cs">
       <DependentUpon>TutorDetails.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)TutoriPage.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Tutor\TutoriPage.xaml.cs">
       <DependentUpon>TutoriPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)UcionicDetails.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Ucionica\UcionicDetails.xaml.cs">
       <DependentUpon>UcionicDetails.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)UcionicePage.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Ucionica\UcionicePage.xaml.cs">
       <DependentUpon>UcionicePage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -98,85 +98,85 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\UcionicaViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Registracija.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Default\Registracija.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)LoginPage.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Default\LoginPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)PretragaPage.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Default\PretragaPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)TutoriPage.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Tutor\TutoriPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)TutorDetails.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Tutor\TutorDetails.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)CasPage.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Tutor\CasPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)OcjeniPage.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Tutor\OcjeniPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)PrijaviTutoraPage.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Tutor\PrijaviTutoraPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)UcionicePage.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Ucionica\UcionicePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)UcionicDetails.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Ucionica\UcionicDetails.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)FilePage.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Ucionica\FilePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)StudentCasovi.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Student\StudentCasovi.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)CasDetalji.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Tutor\CasDetalji.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)StudentUcionice.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Student\StudentUcionice.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
@@ -194,15 +194,21 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)StudentProfil.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Student\StudentProfil.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)EditPage.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Student\EditPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Default\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Ucionica\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Student\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Tutor\" />
   </ItemGroup>
 </Project>

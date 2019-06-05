@@ -34,7 +34,7 @@ namespace Tutor_API.Controllers
                 return NotFound();
             }
 
-            return Ok(db.TerminCasas.Where(x=>x.ZahtjevId.Equals(id)).ToList());
+            return Ok(db.TerminCasas.Where(x=>x.ZahtjevId==id).ToList());
         }
 
         [HttpGet]
@@ -57,7 +57,7 @@ namespace Tutor_API.Controllers
             var zahtjev = db.Zahtjevs.Find(zahtjevId);
             if (zahtjev == null) return NotFound();
 
-            var termini = db.TerminCasas.Where(x => x.ZahtjevId.Equals(zahtjevId)).ToList();
+            var termini = db.TerminCasas.Where(x => x.ZahtjevId==zahtjevId).ToList();
 
             return Ok(termini);
         }

@@ -243,8 +243,7 @@ namespace Tutor_API.Controllers
                     TipoviStudentaId = student.TipoviStudentaId,
                     KorisnickiNalogId = db.KorisnickiNalogs.First(x => x.KorisnickoIme == student.KorisnickoIme).KorisnickiNalogId,
                     KontaktInfoId = db.KontaktInfoes.First(x => x.Email == student.Email).KontaktInfoId,
-                    StudentskaSlika = ms.ToArray(),
-                    NazivUstanove = "",
+                    StudentskaSlika = ms.ToArray(),                   
                     SpolId = student.SpolId,
                     StatusKorisnickoRacunaId = 1
 

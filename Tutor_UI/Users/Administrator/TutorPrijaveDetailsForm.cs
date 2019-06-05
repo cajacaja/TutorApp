@@ -26,10 +26,14 @@ namespace Tutor_UI.Users
             InitializeComponent();
             HttpResponseMessage response = banStudentService.GetResponse(id.ToString());
             prijava = response.Content.ReadAsAsync<BanPrijavaStudente_SelectOne_Result>().Result;
-            StudentInput.Text = prijava.Student;
-            TutorInput.Text = prijava.Tutor;
-            RazlogRichTxtBox.Text = prijava.RazlogPrijave;
-            DatumPrijaveInput.Text = prijava.DatumPrijave.ToShortDateString();
+            if (response.IsSuccessStatusCode)
+            {
+                StudentInput.Text = prijava.Student;
+                TutorInput.Text = prijava.Tutor;
+                RazlogRichTxtBox.Text = prijava.RazlogPrijave;
+                DatumPrijaveInput.Text = prijava.DatumPrijave.ToShortDateString();
+            }
+        
 
             BanPrijavaStudent prijavaUpdate = new BanPrijavaStudent()
             {

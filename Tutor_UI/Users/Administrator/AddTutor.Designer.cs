@@ -108,7 +108,7 @@
             this.PrezimeInput.Location = new System.Drawing.Point(244, 60);
             this.PrezimeInput.Name = "PrezimeInput";
             this.PrezimeInput.Size = new System.Drawing.Size(144, 20);
-            this.PrezimeInput.TabIndex = 3;
+            this.PrezimeInput.TabIndex = 1;
             this.PrezimeInput.Validating += new System.ComponentModel.CancelEventHandler(this.PrezimeInput_Validating);
             // 
             // SpolCmb
@@ -118,7 +118,7 @@
             this.SpolCmb.Location = new System.Drawing.Point(35, 115);
             this.SpolCmb.Name = "SpolCmb";
             this.SpolCmb.Size = new System.Drawing.Size(144, 21);
-            this.SpolCmb.TabIndex = 4;
+            this.SpolCmb.TabIndex = 2;
             // 
             // label1
             // 
@@ -161,7 +161,7 @@
             this.EmailInput.Location = new System.Drawing.Point(244, 170);
             this.EmailInput.Name = "EmailInput";
             this.EmailInput.Size = new System.Drawing.Size(144, 20);
-            this.EmailInput.TabIndex = 8;
+            this.EmailInput.TabIndex = 5;
             this.EmailInput.Validating += new System.ComponentModel.CancelEventHandler(this.EmailInput_Validating);
             // 
             // label5
@@ -179,7 +179,7 @@
             this.TelefonInput.Mask = "+387(00)000-000";
             this.TelefonInput.Name = "TelefonInput";
             this.TelefonInput.Size = new System.Drawing.Size(144, 20);
-            this.TelefonInput.TabIndex = 12;
+            this.TelefonInput.TabIndex = 4;
             this.TelefonInput.Validating += new System.ComponentModel.CancelEventHandler(this.TelefonInput_Validating);
             // 
             // label6
@@ -196,7 +196,7 @@
             this.AdresaInput.Location = new System.Drawing.Point(244, 227);
             this.AdresaInput.Name = "AdresaInput";
             this.AdresaInput.Size = new System.Drawing.Size(144, 20);
-            this.AdresaInput.TabIndex = 13;
+            this.AdresaInput.TabIndex = 7;
             this.AdresaInput.Validating += new System.ComponentModel.CancelEventHandler(this.AdresaInput_Validating);
             // 
             // DatumRodjenjaDP
@@ -204,7 +204,7 @@
             this.DatumRodjenjaDP.Location = new System.Drawing.Point(244, 116);
             this.DatumRodjenjaDP.Name = "DatumRodjenjaDP";
             this.DatumRodjenjaDP.Size = new System.Drawing.Size(144, 20);
-            this.DatumRodjenjaDP.TabIndex = 15;
+            this.DatumRodjenjaDP.TabIndex = 3;
             this.DatumRodjenjaDP.Validating += new System.ComponentModel.CancelEventHandler(this.DatumRodjenjaDP_Validating);
             // 
             // label7
@@ -232,7 +232,7 @@
             this.ZaposlenostiCmb.Location = new System.Drawing.Point(35, 282);
             this.ZaposlenostiCmb.Name = "ZaposlenostiCmb";
             this.ZaposlenostiCmb.Size = new System.Drawing.Size(144, 21);
-            this.ZaposlenostiCmb.TabIndex = 17;
+            this.ZaposlenostiCmb.TabIndex = 8;
             // 
             // label9
             // 
@@ -250,7 +250,7 @@
             this.TitulaCmb.Location = new System.Drawing.Point(244, 282);
             this.TitulaCmb.Name = "TitulaCmb";
             this.TitulaCmb.Size = new System.Drawing.Size(144, 21);
-            this.TitulaCmb.TabIndex = 19;
+            this.TitulaCmb.TabIndex = 9;
             // 
             // label10
             // 
@@ -266,7 +266,7 @@
             this.NazivObjektaInput.Location = new System.Drawing.Point(35, 337);
             this.NazivObjektaInput.Name = "NazivObjektaInput";
             this.NazivObjektaInput.Size = new System.Drawing.Size(144, 20);
-            this.NazivObjektaInput.TabIndex = 21;
+            this.NazivObjektaInput.TabIndex = 10;
             // 
             // label11
             // 
@@ -284,7 +284,7 @@
             this.PredmetCmb.Location = new System.Drawing.Point(244, 337);
             this.PredmetCmb.Name = "PredmetCmb";
             this.PredmetCmb.Size = new System.Drawing.Size(144, 21);
-            this.PredmetCmb.TabIndex = 23;
+            this.PredmetCmb.TabIndex = 11;
             // 
             // ObimListBox
             // 
@@ -292,7 +292,7 @@
             this.ObimListBox.Location = new System.Drawing.Point(35, 386);
             this.ObimListBox.Name = "ObimListBox";
             this.ObimListBox.Size = new System.Drawing.Size(143, 64);
-            this.ObimListBox.TabIndex = 25;
+            this.ObimListBox.TabIndex = 12;
             this.ObimListBox.Validating += new System.ComponentModel.CancelEventHandler(this.ObimListBox_Validating);
             // 
             // label12
@@ -310,7 +310,7 @@
             this.CijenaInput.Location = new System.Drawing.Point(244, 386);
             this.CijenaInput.Name = "CijenaInput";
             this.CijenaInput.Size = new System.Drawing.Size(144, 20);
-            this.CijenaInput.TabIndex = 27;
+            this.CijenaInput.TabIndex = 13;
             this.CijenaInput.Validating += new System.ComponentModel.CancelEventHandler(this.CijenaInput_Validating);
             // 
             // label13
@@ -336,7 +336,7 @@
             this.KorisnickoImeInput.Location = new System.Drawing.Point(34, 485);
             this.KorisnickoImeInput.Name = "KorisnickoImeInput";
             this.KorisnickoImeInput.Size = new System.Drawing.Size(144, 20);
-            this.KorisnickoImeInput.TabIndex = 29;
+            this.KorisnickoImeInput.TabIndex = 14;
             this.KorisnickoImeInput.Validating += new System.ComponentModel.CancelEventHandler(this.KorisnickoImeInput_Validating);
             // 
             // label15
@@ -354,7 +354,7 @@
             this.LozinkaInput.Name = "LozinkaInput";
             this.LozinkaInput.PasswordChar = '*';
             this.LozinkaInput.Size = new System.Drawing.Size(144, 20);
-            this.LozinkaInput.TabIndex = 31;
+            this.LozinkaInput.TabIndex = 15;
             this.LozinkaInput.Validating += new System.ComponentModel.CancelEventHandler(this.LozinkaInput_Validating);
             // 
             // label16
@@ -372,7 +372,7 @@
             this.SlikaTutorInput.Name = "SlikaTutorInput";
             this.SlikaTutorInput.ReadOnly = true;
             this.SlikaTutorInput.Size = new System.Drawing.Size(144, 20);
-            this.SlikaTutorInput.TabIndex = 33;
+            this.SlikaTutorInput.TabIndex = 16;
             this.SlikaTutorInput.Validating += new System.ComponentModel.CancelEventHandler(this.SlikaTutorInput_Validating);
             // 
             // label17
@@ -390,7 +390,7 @@
             this.SlikaDokazInput.Name = "SlikaDokazInput";
             this.SlikaDokazInput.ReadOnly = true;
             this.SlikaDokazInput.Size = new System.Drawing.Size(144, 20);
-            this.SlikaDokazInput.TabIndex = 35;
+            this.SlikaDokazInput.TabIndex = 17;
             this.SlikaDokazInput.Validating += new System.ComponentModel.CancelEventHandler(this.SlikaDokazInput_Validating);
             // 
             // SlikaBtn
@@ -398,7 +398,7 @@
             this.SlikaBtn.Location = new System.Drawing.Point(35, 568);
             this.SlikaBtn.Name = "SlikaBtn";
             this.SlikaBtn.Size = new System.Drawing.Size(75, 23);
-            this.SlikaBtn.TabIndex = 37;
+            this.SlikaBtn.TabIndex = 18;
             this.SlikaBtn.Text = "Dodaj ";
             this.SlikaBtn.UseVisualStyleBackColor = true;
             this.SlikaBtn.Click += new System.EventHandler(this.SlikaBtn_Click);
@@ -408,7 +408,7 @@
             this.DokazBtn.Location = new System.Drawing.Point(244, 568);
             this.DokazBtn.Name = "DokazBtn";
             this.DokazBtn.Size = new System.Drawing.Size(75, 23);
-            this.DokazBtn.TabIndex = 38;
+            this.DokazBtn.TabIndex = 19;
             this.DokazBtn.Text = "Dodaj";
             this.DokazBtn.UseVisualStyleBackColor = true;
             this.DokazBtn.Click += new System.EventHandler(this.DokazBtn_Click);
@@ -418,7 +418,7 @@
             this.SnimiBtn.Location = new System.Drawing.Point(460, 617);
             this.SnimiBtn.Name = "SnimiBtn";
             this.SnimiBtn.Size = new System.Drawing.Size(118, 36);
-            this.SnimiBtn.TabIndex = 39;
+            this.SnimiBtn.TabIndex = 20;
             this.SnimiBtn.Text = "Snimi";
             this.SnimiBtn.UseVisualStyleBackColor = true;
             this.SnimiBtn.Click += new System.EventHandler(this.SnimiBtn_Click);
@@ -426,9 +426,10 @@
             // pictureBox
             // 
             this.pictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox.Location = new System.Drawing.Point(478, 33);
+            this.pictureBox.Location = new System.Drawing.Point(482, 60);
             this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(100, 134);
+            this.pictureBox.Size = new System.Drawing.Size(76, 103);
+            this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox.TabIndex = 40;
             this.pictureBox.TabStop = false;
             // 

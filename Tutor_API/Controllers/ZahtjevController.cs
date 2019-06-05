@@ -27,23 +27,12 @@ namespace Tutor_API.Controllers
 
             db.Configuration.LazyLoadingEnabled = false;
             var zahtjev = db.Zahtjevs.Find(id);
-            if (zahtjev.Equals(null)) return NotFound();
+            if (zahtjev==null) return NotFound();
 
             return Ok(zahtjev);
         }
 
-        // GET: api/Zahtjev/5
-        //[ResponseType(typeof(List<Zahtjev_SelectByTutorId_Result>))]
-        //public IHttpActionResult GetZahtjev(int id)
-        //{
-        //    var zahtjev = db.tps_Zahtjev_SelectByTutorId(id).ToList();
-        //    if (zahtjev == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return Ok(zahtjev);
-        //}
+        
         [HttpGet]
         [ResponseType(typeof(List<Zahtjev_SelectUnread_Result>))]
         [Route("api/Zahtjev/UnreadZahtjev/{id}")]
@@ -80,7 +69,7 @@ namespace Tutor_API.Controllers
         {
             var student = db.Students.Find(studentId);
 
-            if (student.Equals(null)) return NotFound();
+            if (student==null) return NotFound();
 
             
 

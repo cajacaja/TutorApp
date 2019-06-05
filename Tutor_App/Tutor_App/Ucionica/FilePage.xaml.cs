@@ -70,6 +70,7 @@ namespace Tutor_App
                             var document = Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData);
                             var fileName = Path.Combine(document, materijali.Naslov + materijali.TipFila);
                             File.WriteAllBytes(fileName, materijali.Materijal1);
+                            await DisplayAlert("Materijal", "Materijal skinut", "OK");
                         }
 
                        

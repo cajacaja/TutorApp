@@ -168,7 +168,6 @@
           <Property Name="DatumDodavanja" Type="date" Nullable="false" />
           <Property Name="DatumRodjenja" Type="date" Nullable="false" />
           <Property Name="StudentskaSlika" Type="varbinary(max)" />
-          <Property Name="NazivUstanove" Type="nvarchar" MaxLength="150" />
           <Property Name="KorisnickiNalogId" Type="int" Nullable="false" />
           <Property Name="KontaktInfoId" Type="int" Nullable="false" />
           <Property Name="GradId" Type="int" Nullable="false" />
@@ -258,7 +257,6 @@
           <Property Name="Cijena" Type="float" Nullable="false" />
           <Property Name="BrojCasova" Type="int" Nullable="false" />
           <Property Name="Aktivna" Type="bit" Nullable="false" />
-          <Property Name="Sylabus" Type="varbinary(max)" />
           <Property Name="NivoTezineId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Zahtjev">
@@ -1247,7 +1245,6 @@
           <Property Name="DatumDodavanja" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="DatumRodjenja" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="StudentskaSlika" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="NazivUstanove" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="KorisnickiNalogId" Type="Int32" Nullable="false" />
           <Property Name="KontaktInfoId" Type="Int32" Nullable="false" />
           <Property Name="GradId" Type="Int32" Nullable="false" />
@@ -1358,7 +1355,6 @@
           <Property Name="Cijena" Type="Double" Nullable="false" />
           <Property Name="BrojCasova" Type="Int32" Nullable="false" />
           <Property Name="Aktivna" Type="Boolean" Nullable="false" />
-          <Property Name="Sylabus" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="NivoTezineId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Materijals" Relationship="Self.FK_Materijal_Ucionica" FromRole="Ucionica" ToRole="Materijal" />
           <NavigationProperty Name="NivoTezine" Relationship="Self.FK_Ucionica_NivoTezine" FromRole="Ucionica" ToRole="NivoTezine" />
@@ -2775,7 +2771,6 @@
                 <ScalarProperty Name="DatumDodavanja" ColumnName="DatumDodavanja" />
                 <ScalarProperty Name="DatumRodjenja" ColumnName="DatumRodjenja" />
                 <ScalarProperty Name="StudentskaSlika" ColumnName="StudentskaSlika" />
-                <ScalarProperty Name="NazivUstanove" ColumnName="NazivUstanove" />
                 <ScalarProperty Name="KorisnickiNalogId" ColumnName="KorisnickiNalogId" />
                 <ScalarProperty Name="KontaktInfoId" ColumnName="KontaktInfoId" />
                 <ScalarProperty Name="GradId" ColumnName="GradId" />
@@ -2860,7 +2855,6 @@
                 <ScalarProperty Name="Cijena" ColumnName="Cijena" />
                 <ScalarProperty Name="BrojCasova" ColumnName="BrojCasova" />
                 <ScalarProperty Name="Aktivna" ColumnName="Aktivna" />
-                <ScalarProperty Name="Sylabus" ColumnName="Sylabus" />
                 <ScalarProperty Name="NivoTezineId" ColumnName="NivoTezineId" />
               </MappingFragment>
             </EntityTypeMapping>

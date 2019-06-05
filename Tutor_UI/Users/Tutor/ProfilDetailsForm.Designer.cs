@@ -59,15 +59,15 @@
             this.EmailInput = new System.Windows.Forms.TextBox();
             this.tutorPictureBox = new System.Windows.Forms.PictureBox();
             this.OcjeneDataGridView = new System.Windows.Forms.DataGridView();
+            this.EditBtn = new System.Windows.Forms.Button();
+            this.BackBtn = new System.Windows.Forms.Button();
+            this.pageInputLable = new System.Windows.Forms.Label();
+            this.ForwardBtn = new System.Windows.Forms.Button();
             this.Ime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Prezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ocjena = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Datum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Komentar = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EditBtn = new System.Windows.Forms.Button();
-            this.BackBtn = new System.Windows.Forms.Button();
-            this.pageInputLable = new System.Windows.Forms.Label();
-            this.ForwardBtn = new System.Windows.Forms.Button();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -412,6 +412,8 @@
             // 
             // OcjeneDataGridView
             // 
+            this.OcjeneDataGridView.AllowUserToAddRows = false;
+            this.OcjeneDataGridView.AllowUserToDeleteRows = false;
             this.OcjeneDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.OcjeneDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Ime,
@@ -422,51 +424,9 @@
             this.OcjeneDataGridView.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.OcjeneDataGridView.Location = new System.Drawing.Point(0, 456);
             this.OcjeneDataGridView.Name = "OcjeneDataGridView";
+            this.OcjeneDataGridView.ReadOnly = true;
             this.OcjeneDataGridView.Size = new System.Drawing.Size(476, 136);
             this.OcjeneDataGridView.TabIndex = 32;
-            // 
-            // Ime
-            // 
-            this.Ime.DataPropertyName = "Ime";
-            this.Ime.HeaderText = "Ime";
-            this.Ime.Name = "Ime";
-            this.Ime.ReadOnly = true;
-            this.Ime.Visible = false;
-            // 
-            // Prezime
-            // 
-            this.Prezime.DataPropertyName = "Prezime";
-            this.Prezime.HeaderText = "Prezime";
-            this.Prezime.Name = "Prezime";
-            this.Prezime.ReadOnly = true;
-            this.Prezime.Visible = false;
-            // 
-            // Ocjena
-            // 
-            this.Ocjena.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Ocjena.DataPropertyName = "Ocjena";
-            this.Ocjena.HeaderText = "Ocjena";
-            this.Ocjena.Name = "Ocjena";
-            this.Ocjena.ReadOnly = true;
-            this.Ocjena.Width = 66;
-            // 
-            // Datum
-            // 
-            this.Datum.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Datum.DataPropertyName = "Datum";
-            this.Datum.HeaderText = "Datum";
-            this.Datum.Name = "Datum";
-            this.Datum.ReadOnly = true;
-            this.Datum.Width = 63;
-            // 
-            // Komentar
-            // 
-            this.Komentar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Komentar.DataPropertyName = "Komentar";
-            this.Komentar.HeaderText = "Komentar";
-            this.Komentar.Name = "Komentar";
-            this.Komentar.ReadOnly = true;
-            this.Komentar.Width = 77;
             // 
             // EditBtn
             // 
@@ -510,6 +470,48 @@
             this.ForwardBtn.UseVisualStyleBackColor = true;
             this.ForwardBtn.Click += new System.EventHandler(this.ForwardBtn_Click);
             // 
+            // Ime
+            // 
+            this.Ime.DataPropertyName = "Ime";
+            this.Ime.HeaderText = "Ime";
+            this.Ime.Name = "Ime";
+            this.Ime.ReadOnly = true;
+            this.Ime.Visible = false;
+            // 
+            // Prezime
+            // 
+            this.Prezime.DataPropertyName = "Prezime";
+            this.Prezime.HeaderText = "Prezime";
+            this.Prezime.Name = "Prezime";
+            this.Prezime.ReadOnly = true;
+            this.Prezime.Visible = false;
+            // 
+            // Ocjena
+            // 
+            this.Ocjena.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Ocjena.DataPropertyName = "Ocjena";
+            this.Ocjena.HeaderText = "Ocjena";
+            this.Ocjena.Name = "Ocjena";
+            this.Ocjena.ReadOnly = true;
+            this.Ocjena.Width = 66;
+            // 
+            // Datum
+            // 
+            this.Datum.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Datum.DataPropertyName = "Datum";
+            this.Datum.HeaderText = "Datum";
+            this.Datum.Name = "Datum";
+            this.Datum.ReadOnly = true;
+            this.Datum.Width = 63;
+            // 
+            // Komentar
+            // 
+            this.Komentar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Komentar.DataPropertyName = "Komentar";
+            this.Komentar.HeaderText = "Komentar";
+            this.Komentar.Name = "Komentar";
+            this.Komentar.ReadOnly = true;
+            // 
             // ProfilDetailsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -530,7 +532,7 @@
             this.Name = "ProfilDetailsForm";
             this.ShowIcon = false;
             this.Text = "Profil";
-            this.Enter += new System.EventHandler(this.ProfilDetailsForm_Enter);
+           
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);

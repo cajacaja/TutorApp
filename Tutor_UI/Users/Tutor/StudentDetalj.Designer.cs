@@ -291,7 +291,7 @@
             this.OcjeniBtn.Text = "Ocjeni";
             this.OcjeniBtn.UseVisualStyleBackColor = true;
             this.OcjeniBtn.Click += new System.EventHandler(this.OcjeniBtn_Click);
-            this.OcjeniBtn.Enter += new System.EventHandler(this.OcjeniBtn_Enter);
+
             // 
             // BackBtn
             // 
@@ -352,11 +352,11 @@
             // 
             // Datum
             // 
+            this.Datum.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Datum.DataPropertyName = "Datum";
             this.Datum.HeaderText = "Datum";
             this.Datum.Name = "Datum";
             this.Datum.ReadOnly = true;
-            this.Datum.Width = 75;
             // 
             // StudentDetalj
             // 
@@ -377,7 +377,7 @@
             this.Name = "StudentDetalj";
             this.ShowIcon = false;
             this.Text = "Student";
-            this.Enter += new System.EventHandler(this.StudentDetalj_Enter);
+          
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox3.ResumeLayout(false);

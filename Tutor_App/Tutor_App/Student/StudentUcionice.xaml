@@ -59,14 +59,14 @@
 
 
                                         <Label Text="Cijena:" Grid.Row="1"   Grid.Column="0"  FontAttributes="Bold" FontSize="13"  TextColor="WhiteSmoke"></Label>
-                                        <Label Text= "MaxBrojPolaznika:" Grid.Row="2"  Grid.Column="0"  FontAttributes="Bold" FontSize="13"  TextColor="WhiteSmoke"></Label>
+                                        <Label Text= "Max br. polaznika:" Grid.Row="2"  Grid.Column="0"  FontAttributes="Bold" FontSize="13"  TextColor="WhiteSmoke"></Label>
                                         <Label Text="Datum pocetka:" Grid.Row="3"  Grid.Column="0"  FontAttributes="Bold" FontSize="13"  TextColor="WhiteSmoke"></Label>
                                         <Label Text="Datum zavrsetka:" Grid.Row="4"  Grid.Column="0"  FontAttributes="Bold" FontSize="13"  TextColor="WhiteSmoke"></Label>
 
 
 
                                         <Label Text="{Binding Naslov}" Grid.Row="0" Grid.Column="0" HorizontalOptions="Start" FontAttributes="Bold" FontSize="13"  TextColor="WhiteSmoke"></Label>
-                                        <Label Text="{Binding Cijena}" Grid.Row="1"  Grid.Column="1" FontSize="13"   TextColor="WhiteSmoke"></Label>
+                                        <Label Text="{Binding Cijena,StringFormat='{0} KM'}" Grid.Row="1"  Grid.Column="1" FontSize="13"   TextColor="WhiteSmoke"></Label>
                                         <Label Text= "{Binding MaxBrojPolaznika}" Grid.Row="2" Grid.Column="1"  FontSize="13" TextColor="WhiteSmoke"></Label>
                                         <Label Text="{Binding DatumPocetka,StringFormat='{0:MM/dd/yyyy}'}" Grid.Row="3"  Grid.Column="1" FontSize="13"  TextColor="WhiteSmoke"></Label>
                                         <Label Text="{Binding DatumZavrsetka,StringFormat='{0:MM/dd/yyyy}'}" Grid.Row="4"  Grid.Column="1" FontSize="13"  TextColor="WhiteSmoke"></Label>

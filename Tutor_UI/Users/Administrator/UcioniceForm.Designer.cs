@@ -70,7 +70,7 @@
             tabPage1.Location = new System.Drawing.Point(4, 22);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            tabPage1.Size = new System.Drawing.Size(614, 291);
+            tabPage1.Size = new System.Drawing.Size(614, 239);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Aktivne ucionice";
             tabPage1.UseVisualStyleBackColor = true;
@@ -93,7 +93,7 @@
             this.actUcioniceGridView.Location = new System.Drawing.Point(3, 3);
             this.actUcioniceGridView.Name = "actUcioniceGridView";
             this.actUcioniceGridView.ReadOnly = true;
-            this.actUcioniceGridView.Size = new System.Drawing.Size(608, 285);
+            this.actUcioniceGridView.Size = new System.Drawing.Size(608, 233);
             this.actUcioniceGridView.TabIndex = 0;
             // 
             // tabControl1
@@ -263,14 +263,15 @@
             this.MaxBrojPolaznika.HeaderText = "Max br. polaznika";
             this.MaxBrojPolaznika.Name = "MaxBrojPolaznika";
             this.MaxBrojPolaznika.ReadOnly = true;
+            this.MaxBrojPolaznika.Width = 65;
             // 
             // Grad
             // 
-            this.Grad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Grad.DataPropertyName = "Grad";
             this.Grad.HeaderText = "Grad";
             this.Grad.Name = "Grad";
             this.Grad.ReadOnly = true;
+            this.Grad.Width = 75;
             // 
             // UcionicaIdstr
             // 
@@ -328,14 +329,15 @@
             this.MaxBrojPolaznikaStr.HeaderText = "Max br. polaznika";
             this.MaxBrojPolaznikaStr.Name = "MaxBrojPolaznikaStr";
             this.MaxBrojPolaznikaStr.ReadOnly = true;
+            this.MaxBrojPolaznikaStr.Width = 55;
             // 
             // Gradstr
             // 
-            this.Gradstr.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Gradstr.DataPropertyName = "Grad";
             this.Gradstr.HeaderText = "Grad";
             this.Gradstr.Name = "Gradstr";
             this.Gradstr.ReadOnly = true;
+            this.Gradstr.Width = 90;
             // 
             // UcioniceForm
             // 

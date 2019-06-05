@@ -224,7 +224,7 @@
             this.Name = "BanovaniKorisniciForm";
             this.ShowIcon = false;
             this.Text = "Banovani korisnici";
-            this.Enter += new System.EventHandler(this.BanovaniKorisniciForm_Enter);
+            
             this.tabControl1.ResumeLayout(false);
             this.TutoriTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.BanovaniTutoriGridView)).EndInit();

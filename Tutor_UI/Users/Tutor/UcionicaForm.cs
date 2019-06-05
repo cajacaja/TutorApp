@@ -68,6 +68,7 @@ namespace Tutor_UI.Users.Tutor
         private void NovaUcionicaBtn_Click(object sender, EventArgs e)
         {
             AddUcionicu addUcionicu = new AddUcionicu();
+            addUcionicu.FormClosed += new FormClosedEventHandler(Form_Closed);
             addUcionicu.ShowDialog();
             addUcionicu.MdiParent = this.MdiParent;
         }
@@ -126,6 +127,7 @@ namespace Tutor_UI.Users.Tutor
             {
                 int UcionicaId = Convert.ToInt32(aktivneDataGridView.SelectedRows[0].Cells[0].Value);
                 UcionicaEdit editUcionica = new UcionicaEdit(UcionicaId);
+                editUcionica.FormClosed += new FormClosedEventHandler(Form_Closed);
                 editUcionica.ShowDialog();
                 editUcionica.MdiParent = this.MdiParent;
             }
@@ -195,9 +197,11 @@ namespace Tutor_UI.Users.Tutor
             }
         }
 
-        private void UcionicaForm_Enter(object sender, EventArgs e)
+        void Form_Closed(object sender, FormClosedEventArgs e)
         {
             BindAktivneUcionie();
+            BindNeAktivneUcionice();
         }
+
     }
 }

@@ -45,12 +45,12 @@ namespace Tutor_App
             }
 
 
-            neodgCas.Text = lstZahtjeva.Where(x => x.Prihvaceno.Equals(false) && x.Odbijeno.Equals(false)).Count().ToString();
+            neodgCas.Text = lstZahtjeva.Where(x => x.Prihvaceno==false && x.Odbijeno==false).Count().ToString();
         }
 
         private void LoadPrihvacene()
         {
-            lstPrihvacenih = lstZahtjeva.Where(x => x.Prihvaceno.Equals(true)).ToList();           
+            lstPrihvacenih = lstZahtjeva.Where(x => x.Prihvaceno==true).ToList();           
 
             tutorLista.ItemsSource = lstPrihvacenih;
             int broj = 0;
@@ -60,7 +60,7 @@ namespace Tutor_App
         }
         private void LoadOdbijene()
         {
-            lstOdbijenih = lstZahtjeva.Where(x => x.Odbijeno.Equals(true) && x.DatumOd>DateTime.Today).ToList();
+            lstOdbijenih = lstZahtjeva.Where(x => x.Odbijeno==true && x.DatumOd>DateTime.Today).ToList();
            
 
             tutorListaOdb.ItemsSource = lstOdbijenih;

@@ -31,13 +31,14 @@
             this.DatumCasaDatePicker = new System.Windows.Forms.DateTimePicker();
             this.TimePicker = new System.Windows.Forms.DateTimePicker();
             this.terminiGridView = new System.Windows.Forms.DataGridView();
+            this.ZakaziBtn = new System.Windows.Forms.Button();
+            this.BrojTerminaLabel = new System.Windows.Forms.Label();
             this.TerminId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ZahtjevId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DatumCasa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.VrijemePocetka = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DanNaziv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ZakaziBtn = new System.Windows.Forms.Button();
-            this.BrojTerminaLabel = new System.Windows.Forms.Label();
+            this.Zahtjev = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.terminiGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,12 +64,32 @@
             this.ZahtjevId,
             this.DatumCasa,
             this.VrijemePocetka,
-            this.DanNaziv});
+            this.DanNaziv,
+            this.Zahtjev});
             this.terminiGridView.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.terminiGridView.Location = new System.Drawing.Point(0, 135);
+            this.terminiGridView.Location = new System.Drawing.Point(0, 131);
             this.terminiGridView.Name = "terminiGridView";
-            this.terminiGridView.Size = new System.Drawing.Size(344, 157);
+            this.terminiGridView.Size = new System.Drawing.Size(340, 157);
             this.terminiGridView.TabIndex = 2;
+            // 
+            // ZakaziBtn
+            // 
+            this.ZakaziBtn.Location = new System.Drawing.Point(233, 77);
+            this.ZakaziBtn.Name = "ZakaziBtn";
+            this.ZakaziBtn.Size = new System.Drawing.Size(75, 23);
+            this.ZakaziBtn.TabIndex = 3;
+            this.ZakaziBtn.Text = "Zakazi";
+            this.ZakaziBtn.UseVisualStyleBackColor = true;
+            this.ZakaziBtn.Click += new System.EventHandler(this.ZakaziBtn_Click);
+            // 
+            // BrojTerminaLabel
+            // 
+            this.BrojTerminaLabel.AutoSize = true;
+            this.BrojTerminaLabel.Location = new System.Drawing.Point(151, 87);
+            this.BrojTerminaLabel.Name = "BrojTerminaLabel";
+            this.BrojTerminaLabel.Size = new System.Drawing.Size(35, 13);
+            this.BrojTerminaLabel.TabIndex = 4;
+            this.BrojTerminaLabel.Text = "label1";
             // 
             // TerminId
             // 
@@ -107,30 +128,19 @@
             this.DanNaziv.Name = "DanNaziv";
             this.DanNaziv.ReadOnly = true;
             // 
-            // ZakaziBtn
+            // Zahtjev
             // 
-            this.ZakaziBtn.Location = new System.Drawing.Point(233, 77);
-            this.ZakaziBtn.Name = "ZakaziBtn";
-            this.ZakaziBtn.Size = new System.Drawing.Size(75, 23);
-            this.ZakaziBtn.TabIndex = 3;
-            this.ZakaziBtn.Text = "Zakazi";
-            this.ZakaziBtn.UseVisualStyleBackColor = true;
-            this.ZakaziBtn.Click += new System.EventHandler(this.ZakaziBtn_Click);
-            // 
-            // BrojTerminaLabel
-            // 
-            this.BrojTerminaLabel.AutoSize = true;
-            this.BrojTerminaLabel.Location = new System.Drawing.Point(151, 87);
-            this.BrojTerminaLabel.Name = "BrojTerminaLabel";
-            this.BrojTerminaLabel.Size = new System.Drawing.Size(35, 13);
-            this.BrojTerminaLabel.TabIndex = 4;
-            this.BrojTerminaLabel.Text = "label1";
+            this.Zahtjev.DataPropertyName = "Zahtjev";
+            this.Zahtjev.HeaderText = "Zahtjev";
+            this.Zahtjev.Name = "Zahtjev";
+            this.Zahtjev.ReadOnly = true;
+            this.Zahtjev.Visible = false;
             // 
             // OdrediTermin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(344, 292);
+            this.ClientSize = new System.Drawing.Size(340, 288);
             this.ControlBox = false;
             this.Controls.Add(this.BrojTerminaLabel);
             this.Controls.Add(this.ZakaziBtn);
@@ -143,7 +153,6 @@
             this.Name = "OdrediTermin";
             this.ShowIcon = false;
             this.Text = "Odredi termin";
-
             ((System.ComponentModel.ISupportInitialize)(this.terminiGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -162,5 +171,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DatumCasa;
         private System.Windows.Forms.DataGridViewTextBoxColumn VrijemePocetka;
         private System.Windows.Forms.DataGridViewTextBoxColumn DanNaziv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Zahtjev;
     }
 }

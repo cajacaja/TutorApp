@@ -94,7 +94,7 @@ namespace Tutor_UI.Users
             {
                 Global.prijavljeniTutor = null;
             }
-            Parent.Visible = true;
+          
             this.Close();
         }
     }

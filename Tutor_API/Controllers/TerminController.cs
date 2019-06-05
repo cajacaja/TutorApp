@@ -43,9 +43,9 @@ namespace Tutor_API.Controllers
             db.Configuration.LazyLoadingEnabled = false;
 
             var ucionica = db.Ucionicas.Find(ucionicaId);
-            if (ucionica.Equals(null)) return NotFound();
+            if (ucionica==null) return NotFound();
 
-            var lstTermina = db.Termins.Where(x => x.UcionicaId.Equals(ucionicaId)).ToList();
+            var lstTermina = db.Termins.Where(x => x.UcionicaId==ucionicaId).ToList();
 
             return Ok(lstTermina);
         }

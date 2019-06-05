@@ -26,7 +26,7 @@ namespace Tutor_UI.Users.Tutor
         int tutorId = Global.prijavljeniTutor.TutorId;
         IPagedList<OcjenaStudent_SelectComments_Result> list;
 
-        public async Task<IPagedList<OcjenaStudent_SelectComments_Result>> GetPagedListAsync(int pageNummber = 1, int pageSize = 10)
+        public async Task<IPagedList<OcjenaStudent_SelectComments_Result>> GetPagedListAsync(int pageNummber = 1, int pageSize = 5)
         {
 
 
@@ -146,17 +146,14 @@ namespace Tutor_UI.Users.Tutor
         private void OcjeniBtn_Click(object sender, EventArgs e)
         {
             OcjeniStudentForm ocjena = new OcjeniStudentForm(studentId);
+            ocjena.FormClosed += new FormClosedEventHandler(Form_Closed);
             ocjena.ShowDialog();
-            ocjena.MdiParent = this.MdiParent;
-            OcjeniBtn.Enabled = false;
+            ocjena.MdiParent = this.MdiParent;          
         }
 
-        private void OcjeniBtn_Enter(object sender, EventArgs e)
-        {
-            isGraded(tutorId, studentId);
-        }
+      
 
-        private void StudentDetalj_Enter(object sender, EventArgs e)
+        void Form_Closed(object sender, FormClosedEventArgs e)
         {
             BindForm(studentId);
             isGraded(tutorId, studentId);

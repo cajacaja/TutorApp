@@ -60,6 +60,7 @@ namespace Tutor_UI.Users
                 {
                     TutorId = Convert.ToInt32(BanovaniTutoriGridView.SelectedRows[0].Cells[0].Value);
                     var detalji = new TutorDetalj(TutorId);
+                    detalji.FormClosed += new FormClosedEventHandler(Form_Closed);
                     detalji.ShowDialog();
                     detalji.MdiParent = this.MdiParent;
                 }
@@ -71,6 +72,7 @@ namespace Tutor_UI.Users
                 if (BanStudentsGridView.SelectedRows.Count != 0) {
                     StudentId= Convert.ToInt32(BanStudentsGridView.SelectedRows[0].Cells[0].Value);
                     var studentDetalji = new StudentDetalj(StudentId);
+                    studentDetalji.FormClosed += new FormClosedEventHandler(Form_Closed);
                     studentDetalji.ShowDialog();
                     studentDetalji.MdiParent = this.MdiParent;
                 }
@@ -79,8 +81,7 @@ namespace Tutor_UI.Users
            
            
         }
-
-        private void BanovaniKorisniciForm_Enter(object sender, EventArgs e)
+        void Form_Closed(object sender, FormClosedEventArgs e)
         {
             BanovaniTutori();
             BanovaniStudenti();

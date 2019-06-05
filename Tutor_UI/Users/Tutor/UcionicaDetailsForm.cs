@@ -88,13 +88,14 @@ namespace Tutor_UI.Users.Tutor
         private void prijaveBtn_Click(object sender, EventArgs e)
         {
             UcionicaPrijaveForm prijaveForm = new UcionicaPrijaveForm(idUcionice);
+            prijaveForm.FormClosed += new FormClosedEventHandler(Form_Closed);
             prijaveForm.ShowDialog();
             prijaveForm.MdiParent = this.MdiParent;
         }
-
-        private void UcionicaDetailsForm_Enter(object sender, EventArgs e)
+        void Form_Closed(object sender, FormClosedEventArgs e)
         {
             BindUcenici(idUcionice);
         }
+       
     }
 }

@@ -30,9 +30,9 @@ namespace Tutor_UI.Users
 
         public async Task<IPagedList<Student_SearchSelect_Result>> GetPagedListAsync(int pageNummber = 1, int pageSize = 10) {
 
-           
 
-            return await Task.Factory.StartNew(()=>            {
+           
+            return await Task.Factory.StartNew(()=> {
                
                 var response = studentService.GetActionResponse("SearchStudent");
                 return response.Content.ReadAsAsync<List<Student_SearchSelect_Result>>().Result.ToPagedList(pageNummber, pageSize);

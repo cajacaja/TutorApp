@@ -76,6 +76,7 @@ namespace Tutor_UI.Users
             }
 
             var detalji = new TutorPrijaveDetailsForm(TutorId);
+            detalji.FormClosed += new FormClosedEventHandler(Form_Closed);
             detalji.ShowDialog();
             BindNeProcitano();
             BindProcitano();
@@ -108,6 +109,12 @@ namespace Tutor_UI.Users
                 }
 
             }
+        }
+
+        void Form_Closed(object sender, FormClosedEventArgs e)
+        {
+            BindNeProcitano();
+            BindProcitano();
         }
     }
 }

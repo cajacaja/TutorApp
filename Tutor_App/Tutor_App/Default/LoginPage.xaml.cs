@@ -19,6 +19,9 @@ namespace Tutor_App
 	public partial class LoginPage : ContentPage
 	{
         private WebApiHelper studentService = new WebApiHelper("Student");
+        
+
+
         public LoginPage ()
 		{
 			InitializeComponent ();
@@ -27,9 +30,11 @@ namespace Tutor_App
             loginIndicator.IsVisible = false;
             loginIndicator.IsRunning = false;
 
-
+            
 
         }
+
+      
 
         private async  void LogIn_Clicked(object sender, EventArgs e)
         {

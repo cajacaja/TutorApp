@@ -42,7 +42,8 @@ namespace Tutor_UI.Users
 
         private void DodajBtn_Click(object sender, EventArgs e)
         {
-            var administratorDodajForm = new AdministratorAdd();           
+            var administratorDodajForm = new AdministratorAdd();
+            administratorDodajForm.FormClosed += new FormClosedEventHandler(Form_Closed);
                 administratorDodajForm.ShowDialog();
                 administratorDodajForm.MdiParent = this.MdiParent;
                 BindGrid();
@@ -77,6 +78,7 @@ namespace Tutor_UI.Users
                 if (administratorGrid.SelectedRows.Count!=0)
                 {
                     var editForm = new EditAdministrator(Convert.ToInt32(administratorGrid.SelectedRows[0].Cells[0].Value));
+                    editForm.FormClosed += new FormClosedEventHandler(Form_Closed);
                     editForm.ShowDialog();
                     editForm.MdiParent = this.MdiParent;
                     BindGrid();
@@ -147,6 +149,11 @@ namespace Tutor_UI.Users
             brojListe.Text = string.Format("{0}/{1}", pageNummber, list.PageCount);
             Cursor = Cursors.Arrow;
             TraziBtn.Enabled = true;
+        }
+
+        void Form_Closed(object sender, FormClosedEventArgs e)
+        {
+            BindGrid();
         }
     }
 }

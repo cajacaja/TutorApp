@@ -108,6 +108,7 @@ namespace Tutor_UI.Users
         private void DodajBtn_Click(object sender, EventArgs e)
         {
             AddTutor addTutor = new AddTutor();
+            addTutor.FormClosed += new FormClosedEventHandler(Form_Closed);
             if (addTutor.ShowDialog() == DialogResult.OK)
             {
                 addTutor.Show();
@@ -161,6 +162,12 @@ namespace Tutor_UI.Users
                 brojListe.Text = string.Format("Page {0}/{1}", pageNummber, list.PageCount);
 
             }
+        }
+
+
+        void Form_Closed(object sender, FormClosedEventArgs e)
+        {
+            BindForm();
         }
     }
 }

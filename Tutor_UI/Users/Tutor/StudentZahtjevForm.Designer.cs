@@ -50,9 +50,9 @@
             this.OcjeneStudentGridView = new System.Windows.Forms.DataGridView();
             this.OcjenaInput = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label11 = new System.Windows.Forms.Label();
+            this.BackBtn = new System.Windows.Forms.Button();
+            this.FowardBtn = new System.Windows.Forms.Button();
+            this.brojListe = new System.Windows.Forms.Label();
             this.PrihvatiBtn = new System.Windows.Forms.Button();
             this.ImePrezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Komentar = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -261,6 +261,8 @@
             // 
             // OcjeneStudentGridView
             // 
+            this.OcjeneStudentGridView.AllowUserToAddRows = false;
+            this.OcjeneStudentGridView.AllowUserToDeleteRows = false;
             this.OcjeneStudentGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.OcjeneStudentGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ImePrezime,
@@ -270,6 +272,7 @@
             this.OcjeneStudentGridView.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.OcjeneStudentGridView.Location = new System.Drawing.Point(0, 264);
             this.OcjeneStudentGridView.Name = "OcjeneStudentGridView";
+            this.OcjeneStudentGridView.ReadOnly = true;
             this.OcjeneStudentGridView.Size = new System.Drawing.Size(506, 131);
             this.OcjeneStudentGridView.TabIndex = 19;
             // 
@@ -294,32 +297,34 @@
             this.label10.TabIndex = 20;
             this.label10.Text = "Ocjena:";
             // 
-            // button1
+            // BackBtn
             // 
-            this.button1.Location = new System.Drawing.Point(11, 226);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(47, 23);
-            this.button1.TabIndex = 22;
-            this.button1.Text = "<";
-            this.button1.UseVisualStyleBackColor = true;
+            this.BackBtn.Location = new System.Drawing.Point(11, 226);
+            this.BackBtn.Name = "BackBtn";
+            this.BackBtn.Size = new System.Drawing.Size(47, 23);
+            this.BackBtn.TabIndex = 22;
+            this.BackBtn.Text = "<";
+            this.BackBtn.UseVisualStyleBackColor = true;
+            this.BackBtn.Click += new System.EventHandler(this.BackBtn_Click);
             // 
-            // button2
+            // FowardBtn
             // 
-            this.button2.Location = new System.Drawing.Point(127, 226);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(47, 23);
-            this.button2.TabIndex = 23;
-            this.button2.Text = ">";
-            this.button2.UseVisualStyleBackColor = true;
+            this.FowardBtn.Location = new System.Drawing.Point(127, 226);
+            this.FowardBtn.Name = "FowardBtn";
+            this.FowardBtn.Size = new System.Drawing.Size(47, 23);
+            this.FowardBtn.TabIndex = 23;
+            this.FowardBtn.Text = ">";
+            this.FowardBtn.UseVisualStyleBackColor = true;
+            this.FowardBtn.Click += new System.EventHandler(this.FowardBtn_Click);
             // 
-            // label11
+            // brojListe
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(78, 231);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(24, 13);
-            this.label11.TabIndex = 24;
-            this.label11.Text = "0/0";
+            this.brojListe.AutoSize = true;
+            this.brojListe.Location = new System.Drawing.Point(78, 231);
+            this.brojListe.Name = "brojListe";
+            this.brojListe.Size = new System.Drawing.Size(24, 13);
+            this.brojListe.TabIndex = 24;
+            this.brojListe.Text = "0/0";
             // 
             // PrihvatiBtn
             // 
@@ -353,9 +358,11 @@
             this.Ocjena.HeaderText = "Ocjena";
             this.Ocjena.Name = "Ocjena";
             this.Ocjena.ReadOnly = true;
+            this.Ocjena.Width = 65;
             // 
             // Datum
             // 
+            this.Datum.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Datum.DataPropertyName = "Datum";
             this.Datum.HeaderText = "Datum ocjene";
             this.Datum.Name = "Datum";
@@ -367,9 +374,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(506, 395);
             this.Controls.Add(this.PrihvatiBtn);
-            this.Controls.Add(this.label11);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.brojListe);
+            this.Controls.Add(this.FowardBtn);
+            this.Controls.Add(this.BackBtn);
             this.Controls.Add(this.OcjenaInput);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.OcjeneStudentGridView);
@@ -429,9 +436,9 @@
         private System.Windows.Forms.DataGridView OcjeneStudentGridView;
         private System.Windows.Forms.TextBox OcjenaInput;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button BackBtn;
+        private System.Windows.Forms.Button FowardBtn;
+        private System.Windows.Forms.Label brojListe;
         private System.Windows.Forms.Button PrihvatiBtn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ImePrezime;
         private System.Windows.Forms.DataGridViewTextBoxColumn Komentar;

@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.prijaveGridView = new System.Windows.Forms.DataGridView();
+            this.prihvatiBtn = new System.Windows.Forms.Button();
+            this.pregledBtn = new System.Windows.Forms.Button();
+            this.odbijBtn = new System.Windows.Forms.Button();
             this.PrijavaId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StudentId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ImePrezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -37,9 +40,6 @@
             this.Spol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DatumPrijave = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ocjena = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.prihvatiBtn = new System.Windows.Forms.Button();
-            this.pregledBtn = new System.Windows.Forms.Button();
-            this.odbijBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.prijaveGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,69 +63,6 @@
             this.prijaveGridView.ReadOnly = true;
             this.prijaveGridView.Size = new System.Drawing.Size(458, 310);
             this.prijaveGridView.TabIndex = 0;
-            // 
-            // PrijavaId
-            // 
-            this.PrijavaId.DataPropertyName = "PrijavaId";
-            this.PrijavaId.HeaderText = "PrijavaId";
-            this.PrijavaId.Name = "PrijavaId";
-            this.PrijavaId.ReadOnly = true;
-            this.PrijavaId.Visible = false;
-            // 
-            // StudentId
-            // 
-            this.StudentId.DataPropertyName = "StudentId";
-            this.StudentId.HeaderText = "StudentId";
-            this.StudentId.Name = "StudentId";
-            this.StudentId.ReadOnly = true;
-            this.StudentId.Visible = false;
-            // 
-            // ImePrezime
-            // 
-            this.ImePrezime.DataPropertyName = "ImePrezime";
-            this.ImePrezime.HeaderText = "Student";
-            this.ImePrezime.Name = "ImePrezime";
-            this.ImePrezime.ReadOnly = true;
-            // 
-            // TipStudenta
-            // 
-            this.TipStudenta.DataPropertyName = "TipStudenta";
-            this.TipStudenta.HeaderText = "Tip studenta";
-            this.TipStudenta.Name = "TipStudenta";
-            this.TipStudenta.ReadOnly = true;
-            this.TipStudenta.Width = 75;
-            // 
-            // Godine
-            // 
-            this.Godine.DataPropertyName = "Godine";
-            this.Godine.HeaderText = "Godine";
-            this.Godine.Name = "Godine";
-            this.Godine.ReadOnly = true;
-            this.Godine.Width = 65;
-            // 
-            // Spol
-            // 
-            this.Spol.DataPropertyName = "Spol";
-            this.Spol.HeaderText = "Spol";
-            this.Spol.Name = "Spol";
-            this.Spol.ReadOnly = true;
-            this.Spol.Width = 50;
-            // 
-            // DatumPrijave
-            // 
-            this.DatumPrijave.DataPropertyName = "DatumPrijave";
-            this.DatumPrijave.HeaderText = "Datum prijave";
-            this.DatumPrijave.Name = "DatumPrijave";
-            this.DatumPrijave.ReadOnly = true;
-            this.DatumPrijave.Width = 75;
-            // 
-            // Ocjena
-            // 
-            this.Ocjena.DataPropertyName = "Ocjena";
-            this.Ocjena.HeaderText = "Ocjena";
-            this.Ocjena.Name = "Ocjena";
-            this.Ocjena.ReadOnly = true;
-            this.Ocjena.Width = 50;
             // 
             // prihvatiBtn
             // 
@@ -156,6 +93,69 @@
             this.odbijBtn.Text = "Odbij";
             this.odbijBtn.UseVisualStyleBackColor = true;
             this.odbijBtn.Click += new System.EventHandler(this.odbijBtn_Click);
+            // 
+            // PrijavaId
+            // 
+            this.PrijavaId.DataPropertyName = "PrijavaId";
+            this.PrijavaId.HeaderText = "PrijavaId";
+            this.PrijavaId.Name = "PrijavaId";
+            this.PrijavaId.ReadOnly = true;
+            this.PrijavaId.Visible = false;
+            // 
+            // StudentId
+            // 
+            this.StudentId.DataPropertyName = "StudentId";
+            this.StudentId.HeaderText = "StudentId";
+            this.StudentId.Name = "StudentId";
+            this.StudentId.ReadOnly = true;
+            this.StudentId.Visible = false;
+            // 
+            // ImePrezime
+            // 
+            this.ImePrezime.DataPropertyName = "ImePrezime";
+            this.ImePrezime.HeaderText = "Student";
+            this.ImePrezime.Name = "ImePrezime";
+            this.ImePrezime.ReadOnly = true;
+            // 
+            // TipStudenta
+            // 
+            this.TipStudenta.DataPropertyName = "TipStudenta";
+            this.TipStudenta.HeaderText = "Tip studenta";
+            this.TipStudenta.Name = "TipStudenta";
+            this.TipStudenta.ReadOnly = true;
+            this.TipStudenta.Width = 80;
+            // 
+            // Godine
+            // 
+            this.Godine.DataPropertyName = "Godine";
+            this.Godine.HeaderText = "Godine";
+            this.Godine.Name = "Godine";
+            this.Godine.ReadOnly = true;
+            this.Godine.Width = 60;
+            // 
+            // Spol
+            // 
+            this.Spol.DataPropertyName = "Spol";
+            this.Spol.HeaderText = "Spol";
+            this.Spol.Name = "Spol";
+            this.Spol.ReadOnly = true;
+            this.Spol.Width = 50;
+            // 
+            // DatumPrijave
+            // 
+            this.DatumPrijave.DataPropertyName = "DatumPrijave";
+            this.DatumPrijave.HeaderText = "Datum prijave";
+            this.DatumPrijave.Name = "DatumPrijave";
+            this.DatumPrijave.ReadOnly = true;
+            this.DatumPrijave.Width = 75;
+            // 
+            // Ocjena
+            // 
+            this.Ocjena.DataPropertyName = "Ocjena";
+            this.Ocjena.HeaderText = "Ocjena";
+            this.Ocjena.Name = "Ocjena";
+            this.Ocjena.ReadOnly = true;
+            this.Ocjena.Width = 50;
             // 
             // UcionicaPrijaveForm
             // 

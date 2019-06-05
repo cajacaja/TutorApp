@@ -34,7 +34,7 @@ namespace Tutor_API.Util
                 }
 
                 double slicnost = GetSlicnost(zajednickeOcjene1, zajednickeOcjene2);
-                if (slicnost > 0.4)
+                if (slicnost > 0.7)
                     preporuceniTutori.Add(db.Tutors.FirstOrDefault(x => x.TutorId == t.Key));
                 zajednickeOcjene1.Clear();
                 zajednickeOcjene2.Clear();
@@ -53,9 +53,9 @@ namespace Tutor_API.Util
 
             for (int i = 0; i < zajednickeOcjene1.Count; i++)
             {
-                brojnik = zajednickeOcjene1[i].Ocjena * zajednickeOcjene2[i].Ocjena;
-                nazivnik1 = zajednickeOcjene1[i].Ocjena * zajednickeOcjene1[i].Ocjena;
-                nazivnik2 = zajednickeOcjene2[i].Ocjena * zajednickeOcjene2[i].Ocjena;
+                brojnik+= zajednickeOcjene1[i].Ocjena * zajednickeOcjene2[i].Ocjena;
+                nazivnik1+= zajednickeOcjene1[i].Ocjena * zajednickeOcjene1[i].Ocjena;
+                nazivnik2 += zajednickeOcjene2[i].Ocjena * zajednickeOcjene2[i].Ocjena;
             }
 
             nazivnik1 = Math.Sqrt(nazivnik1);

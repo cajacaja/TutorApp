@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PagedList;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
@@ -17,10 +18,27 @@ namespace Tutor_UI.Users.Tutor
 {
     public partial class StudentZahtjevForm : Form
     {
-        private WebAPIHelper zahtjevService = new WebAPIHelper("Zahtjev");
+        private WebAPIHelper zahtjevService = new WebAPIHelper("Zahtjev");       
         private WebAPIHelper ocjenaService = new WebAPIHelper("OcjenaStudent");
-        
+
+        int pageNummber = 1;
+
         private int  ZahtjevId=0;
+        private int StudentId = 0;
+        IPagedList<OcjenaStudent_SelectComments_Result> list;
+
+        public async Task<IPagedList<OcjenaStudent_SelectComments_Result>> GetPagedListAsync(int pageNummber = 1, int pageSize = 5)
+        {
+
+
+
+            return await Task.Factory.StartNew(() => {
+
+                HttpResponseMessage response = ocjenaService.GetActionResponse("GetOcjene", StudentId.ToString());
+                return response.Content.ReadAsAsync<List<OcjenaStudent_SelectComments_Result>>().Result.ToPagedList(pageNummber, pageSize);
+
+            });
+        }
 
         public StudentZahtjevForm(int zahtjevId)
         {
@@ -52,7 +70,7 @@ namespace Tutor_UI.Users.Tutor
                 DatumDoInput.Text = zahtjev.DatumDo.ToShortDateString();
                 VrijemOd.Text = zahtjev.VrijemeOd.ToString().Substring(0,5);
                 VrijemeDo.Text = zahtjev.VrijemeDo.ToString().Substring(0,5);
-
+                StudentId = zahtjev.StudentId;
                 BindOcjene(zahtjev.StudentId);
 
 
@@ -97,15 +115,18 @@ namespace Tutor_UI.Users.Tutor
             }
         }
 
-        private void BindOcjene(int studentId)
+        private async void BindOcjene(int studentId)
         {
-            HttpResponseMessage response = ocjenaService.GetActionResponse("GetOcjene", studentId.ToString());
-            if (response.IsSuccessStatusCode)
-            {
-                var lstOcjene = response.Content.ReadAsAsync<List<OcjenaStudent_SelectComments_Result>>().Result;
-                OcjeneStudentGridView.DataSource = lstOcjene;
-                OcjeneStudentGridView.ClearSelection();
-            }
+            Cursor = Cursors.WaitCursor;
+            BackBtn.Enabled = false;
+            FowardBtn.Enabled = false;
+            list = await GetPagedListAsync();
+            OcjeneStudentGridView.DataSource = list.ToList();
+            BackBtn.Enabled = list.HasPreviousPage;
+            FowardBtn.Enabled = list.HasNextPage;
+            brojListe.Text = string.Format("{0}/{1}", pageNummber, list.PageCount);
+            Cursor = Cursors.Arrow;
+
         }
 
         private void PrihvatiBtn_Click(object sender, EventArgs e)
@@ -120,11 +141,51 @@ namespace Tutor_UI.Users.Tutor
                 if (response2.IsSuccessStatusCode)
                 {
                     OdrediTermin termini = new OdrediTermin(ZahtjevId);
+                    termini.FormClosed += new FormClosedEventHandler(Form_Closed);
                     termini.ShowDialog();
                     termini.MdiParent = this.MdiParent;
                     PrihvatiBtn.Enabled = false;
                 }
             }
         }
+        void Form_Closed(object sender, FormClosedEventArgs e)
+        {
+            BindForm(ZahtjevId);
+        }
+
+        private async void BackBtn_Click(object sender, EventArgs e)
+        {
+            if (list.HasPreviousPage)
+            {
+                Cursor = Cursors.WaitCursor;
+                BackBtn.Enabled = false;
+                FowardBtn.Enabled = false;
+                list = await GetPagedListAsync(--pageNummber);
+                OcjeneStudentGridView.DataSource = list.ToList();
+                BackBtn.Enabled = list.HasPreviousPage;
+                FowardBtn.Enabled = list.HasNextPage;
+                brojListe.Text = string.Format("{0}/{1}", pageNummber, list.PageCount);
+                Cursor = Cursors.Arrow;
+            }
+        }
+
+        private async void FowardBtn_Click(object sender, EventArgs e)
+        {
+            if (list.HasNextPage)
+            {
+                Cursor = Cursors.WaitCursor;
+                BackBtn.Enabled = false;
+                FowardBtn.Enabled = false;
+                list = await GetPagedListAsync(++pageNummber);
+                OcjeneStudentGridView.DataSource = list.ToList();
+                BackBtn.Enabled = list.HasPreviousPage;
+                FowardBtn.Enabled = list.HasNextPage;
+                brojListe.Text = string.Format("{0}/{1}", pageNummber, list.PageCount);
+                Cursor = Cursors.Arrow;
+
+            }
+        }
     }
+
+
 }
