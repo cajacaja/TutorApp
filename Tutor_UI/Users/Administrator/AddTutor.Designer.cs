@@ -119,6 +119,7 @@
             this.SpolCmb.Name = "SpolCmb";
             this.SpolCmb.Size = new System.Drawing.Size(144, 21);
             this.SpolCmb.TabIndex = 2;
+            this.SpolCmb.Validating += new System.ComponentModel.CancelEventHandler(this.SpolCmb_Validating);
             // 
             // label1
             // 
@@ -146,6 +147,7 @@
             this.GradCmb.Name = "GradCmb";
             this.GradCmb.Size = new System.Drawing.Size(144, 21);
             this.GradCmb.TabIndex = 6;
+            this.GradCmb.Validating += new System.ComponentModel.CancelEventHandler(this.GradCmb_Validating);
             // 
             // label4
             // 
@@ -233,6 +235,7 @@
             this.ZaposlenostiCmb.Name = "ZaposlenostiCmb";
             this.ZaposlenostiCmb.Size = new System.Drawing.Size(144, 21);
             this.ZaposlenostiCmb.TabIndex = 8;
+            this.ZaposlenostiCmb.Validating += new System.ComponentModel.CancelEventHandler(this.ZaposlenostiCmb_Validating);
             // 
             // label9
             // 
@@ -251,6 +254,7 @@
             this.TitulaCmb.Name = "TitulaCmb";
             this.TitulaCmb.Size = new System.Drawing.Size(144, 21);
             this.TitulaCmb.TabIndex = 9;
+            this.TitulaCmb.Validating += new System.ComponentModel.CancelEventHandler(this.TitulaCmb_Validating);
             // 
             // label10
             // 
@@ -285,6 +289,7 @@
             this.PredmetCmb.Name = "PredmetCmb";
             this.PredmetCmb.Size = new System.Drawing.Size(144, 21);
             this.PredmetCmb.TabIndex = 11;
+            this.PredmetCmb.Validating += new System.ComponentModel.CancelEventHandler(this.PredmetCmb_Validating);
             // 
             // ObimListBox
             // 

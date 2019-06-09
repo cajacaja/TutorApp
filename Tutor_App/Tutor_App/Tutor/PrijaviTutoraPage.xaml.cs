@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Rg.Plugins.Popup.Services;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -13,8 +14,8 @@ using Xamarin.Forms.Xaml;
 namespace Tutor_App
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class PrijaviTutoraPage : ContentPage
-	{
+	public partial class PrijaviTutoraPage : Rg.Plugins.Popup.Pages.PopupPage
+    {
         private WebApiHelper prijavaService = new WebApiHelper("BanPrijavaStudent");
         private int idTutora = 0;
 		public PrijaviTutoraPage (int tutorId)
@@ -37,9 +38,12 @@ namespace Tutor_App
             HttpResponseMessage response = prijavaService.PostResponse(prijave);
             if (response.IsSuccessStatusCode)
             {
-                DisplayAlert("Prijava", "Tutor prijavljen", "OK");
-                this.Navigation.PopAsync();
+
+                PopupNavigation.Instance.PopAsync(true);
             }
         }
+
+       
+
     }
 }

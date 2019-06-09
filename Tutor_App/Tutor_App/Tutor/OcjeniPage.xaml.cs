@@ -1,5 +1,6 @@
 ﻿using PCL_tutor.Model;
 using PCL_tutor.Util;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,8 +14,8 @@ using Xamarin.Forms.Xaml;
 namespace Tutor_App
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class OcjeniPage : ContentPage
-	{
+	public partial class OcjeniPage : Rg.Plugins.Popup.Pages.PopupPage
+    {
         private WebApiHelper ocjeneService = new WebApiHelper("OcjenaTutor");
         private int[] ocjene = { 1, 2, 3, 4, 5 };
         private int idTutora = 0;
@@ -42,11 +43,8 @@ namespace Tutor_App
                 };
 
                 HttpResponseMessage response = ocjeneService.PostResponse(ocjena);
-                if (response.IsSuccessStatusCode)
-                {
-                    DisplayAlert("Ocjena", "Uspjeno ste ocjenili tutora", "OK");
-                    this.Navigation.PopAsync();
-                }
+                MessagingCenter.Send<App>((App)Application.Current, "OcjeniBtn_Clicked");
+                PopupNavigation.Instance.PopAsync(true);
             }
         }
     }

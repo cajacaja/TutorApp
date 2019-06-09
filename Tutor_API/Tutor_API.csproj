@@ -98,6 +98,8 @@
       <DependentUpon>Model.edmx</DependentUpon>
       <LastGenOutput>Model.cs</LastGenOutput>
     </Content>
+    <Content Include="Properties\DataSources\Tutor_API.Models.Report_TipoviStudenta_Result.datasource" />
+    <Content Include="Properties\DataSources\Tutor_API.Models.BanPrijavaTutor_SelectOne_Result.datasource" />
     <None Include="Resources\StudentIcon.png" />
     <Content Include="StudentIcon.png" />
     <Content Include="Web.config" />
@@ -244,6 +246,9 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RadnoStanje.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Report_TipoviStudenta_Result.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Spol.cs">

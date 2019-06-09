@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -12,7 +13,7 @@ namespace Tutor_UI.Util
         private HttpClient client { get; set; }
         private string route { get; set; }
 
-        private string URI =  "http://192.168.0.103/api/";//"http://localhost:61494/api/";
+        private string URI = ConfigurationManager.AppSettings["APIAddress"].ToString();
         public WebAPIHelper(string route)
         {
             client = new HttpClient();

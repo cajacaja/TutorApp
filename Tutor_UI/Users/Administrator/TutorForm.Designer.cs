@@ -32,6 +32,12 @@
             this.GradoviCmb = new System.Windows.Forms.ComboBox();
             this.TraziBtn = new System.Windows.Forms.Button();
             this.TutorGridView = new System.Windows.Forms.DataGridView();
+            this.DodajBtn = new System.Windows.Forms.Button();
+            this.PredmetCmb = new System.Windows.Forms.ComboBox();
+            this.DetaljBtn = new System.Windows.Forms.Button();
+            this.BackBtn = new System.Windows.Forms.Button();
+            this.brojListe = new System.Windows.Forms.Label();
+            this.ForwardBtn = new System.Windows.Forms.Button();
             this.TutorId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Prezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -41,12 +47,6 @@
             this.Grad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Predmet = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TutorTumbnail = new System.Windows.Forms.DataGridViewImageColumn();
-            this.DodajBtn = new System.Windows.Forms.Button();
-            this.PredmetCmb = new System.Windows.Forms.ComboBox();
-            this.DetaljBtn = new System.Windows.Forms.Button();
-            this.BackBtn = new System.Windows.Forms.Button();
-            this.brojListe = new System.Windows.Forms.Label();
-            this.ForwardBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.TutorGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -77,6 +77,8 @@
             // 
             // TutorGridView
             // 
+            this.TutorGridView.AllowUserToAddRows = false;
+            this.TutorGridView.AllowUserToDeleteRows = false;
             this.TutorGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
             this.TutorGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TutorId,
@@ -91,72 +93,9 @@
             this.TutorGridView.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.TutorGridView.Location = new System.Drawing.Point(0, 109);
             this.TutorGridView.Name = "TutorGridView";
-            this.TutorGridView.Size = new System.Drawing.Size(846, 285);
+            this.TutorGridView.ReadOnly = true;
+            this.TutorGridView.Size = new System.Drawing.Size(843, 285);
             this.TutorGridView.TabIndex = 3;
-            // 
-            // TutorId
-            // 
-            this.TutorId.DataPropertyName = "TutorId";
-            this.TutorId.HeaderText = "TutorId";
-            this.TutorId.Name = "TutorId";
-            this.TutorId.ReadOnly = true;
-            this.TutorId.Visible = false;
-            // 
-            // Ime
-            // 
-            this.Ime.DataPropertyName = "Ime";
-            this.Ime.HeaderText = "Ime";
-            this.Ime.Name = "Ime";
-            this.Ime.ReadOnly = true;
-            // 
-            // Prezime
-            // 
-            this.Prezime.DataPropertyName = "Prezime";
-            this.Prezime.HeaderText = "Prezime";
-            this.Prezime.Name = "Prezime";
-            this.Prezime.ReadOnly = true;
-            // 
-            // Spol
-            // 
-            this.Spol.DataPropertyName = "Spol";
-            this.Spol.HeaderText = "Spol";
-            this.Spol.Name = "Spol";
-            this.Spol.ReadOnly = true;
-            // 
-            // DatumRodjenja
-            // 
-            this.DatumRodjenja.DataPropertyName = "DatumRodjenja";
-            this.DatumRodjenja.HeaderText = "Datum rodjenja";
-            this.DatumRodjenja.Name = "DatumRodjenja";
-            this.DatumRodjenja.ReadOnly = true;
-            // 
-            // DatumDodavanja
-            // 
-            this.DatumDodavanja.DataPropertyName = "DatumDodavanja";
-            this.DatumDodavanja.HeaderText = "Datum dodavanja";
-            this.DatumDodavanja.Name = "DatumDodavanja";
-            this.DatumDodavanja.ReadOnly = true;
-            // 
-            // Grad
-            // 
-            this.Grad.DataPropertyName = "Grad";
-            this.Grad.HeaderText = "Grad";
-            this.Grad.Name = "Grad";
-            this.Grad.ReadOnly = true;
-            // 
-            // Predmet
-            // 
-            this.Predmet.DataPropertyName = "Predmet";
-            this.Predmet.HeaderText = "Predmet";
-            this.Predmet.Name = "Predmet";
-            this.Predmet.ReadOnly = true;
-            // 
-            // TutorTumbnail
-            // 
-            this.TutorTumbnail.DataPropertyName = "TutorTumbnail";
-            this.TutorTumbnail.HeaderText = "Slika tutora";
-            this.TutorTumbnail.Name = "TutorTumbnail";
-            this.TutorTumbnail.ReadOnly = true;
             // 
             // DodajBtn
             // 
@@ -215,11 +154,78 @@
             this.ForwardBtn.UseVisualStyleBackColor = true;
             this.ForwardBtn.Click += new System.EventHandler(this.ForwardBtn_Click);
             // 
+            // TutorId
+            // 
+            this.TutorId.DataPropertyName = "TutorId";
+            this.TutorId.HeaderText = "TutorId";
+            this.TutorId.Name = "TutorId";
+            this.TutorId.ReadOnly = true;
+            this.TutorId.Visible = false;
+            // 
+            // Ime
+            // 
+            this.Ime.DataPropertyName = "Ime";
+            this.Ime.HeaderText = "Ime";
+            this.Ime.Name = "Ime";
+            this.Ime.ReadOnly = true;
+            // 
+            // Prezime
+            // 
+            this.Prezime.DataPropertyName = "Prezime";
+            this.Prezime.HeaderText = "Prezime";
+            this.Prezime.Name = "Prezime";
+            this.Prezime.ReadOnly = true;
+            // 
+            // Spol
+            // 
+            this.Spol.DataPropertyName = "Spol";
+            this.Spol.HeaderText = "Spol";
+            this.Spol.Name = "Spol";
+            this.Spol.ReadOnly = true;
+            this.Spol.Width = 50;
+            // 
+            // DatumRodjenja
+            // 
+            this.DatumRodjenja.DataPropertyName = "DatumRodjenja";
+            this.DatumRodjenja.HeaderText = "Datum rodjenja";
+            this.DatumRodjenja.Name = "DatumRodjenja";
+            this.DatumRodjenja.ReadOnly = true;
+            // 
+            // DatumDodavanja
+            // 
+            this.DatumDodavanja.DataPropertyName = "DatumDodavanja";
+            this.DatumDodavanja.HeaderText = "Datum dodavanja";
+            this.DatumDodavanja.Name = "DatumDodavanja";
+            this.DatumDodavanja.ReadOnly = true;
+            // 
+            // Grad
+            // 
+            this.Grad.DataPropertyName = "Grad";
+            this.Grad.HeaderText = "Grad";
+            this.Grad.Name = "Grad";
+            this.Grad.ReadOnly = true;
+            // 
+            // Predmet
+            // 
+            this.Predmet.DataPropertyName = "Predmet";
+            this.Predmet.HeaderText = "Predmet";
+            this.Predmet.Name = "Predmet";
+            this.Predmet.ReadOnly = true;
+            this.Predmet.Width = 128;
+            // 
+            // TutorTumbnail
+            // 
+            this.TutorTumbnail.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.TutorTumbnail.DataPropertyName = "TutorTumbnail";
+            this.TutorTumbnail.HeaderText = "Slika tutora";
+            this.TutorTumbnail.Name = "TutorTumbnail";
+            this.TutorTumbnail.ReadOnly = true;
+            // 
             // TutorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(846, 394);
+            this.ClientSize = new System.Drawing.Size(843, 394);
             this.Controls.Add(this.ForwardBtn);
             this.Controls.Add(this.brojListe);
             this.Controls.Add(this.BackBtn);

@@ -226,6 +226,17 @@ namespace Tutor_API.Controllers
             return r.GetSlicneTutore(tutorId, tipStudentaId);
         }
 
+        [HttpGet]
+        [Route("api/Tutor/ReportTitula/{GradId}/{DatumOd}/{DatumDo}")]
+        [ResponseType(typeof(List<Report_TipoviStudenta_Result>))]
+        public IHttpActionResult ReportTitula(int GradId, DateTime DatumOd, DateTime DatumDo)
+        {
+            if (GradId == 0)
+                return Ok(db.tsp_Report_TipoviStudenta(DatumOd, DatumDo, null).ToList());
+
+            return Ok(db.tsp_Report_TipoviStudenta(DatumOd, DatumDo, GradId).ToList());
+        }
+
         [Route("api/Tutor")]//(Fix) dodan iz razloga jer odjednom post za tutora je prestao da radi(Magija)
         [HttpPost]
         public IHttpActionResult PostTutor(Tutor t)
@@ -361,13 +372,13 @@ namespace Tutor_API.Controllers
 
             try
             {
-                db.tsp_Tutor_Update(id, tutor.GradId, tutor.RadnoStanjeId, tutor.TutorTitulaId, tutor.PodKategorijaId,
+                db.tsp_Tutor_Update(id, tutor.GradId, tutor.RadnoStanjeId, tutor.TutorTitulaId,
                                     tutor.NazivUstanove, tutor.CijenaCasa, tutor.TutorTumbnail, tutor.TutorSlika, tutor.LozinkaSalt, tutor.LozinkaHash,
                                     tutor.Email, tutor.Telefon, tutor.Adresa);
             }
             catch (EntityCommandExecutionException ex)
             {
-                var nesto = ex.GetType().ToString();
+                
                 SqlException greska = ex.InnerException as SqlException;
                 if (greska != null)
                 {

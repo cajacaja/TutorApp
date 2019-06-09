@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using PCL_tutor.Model;
 using PCL_tutor.Util;
-
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -31,6 +31,7 @@ namespace Tutor_App
         public TutorDetails (int tutorId)
 		{
 			InitializeComponent ();
+           
             images = new List<Image>();
             ocjeniBtn.IsVisible = false;
             prijaviBtn.IsVisible = false;
@@ -42,8 +43,10 @@ namespace Tutor_App
                 brojac = lst.Count;
             tutorLista.HeightRequest = tutorLista.RowHeight+10;
 
-            
-           
+
+            MessagingCenter.Subscribe<App>((App)Application.Current, "OcjeniBtn_Clicked", (sender) => {
+                LoadTutor(tutorId);
+            });
         }
 
         private void LoadTutor(int tutorId)
@@ -51,8 +54,8 @@ namespace Tutor_App
             HttpResponseMessage responseMessage = tutorService.GetActionResponse("TutorDetails", tutorId.ToString());
             var jasonObject = responseMessage.Content.ReadAsStringAsync();
             tutor = JsonConvert.DeserializeObject<Tutori>(jasonObject.Result);
-           
-           
+
+            starList.Children.Clear();
             for (int i = 0; i < tutor.Ocjena; i++)
             {
                 Image slika = new Image { Source = "onestar.png", HeightRequest = 25, WidthRequest = 25 };
@@ -172,13 +175,15 @@ namespace Tutor_App
 
         private void Ocjeni_Clicked(object sender, EventArgs e)
         {
-           
-            this.Navigation.PushAsync(new OcjeniPage(tutor.TutorId));
+
+            PopupNavigation.Instance.PushAsync(new OcjeniPage(tutor.TutorId));
+            LoadTutor(tutor.TutorId);
         }
 
         private void Prijavi_Clicked(object sender, EventArgs e)
         {
-            this.Navigation.PushAsync(new PrijaviTutoraPage (tutor.TutorId));
+            PopupNavigation.Instance.PushAsync(new PrijaviTutoraPage(tutor.TutorId));
+            LoadTutor(tutor.TutorId);
         }
 
         private void PreporukaList_ItemTapped(object sender, ItemTappedEventArgs e)

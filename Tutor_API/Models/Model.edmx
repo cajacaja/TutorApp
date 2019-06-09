@@ -776,6 +776,11 @@
         <Function Name="tsp_Prijave_SelectAccepted" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="UcionicaId" Type="int" Mode="In" />
         </Function>
+        <Function Name="tsp_Report_TipoviStudenta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DatumOd" Type="date" Mode="In" />
+          <Parameter Name="DatumDo" Type="date" Mode="In" />
+          <Parameter Name="GradId" Type="int" Mode="In" />
+        </Function>
         <Function Name="tsp_Student_Details" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
         </Function>
@@ -845,7 +850,6 @@
           <Parameter Name="GradId" Type="int" Mode="In" />
           <Parameter Name="RadnoStanjeId" Type="int" Mode="In" />
           <Parameter Name="TutorTitulaId" Type="int" Mode="In" />
-          <Parameter Name="PodKategorijaId" Type="int" Mode="In" />
           <Parameter Name="NazivUstanove" Type="nvarchar" Mode="In" />
           <Parameter Name="CijenaCasA" Type="float" Mode="In" />
           <Parameter Name="TutorTumbnail" Type="varbinary(max)" Mode="In" />
@@ -2014,7 +2018,6 @@
             <Parameter Name="GradId" Mode="In" Type="Int32" />
             <Parameter Name="RadnoStanjeId" Mode="In" Type="Int32" />
             <Parameter Name="TutorTitulaId" Mode="In" Type="Int32" />
-            <Parameter Name="PodKategorijaId" Mode="In" Type="Int32" />
             <Parameter Name="NazivUstanove" Mode="In" Type="String" />
             <Parameter Name="CijenaCasA" Mode="In" Type="Double" />
             <Parameter Name="TutorTumbnail" Mode="In" Type="Binary" />
@@ -2092,6 +2095,11 @@
           </FunctionImport>
           <FunctionImport Name="tsp_Zahtjevi_SelectAktulne" ReturnType="Collection(TutorModel.Zahtjevi_SelectAktuelne)">
           <Parameter Name="StudentId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="tsp_Report_TipoviStudenta" ReturnType="Collection(TutorModel.Report_TipoviStudenta_Result)">
+            <Parameter Name="DatumOd" Mode="In" Type="DateTime" />
+            <Parameter Name="DatumDo" Mode="In" Type="DateTime" />
+            <Parameter Name="GradId" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="Administrator_NameSelect">
@@ -2608,6 +2616,10 @@
           <Property Type="Int32" Name="Ocjena" Nullable="true" />
           <Property Type="Boolean" Name="Prihvaceno" Nullable="false" />
           <Property Type="Boolean" Name="Odbijeno" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="Report_TipoviStudenta_Result">
+          <Property Type="String" Name="TipTutora" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="BrojTutora" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -3479,6 +3491,14 @@
                 <ScalarProperty Name="Ocjena" ColumnName="Ocjena" />
                 <ScalarProperty Name="Prihvaceno" ColumnName="Prihvaceno" />
                 <ScalarProperty Name="Odbijeno" ColumnName="Odbijeno" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="tsp_Report_TipoviStudenta" FunctionName="TutorModel.Store.tsp_Report_TipoviStudenta">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TutorModel.Report_TipoviStudenta_Result">
+                <ScalarProperty Name="TipTutora" ColumnName="TipTutora" />
+                <ScalarProperty Name="BrojTutora" ColumnName="BrojTutora" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

@@ -19,18 +19,17 @@ namespace Tutor_App
         private WebApiHelper tutorService = new WebApiHelper("Tutor");
         private List<AktuelniZahtjev> lstZahtjeva { get; set; }
         private List<AktuelniZahtjev> lstPrihvacenih { get; set; }
-        private List<AktuelniZahtjev> lstOdbijenih { get; set; }
-
+      
         public StudentCasovi ()
 		{
 			InitializeComponent ();
             lstZahtjeva = new List<AktuelniZahtjev>();
             lstPrihvacenih = new List<AktuelniZahtjev>();
-            lstOdbijenih = new List<AktuelniZahtjev>();
+           
 
             LoadForm();
             LoadPrihvacene();
-            LoadOdbijene();
+            
 
         }
 
@@ -58,18 +57,7 @@ namespace Tutor_App
                 broj = lstPrihvacenih.Count;
             tutorLista.HeightRequest = tutorLista.RowHeight *(broj+1);
         }
-        private void LoadOdbijene()
-        {
-            lstOdbijenih = lstZahtjeva.Where(x => x.Odbijeno==true && x.DatumOd>DateTime.Today).ToList();
-           
-
-            tutorListaOdb.ItemsSource = lstOdbijenih;
-            int broj = 0;
-            if (lstOdbijenih != null)
-                broj = lstOdbijenih.Count;
-            tutorListaOdb.HeightRequest = tutorListaOdb.RowHeight * (broj + 1);
-
-        }
+       
 
         private void TutorListaOdb_ItemTapped(object sender, ItemTappedEventArgs e)
         {

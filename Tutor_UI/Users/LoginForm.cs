@@ -43,9 +43,9 @@ namespace Tutor_UI.Users
                 if (provjeriAdministrator.IsSuccessStatusCode)
                 {
 
-                    Global.prijavljeniAdministrator = provjeriAdministrator.Content.ReadAsAsync<Administrator>().Result;
+                    Global.prijavljeniAdministrator = provjeriAdministrator.Content.ReadAsAsync<Tutor_API.Models.Administrator>().Result;
                     Users.MainForm mainForm = new MainForm();
-                    mainForm.Show();
+                    mainForm.ShowDialog();
 
 
                 }

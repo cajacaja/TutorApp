@@ -4,6 +4,9 @@
              x:Class="Tutor_App.App">
     
     <Application.Resources>
+        <ResourceDictionary>
+            <x:String x:Key="APIAddress">http://192.168.0.103/api/</x:String>
+        </ResourceDictionary>
         <Style TargetType="NavigationPage">
             <Setter Property="BarBackgroundColor" Value="#4a919e"/>
             <Setter Property="BarTextColor" Value="White"/>

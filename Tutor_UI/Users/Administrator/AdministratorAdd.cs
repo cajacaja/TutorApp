@@ -23,7 +23,7 @@ namespace Tutor_UI.Users
         {
             if (this.ValidateChildren())
             {
-                Administrator admin = new Administrator();
+                Tutor_API.Models.Administrator admin = new Tutor_API.Models.Administrator();
 
                 admin.Ime = ImeInput.Text;
                 admin.Prezime = PrezimeInput.Text;

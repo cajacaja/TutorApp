@@ -26,7 +26,7 @@ namespace Tutor_App
 			InitializeComponent ();
             prihvacene = new List<Prijava>();
             odbijene = new List<Prijava>();
-            neOdgovorene = new List<Prijava>();
+            
         }
 
         protected override void OnAppearing()
@@ -38,11 +38,9 @@ namespace Tutor_App
                 var jasonObject = response.Content.ReadAsStringAsync();
                 List<Prijava> prijave = JsonConvert.DeserializeObject<List<Prijava>>(jasonObject.Result);
 
-                prihvacene = prijave.Where(x => x.Prihvaceno.Equals(true)).ToList();
-                odbijene = prijave.Where(x => x.Odbijeno.Equals(true)).ToList();
+                prihvacene = prijave.Where(x => x.Prihvaceno.Equals(true)).ToList();                
                 neOdgovorene = prijave.Where(x => x.Prihvaceno.Equals(false) && x.Odbijeno.Equals(false)).ToList();
-                PrihvacenUcionica();
-                OdbijenUcionica();
+                PrihvacenUcionica();               
                 NeOdgovoreneUcionice();
             }
             base.OnAppearing();
@@ -67,26 +65,7 @@ namespace Tutor_App
             neodgovoreneInput.Text = neOdovorenePrijave.Count.ToString();
         }
 
-        private void OdbijenUcionica()
-        {
-            List<Ucionica> ucionicaOdbijen = new List<Ucionica>();
-            foreach (var prijava in odbijene)
-            {
-                HttpResponseMessage response = ucionicaService.GetResponse(prijava.UcionicaId.ToString());
-                if (response.IsSuccessStatusCode)
-                {
-                    var jasonObject = response.Content.ReadAsStringAsync();
-                    var ucionica = JsonConvert.DeserializeObject<Ucionica>(jasonObject.Result);
-                    if (ucionica.Aktivna && ucionica.DatumPocetka > DateTime.Today)
-                        ucionicaOdbijen.Add(ucionica);
-
-                }
-            }
-
-            //dodavanjeUListu
-            odbijeniList.ItemsSource = ucionicaOdbijen;
-            odbijeniList.HeightRequest = odbijeniList.RowHeight * (ucionicaOdbijen.Count + 1);
-        }
+       
 
         private void PrihvacenUcionica()
         {

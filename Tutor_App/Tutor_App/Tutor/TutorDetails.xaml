@@ -187,8 +187,8 @@
                 </ListView.ItemTemplate>
                 <ListView.Footer>
                     <Grid Padding="6">
-                        <Button x:Name="loadBtn" Text="Load" Command="{Binding LoadComand}" IsVisible="{Binding nextPage}"></Button>
-                    </Grid>
+                            <Button x:Name="loadBtn" Text="Load more"  BackgroundColor="Transparent" TextColor="WhiteSmoke" FontSize="18" HorizontalOptions="Center" Command="{Binding LoadComand}" IsVisible="{Binding nextPage}"></Button>
+                        </Grid>
                 </ListView.Footer>
             </ListView>
           

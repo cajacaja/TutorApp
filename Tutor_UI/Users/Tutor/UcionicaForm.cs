@@ -39,6 +39,9 @@ namespace Tutor_UI.Users.Tutor
         public UcionicaForm()
         {
             InitializeComponent();
+            BackBtn.Visible = false;
+            ForwardBtn.Visible = false;
+            pageLable.Visible = false;
             BindAktivneUcionie();
             BindNeAktivneUcionice();
         }

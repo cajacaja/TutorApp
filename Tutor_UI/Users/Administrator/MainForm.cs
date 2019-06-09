@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Tutor_UI.Users.Administrator;
 
 namespace Tutor_UI.Users
 {
@@ -96,6 +97,13 @@ namespace Tutor_UI.Users
             }
           
             this.Close();
+        }
+
+        private void tipoviTutoraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TipoviTutoraReport report = new TipoviTutoraReport();
+            report.ShowDialog();
+            report.MdiParent = this;
         }
     }
 }

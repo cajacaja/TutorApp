@@ -458,7 +458,7 @@ namespace Tutor_API.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Tutor_UpdateSelect_Result>("tsp_Tutor_UpdateSelect", tutorIdParameter);
         }
     
-        public virtual int tsp_Tutor_Update(Nullable<int> tutuorId, Nullable<int> gradId, Nullable<int> radnoStanjeId, Nullable<int> tutorTitulaId, Nullable<int> podKategorijaId, string nazivUstanove, Nullable<double> cijenaCasA, byte[] tutorTumbnail, byte[] tutorSlika, string lozinkaSalt, string lozinkaHash, string email, string telefon, string adresa)
+        public virtual int tsp_Tutor_Update(Nullable<int> tutuorId, Nullable<int> gradId, Nullable<int> radnoStanjeId, Nullable<int> tutorTitulaId, string nazivUstanove, Nullable<double> cijenaCasA, byte[] tutorTumbnail, byte[] tutorSlika, string lozinkaSalt, string lozinkaHash, string email, string telefon, string adresa)
         {
             var tutuorIdParameter = tutuorId.HasValue ?
                 new ObjectParameter("TutuorId", tutuorId) :
@@ -475,10 +475,6 @@ namespace Tutor_API.Models
             var tutorTitulaIdParameter = tutorTitulaId.HasValue ?
                 new ObjectParameter("TutorTitulaId", tutorTitulaId) :
                 new ObjectParameter("TutorTitulaId", typeof(int));
-    
-            var podKategorijaIdParameter = podKategorijaId.HasValue ?
-                new ObjectParameter("PodKategorijaId", podKategorijaId) :
-                new ObjectParameter("PodKategorijaId", typeof(int));
     
             var nazivUstanoveParameter = nazivUstanove != null ?
                 new ObjectParameter("NazivUstanove", nazivUstanove) :
@@ -516,7 +512,7 @@ namespace Tutor_API.Models
                 new ObjectParameter("Adresa", adresa) :
                 new ObjectParameter("Adresa", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("tsp_Tutor_Update", tutuorIdParameter, gradIdParameter, radnoStanjeIdParameter, tutorTitulaIdParameter, podKategorijaIdParameter, nazivUstanoveParameter, cijenaCasAParameter, tutorTumbnailParameter, tutorSlikaParameter, lozinkaSaltParameter, lozinkaHashParameter, emailParameter, telefonParameter, adresaParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("tsp_Tutor_Update", tutuorIdParameter, gradIdParameter, radnoStanjeIdParameter, tutorTitulaIdParameter, nazivUstanoveParameter, cijenaCasAParameter, tutorTumbnailParameter, tutorSlikaParameter, lozinkaSaltParameter, lozinkaHashParameter, emailParameter, telefonParameter, adresaParameter);
         }
     
         public virtual ObjectResult<Zahtjev_SelectUnread_Result> tsp_Zahtjev_SelectUnread(Nullable<int> tutorId)
@@ -708,6 +704,23 @@ namespace Tutor_API.Models
                 new ObjectParameter("StudentId", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Zahtjevi_SelectAktuelne>("tsp_Zahtjevi_SelectAktulne", studentIdParameter);
+        }
+    
+        public virtual ObjectResult<Report_TipoviStudenta_Result> tsp_Report_TipoviStudenta(Nullable<System.DateTime> datumOd, Nullable<System.DateTime> datumDo, Nullable<int> gradId)
+        {
+            var datumOdParameter = datumOd.HasValue ?
+                new ObjectParameter("DatumOd", datumOd) :
+                new ObjectParameter("DatumOd", typeof(System.DateTime));
+    
+            var datumDoParameter = datumDo.HasValue ?
+                new ObjectParameter("DatumDo", datumDo) :
+                new ObjectParameter("DatumDo", typeof(System.DateTime));
+    
+            var gradIdParameter = gradId.HasValue ?
+                new ObjectParameter("GradId", gradId) :
+                new ObjectParameter("GradId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Report_TipoviStudenta_Result>("tsp_Report_TipoviStudenta", datumOdParameter, datumDoParameter, gradIdParameter);
         }
     }
 }

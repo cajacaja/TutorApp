@@ -6,10 +6,10 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>1in</Width>
+              <Width>2.12194in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2in</Width>
+              <Width>1.81986in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -18,21 +18,21 @@
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox2">
+                    <Textbox Name="Textbox1">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Broj Zahtjeva</Value>
+                              <Value>Tip tutora</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox2</rd:DefaultName>
+                      <rd:DefaultName>Textbox1</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -48,21 +48,21 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox5">
+                    <Textbox Name="Textbox3">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Predmet</Value>
+                              <Value>Broj tutora</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox5</rd:DefaultName>
+                      <rd:DefaultName>Textbox3</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -83,21 +83,21 @@
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="BrojZahtjeva">
+                    <Textbox Name="TipTutora">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!BrojZahtjeva.Value</Value>
+                              <Value>=Fields!TipTutora.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>BrojZahtjeva</rd:DefaultName>
+                      <rd:DefaultName>TipTutora</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -113,21 +113,21 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Predmet">
+                    <Textbox Name="BrojTutora">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!Predmet.Value</Value>
+                              <Value>=Fields!BrojTutora.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Predmet</rd:DefaultName>
+                      <rd:DefaultName>BrojTutora</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -161,10 +161,10 @@
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
-        <DataSetName>PredmetDataSet</DataSetName>
-        <Left>0.03125in</Left>
+        <DataSetName>tipoviStudenta</DataSetName>
+        <Top>0.13417in</Top>
         <Height>0.5in</Height>
-        <Width>3in</Width>
+        <Width>3.94181in</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -175,7 +175,7 @@
     <Height>2in</Height>
     <Style />
   </Body>
-  <Width>3.05209in</Width>
+  <Width>4in</Width>
   <Page>
     <PageHeader>
       <Height>1in</Height>
@@ -189,23 +189,20 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>Najpopularniji predmeti</Value>
+                  <Value>Vrste tutora na aplikaciji</Value>
                   <Style>
-                    <FontSize>16pt</FontSize>
-                    <FontWeight>Bold</FontWeight>
+                    <FontSize>20pt</FontSize>
                   </Style>
                 </TextRun>
               </TextRuns>
-              <Style>
-                <TextAlign>Center</TextAlign>
-              </Style>
+              <Style />
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox7</rd:DefaultName>
-          <Top>0.51958in</Top>
-          <Left>0.3425in</Left>
-          <Height>0.3125in</Height>
-          <Width>2.46875in</Width>
+          <Top>0.405in</Top>
+          <Left>0.44667in</Left>
+          <Height>0.375in</Height>
+          <Width>3.17708in</Width>
           <Style>
             <Border>
               <Style>None</Style>
@@ -236,39 +233,32 @@
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>6529cd23-d2c5-4517-94f5-61da4d6b6ad4</rd:DataSourceID>
-    </DataSource>
-    <DataSource Name="Tutor_APIModels1">
-      <ConnectionProperties>
-        <DataProvider>System.Data.DataSet</DataProvider>
-        <ConnectString>/* Local Connection */</ConnectString>
-      </ConnectionProperties>
-      <rd:DataSourceID>199fd98f-17e4-4bbe-91ef-dd10849abf1c</rd:DataSourceID>
+      <rd:DataSourceID>36b75d37-3c44-4c9d-a964-df09af2eaaf2</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
-    <DataSet Name="PredmetDataSet">
+    <DataSet Name="tipoviStudenta">
       <Query>
-        <DataSourceName>Tutor_APIModels1</DataSourceName>
+        <DataSourceName>Tutor_APIModels</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
-        <Field Name="BrojZahtjeva">
-          <DataField>BrojZahtjeva</DataField>
+        <Field Name="BrojTutora">
+          <DataField>BrojTutora</DataField>
           <rd:TypeName>System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
         </Field>
-        <Field Name="Predmet">
-          <DataField>Predmet</DataField>
+        <Field Name="TipTutora">
+          <DataField>TipTutora</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>Tutor_API.Models</rd:DataSetName>
-        <rd:TableName>Predmet_Report_Result</rd:TableName>
-        <rd:ObjectDataSourceType>Tutor_API.Models.Predmet_Report_Result, Tutor_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+        <rd:TableName>Report_TipoviStudenta_Result</rd:TableName>
+        <rd:ObjectDataSourceType>Tutor_API.Models.Report_TipoviStudenta_Result, Tutor_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
-  <rd:ReportID>ff71e70b-d56a-4eac-9b76-2fbb62d0c737</rd:ReportID>
+  <rd:ReportID>ffba80b6-b432-4aba-9a42-3d9ac363cd1c</rd:ReportID>
 </Report>

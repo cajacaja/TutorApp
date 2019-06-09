@@ -46,8 +46,6 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.label10 = new System.Windows.Forms.Label();
-            this.PredmetCmb = new System.Windows.Forms.ComboBox();
-            this.label11 = new System.Windows.Forms.Label();
             this.ObimListBox = new System.Windows.Forms.CheckedListBox();
             this.label12 = new System.Windows.Forms.Label();
             this.CijenaInput = new System.Windows.Forms.NumericUpDown();
@@ -208,28 +206,10 @@
             this.label10.TabIndex = 62;
             this.label10.Text = "Naziv fakulteta/posla";
             // 
-            // PredmetCmb
-            // 
-            this.PredmetCmb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.PredmetCmb.FormattingEnabled = true;
-            this.PredmetCmb.Location = new System.Drawing.Point(7, 35);
-            this.PredmetCmb.Name = "PredmetCmb";
-            this.PredmetCmb.Size = new System.Drawing.Size(144, 21);
-            this.PredmetCmb.TabIndex = 7;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(6, 19);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(46, 13);
-            this.label11.TabIndex = 64;
-            this.label11.Text = "Predmet";
-            // 
             // ObimListBox
             // 
             this.ObimListBox.FormattingEnabled = true;
-            this.ObimListBox.Location = new System.Drawing.Point(7, 75);
+            this.ObimListBox.Location = new System.Drawing.Point(12, 35);
             this.ObimListBox.Name = "ObimListBox";
             this.ObimListBox.Size = new System.Drawing.Size(143, 79);
             this.ObimListBox.TabIndex = 9;
@@ -238,7 +218,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(6, 59);
+            this.label12.Location = new System.Drawing.Point(11, 19);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(82, 13);
             this.label12.TabIndex = 66;
@@ -342,8 +322,6 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.label11);
-            this.groupBox3.Controls.Add(this.PredmetCmb);
             this.groupBox3.Controls.Add(this.label13);
             this.groupBox3.Controls.Add(this.CijenaInput);
             this.groupBox3.Controls.Add(this.label12);
@@ -415,8 +393,6 @@
         private System.Windows.Forms.NumericUpDown CijenaInput;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.CheckedListBox ObimListBox;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.ComboBox PredmetCmb;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;

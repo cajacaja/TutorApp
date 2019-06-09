@@ -43,7 +43,8 @@ namespace Tutor_App
             errorMessage.IsVisible = false;
             loginIndicator.IsVisible = true;
             loginIndicator.IsRunning = true;
-            HttpResponseMessage response = await Task.Run(() =>studentService.GetActionResponse("LoginCheck", parametar));
+            regstracijaBtn.IsEnabled = false;
+             HttpResponseMessage response = await Task.Run(() =>studentService.GetActionResponse("LoginCheck", parametar));
                 
                 
             
@@ -55,6 +56,7 @@ namespace Tutor_App
 
                 loginIndicator.IsVisible = false;
                 loginIndicator.IsRunning = false;
+                regstracijaBtn.IsEnabled = true;
                 if (student.StatusKorisnickoRacunaId == 3)
                 {
                    await DisplayAlert("Ban", "Vas racun je banovan.Za vise informacija kontaktirajte administraciju", "OK");
@@ -73,6 +75,7 @@ namespace Tutor_App
             {
                 loginIndicator.IsVisible = false;
                 loginIndicator.IsRunning = false;
+                regstracijaBtn.IsEnabled = true;
                 errorMessage.IsVisible = true;
             }
 

@@ -1,24 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Tutor_App.PrijaviTutoraPage"
-             BackgroundColor="#212e53"
+              xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+             x:Class="Tutor_App.PrijaviTutoraPage"            
              Title="Prijava tutora">
-    <ContentPage.Resources>
-        <ResourceDictionary>
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation 
+            PositionIn="Center"
+            PositionOut="Center"
+            ScaleIn="1.2"
+            ScaleOut="0.8"
+            DurationIn="400"
+            DurationOut="300"
+            EasingIn="SinOut"
+            EasingOut="SinIn"
+            HasBackgroundAnimation="True"/>
+    </pages:PopupPage.Animation>
 
-            <Style x:Key="buttonStyle" TargetType="Button">
-                <Setter Property="BackgroundColor" Value="#4a919e" />
-                <Setter Property="TextColor" Value="WhiteSmoke"/>
-                <Setter Property="FontAttributes" Value="Bold"/>
-                <Setter Property="BorderColor" Value="#212e53"/>
-                <Setter Property="CornerRadius" Value="5"/>
-            </Style>
-
-        </ResourceDictionary>
-    </ContentPage.Resources>
-    <ContentPage.Content>
-        <StackLayout VerticalOptions="Center" Padding="15">
+    <StackLayout VerticalOptions="Center" Margin="12" Padding="24" Spacing="24"  BackgroundColor="#4a919e">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition/>
@@ -51,10 +51,13 @@
                         x:Name="prijaviBtn"
                         Clicked="PrijaviBtn_Clicked"
                         Text="Prijavi tutora"
-                        Style="{StaticResource buttonStyle}">
+                         BackgroundColor="#212e53"
+                        TextColor="WhiteSmoke"
+                        FontAttributes="Bold"
+                        CornerRadius="5">
                     
                 </Button>
             </Grid>
         </StackLayout>
-    </ContentPage.Content>
-</ContentPage>
+  
+</pages:PopupPage>

@@ -77,62 +77,7 @@
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
-            </ListView>
-            <Label Text="Odbijene ucionice:"
-                   FontAttributes="Bold"
-                   TextColor="WhiteSmoke">
-
-            </Label>
-            <ListView CachingStrategy="RecycleElement" x:Name="odbijeniList" ItemTapped="OdbijeniList_ItemTapped" RowHeight="250">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <Grid Margin="0,0,0,10" BackgroundColor="#4a919e">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                </Grid.RowDefinitions>
-
-
-
-                                <Image Source="{Binding Slika,Converter={StaticResource imgConv}}" Grid.Row="0" WidthRequest="180" HeightRequest="100"  Aspect="AspectFill"></Image>
-
-
-                                <StackLayout Grid.Row="1" Padding="5"  >
-                                    <Grid>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                        </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="Auto"/>
-                                        </Grid.ColumnDefinitions>
-
-
-                                        <Label Text="Cijena:" Grid.Row="1"   Grid.Column="0"  FontAttributes="Bold" FontSize="13"  TextColor="WhiteSmoke"></Label>
-                                        <Label Text= "MaxBrojPolaznika:" Grid.Row="2"  Grid.Column="0"  FontAttributes="Bold" FontSize="13"  TextColor="WhiteSmoke"></Label>
-                                        <Label Text="Datum pocetka:" Grid.Row="3"  Grid.Column="0"  FontAttributes="Bold" FontSize="13"  TextColor="WhiteSmoke"></Label>
-                                        <Label Text="Datum zavrsetka:" Grid.Row="4"  Grid.Column="0"  FontAttributes="Bold" FontSize="13"  TextColor="WhiteSmoke"></Label>
-
-
-
-                                        <Label Text="{Binding Naslov}" Grid.Row="0" Grid.Column="0" HorizontalOptions="Start" FontAttributes="Bold" FontSize="13"  TextColor="WhiteSmoke"></Label>
-                                        <Label Text="{Binding Cijena}" Grid.Row="1"  Grid.Column="1" FontSize="13"  TextColor="WhiteSmoke" ></Label>
-                                        <Label Text= "{Binding MaxBrojPolaznika}" Grid.Row="2" Grid.Column="1" FontSize="13" TextColor="WhiteSmoke"></Label>
-                                        <Label Text="{Binding DatumPocetka,StringFormat='{0:MM/dd/yyyy}'}" Grid.Row="3"  Grid.Column="1" FontSize="13"  TextColor="WhiteSmoke"></Label>
-                                        <Label Text="{Binding DatumZavrsetka,StringFormat='{0:MM/dd/yyyy}'}" Grid.Row="4"  Grid.Column="1" FontSize="13" TextColor="WhiteSmoke" ></Label>
-
-                                    </Grid>
-                                </StackLayout>
-                            </Grid>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+            </ListView>            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

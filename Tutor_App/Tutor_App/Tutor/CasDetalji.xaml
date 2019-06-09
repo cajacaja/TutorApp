@@ -3,6 +3,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
               xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
              x:Class="Tutor_App.CasDetalji" BackgroundColor="#212e53">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <Style x:Key="buttonStyle" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#4a919e" />
+                <Setter Property="TextColor" Value="WhiteSmoke"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="BorderColor" Value="#212e53"/>
+                <Setter Property="CornerRadius" Value="5"/>
+            </Style>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <ScrollView>
         <StackLayout Padding="15">
@@ -14,8 +27,9 @@
                 </Grid.RowDefinitions>
 
 
-                <StackLayout Padding="5" Grid.Row="0">
-                        <controls:CircleImage x:Name="tutorSlika"  WidthRequest="100" HeightRequest="100" BorderColor="#4a919e" BorderThickness="2" Aspect="AspectFit"></controls:CircleImage>
+                <StackLayout Padding="5" Grid.Row="0" Orientation="Vertical">
+                        <controls:CircleImage x:Name="tutorSlika"  WidthRequest="100" HeightRequest="100" BorderColor="#4a919e" BorderThickness="2" Aspect="AspectFill"></controls:CircleImage>
+                        <Button x:Name="tutorBtn" Text="Tutor" Style="{StaticResource buttonStyle}" HorizontalOptions="CenterAndExpand" Clicked="TutorBtn_Clicked"></Button>
                 </StackLayout>
 
                 <StackLayout Grid.Row="1" Padding="10" >

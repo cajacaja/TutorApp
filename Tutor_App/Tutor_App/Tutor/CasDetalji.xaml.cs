@@ -67,5 +67,10 @@ namespace Tutor_App
                 terminiList.HeightRequest = terminiList.RowHeight * (termini.Count + 1);
             }
         }
+
+        private void TutorBtn_Clicked(object sender, EventArgs e)
+        {
+            this.Navigation.PushAsync(new TutorDetails(idTutora));
+        }
     }
 }

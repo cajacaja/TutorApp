@@ -24,7 +24,7 @@ namespace Tutor_UI.Users.Tutor
 
         private WebAPIHelper gradService = new WebAPIHelper("Grad");
         private WebAPIHelper radnostanjeService = new WebAPIHelper("RadnoStanje");
-        private WebAPIHelper predmetService = new WebAPIHelper("Podkategorija");
+        
         private WebAPIHelper titulaService = new WebAPIHelper("TutorTitula");
 
         private Tutor_UpdateSelect_Result tutorUpdate;
@@ -65,24 +65,12 @@ namespace Tutor_UI.Users.Tutor
                 BindGrad(tutorUpdate.GradId);
                 BindZaposelonst(tutorUpdate.RadnoStanjeId);
                 BindTitula(tutorUpdate.TutorTitulaId);
-                BindPredmet(tutorUpdate.PodKategorijaId);
+               
                 BindObim(tutorId);
             }
         }
 
-        private void BindPredmet(int podKategorijaId)
-        {
-            HttpResponseMessage response = predmetService.GetResponse();
-            if (response.IsSuccessStatusCode)
-            {
-                //Promjeni ime u PredmetCmb
-                PredmetCmb.DataSource = response.Content.ReadAsAsync<List<Podkategorija>>().Result;
-                PredmetCmb.DisplayMember = "Naziv";
-                PredmetCmb.ValueMember = "PodkategorijaId";
-
-                PredmetCmb.SelectedValue = podKategorijaId;
-            }
-        }
+        
 
         private void BindTitula(int tutorTitulaId)
         {
@@ -167,8 +155,7 @@ namespace Tutor_UI.Users.Tutor
 
                 tutor.GradId = (int)GradCmb.SelectedValue;
                 tutor.RadnoStanjeId = (int)ZaposlenostiCmb.SelectedValue;
-                tutor.TutorTitulaId = (int)TitulaCmb.SelectedValue;
-                tutor.PodKategorijaId = (int)PredmetCmb.SelectedValue;
+                tutor.TutorTitulaId = (int)TitulaCmb.SelectedValue;               
                 tutor.Email = EmailInput.Text;
                 tutor.Telefon = TelefonInput.Text;
                 tutor.Adresa = AdresaInput.Text;

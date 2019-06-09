@@ -41,6 +41,7 @@
             this.najpopularnijiPredmetiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.najpopularnijiTutoriToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tipoviTutoraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -123,7 +124,8 @@
             // 
             this.reportiToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.najpopularnijiPredmetiToolStripMenuItem,
-            this.najpopularnijiTutoriToolStripMenuItem});
+            this.najpopularnijiTutoriToolStripMenuItem,
+            this.tipoviTutoraToolStripMenuItem});
             this.reportiToolStripMenuItem.Name = "reportiToolStripMenuItem";
             this.reportiToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
             this.reportiToolStripMenuItem.Text = "Reporti";
@@ -149,6 +151,13 @@
             this.logoutToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
             this.logoutToolStripMenuItem.Text = "Logout";
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
+            // 
+            // tipoviTutoraToolStripMenuItem
+            // 
+            this.tipoviTutoraToolStripMenuItem.Name = "tipoviTutoraToolStripMenuItem";
+            this.tipoviTutoraToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.tipoviTutoraToolStripMenuItem.Text = "Tipovi tutora";
+            this.tipoviTutoraToolStripMenuItem.Click += new System.EventHandler(this.tipoviTutoraToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -182,5 +191,6 @@
         private System.Windows.Forms.ToolStripMenuItem najpopularnijiPredmetiToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem najpopularnijiTutoriToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tipoviTutoraToolStripMenuItem;
     }
 }

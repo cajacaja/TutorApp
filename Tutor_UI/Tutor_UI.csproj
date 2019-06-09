@@ -161,6 +161,12 @@
     <Compile Include="Users\Administrator\StudentPrijaveDetailsForm.Designer.cs">
       <DependentUpon>StudentPrijaveDetailsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Users\Administrator\TipoviTutoraReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\Administrator\TipoviTutoraReport.Designer.cs">
+      <DependentUpon>TipoviTutoraReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Users\Administrator\TutorDetalj.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -334,6 +340,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Report\BestTutorReport.rdlc" />
+    <EmbeddedResource Include="Report\TipoviTutora.rdlc" />
     <EmbeddedResource Include="Users\Administrator\AddTutor.resx">
       <DependentUpon>AddTutor.cs</DependentUpon>
     </EmbeddedResource>
@@ -373,6 +380,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Users\Administrator\StudentPrijaveDetailsForm.resx">
       <DependentUpon>StudentPrijaveDetailsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\Administrator\TipoviTutoraReport.resx">
+      <DependentUpon>TipoviTutoraReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Users\Administrator\TutorDetalj.resx">
       <DependentUpon>TutorDetalj.cs</DependentUpon>
@@ -454,6 +464,7 @@
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\Tutor_API.Models.Predmet_Report_Result.datasource" />
+    <None Include="Properties\DataSources\Tutor_API.Models.Report_TipoviStudenta_Result.datasource" />
     <None Include="Properties\DataSources\Tutor_API.Models.Tutor_SelectBest_Result.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

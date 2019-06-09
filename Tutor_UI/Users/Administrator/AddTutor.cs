@@ -45,30 +45,33 @@ namespace Tutor_UI.Users
 
 
 
-        private async Task BindGrad()
+        private  void BindGrad()
         {
-            HttpResponseMessage response = await Task.Run(() => gradService.GetResponse());
+            HttpResponseMessage response =gradService.GetResponse();
             if (response.IsSuccessStatusCode)
             {
-                var nesto = response.Content.ReadAsAsync<List<Grad>>().Result;
-                GradCmb.DataSource = nesto.ToList();
+                var gradovi = response.Content.ReadAsAsync<List<Grad>>().Result;
+                gradovi.Insert(0, new Grad() {Naziv="Odaberite grad"});
+                GradCmb.DataSource = gradovi.ToList();
                 GradCmb.DisplayMember = "Naziv";
                 GradCmb.ValueMember = "GradId";
             }
         }
 
-        private async Task BindSpol()
+        private void BindSpol()
         {
-            HttpResponseMessage response = await Task.Run(() => spolService.GetResponse());
+            HttpResponseMessage response = spolService.GetResponse();
             if (response.IsSuccessStatusCode)
             {
-                SpolCmb.DataSource = response.Content.ReadAsAsync<List<Spol>>().Result;
+                var lstSpol = response.Content.ReadAsAsync<List<Spol>>().Result;
+                lstSpol.Insert(0,new Spol() { Naziv="Odaberite spol"});
+                SpolCmb.DataSource = lstSpol;
                 SpolCmb.DisplayMember = "Naziv";
                 SpolCmb.ValueMember = "SpolId";
             }
         }
 
-        private async void AddTutor_Load(object sender, EventArgs e)
+        private  void AddTutor_Load(object sender, EventArgs e)
         {
             BindSpol();
             BindZaposlenost();
@@ -76,13 +79,13 @@ namespace Tutor_UI.Users
             BindObim();
             BindTitula();
 
-            await BindGrad();
+             BindGrad();
 
         }
         #region Form setup
-        private async Task BindObim()
+        private void BindObim()
         {
-            HttpResponseMessage response = await Task.Run(() => tipStudentaService.GetResponse());
+            HttpResponseMessage response =tipStudentaService.GetResponse();
             if (response.IsSuccessStatusCode)
             {
 
@@ -92,37 +95,41 @@ namespace Tutor_UI.Users
             }
         }
 
-        private async Task BindPredmet()
+        private void BindPredmet()
         {
-            HttpResponseMessage response = await Task.Run(() => predmetService.GetResponse());
+            HttpResponseMessage response =predmetService.GetResponse();
             if (response.IsSuccessStatusCode)
             {
-                //Promjeni ime u PredmetCmb
-                PredmetCmb.DataSource = response.Content.ReadAsAsync<List<Podkategorija>>().Result;
+               
+                var lstPredmeta = response.Content.ReadAsAsync<List<Podkategorija>>().Result;
+                lstPredmeta.Insert(0, new Podkategorija() { Naziv = "Odaberite predmet" });
+                PredmetCmb.DataSource = lstPredmeta;
                 PredmetCmb.DisplayMember = "Naziv";
                 PredmetCmb.ValueMember = "PodkategorijaId";
             }
         }
 
-        private async Task BindTitula()
+        private void BindTitula()
         {
-            HttpResponseMessage response = await Task.Run(() => titulaService.GetResponse());
+            HttpResponseMessage response = titulaService.GetResponse();
             if (response.IsSuccessStatusCode)
             {
-                //Promjeni ime u PredmetCmb
-                TitulaCmb.DataSource = response.Content.ReadAsAsync<List<TutorTitula>>().Result;
+                var lstTitula= response.Content.ReadAsAsync<List<TutorTitula>>().Result;
+                lstTitula.Insert(0,new TutorTitula() { Naziv="Odaberite titulu"});
+                TitulaCmb.DataSource = lstTitula;
                 TitulaCmb.DisplayMember = "Naziv";
                 TitulaCmb.ValueMember = "TutorTitulaId";
             }
         }
 
-        private async Task BindZaposlenost()
+        private void BindZaposlenost()
         {
-            HttpResponseMessage response = await Task.Run(() => radnostanjeService.GetResponse());
+            HttpResponseMessage response =radnostanjeService.GetResponse();
             if (response.IsSuccessStatusCode)
             {
-                //Promjeni ime u PredmetCmb
-                ZaposlenostiCmb.DataSource = response.Content.ReadAsAsync<List<RadnoStanje>>().Result;
+                var lstZaposlenosti= response.Content.ReadAsAsync<List<RadnoStanje>>().Result;
+                lstZaposlenosti.Insert(0, new RadnoStanje() { Naziv = "Odaberite radno stanje" });
+                ZaposlenostiCmb.DataSource = lstZaposlenosti;
                 ZaposlenostiCmb.DisplayMember = "Naziv";
                 ZaposlenostiCmb.ValueMember = "RadnoStanjeId";
             }
@@ -369,6 +376,76 @@ namespace Tutor_UI.Users
                 errorProvider.SetError(DatumRodjenjaDP, "Tutor mora biti 18 ili preko.");
             }
             else errorProvider.SetError(DatumRodjenjaDP, "");
+        }
+
+        private void SpolCmb_Validating(object sender, CancelEventArgs e)
+        {
+            if (SpolCmb.SelectedIndex == 0)
+            {
+                e.Cancel = true;
+                errorProvider.SetError(SpolCmb, "Izaberite spol tutora");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider.SetError(SpolCmb, "");
+            }
+        }
+
+        private void GradCmb_Validating(object sender, CancelEventArgs e)
+        {
+            if (GradCmb.SelectedIndex == 0)
+            {
+                e.Cancel = true;
+                errorProvider.SetError(GradCmb, "Izaberite grad tutora");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider.SetError(GradCmb, "");
+            }
+        }
+
+        private void ZaposlenostiCmb_Validating(object sender, CancelEventArgs e)
+        {
+            if (ZaposlenostiCmb.SelectedIndex == 0)
+            {
+                e.Cancel = true;
+                errorProvider.SetError(ZaposlenostiCmb, "Odredite stanje zaposlenosti");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider.SetError(ZaposlenostiCmb, "");
+            }
+        }
+
+        private void TitulaCmb_Validating(object sender, CancelEventArgs e)
+        {
+            if (TitulaCmb.SelectedIndex == 0)
+            {
+                e.Cancel = true;
+                errorProvider.SetError(TitulaCmb, "Odredite titulu tutora.");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider.SetError(TitulaCmb, "");
+            }
+        }
+
+        private void PredmetCmb_Validating(object sender, CancelEventArgs e)
+        {
+            if (PredmetCmb.SelectedIndex == 0)
+            {
+                e.Cancel = true;
+                errorProvider.SetError(PredmetCmb, "Odaberite predmet tutora");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider.SetError(PredmetCmb, "");
+            }
         }
     }
 }

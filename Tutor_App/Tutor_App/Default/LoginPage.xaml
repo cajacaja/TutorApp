@@ -35,14 +35,14 @@
                 <Image Source="studenticon.png"  WidthRequest="125" HeightRequest="125" Grid.Row="0"></Image>
                 <Label x:Name="errorMessage" Margin="0" Grid.Row="1" HorizontalOptions="Center"  Text="Pogresno korisnicko ime ili password" TextColor="Red" FontAttributes="Italic" FontSize="14" ></Label>
                 <ActivityIndicator x:Name="loginIndicator" Grid.Row="1" HorizontalOptions="Center"  Color="WhiteSmoke"></ActivityIndicator>
-                <Entry x:Name="KorisnickoImeInput" Grid.Row="2" Placeholder="Korisnicko ime"/>
-                <Entry x:Name="PasswordInput" Grid.Row="3" Placeholder="Password"  IsPassword="True" />
+                <Entry x:Name="KorisnickoImeInput" Grid.Row="2" TextColor="WhiteSmoke" BackgroundColor="#212e53" Placeholder="Korisnicko ime"/>
+                <Entry x:Name="PasswordInput" Grid.Row="3" Placeholder="Password"  TextColor="WhiteSmoke" BackgroundColor="#212e53"   IsPassword="True" />
                 <Button Text="LogIn"  Style="{StaticResource buttonStyle}" TextColor="White"  Clicked="LogIn_Clicked" Grid.Row="4"/>
             </Grid>
 
             <StackLayout>
                 
-                <Button  Text="Registracija" BackgroundColor="Transparent" TextColor="WhiteSmoke"  HorizontalOptions="Center" Clicked="Registracija_Clicked"></Button>
+                <Button  Text="Registracija" x:Name="regstracijaBtn" BackgroundColor="Transparent" TextColor="WhiteSmoke"  HorizontalOptions="Center" Clicked="Registracija_Clicked"></Button>
             </StackLayout>
             
         </StackLayout>
