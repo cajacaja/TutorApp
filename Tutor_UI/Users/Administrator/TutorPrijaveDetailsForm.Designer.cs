@@ -31,8 +31,8 @@
             this.StudentInput = new System.Windows.Forms.TextBox();
             this.TutorInput = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.tutorBtn = new System.Windows.Forms.Button();
+            this.studentBtn = new System.Windows.Forms.Button();
             this.RazlogRichTxtBox = new System.Windows.Forms.RichTextBox();
             this.DatumPrijaveInput = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
@@ -44,10 +44,10 @@
             this.StudentInput.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.StudentInput.Location = new System.Drawing.Point(12, 45);
             this.StudentInput.Name = "StudentInput";
+            this.StudentInput.ReadOnly = true;
             this.StudentInput.Size = new System.Drawing.Size(151, 18);
             this.StudentInput.TabIndex = 0;
             this.StudentInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.StudentInput.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // TutorInput
             // 
@@ -56,6 +56,7 @@
             this.TutorInput.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.TutorInput.Location = new System.Drawing.Point(12, 102);
             this.TutorInput.Name = "TutorInput";
+            this.TutorInput.ReadOnly = true;
             this.TutorInput.Size = new System.Drawing.Size(151, 18);
             this.TutorInput.TabIndex = 1;
             this.TutorInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -70,30 +71,31 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Prijavio";
             // 
-            // button1
+            // tutorBtn
             // 
-            this.button1.Location = new System.Drawing.Point(327, 140);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(121, 31);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Profil tutora";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.tutorBtn.Location = new System.Drawing.Point(327, 140);
+            this.tutorBtn.Name = "tutorBtn";
+            this.tutorBtn.Size = new System.Drawing.Size(121, 31);
+            this.tutorBtn.TabIndex = 3;
+            this.tutorBtn.Text = "Profil tutora";
+            this.tutorBtn.UseVisualStyleBackColor = true;
+            this.tutorBtn.Click += new System.EventHandler(this.tutorBtn_Click);
             // 
-            // button2
+            // studentBtn
             // 
-            this.button2.Location = new System.Drawing.Point(182, 140);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(121, 31);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Profil studenta";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.studentBtn.Location = new System.Drawing.Point(182, 140);
+            this.studentBtn.Name = "studentBtn";
+            this.studentBtn.Size = new System.Drawing.Size(121, 31);
+            this.studentBtn.TabIndex = 4;
+            this.studentBtn.Text = "Profil studenta";
+            this.studentBtn.UseVisualStyleBackColor = true;
+            this.studentBtn.Click += new System.EventHandler(this.studentBtn_Click);
             // 
             // RazlogRichTxtBox
             // 
             this.RazlogRichTxtBox.Location = new System.Drawing.Point(182, 5);
             this.RazlogRichTxtBox.Name = "RazlogRichTxtBox";
+            this.RazlogRichTxtBox.ReadOnly = true;
             this.RazlogRichTxtBox.Size = new System.Drawing.Size(276, 115);
             this.RazlogRichTxtBox.TabIndex = 5;
             this.RazlogRichTxtBox.Text = "";
@@ -105,6 +107,7 @@
             this.DatumPrijaveInput.Font = new System.Drawing.Font("Modern No. 20", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DatumPrijaveInput.Location = new System.Drawing.Point(12, 12);
             this.DatumPrijaveInput.Name = "DatumPrijaveInput";
+            this.DatumPrijaveInput.ReadOnly = true;
             this.DatumPrijaveInput.Size = new System.Drawing.Size(151, 17);
             this.DatumPrijaveInput.TabIndex = 6;
             this.DatumPrijaveInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -116,8 +119,8 @@
             this.ClientSize = new System.Drawing.Size(460, 198);
             this.Controls.Add(this.DatumPrijaveInput);
             this.Controls.Add(this.RazlogRichTxtBox);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.studentBtn);
+            this.Controls.Add(this.tutorBtn);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.TutorInput);
             this.Controls.Add(this.StudentInput);
@@ -127,7 +130,6 @@
             this.Name = "TutorPrijaveDetailsForm";
             this.ShowIcon = false;
             this.Text = "Prijavljeni tutori od strane studenta";
-            this.Load += new System.EventHandler(this.TutorPrijaveDetailsForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -138,8 +140,8 @@
         private System.Windows.Forms.TextBox StudentInput;
         private System.Windows.Forms.TextBox TutorInput;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button tutorBtn;
+        private System.Windows.Forms.Button studentBtn;
         private System.Windows.Forms.RichTextBox RazlogRichTxtBox;
         private System.Windows.Forms.TextBox DatumPrijaveInput;
     }

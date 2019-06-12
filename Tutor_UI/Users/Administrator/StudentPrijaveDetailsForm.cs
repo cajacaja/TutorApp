@@ -42,23 +42,21 @@ namespace Tutor_UI.Users
             var response2 = banTutorService.PutResponse(id, prijavaUpdate);
         }
 
-        private void StudentPrijaveDetailsForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void tutorBtn_Click(object sender, EventArgs e)
         {
             Tutor_UI.Users.TutorDetalj tutor = new TutorDetalj(prijava.TutorId);
-            tutor.ShowDialog();
+             tutor.ShowDialog();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void studentBtn_Click(object sender, EventArgs e)
         {
             StudentDetalj student = new StudentDetalj(prijava.StudentId);
             student.ShowDialog();
         }
 
-       
+
+
+
+
     }
 }

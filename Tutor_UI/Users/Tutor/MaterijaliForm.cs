@@ -39,6 +39,7 @@ namespace Tutor_UI.Users.Tutor
         private void uploadBtn_Click(object sender, EventArgs e)
         {
             UploadForm fileUpload = new UploadForm(idUcionice);
+            fileUpload.FormClosed += new FormClosedEventHandler(Form_Closed);
             fileUpload.ShowDialog();
 
         }
@@ -60,9 +61,15 @@ namespace Tutor_UI.Users.Tutor
                                                materijal.Materijal1.Length);
                         file.Write(materijal.Materijal1, 0, materijal.Materijal1.Length);
                         file.Close();
+                        MessageBox.Show("Dokument skinut");
                     }
                 }
             }
+        }
+
+        void Form_Closed(object sender, FormClosedEventArgs e)
+        {
+            BindForm();
         }
 
         private void izbrisiBtn_Click(object sender, EventArgs e)
@@ -73,7 +80,8 @@ namespace Tutor_UI.Users.Tutor
                 var response = materijalService.DeleteResponse(materijalId.ToString());
                 if (response.IsSuccessStatusCode)
                 {
-                    MessageBox.Show("Materijal izbrisan."); 
+                    MessageBox.Show("Materijal izbrisan.");
+                    BindForm();
                 }
             }
         }

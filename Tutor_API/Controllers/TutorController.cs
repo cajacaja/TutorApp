@@ -413,6 +413,87 @@ namespace Tutor_API.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+        [HttpGet]
+        [Route("api/Tutor/PromjeniSatusBan/{id}")]        
+        public IHttpActionResult PromjeniSatusBan(int id)
+        {
+            var tutor = db.Tutors.FirstOrDefault(x => x.TutorId == id);
+            if (tutor == null)
+                return BadRequest();
+
+            tutor.StatusKorisnickoRacunaId = 3;
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            if (id != tutor.TutorId)
+            {
+                return BadRequest();
+            }
+
+            db.Entry(tutor).State = EntityState.Modified;
+
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                SqlException greska = ex.InnerException as SqlException;
+
+                if (greska != null)
+                {
+                    return BadRequest(Util.ExceptionHandler.DbUpdateExceptionHandler(greska));
+                }
+
+
+            }
+
+            return StatusCode(HttpStatusCode.NoContent);
+
+        }
+        [HttpGet]
+        [Route("api/Tutor/PromjeniSatusUnban/{id}")]
+        public IHttpActionResult PromjeniSatusUnban(int id)
+        {
+            var tutor = db.Tutors.FirstOrDefault(x => x.TutorId == id);
+            if (tutor == null)
+                return BadRequest();
+
+            tutor.StatusKorisnickoRacunaId = 1;
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            if (id != tutor.TutorId)
+            {
+                return BadRequest();
+            }
+
+            db.Entry(tutor).State = EntityState.Modified;
+
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                SqlException greska = ex.InnerException as SqlException;
+
+                if (greska != null)
+                {
+                    return BadRequest(Util.ExceptionHandler.DbUpdateExceptionHandler(greska));
+                }
+
+
+            }
+
+            return StatusCode(HttpStatusCode.NoContent);
+
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

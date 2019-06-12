@@ -49,29 +49,23 @@ namespace Tutor_UI.Users
 
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TutorPrijaveDetailsForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Tutor_UI.Users.TutorDetalj tutor = new TutorDetalj(prijava.TutorId);
-            tutor.ShowDialog();
-            
-        }
-
-        private void button2_Click(object sender, EventArgs e)
+        private void studentBtn_Click(object sender, EventArgs e)
         {
             StudentDetalj student = new StudentDetalj(prijava.StudentId);
             student.ShowDialog();
         }
 
-        
+        private void tutorBtn_Click(object sender, EventArgs e)
+        {
+            Tutor_UI.Users.TutorDetalj tutor = new TutorDetalj(prijava.TutorId);
+            tutor.ShowDialog();
+        }
+
+
+
+
+
+
+
     }
 }

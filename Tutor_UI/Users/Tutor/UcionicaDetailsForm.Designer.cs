@@ -54,15 +54,15 @@
             this.PocetakCasa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.prihvacenePrijaveGridView = new System.Windows.Forms.DataGridView();
+            this.label10 = new System.Windows.Forms.Label();
+            this.pregledajBtn = new System.Windows.Forms.Button();
+            this.prijaveBtn = new System.Windows.Forms.Button();
             this.StudentId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Student = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Spol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Godine = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TipStudenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ocjena = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label10 = new System.Windows.Forms.Label();
-            this.pregledajBtn = new System.Windows.Forms.Button();
-            this.prijaveBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.slikaInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.terminiDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.prihvacenePrijaveGridView)).BeginInit();
@@ -251,17 +251,17 @@
             // 
             this.terminiDataGridView.AllowUserToAddRows = false;
             this.terminiDataGridView.AllowUserToDeleteRows = false;
-            this.terminiDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.terminiDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.terminiDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TerminId,
             this.UcionicaId,
             this.Ucionica,
             this.Dan,
             this.PocetakCasa});
-            this.terminiDataGridView.Location = new System.Drawing.Point(3, 343);
+            this.terminiDataGridView.Location = new System.Drawing.Point(0, 298);
             this.terminiDataGridView.Name = "terminiDataGridView";
             this.terminiDataGridView.ReadOnly = true;
-            this.terminiDataGridView.Size = new System.Drawing.Size(243, 174);
+            this.terminiDataGridView.Size = new System.Drawing.Size(243, 144);
             this.terminiDataGridView.TabIndex = 31;
             // 
             // TerminId
@@ -306,7 +306,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(0, 327);
+            this.label1.Location = new System.Drawing.Point(3, 282);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(48, 13);
             this.label1.TabIndex = 32;
@@ -316,7 +316,8 @@
             // 
             this.prihvacenePrijaveGridView.AllowUserToAddRows = false;
             this.prihvacenePrijaveGridView.AllowUserToDeleteRows = false;
-            this.prihvacenePrijaveGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.prihvacenePrijaveGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.prihvacenePrijaveGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.prihvacenePrijaveGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.StudentId,
             this.Student,
@@ -324,11 +325,43 @@
             this.Godine,
             this.TipStudenta,
             this.Ocjena});
-            this.prihvacenePrijaveGridView.Location = new System.Drawing.Point(257, 343);
+            this.prihvacenePrijaveGridView.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.prihvacenePrijaveGridView.Location = new System.Drawing.Point(0, 461);
             this.prihvacenePrijaveGridView.Name = "prihvacenePrijaveGridView";
             this.prihvacenePrijaveGridView.ReadOnly = true;
-            this.prihvacenePrijaveGridView.Size = new System.Drawing.Size(243, 174);
+            this.prihvacenePrijaveGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.prihvacenePrijaveGridView.Size = new System.Drawing.Size(504, 113);
             this.prihvacenePrijaveGridView.TabIndex = 33;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label10.Location = new System.Drawing.Point(3, 445);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(50, 13);
+            this.label10.TabIndex = 34;
+            this.label10.Text = "Ucenici";
+            // 
+            // pregledajBtn
+            // 
+            this.pregledajBtn.Location = new System.Drawing.Point(287, 298);
+            this.pregledajBtn.Name = "pregledajBtn";
+            this.pregledajBtn.Size = new System.Drawing.Size(139, 32);
+            this.pregledajBtn.TabIndex = 35;
+            this.pregledajBtn.Text = "Pregledaj materijale";
+            this.pregledajBtn.UseVisualStyleBackColor = true;
+            this.pregledajBtn.Click += new System.EventHandler(this.pregledajBtn_Click);
+            // 
+            // prijaveBtn
+            // 
+            this.prijaveBtn.Location = new System.Drawing.Point(287, 352);
+            this.prijaveBtn.Name = "prijaveBtn";
+            this.prijaveBtn.Size = new System.Drawing.Size(139, 29);
+            this.prijaveBtn.TabIndex = 36;
+            this.prijaveBtn.Text = "Pregledaj prijave";
+            this.prijaveBtn.UseVisualStyleBackColor = true;
+            this.prijaveBtn.Click += new System.EventHandler(this.prijaveBtn_Click);
             // 
             // StudentId
             // 
@@ -340,10 +373,12 @@
             // 
             // Student
             // 
+            this.Student.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.Student.DataPropertyName = "Student";
             this.Student.HeaderText = "Student";
             this.Student.Name = "Student";
             this.Student.ReadOnly = true;
+            this.Student.Width = 69;
             // 
             // Spol
             // 
@@ -363,55 +398,26 @@
             // 
             // TipStudenta
             // 
+            this.TipStudenta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.TipStudenta.DataPropertyName = "TipStudenta";
             this.TipStudenta.HeaderText = "Tip studenta";
             this.TipStudenta.Name = "TipStudenta";
             this.TipStudenta.ReadOnly = true;
-            this.TipStudenta.Width = 75;
+            this.TipStudenta.Width = 91;
             // 
             // Ocjena
             // 
+            this.Ocjena.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Ocjena.DataPropertyName = "Ocjena";
             this.Ocjena.HeaderText = "Ocjena";
             this.Ocjena.Name = "Ocjena";
             this.Ocjena.ReadOnly = true;
-            this.Ocjena.Width = 65;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label10.Location = new System.Drawing.Point(254, 327);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(50, 13);
-            this.label10.TabIndex = 34;
-            this.label10.Text = "Ucenici";
-            // 
-            // pregledajBtn
-            // 
-            this.pregledajBtn.Location = new System.Drawing.Point(112, 290);
-            this.pregledajBtn.Name = "pregledajBtn";
-            this.pregledajBtn.Size = new System.Drawing.Size(139, 23);
-            this.pregledajBtn.TabIndex = 35;
-            this.pregledajBtn.Text = "Pregledaj materijale";
-            this.pregledajBtn.UseVisualStyleBackColor = true;
-            this.pregledajBtn.Click += new System.EventHandler(this.pregledajBtn_Click);
-            // 
-            // prijaveBtn
-            // 
-            this.prijaveBtn.Location = new System.Drawing.Point(336, 290);
-            this.prijaveBtn.Name = "prijaveBtn";
-            this.prijaveBtn.Size = new System.Drawing.Size(139, 23);
-            this.prijaveBtn.TabIndex = 36;
-            this.prijaveBtn.Text = "Pregledaj prijave";
-            this.prijaveBtn.UseVisualStyleBackColor = true;
-            this.prijaveBtn.Click += new System.EventHandler(this.prijaveBtn_Click);
             // 
             // UcionicaDetailsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(502, 529);
+            this.ClientSize = new System.Drawing.Size(504, 574);
             this.Controls.Add(this.prijaveBtn);
             this.Controls.Add(this.pregledajBtn);
             this.Controls.Add(this.label10);
@@ -479,13 +485,13 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView prihvacenePrijaveGridView;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button pregledajBtn;
+        private System.Windows.Forms.Button prijaveBtn;
         private System.Windows.Forms.DataGridViewTextBoxColumn StudentId;
         private System.Windows.Forms.DataGridViewTextBoxColumn Student;
         private System.Windows.Forms.DataGridViewTextBoxColumn Spol;
         private System.Windows.Forms.DataGridViewTextBoxColumn Godine;
         private System.Windows.Forms.DataGridViewTextBoxColumn TipStudenta;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ocjena;
-        private System.Windows.Forms.Button pregledajBtn;
-        private System.Windows.Forms.Button prijaveBtn;
     }
 }

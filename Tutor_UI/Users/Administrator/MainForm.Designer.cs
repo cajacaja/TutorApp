@@ -40,8 +40,8 @@
             this.reportiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.najpopularnijiPredmetiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.najpopularnijiTutoriToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tipoviTutoraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -144,6 +144,13 @@
             this.najpopularnijiTutoriToolStripMenuItem.Text = "Najpopularniji tutori";
             this.najpopularnijiTutoriToolStripMenuItem.Click += new System.EventHandler(this.najpopularnijiTutoriToolStripMenuItem_Click);
             // 
+            // tipoviTutoraToolStripMenuItem
+            // 
+            this.tipoviTutoraToolStripMenuItem.Name = "tipoviTutoraToolStripMenuItem";
+            this.tipoviTutoraToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.tipoviTutoraToolStripMenuItem.Text = "Tipovi tutora";
+            this.tipoviTutoraToolStripMenuItem.Click += new System.EventHandler(this.tipoviTutoraToolStripMenuItem_Click);
+            // 
             // logoutToolStripMenuItem
             // 
             this.logoutToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
@@ -152,23 +159,17 @@
             this.logoutToolStripMenuItem.Text = "Logout";
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
             // 
-            // tipoviTutoraToolStripMenuItem
-            // 
-            this.tipoviTutoraToolStripMenuItem.Name = "tipoviTutoraToolStripMenuItem";
-            this.tipoviTutoraToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
-            this.tipoviTutoraToolStripMenuItem.Text = "Tipovi tutora";
-            this.tipoviTutoraToolStripMenuItem.Click += new System.EventHandler(this.tipoviTutoraToolStripMenuItem_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ControlBox = false;
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
             this.ShowIcon = false;
-            this.Text = "MainForm";
+            this.Text = "Administrator";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

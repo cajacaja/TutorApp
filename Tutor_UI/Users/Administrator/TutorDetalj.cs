@@ -171,7 +171,7 @@ namespace Tutor_UI.Users
                 if (tutor.StatusKorisnickoRacunaId != 3)
                 {
                     tutor.StatusKorisnickoRacunaId = 3;
-                    var response2 = tutorService.PutResponse(Tutor.TutorId, tutor);
+                    var response2 = tutorService.GetActionResponse("PromjeniSatusBan", Tutor.TutorId.ToString());
                     if (response2.IsSuccessStatusCode)
                     {
                         MessageBox.Show("Tutor banovan!");
@@ -181,7 +181,7 @@ namespace Tutor_UI.Users
                 else
                 {
                     tutor.StatusKorisnickoRacunaId = 1;
-                    var response2 = tutorService.PutResponse(Tutor.TutorId, tutor);
+                    var response2 = tutorService.GetActionResponse("PromjeniSatusUnban", Tutor.TutorId.ToString());
                     if (response2.IsSuccessStatusCode)
                     {
                         MessageBox.Show("Tutor unbanovan!");

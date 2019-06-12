@@ -29,12 +29,6 @@
         private void InitializeComponent()
         {
             this.neProcitanoGridView = new System.Windows.Forms.DataGridView();
-            this.zahtjeviTerminiTabControl = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.terminiGridView = new System.Windows.Forms.DataGridView();
-            this.OdbijBtn = new System.Windows.Forms.Button();
-            this.PregledBtn = new System.Windows.Forms.Button();
             this.ZahtjevId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Student = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TipStudenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -42,6 +36,12 @@
             this.DatumSlanja = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BrojCasova = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ocjena = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.zahtjeviTerminiTabControl = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.terminiGridView = new System.Windows.Forms.DataGridView();
+            this.OdbijBtn = new System.Windows.Forms.Button();
+            this.PregledBtn = new System.Windows.Forms.Button();
             this.StudentId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ImePrezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TipStudentaT = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -75,6 +75,65 @@
             this.neProcitanoGridView.ReadOnly = true;
             this.neProcitanoGridView.Size = new System.Drawing.Size(557, 266);
             this.neProcitanoGridView.TabIndex = 0;
+            // 
+            // ZahtjevId
+            // 
+            this.ZahtjevId.DataPropertyName = "ZahtjevId";
+            this.ZahtjevId.HeaderText = "ZahtjevId";
+            this.ZahtjevId.Name = "ZahtjevId";
+            this.ZahtjevId.ReadOnly = true;
+            this.ZahtjevId.Visible = false;
+            // 
+            // Student
+            // 
+            this.Student.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Student.DataPropertyName = "Student";
+            this.Student.HeaderText = "Student";
+            this.Student.Name = "Student";
+            this.Student.ReadOnly = true;
+            this.Student.Width = 69;
+            // 
+            // TipStudenta
+            // 
+            this.TipStudenta.DataPropertyName = "TipStudenta";
+            this.TipStudenta.HeaderText = "Tip studenta";
+            this.TipStudenta.Name = "TipStudenta";
+            this.TipStudenta.ReadOnly = true;
+            // 
+            // Godine
+            // 
+            this.Godine.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Godine.DataPropertyName = "Godine";
+            this.Godine.HeaderText = "Godine";
+            this.Godine.Name = "Godine";
+            this.Godine.ReadOnly = true;
+            this.Godine.Width = 66;
+            // 
+            // DatumSlanja
+            // 
+            this.DatumSlanja.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.DatumSlanja.DataPropertyName = "DatumSlanja";
+            this.DatumSlanja.HeaderText = "Datum slanja";
+            this.DatumSlanja.Name = "DatumSlanja";
+            this.DatumSlanja.ReadOnly = true;
+            this.DatumSlanja.Width = 93;
+            // 
+            // BrojCasova
+            // 
+            this.BrojCasova.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.BrojCasova.DataPropertyName = "BrojCasova";
+            this.BrojCasova.HeaderText = "Broj casova";
+            this.BrojCasova.Name = "BrojCasova";
+            this.BrojCasova.ReadOnly = true;
+            this.BrojCasova.Width = 88;
+            // 
+            // Ocjena
+            // 
+            this.Ocjena.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Ocjena.DataPropertyName = "Ocjena";
+            this.Ocjena.HeaderText = "Ocjena";
+            this.Ocjena.Name = "Ocjena";
+            this.Ocjena.ReadOnly = true;
             // 
             // zahtjeviTerminiTabControl
             // 
@@ -150,65 +209,6 @@
             this.PregledBtn.UseVisualStyleBackColor = true;
             this.PregledBtn.Click += new System.EventHandler(this.PregledBtn_Click);
             // 
-            // ZahtjevId
-            // 
-            this.ZahtjevId.DataPropertyName = "ZahtjevId";
-            this.ZahtjevId.HeaderText = "ZahtjevId";
-            this.ZahtjevId.Name = "ZahtjevId";
-            this.ZahtjevId.ReadOnly = true;
-            this.ZahtjevId.Visible = false;
-            // 
-            // Student
-            // 
-            this.Student.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Student.DataPropertyName = "Student";
-            this.Student.HeaderText = "Student";
-            this.Student.Name = "Student";
-            this.Student.ReadOnly = true;
-            this.Student.Width = 69;
-            // 
-            // TipStudenta
-            // 
-            this.TipStudenta.DataPropertyName = "TipStudenta";
-            this.TipStudenta.HeaderText = "Tip studenta";
-            this.TipStudenta.Name = "TipStudenta";
-            this.TipStudenta.ReadOnly = true;
-            // 
-            // Godine
-            // 
-            this.Godine.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Godine.DataPropertyName = "Godine";
-            this.Godine.HeaderText = "Godine";
-            this.Godine.Name = "Godine";
-            this.Godine.ReadOnly = true;
-            this.Godine.Width = 66;
-            // 
-            // DatumSlanja
-            // 
-            this.DatumSlanja.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.DatumSlanja.DataPropertyName = "DatumSlanja";
-            this.DatumSlanja.HeaderText = "Datum slanja";
-            this.DatumSlanja.Name = "DatumSlanja";
-            this.DatumSlanja.ReadOnly = true;
-            this.DatumSlanja.Width = 93;
-            // 
-            // BrojCasova
-            // 
-            this.BrojCasova.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.BrojCasova.DataPropertyName = "BrojCasova";
-            this.BrojCasova.HeaderText = "Broj casova";
-            this.BrojCasova.Name = "BrojCasova";
-            this.BrojCasova.ReadOnly = true;
-            this.BrojCasova.Width = 88;
-            // 
-            // Ocjena
-            // 
-            this.Ocjena.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Ocjena.DataPropertyName = "Ocjena";
-            this.Ocjena.HeaderText = "Ocjena";
-            this.Ocjena.Name = "Ocjena";
-            this.Ocjena.ReadOnly = true;
-            // 
             // StudentId
             // 
             this.StudentId.DataPropertyName = "StudentId";
@@ -261,11 +261,11 @@
             // 
             // DatumCasa
             // 
+            this.DatumCasa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.DatumCasa.DataPropertyName = "DatumCasa";
             this.DatumCasa.HeaderText = "Datum casa";
             this.DatumCasa.Name = "DatumCasa";
             this.DatumCasa.ReadOnly = true;
-            this.DatumCasa.Width = 65;
             // 
             // CasZahtjeviForm
             // 

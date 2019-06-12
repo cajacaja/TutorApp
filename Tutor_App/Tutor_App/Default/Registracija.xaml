@@ -21,6 +21,7 @@
             <Style x:Key="entryStyle" TargetType="Entry">                
                 <Setter Property="TextColor" Value="Black"/>               
                 <Setter Property="Margin" Value="0,0,0,10"/>
+                <Setter Property="FontSize" Value="13"/>
 
                 
             </Style>
@@ -99,7 +100,7 @@
                     <Entry x:Name="emailInput" Style="{StaticResource entryStyle}" Keyboard="Email" Grid.Row="7" Grid.Column="1"></Entry>
 
                 <Label Text="Telefon:" Style="{StaticResource lableStyle}" Grid.Row="8"></Label>
-                <Entry x:Name="telefonInput"  Style="{StaticResource entryStyle}" Grid.Row="8" Grid.Column="1"></Entry>
+                <Entry x:Name="telefonInput"  Style="{StaticResource entryStyle}" Grid.Row="8" Grid.Column="1" Keyboard="Numeric"></Entry>
 
 
 

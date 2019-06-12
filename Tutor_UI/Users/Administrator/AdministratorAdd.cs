@@ -97,7 +97,7 @@ namespace Tutor_UI.Users
 
         private void LozinkaInput_Validating(object sender, CancelEventArgs e)
         {
-            e.Cancel = Provjera(LozinkaInput);//Treba skontat nacin da budem vise specifican sa porukama!
+            e.Cancel = Provjera(LozinkaInput);
         }
 
         private void TelefonInput_Validating(object sender, CancelEventArgs e)

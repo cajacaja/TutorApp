@@ -28,22 +28,22 @@ namespace Tutor_App
         {
             InitializeComponent();
 
-            telefonInput.Text = @"+387(**)***-***";
+           
 
         }
 
-        protected override async void OnAppearing()
+        protected override  void OnAppearing()
         {
             BindGrad();
             BindSpol();
-            await BindVrstaStudenta();
+            BindVrstaStudenta();
 
             base.OnAppearing();
         }
 
-        private async Task BindVrstaStudenta()
+        private void BindVrstaStudenta()
         {
-            HttpResponseMessage response = await Task.Run(() => tipStudentaService.GetResponse());
+            HttpResponseMessage response = tipStudentaService.GetResponse();
 
             if (response.IsSuccessStatusCode)
             {
@@ -56,9 +56,9 @@ namespace Tutor_App
             }
         }
 
-        private async Task BindSpol()
+        private void BindSpol()
         {
-            HttpResponseMessage response = await Task.Run(() => spolService.GetResponse());
+            HttpResponseMessage response =spolService.GetResponse();
 
             if (response.IsSuccessStatusCode)
             {
@@ -71,9 +71,9 @@ namespace Tutor_App
             }
         }
 
-        private async Task BindGrad()
+        private void BindGrad()
         {
-            HttpResponseMessage response = await Task.Run(() => gradService.GetResponse());
+            HttpResponseMessage response = gradService.GetResponse();
 
             if (response.IsSuccessStatusCode)
             {
@@ -303,7 +303,7 @@ namespace Tutor_App
 
                 return false;
             }
-            else if (!Regex.Match(telefonInput.Text, @"\+387\([3|6][0-9]\)[0-9]{3}\-[0-9]{3}").Success)
+            else if (!Regex.Match(telefonInput.Text, @"[0-9]").Success)
             {
                 telefonInput.Text = "";
                 telefonInput.PlaceholderColor = Color.Red;

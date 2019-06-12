@@ -179,7 +179,7 @@ namespace Tutor_App
 
                 return false;
             }
-            else if (!Regex.Match(telefonInput.Text, @"\+387\([3|6][0-9]\)[0-9]{3}\-[0-9]{3}").Success)
+            else if (!Regex.Match(telefonInput.Text, @"[0-9]").Success)
             {
                 telefonInput.Text = "";
                 telefonInput.PlaceholderColor = Color.Red;

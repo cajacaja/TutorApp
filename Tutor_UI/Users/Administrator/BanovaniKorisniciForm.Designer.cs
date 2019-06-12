@@ -31,15 +31,15 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.TutoriTab = new System.Windows.Forms.TabPage();
             this.BanovaniTutoriGridView = new System.Windows.Forms.DataGridView();
+            this.StuentiTab = new System.Windows.Forms.TabPage();
+            this.BanStudentsGridView = new System.Windows.Forms.DataGridView();
+            this.PregledBtn = new System.Windows.Forms.Button();
             this.TutorId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ImeTutor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PrezimeTutor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DatumDodavanjaTutor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GradTutor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Predmet = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.StuentiTab = new System.Windows.Forms.TabPage();
-            this.BanStudentsGridView = new System.Windows.Forms.DataGridView();
-            this.PregledBtn = new System.Windows.Forms.Button();
             this.StudentId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Prezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,7 +60,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(460, 316);
+            this.tabControl1.Size = new System.Drawing.Size(491, 316);
             this.tabControl1.TabIndex = 0;
             // 
             // TutoriTab
@@ -69,7 +69,7 @@
             this.TutoriTab.Location = new System.Drawing.Point(4, 22);
             this.TutoriTab.Name = "TutoriTab";
             this.TutoriTab.Padding = new System.Windows.Forms.Padding(3);
-            this.TutoriTab.Size = new System.Drawing.Size(452, 290);
+            this.TutoriTab.Size = new System.Drawing.Size(483, 290);
             this.TutoriTab.TabIndex = 0;
             this.TutoriTab.Text = "Tutori";
             this.TutoriTab.UseVisualStyleBackColor = true;
@@ -90,51 +90,8 @@
             this.BanovaniTutoriGridView.Location = new System.Drawing.Point(3, 3);
             this.BanovaniTutoriGridView.Name = "BanovaniTutoriGridView";
             this.BanovaniTutoriGridView.ReadOnly = true;
-            this.BanovaniTutoriGridView.Size = new System.Drawing.Size(446, 284);
+            this.BanovaniTutoriGridView.Size = new System.Drawing.Size(477, 284);
             this.BanovaniTutoriGridView.TabIndex = 0;
-            // 
-            // TutorId
-            // 
-            this.TutorId.DataPropertyName = "TutorId";
-            this.TutorId.HeaderText = "TutorId";
-            this.TutorId.Name = "TutorId";
-            this.TutorId.ReadOnly = true;
-            this.TutorId.Visible = false;
-            // 
-            // ImeTutor
-            // 
-            this.ImeTutor.DataPropertyName = "Ime";
-            this.ImeTutor.HeaderText = "Ime";
-            this.ImeTutor.Name = "ImeTutor";
-            this.ImeTutor.ReadOnly = true;
-            // 
-            // PrezimeTutor
-            // 
-            this.PrezimeTutor.DataPropertyName = "Prezime";
-            this.PrezimeTutor.HeaderText = "Prezime";
-            this.PrezimeTutor.Name = "PrezimeTutor";
-            this.PrezimeTutor.ReadOnly = true;
-            // 
-            // DatumDodavanjaTutor
-            // 
-            this.DatumDodavanjaTutor.DataPropertyName = "DatumDodavanja";
-            this.DatumDodavanjaTutor.HeaderText = "Datum dodavanja";
-            this.DatumDodavanjaTutor.Name = "DatumDodavanjaTutor";
-            this.DatumDodavanjaTutor.ReadOnly = true;
-            // 
-            // GradTutor
-            // 
-            this.GradTutor.DataPropertyName = "Grad";
-            this.GradTutor.HeaderText = "Grad";
-            this.GradTutor.Name = "GradTutor";
-            this.GradTutor.ReadOnly = true;
-            // 
-            // Predmet
-            // 
-            this.Predmet.DataPropertyName = "Predmet";
-            this.Predmet.HeaderText = "Predmet";
-            this.Predmet.Name = "Predmet";
-            this.Predmet.ReadOnly = true;
             // 
             // StuentiTab
             // 
@@ -142,7 +99,7 @@
             this.StuentiTab.Location = new System.Drawing.Point(4, 22);
             this.StuentiTab.Name = "StuentiTab";
             this.StuentiTab.Padding = new System.Windows.Forms.Padding(3);
-            this.StuentiTab.Size = new System.Drawing.Size(452, 290);
+            this.StuentiTab.Size = new System.Drawing.Size(483, 290);
             this.StuentiTab.TabIndex = 1;
             this.StuentiTab.Text = "Studenti";
             this.StuentiTab.UseVisualStyleBackColor = true;
@@ -162,18 +119,68 @@
             this.BanStudentsGridView.Location = new System.Drawing.Point(3, 3);
             this.BanStudentsGridView.Name = "BanStudentsGridView";
             this.BanStudentsGridView.ReadOnly = true;
-            this.BanStudentsGridView.Size = new System.Drawing.Size(446, 284);
+            this.BanStudentsGridView.Size = new System.Drawing.Size(477, 284);
             this.BanStudentsGridView.TabIndex = 0;
             // 
             // PregledBtn
             // 
-            this.PregledBtn.Location = new System.Drawing.Point(466, 25);
+            this.PregledBtn.Location = new System.Drawing.Point(511, 25);
             this.PregledBtn.Name = "PregledBtn";
             this.PregledBtn.Size = new System.Drawing.Size(92, 37);
             this.PregledBtn.TabIndex = 0;
             this.PregledBtn.Text = "Pregled";
             this.PregledBtn.UseVisualStyleBackColor = true;
             this.PregledBtn.Click += new System.EventHandler(this.PregledBtn_Click);
+            // 
+            // TutorId
+            // 
+            this.TutorId.DataPropertyName = "TutorId";
+            this.TutorId.HeaderText = "TutorId";
+            this.TutorId.Name = "TutorId";
+            this.TutorId.ReadOnly = true;
+            this.TutorId.Visible = false;
+            // 
+            // ImeTutor
+            // 
+            this.ImeTutor.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.ImeTutor.DataPropertyName = "Ime";
+            this.ImeTutor.HeaderText = "Ime";
+            this.ImeTutor.Name = "ImeTutor";
+            this.ImeTutor.ReadOnly = true;
+            this.ImeTutor.Width = 49;
+            // 
+            // PrezimeTutor
+            // 
+            this.PrezimeTutor.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.PrezimeTutor.DataPropertyName = "Prezime";
+            this.PrezimeTutor.HeaderText = "Prezime";
+            this.PrezimeTutor.Name = "PrezimeTutor";
+            this.PrezimeTutor.ReadOnly = true;
+            this.PrezimeTutor.Width = 69;
+            // 
+            // DatumDodavanjaTutor
+            // 
+            this.DatumDodavanjaTutor.DataPropertyName = "DatumDodavanja";
+            this.DatumDodavanjaTutor.HeaderText = "Datum dodavanja";
+            this.DatumDodavanjaTutor.Name = "DatumDodavanjaTutor";
+            this.DatumDodavanjaTutor.ReadOnly = true;
+            this.DatumDodavanjaTutor.Width = 65;
+            // 
+            // GradTutor
+            // 
+            this.GradTutor.DataPropertyName = "Grad";
+            this.GradTutor.HeaderText = "Grad";
+            this.GradTutor.Name = "GradTutor";
+            this.GradTutor.ReadOnly = true;
+            this.GradTutor.Width = 85;
+            // 
+            // Predmet
+            // 
+            this.Predmet.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Predmet.DataPropertyName = "Predmet";
+            this.Predmet.HeaderText = "Predmet";
+            this.Predmet.Name = "Predmet";
+            this.Predmet.ReadOnly = true;
             // 
             // StudentId
             // 
@@ -206,6 +213,7 @@
             // 
             // GradStudent
             // 
+            this.GradStudent.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.GradStudent.DataPropertyName = "Grad";
             this.GradStudent.HeaderText = "Grad";
             this.GradStudent.Name = "GradStudent";
@@ -215,7 +223,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(570, 316);
+            this.ClientSize = new System.Drawing.Size(615, 316);
             this.Controls.Add(this.PregledBtn);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -224,7 +232,6 @@
             this.Name = "BanovaniKorisniciForm";
             this.ShowIcon = false;
             this.Text = "Banovani korisnici";
-            
             this.tabControl1.ResumeLayout(false);
             this.TutoriTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.BanovaniTutoriGridView)).EndInit();

@@ -106,6 +106,7 @@
             this.Student.DataPropertyName = "Student";
             this.Student.HeaderText = "Student(Prijavio)";
             this.Student.Name = "Student";
+            this.Student.ReadOnly = true;
             // 
             // Tutor
             // 
@@ -136,7 +137,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(449, 424);
+            this.tabPage2.Size = new System.Drawing.Size(449, 338);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Stare prijave";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -153,7 +154,7 @@
             this.ProcitanePrijaveGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ProcitanePrijaveGridView.Location = new System.Drawing.Point(3, 3);
             this.ProcitanePrijaveGridView.Name = "ProcitanePrijaveGridView";
-            this.ProcitanePrijaveGridView.Size = new System.Drawing.Size(443, 418);
+            this.ProcitanePrijaveGridView.Size = new System.Drawing.Size(443, 332);
             this.ProcitanePrijaveGridView.TabIndex = 0;
             // 
             // StaraPrijavaId
@@ -200,7 +201,7 @@
             this.PregledBtn.TabIndex = 1;
             this.PregledBtn.Text = "Pregled";
             this.PregledBtn.UseVisualStyleBackColor = true;
-            this.PregledBtn.Click += new System.EventHandler(this.button1_Click);
+            this.PregledBtn.Click += new System.EventHandler(this.PregledBtn_Click);
             // 
             // IzbrisiBtn
             // 

@@ -67,7 +67,7 @@
 
 
                 <Label Text="Telefon:" Style="{StaticResource lableStyle}" Grid.Row="4" Grid.Column="0"></Label>
-                <Entry x:Name="telefonInput"  Style="{StaticResource entryStyle}"  FontSize="13" Grid.Row="4" Grid.Column="1"></Entry>
+                <Entry x:Name="telefonInput"  Style="{StaticResource entryStyle}" Keyboard="Numeric"  FontSize="13" Grid.Row="4" Grid.Column="1"></Entry>
 
                 <Label Text="Adresa:" Style="{StaticResource lableStyle}"  Grid.Row="5" Grid.Column="0"></Label>
                 <Entry x:Name="adresaInput"  Style="{StaticResource entryStyle}"   Grid.Row="5" FontSize="13" Grid.Column="1"></Entry>

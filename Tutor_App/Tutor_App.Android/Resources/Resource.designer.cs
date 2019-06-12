@@ -28,6 +28,8 @@ namespace Tutor_App.Droid
 		{
 			global::PCLCrypto.Resource.String.ApplicationName = global::Tutor_App.Droid.Resource.String.ApplicationName;
 			global::PCLCrypto.Resource.String.Hello = global::Tutor_App.Droid.Resource.String.Hello;
+			global::PCLStorage.Resource.String.ApplicationName = global::Tutor_App.Droid.Resource.String.ApplicationName;
+			global::PCLStorage.Resource.String.Hello = global::Tutor_App.Droid.Resource.String.Hello;
 			global::Xamarin.Forms.Platform.Android.Resource.Animation.abc_fade_in = global::Tutor_App.Droid.Resource.Animation.abc_fade_in;
 			global::Xamarin.Forms.Platform.Android.Resource.Animation.abc_fade_out = global::Tutor_App.Droid.Resource.Animation.abc_fade_out;
 			global::Xamarin.Forms.Platform.Android.Resource.Animation.abc_grow_fade_in_from_bottom = global::Tutor_App.Droid.Resource.Animation.abc_grow_fade_in_from_bottom;

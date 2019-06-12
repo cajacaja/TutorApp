@@ -239,7 +239,7 @@
             this.DatumPocetka.HeaderText = "Datum pocetka";
             this.DatumPocetka.Name = "DatumPocetka";
             this.DatumPocetka.ReadOnly = true;
-            this.DatumPocetka.Width = 85;
+            this.DatumPocetka.Width = 65;
             // 
             // Tezina
             // 
@@ -267,11 +267,11 @@
             // 
             // Grad
             // 
+            this.Grad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Grad.DataPropertyName = "Grad";
             this.Grad.HeaderText = "Grad";
             this.Grad.Name = "Grad";
             this.Grad.ReadOnly = true;
-            this.Grad.Width = 75;
             // 
             // UcionicaIdstr
             // 
@@ -305,7 +305,7 @@
             this.DatumZavrsetka.HeaderText = "Datum zavrsetka";
             this.DatumZavrsetka.Name = "DatumZavrsetka";
             this.DatumZavrsetka.ReadOnly = true;
-            this.DatumZavrsetka.Width = 85;
+            this.DatumZavrsetka.Width = 65;
             // 
             // TezinaStr
             // 
@@ -333,11 +333,11 @@
             // 
             // Gradstr
             // 
+            this.Gradstr.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Gradstr.DataPropertyName = "Grad";
             this.Gradstr.HeaderText = "Grad";
             this.Gradstr.Name = "Gradstr";
             this.Gradstr.ReadOnly = true;
-            this.Gradstr.Width = 90;
             // 
             // UcioniceForm
             // 

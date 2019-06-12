@@ -19,10 +19,12 @@ namespace Tutor_UI.Users.Tutor
         private WebAPIHelper materijalService = new WebAPIHelper("Materijal");
 
         private int idUcionice =0;
+        private byte[] ms;
         public UploadForm(int UcionicaId)
         {
             InitializeComponent();
             idUcionice = UcionicaId;
+            openFileDialog1.Filter = "Files (.pdf,.docx,.txt)|*.pdf;*.docx;*.txt;";
         }
 
         private void fileBtn_Click(object sender, EventArgs e)
@@ -36,7 +38,19 @@ namespace Tutor_UI.Users.Tutor
 
         private void okBtn_Click(object sender, EventArgs e)
         {
-            var ms = File.ReadAllBytes(filePathInput.Text);
+           
+            try
+            {
+                 ms = File.ReadAllBytes(filePathInput.Text);
+            }
+
+            catch(Exception exp)
+            {
+                Console.WriteLine(exp.Message);
+                MessageBox.Show("File koji ste odabrali je prevelik!");
+                this.Close();
+            }
+           
             string extension = Path.GetExtension(filePathInput.Text);
 
             Materijal noviMaterijal = new Materijal()
@@ -49,7 +63,16 @@ namespace Tutor_UI.Users.Tutor
             };
 
             HttpResponseMessage resposne = materijalService.PostResponse(noviMaterijal);
-            if (resposne.IsSuccessStatusCode) MessageBox.Show("Materijal dodan!");
+            if (resposne.IsSuccessStatusCode)
+            {
+                MessageBox.Show("Materijal dodan!");
+                this.Close();
+            } 
+            else
+            {
+                MessageBox.Show("File koji ste odabrali je prevelik!");                
+                this.Close();
+            }
         }
     }
 }

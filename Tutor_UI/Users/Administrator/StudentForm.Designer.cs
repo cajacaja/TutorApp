@@ -160,6 +160,7 @@
             this.DatumRodjenja.HeaderText = "Datum rodjenja";
             this.DatumRodjenja.Name = "DatumRodjenja";
             this.DatumRodjenja.ReadOnly = true;
+            this.DatumRodjenja.Width = 70;
             // 
             // DatumDodavanja
             // 
@@ -167,6 +168,7 @@
             this.DatumDodavanja.HeaderText = "Datum dodavanja";
             this.DatumDodavanja.Name = "DatumDodavanja";
             this.DatumDodavanja.ReadOnly = true;
+            this.DatumDodavanja.Width = 70;
             // 
             // TipStudenta
             // 
@@ -177,11 +179,11 @@
             // 
             // Grad
             // 
+            this.Grad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Grad.DataPropertyName = "Grad";
             this.Grad.HeaderText = "Grad";
             this.Grad.Name = "Grad";
             this.Grad.ReadOnly = true;
-            this.Grad.Width = 75;
             // 
             // StudentForm
             // 

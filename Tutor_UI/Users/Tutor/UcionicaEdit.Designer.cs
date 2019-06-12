@@ -324,7 +324,7 @@
             this.nivoTezineCmb.Location = new System.Drawing.Point(18, 230);
             this.nivoTezineCmb.Name = "nivoTezineCmb";
             this.nivoTezineCmb.Size = new System.Drawing.Size(157, 21);
-            this.nivoTezineCmb.TabIndex = 1;
+            this.nivoTezineCmb.TabIndex = 4;
             // 
             // opisInput
             // 

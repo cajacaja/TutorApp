@@ -60,27 +60,7 @@ namespace Tutor_UI.Users
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            //Promjeni nazive tabova
-
-            int TutorId = 0;
-            if (tabControl1.SelectedTab == tabControl1.TabPages["tabPage1"] && NovePrijaveGridView.SelectedRows.Count != 0)
-            {
-                TutorId = Convert.ToInt32(NovePrijaveGridView.SelectedRows[0].Cells[0].Value);
-            }
-
-            if (tabControl1.SelectedTab == tabControl1.TabPages["tabPage2"] && ProcitanePrijaveGridView.SelectedRows.Count != 0)
-            {
-                TutorId = Convert.ToInt32(ProcitanePrijaveGridView.SelectedRows[0].Cells[0].Value);
-            }
-
-            var detalji = new TutorPrijaveDetailsForm(TutorId);
-            detalji.FormClosed += new FormClosedEventHandler(Form_Closed);
-            detalji.ShowDialog();
-            BindNeProcitano();
-            BindProcitano();
-        }
+        
 
         private void tabControl1_MouseClick(object sender, MouseEventArgs e)
         {
@@ -115,6 +95,30 @@ namespace Tutor_UI.Users
         {
             BindNeProcitano();
             BindProcitano();
+        }
+
+        private void PregledBtn_Click(object sender, EventArgs e)
+        {
+            int TutorId = 0;
+            if (tabControl1.SelectedTab == tabControl1.TabPages["tabPage1"] && NovePrijaveGridView.SelectedRows.Count != 0)
+            {
+                TutorId = Convert.ToInt32(NovePrijaveGridView.SelectedRows[0].Cells[0].Value);
+                var detalji = new TutorPrijaveDetailsForm(TutorId);
+                detalji.FormClosed += new FormClosedEventHandler(Form_Closed);
+                detalji.ShowDialog();
+                BindNeProcitano();
+                BindProcitano();
+            }
+
+            if (tabControl1.SelectedTab == tabControl1.TabPages["tabPage2"] && ProcitanePrijaveGridView.SelectedRows.Count != 0)
+            {
+                TutorId = Convert.ToInt32(ProcitanePrijaveGridView.SelectedRows[0].Cells[0].Value);
+                var detalji = new TutorPrijaveDetailsForm(TutorId);
+                detalji.FormClosed += new FormClosedEventHandler(Form_Closed);
+                detalji.ShowDialog();
+                BindNeProcitano();
+                BindProcitano();
+            }
         }
     }
 }
